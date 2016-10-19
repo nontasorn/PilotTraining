@@ -10,3 +10,6 @@ D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\Pilot
 D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.Administration.Employee_Management.resources
 D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.frmMain.resources
 D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.Login.resources
+D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\bin\Debug\PilotTraining.exe.config
+D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.exe
+D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.pdb
