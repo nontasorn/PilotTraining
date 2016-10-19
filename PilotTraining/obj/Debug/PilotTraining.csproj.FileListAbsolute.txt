@@ -1,0 +1,12 @@
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\bin\Debug\PilotTraining.exe.config
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\bin\Debug\PilotTraining.exe
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\bin\Debug\PilotTraining.pdb
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.csprojResolveAssemblyReference.cache
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.Properties.Resources.resources
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.csproj.GenerateResource.Cache
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.exe
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.pdb
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.Fundamental.GradManagement.resources
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.Administration.Employee_Management.resources
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.frmMain.resources
+D:\Pilot Training Project\Aplication\PilotTraining\PilotTraining\obj\Debug\PilotTraining.Login.resources
