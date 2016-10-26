@@ -58,6 +58,18 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\Course_Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Course_Management.Designer.cs">
+      <DependentUpon>Course_Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\Form_Details_Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Form_Details_Management.Designer.cs">
+      <DependentUpon>Form_Details_Management.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\GradeType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,12 @@
     </Compile>
     <Compile Include="Fundamental\GradManagement.Designer.cs">
       <DependentUpon>GradManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\Training_Type.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Training_Type.Designer.cs">
+      <DependentUpon>Training_Type.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -84,8 +102,17 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Course_Management.resx">
+      <DependentUpon>Course_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Form_Details_Management.resx">
+      <DependentUpon>Form_Details_Management.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\GradManagement.resx">
       <DependentUpon>GradManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Training_Type.resx">
+      <DependentUpon>Training_Type.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -154,6 +181,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrong.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

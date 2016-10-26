@@ -42,6 +42,20 @@ namespace PilotTraining
             
         }
 
+        private void Menu_Training_Type_Management2_Click(object sender, EventArgs e)
+        {
+            Fundamental.Training_Type frm = new Fundamental.Training_Type();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void Menu_Course_Management2_Click(object sender, EventArgs e)
+        {
+            Fundamental.Course_Management frm = new Fundamental.Course_Management();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
         
     }
 }

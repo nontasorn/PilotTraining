@@ -55,7 +55,11 @@ namespace PilotTraining.Administration
             txtReset_Password.PasswordChar = '*'; ;
             txtReseT_Reenter_Password.PasswordChar = '*';
 
+            Change_User_Status_Btn.Enabled = false;
+            btn_Edit_Employee_Details.Enabled = false;
+
             cmb_Rules();// combobox of permission
+            
         }
 
         // ---- Tab Create User
@@ -248,7 +252,9 @@ namespace PilotTraining.Administration
             {
                 dgv_ViewUser.DataSource = null;
                 dgv_permission.DataSource = null;
-                //BtnSetPermission.Enabled = false;
+                btn_Edit_Employee_Details.Enabled = false;
+                Change_User_Status_Btn.Enabled = false;
+
             }
             Sdr.Close();
         }
@@ -485,8 +491,8 @@ namespace PilotTraining.Administration
             {
                 return;
             }
-             amend = Convert.ToInt32(dgv_ViewUser.Rows[e.RowIndex].Cells[4].Value.ToString());
-             status = Convert.ToChar(dgv_ViewUser.Rows[e.RowIndex].Cells[3].Value.ToString().Trim());
+             amend = Convert.ToInt32(dgv_ViewUser.Rows[e.RowIndex].Cells[5].Value.ToString());
+             status = Convert.ToChar(dgv_ViewUser.Rows[e.RowIndex].Cells[4].Value.ToString().Trim());
              EmployeeID = dgv_ViewUser.Rows[e.RowIndex].Cells[1].Value.ToString();
 
              txt_Edit_Emplyee_Code.Text = dgv_ViewUser.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
@@ -499,7 +505,8 @@ namespace PilotTraining.Administration
                 txt_Edit_Employee_LastName.Text = name[1].ToString();
             }
 
-
+            Change_User_Status_Btn.Enabled = true;
+            btn_Edit_Employee_Details.Enabled = true;
 
              
         }
@@ -540,7 +547,9 @@ namespace PilotTraining.Administration
             else
             {
                 dgv_ViewUser.DataSource = null;
-                //BtnSetPermission.Enabled = false;
+                Change_User_Status_Btn.Enabled = false;
+                btn_Edit_Employee_Details.Enabled = false;
+                Change_User_Status_Btn.Enabled = false;
             }
             Sdr.Close();
         }
@@ -694,6 +703,7 @@ namespace PilotTraining.Administration
             }
 
             per_Employee_ID = dgv_permission.Rows[e.RowIndex].Cells[1].Value.ToString();
+
                      
         }
 

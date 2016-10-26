@@ -22,3 +22,6 @@ D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotT
 D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.Login.resources
 D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.Properties.Resources.resources
 D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.csproj.GenerateResource.Cache
+D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Training_Type.resources
+D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Course_Management.resources
+D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Form_Details_Management.resources

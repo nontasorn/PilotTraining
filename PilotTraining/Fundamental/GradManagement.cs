@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PilotTraining.Class;
 using System.Data.SqlClient;
-using PilotTraining.Class;
+
 
 namespace PilotTraining.Fundamental
 {

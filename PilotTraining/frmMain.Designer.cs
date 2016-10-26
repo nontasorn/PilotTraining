@@ -29,19 +29,23 @@
         private void InitializeComponent()
         {
             this.Menu_Home = new System.Windows.Forms.MenuStrip();
-            this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Employee1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Employee_Management2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.memuDataMain = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Grade1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Grade_Management2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Training_Type1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Training_Type_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_From1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Form_Management2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Course1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Course_Management2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Employee1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Employee_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.assignCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.lblUser = new System.Windows.Forms.ToolStripLabel();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +64,79 @@
             this.Menu_Home.TabIndex = 12;
             this.Menu_Home.Text = "menuStrip1";
             // 
+            // memuDataMain
+            // 
+            this.memuDataMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu_Grade1,
+            this.Menu_Training_Type1,
+            this.Menu_From1,
+            this.Menu_Course1});
+            this.memuDataMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memuDataMain.Image = global::PilotTraining.Properties.Resources._21;
+            this.memuDataMain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.memuDataMain.Name = "memuDataMain";
+            this.memuDataMain.Size = new System.Drawing.Size(131, 24);
+            this.memuDataMain.Text = "Fundamental";
+            // 
+            // Menu_Grade1
+            // 
+            this.Menu_Grade1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu_Grade_Management2});
+            this.Menu_Grade1.Name = "Menu_Grade1";
+            this.Menu_Grade1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Grade1.Text = "Grade";
+            // 
+            // Menu_Grade_Management2
+            // 
+            this.Menu_Grade_Management2.Name = "Menu_Grade_Management2";
+            this.Menu_Grade_Management2.Size = new System.Drawing.Size(221, 24);
+            this.Menu_Grade_Management2.Text = "Grade Management";
+            this.Menu_Grade_Management2.Click += new System.EventHandler(this.Menu_Grade_Management2_Click);
+            // 
+            // Menu_Training_Type1
+            // 
+            this.Menu_Training_Type1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu_Training_Type_Management2});
+            this.Menu_Training_Type1.Name = "Menu_Training_Type1";
+            this.Menu_Training_Type1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Training_Type1.Text = "Training Type";
+            // 
+            // Menu_Training_Type_Management2
+            // 
+            this.Menu_Training_Type_Management2.Name = "Menu_Training_Type_Management2";
+            this.Menu_Training_Type_Management2.Size = new System.Drawing.Size(258, 24);
+            this.Menu_Training_Type_Management2.Text = "Traing Type Management";
+            this.Menu_Training_Type_Management2.Click += new System.EventHandler(this.Menu_Training_Type_Management2_Click);
+            // 
+            // Menu_From1
+            // 
+            this.Menu_From1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu_Form_Management2});
+            this.Menu_From1.Name = "Menu_From1";
+            this.Menu_From1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_From1.Text = "Form";
+            // 
+            // Menu_Form_Management2
+            // 
+            this.Menu_Form_Management2.Name = "Menu_Form_Management2";
+            this.Menu_Form_Management2.Size = new System.Drawing.Size(213, 24);
+            this.Menu_Form_Management2.Text = "Form Management";
+            // 
+            // Menu_Course1
+            // 
+            this.Menu_Course1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu_Course_Management2});
+            this.Menu_Course1.Name = "Menu_Course1";
+            this.Menu_Course1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Course1.Text = "Course";
+            // 
+            // Menu_Course_Management2
+            // 
+            this.Menu_Course_Management2.Name = "Menu_Course_Management2";
+            this.Menu_Course_Management2.Size = new System.Drawing.Size(227, 24);
+            this.Menu_Course_Management2.Text = "Course Management";
+            this.Menu_Course_Management2.Click += new System.EventHandler(this.Menu_Course_Management2_Click);
+            // 
             // Menu_Administration
             // 
             this.Menu_Administration.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -75,7 +152,7 @@
             this.Menu_Employee1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Employee_Management2});
             this.Menu_Employee1.Name = "Menu_Employee1";
-            this.Menu_Employee1.Size = new System.Drawing.Size(152, 22);
+            this.Menu_Employee1.Size = new System.Drawing.Size(142, 22);
             this.Menu_Employee1.Text = "Employee";
             // 
             // Menu_Employee_Management2
@@ -84,6 +161,18 @@
             this.Menu_Employee_Management2.Size = new System.Drawing.Size(232, 22);
             this.Menu_Employee_Management2.Text = "Employee Management";
             this.Menu_Employee_Management2.Click += new System.EventHandler(this.Menu_Employee_Management2_Click);
+            // 
+            // assignCourseToolStripMenuItem
+            // 
+            this.assignCourseToolStripMenuItem.Name = "assignCourseToolStripMenuItem";
+            this.assignCourseToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
+            this.assignCourseToolStripMenuItem.Text = "Assign Course";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
+            this.viewToolStripMenuItem.Text = "View";
             // 
             // toolStrip1
             // 
@@ -97,11 +186,6 @@
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // lblUser
-            // 
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(0, 22);
-            // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -111,58 +195,10 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(59, 22);
             this.toolStripLabel1.Text = "Login :";
             // 
-            // memuDataMain
+            // lblUser
             // 
-            this.memuDataMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Grade1,
-            this.Menu_From1});
-            this.memuDataMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memuDataMain.Image = global::PilotTraining.Properties.Resources._21;
-            this.memuDataMain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.memuDataMain.Name = "memuDataMain";
-            this.memuDataMain.Size = new System.Drawing.Size(131, 24);
-            this.memuDataMain.Text = "Fundamental";
-            // 
-            // Menu_Grade1
-            // 
-            this.Menu_Grade1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Grade_Management2});
-            this.Menu_Grade1.Name = "Menu_Grade1";
-            this.Menu_Grade1.Size = new System.Drawing.Size(152, 24);
-            this.Menu_Grade1.Text = "Grade";
-            // 
-            // Menu_Grade_Management2
-            // 
-            this.Menu_Grade_Management2.Name = "Menu_Grade_Management2";
-            this.Menu_Grade_Management2.Size = new System.Drawing.Size(221, 24);
-            this.Menu_Grade_Management2.Text = "Grade Management";
-            this.Menu_Grade_Management2.Click += new System.EventHandler(this.Menu_Grade_Management2_Click);
-            // 
-            // Menu_From1
-            // 
-            this.Menu_From1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Form_Management2});
-            this.Menu_From1.Name = "Menu_From1";
-            this.Menu_From1.Size = new System.Drawing.Size(152, 24);
-            this.Menu_From1.Text = "Form";
-            // 
-            // Menu_Form_Management2
-            // 
-            this.Menu_Form_Management2.Name = "Menu_Form_Management2";
-            this.Menu_Form_Management2.Size = new System.Drawing.Size(213, 24);
-            this.Menu_Form_Management2.Text = "Form Management";
-            // 
-            // assignCourseToolStripMenuItem
-            // 
-            this.assignCourseToolStripMenuItem.Name = "assignCourseToolStripMenuItem";
-            this.assignCourseToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
-            this.assignCourseToolStripMenuItem.Text = "Assign Course";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
-            this.viewToolStripMenuItem.Text = "View";
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
             // frmMain
             // 
@@ -202,5 +238,9 @@
         private System.Windows.Forms.ToolStripLabel lblUser;
         private System.Windows.Forms.ToolStripMenuItem assignCourseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Training_Type1;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Training_Type_Management2;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Course1;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Course_Management2;
     }
 }
