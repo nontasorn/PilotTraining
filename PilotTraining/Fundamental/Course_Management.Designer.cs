@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.Create_Course_Btn = new System.Windows.Forms.ToolStripButton();
+            this.Edit_Course_Btn = new System.Windows.Forms.ToolStripButton();
+            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.dgv_SelectModules = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_CourseName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btn_SelectModules = new System.Windows.Forms.Button();
             this.txt_CourseDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txt_CourseName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pn_Modules = new System.Windows.Forms.Panel();
-            this.btn_SelectModules = new System.Windows.Forms.Button();
-            this.dgv_Modules = new System.Windows.Forms.DataGridView();
+            this.lbSumList = new System.Windows.Forms.Label();
             this.btnCancelSelect = new System.Windows.Forms.Button();
             this.btnOKSelect = new System.Windows.Forms.Button();
             this.btnExitMain = new System.Windows.Forms.Button();
-            this.Create_Grade_Buton = new System.Windows.Forms.ToolStripButton();
-            this.Edit_Grade_Button = new System.Windows.Forms.ToolStripButton();
-            this.Delete_Grade_Button = new System.Windows.Forms.ToolStripButton();
-            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
-            this.lbSumList = new System.Windows.Forms.Label();
+            this.dgv_Modules = new System.Windows.Forms.DataGridView();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SelectModules)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -58,15 +59,42 @@
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Create_Grade_Buton,
-            this.Edit_Grade_Button,
-            this.Delete_Grade_Button,
+            this.Create_Course_Btn,
+            this.Edit_Course_Btn,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(1084, 39);
             this.toolStrip2.TabIndex = 6;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // Create_Course_Btn
+            // 
+            this.Create_Course_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Course_Btn.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.Create_Course_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Create_Course_Btn.Name = "Create_Course_Btn";
+            this.Create_Course_Btn.Size = new System.Drawing.Size(141, 36);
+            this.Create_Course_Btn.Text = "Create Course";
+            this.Create_Course_Btn.Click += new System.EventHandler(this.Create_Course_Btn_Click);
+            // 
+            // Edit_Course_Btn
+            // 
+            this.Edit_Course_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_Course_Btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.Edit_Course_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Edit_Course_Btn.Name = "Edit_Course_Btn";
+            this.Edit_Course_Btn.Size = new System.Drawing.Size(122, 36);
+            this.Edit_Course_Btn.Text = "Edit Course";
+            // 
+            // Refresh_btn
+            // 
+            this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Refresh_btn.Image = global::PilotTraining.Properties.Resources.refresh;
+            this.Refresh_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Refresh_btn.Name = "Refresh_btn";
+            this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
+            this.Refresh_btn.Text = "Refresh";
             // 
             // dgv_SelectModules
             // 
@@ -77,19 +105,19 @@
             this.dgv_SelectModules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SelectModules.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_SelectModules.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_SelectModules.Location = new System.Drawing.Point(0, 241);
+            this.dgv_SelectModules.Location = new System.Drawing.Point(0, 193);
             this.dgv_SelectModules.MultiSelect = false;
             this.dgv_SelectModules.Name = "dgv_SelectModules";
             this.dgv_SelectModules.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_SelectModules.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_SelectModules.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_SelectModules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_SelectModules.Size = new System.Drawing.Size(1084, 320);
+            this.dgv_SelectModules.Size = new System.Drawing.Size(1084, 368);
             this.dgv_SelectModules.TabIndex = 7;
             // 
             // groupBox1
@@ -107,26 +135,16 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
-            // txt_CourseName
+            // btn_SelectModules
             // 
-            this.txt_CourseName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_CourseName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_CourseName.Location = new System.Drawing.Point(222, 21);
-            this.txt_CourseName.Name = "txt_CourseName";
-            this.txt_CourseName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_CourseName.Size = new System.Drawing.Size(451, 26);
-            this.txt_CourseName.TabIndex = 126;
-            this.txt_CourseName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(105, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 18);
-            this.label1.TabIndex = 125;
-            this.label1.Text = "Course Name :";
+            this.btn_SelectModules.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.btn_SelectModules.Location = new System.Drawing.Point(222, 100);
+            this.btn_SelectModules.Name = "btn_SelectModules";
+            this.btn_SelectModules.Size = new System.Drawing.Size(157, 34);
+            this.btn_SelectModules.TabIndex = 129;
+            this.btn_SelectModules.Text = "Select Modules";
+            this.btn_SelectModules.UseVisualStyleBackColor = true;
+            this.btn_SelectModules.Click += new System.EventHandler(this.btn_SelectModules_Click);
             // 
             // txt_CourseDescription
             // 
@@ -149,6 +167,27 @@
             this.label2.TabIndex = 127;
             this.label2.Text = "Course Description :";
             // 
+            // txt_CourseName
+            // 
+            this.txt_CourseName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_CourseName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_CourseName.Location = new System.Drawing.Point(222, 21);
+            this.txt_CourseName.Name = "txt_CourseName";
+            this.txt_CourseName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_CourseName.Size = new System.Drawing.Size(451, 26);
+            this.txt_CourseName.TabIndex = 126;
+            this.txt_CourseName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(105, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 18);
+            this.label1.TabIndex = 125;
+            this.label1.Text = "Course Name :";
+            // 
             // pn_Modules
             // 
             this.pn_Modules.BackColor = System.Drawing.Color.AliceBlue;
@@ -162,29 +201,15 @@
             this.pn_Modules.Size = new System.Drawing.Size(846, 365);
             this.pn_Modules.TabIndex = 129;
             // 
-            // btn_SelectModules
+            // lbSumList
             // 
-            this.btn_SelectModules.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.btn_SelectModules.Location = new System.Drawing.Point(222, 100);
-            this.btn_SelectModules.Name = "btn_SelectModules";
-            this.btn_SelectModules.Size = new System.Drawing.Size(157, 34);
-            this.btn_SelectModules.TabIndex = 129;
-            this.btn_SelectModules.Text = "Select Modules";
-            this.btn_SelectModules.UseVisualStyleBackColor = true;
-            this.btn_SelectModules.Click += new System.EventHandler(this.btn_SelectModules_Click);
-            // 
-            // dgv_Modules
-            // 
-            this.dgv_Modules.AllowUserToAddRows = false;
-            this.dgv_Modules.AllowUserToDeleteRows = false;
-            this.dgv_Modules.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.dgv_Modules.ColumnHeadersHeight = 25;
-            this.dgv_Modules.Location = new System.Drawing.Point(18, 50);
-            this.dgv_Modules.Name = "dgv_Modules";
-            this.dgv_Modules.RowHeadersVisible = false;
-            this.dgv_Modules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Modules.Size = new System.Drawing.Size(810, 302);
-            this.dgv_Modules.TabIndex = 134;
+            this.lbSumList.AutoSize = true;
+            this.lbSumList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSumList.Location = new System.Drawing.Point(110, 21);
+            this.lbSumList.Name = "lbSumList";
+            this.lbSumList.Size = new System.Drawing.Size(116, 16);
+            this.lbSumList.TabIndex = 139;
+            this.lbSumList.Text = "Count Modules : ";
             // 
             // btnCancelSelect
             // 
@@ -198,6 +223,7 @@
             this.btnCancelSelect.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelSelect.UseVisualStyleBackColor = false;
+            this.btnCancelSelect.Click += new System.EventHandler(this.btnCancelSelect_Click);
             // 
             // btnOKSelect
             // 
@@ -211,6 +237,7 @@
             this.btnOKSelect.TabIndex = 137;
             this.btnOKSelect.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOKSelect.UseVisualStyleBackColor = false;
+            this.btnOKSelect.Click += new System.EventHandler(this.btnOKSelect_Click);
             // 
             // btnExitMain
             // 
@@ -225,51 +252,34 @@
             this.btnExitMain.UseVisualStyleBackColor = true;
             this.btnExitMain.Click += new System.EventHandler(this.btnExitMain_Click);
             // 
-            // Create_Grade_Buton
+            // dgv_Modules
             // 
-            this.Create_Grade_Buton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create_Grade_Buton.Image = global::PilotTraining.Properties.Resources.Add_icon;
-            this.Create_Grade_Buton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Create_Grade_Buton.Name = "Create_Grade_Buton";
-            this.Create_Grade_Buton.Size = new System.Drawing.Size(141, 36);
-            this.Create_Grade_Buton.Text = "Create Course";
-            // 
-            // Edit_Grade_Button
-            // 
-            this.Edit_Grade_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_Grade_Button.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
-            this.Edit_Grade_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Edit_Grade_Button.Name = "Edit_Grade_Button";
-            this.Edit_Grade_Button.Size = new System.Drawing.Size(122, 36);
-            this.Edit_Grade_Button.Text = "Edit Course";
-            // 
-            // Delete_Grade_Button
-            // 
-            this.Delete_Grade_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Delete_Grade_Button.Image = global::PilotTraining.Properties.Resources.delete_file_icon;
-            this.Delete_Grade_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Delete_Grade_Button.Name = "Delete_Grade_Button";
-            this.Delete_Grade_Button.Size = new System.Drawing.Size(139, 36);
-            this.Delete_Grade_Button.Text = "Delete Course";
-            // 
-            // Refresh_btn
-            // 
-            this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Refresh_btn.Image = global::PilotTraining.Properties.Resources.refresh;
-            this.Refresh_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Refresh_btn.Name = "Refresh_btn";
-            this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
-            this.Refresh_btn.Text = "Refresh";
-            // 
-            // lbSumList
-            // 
-            this.lbSumList.AutoSize = true;
-            this.lbSumList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSumList.Location = new System.Drawing.Point(110, 21);
-            this.lbSumList.Name = "lbSumList";
-            this.lbSumList.Size = new System.Drawing.Size(116, 16);
-            this.lbSumList.TabIndex = 139;
-            this.lbSumList.Text = "Count Modules : ";
+            this.dgv_Modules.AllowUserToAddRows = false;
+            this.dgv_Modules.AllowUserToDeleteRows = false;
+            this.dgv_Modules.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Modules.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgv_Modules.ColumnHeadersHeight = 25;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Modules.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgv_Modules.Location = new System.Drawing.Point(18, 50);
+            this.dgv_Modules.Name = "dgv_Modules";
+            this.dgv_Modules.RowHeadersVisible = false;
+            this.dgv_Modules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Modules.Size = new System.Drawing.Size(800, 300);
+            this.dgv_Modules.TabIndex = 134;
             // 
             // Course_Management
             // 
@@ -283,6 +293,7 @@
             this.Name = "Course_Management";
             this.Text = "Course_Management";
             this.Load += new System.EventHandler(this.Course_Management_Load);
+            this.Resize += new System.EventHandler(this.Course_Management_Resize);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SelectModules)).EndInit();
@@ -299,9 +310,8 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton Create_Grade_Buton;
-        private System.Windows.Forms.ToolStripButton Edit_Grade_Button;
-        private System.Windows.Forms.ToolStripButton Delete_Grade_Button;
+        private System.Windows.Forms.ToolStripButton Create_Course_Btn;
+        private System.Windows.Forms.ToolStripButton Edit_Course_Btn;
         private System.Windows.Forms.ToolStripButton Refresh_btn;
         private System.Windows.Forms.DataGridView dgv_SelectModules;
         private System.Windows.Forms.GroupBox groupBox1;
