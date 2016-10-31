@@ -26,6 +26,10 @@ namespace PilotTraining.Fundamental
         SqlTransaction Tr;
         string userId;
         DataTable dt;
+        string ViewCourseID;
+
+        int Max_Course_Head_ID;
+        int CheckResult;
 
         private void btnExitMain_Click(object sender, EventArgs e)
         {
@@ -52,10 +56,13 @@ namespace PilotTraining.Fundamental
             Conn.Open();
             userId = DBConnString.sUserIdLogin;
             pn_Modules.Visible = false;
+            Max_Course_ID();
+            DataHead_Course();
         }
 
         private void btn_SelectModules_Click(object sender, EventArgs e)
         {
+            dgv_SelectModules.Columns.Clear();
             pn_Modules.Visible = true;
             ModulesDetails();
             dgv_Modules.RowsDefaultCellStyle.BackColor = Color.White;
@@ -122,12 +129,12 @@ namespace PilotTraining.Fundamental
                 dgv_Modules.Columns[3].Visible = false;
                 
 
-                dgv_Modules.Columns[0].Width = 200;
+                dgv_Modules.Columns[0].Width = 100;
                 dgv_Modules.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                dgv_Modules.Columns[1].Width = 300;
+                dgv_Modules.Columns[1].Width = 200;
 
-                dgv_Modules.Columns[2].Width = 300;
+                dgv_Modules.Columns[2].Width = 230;
                 dgv_Modules.Columns[2].DefaultCellStyle.Format = "d MMMM yyyy";
 
                 
@@ -214,9 +221,13 @@ namespace PilotTraining.Fundamental
 
         private void FixColumnWidth_dgv_SelectModules_Format()
         {
+            if (dgv_SelectModules.RowCount > 0)
+            {
+
             int w = dgv_SelectModules.Width;
             dgv_SelectModules.Columns[0].Width = 500;
             dgv_SelectModules.Columns[1].Width = w -500;
+            }
  
 
 
@@ -225,6 +236,7 @@ namespace PilotTraining.Fundamental
         private void Course_Management_Resize(object sender, EventArgs e)
         {
             FixColumnWidth_dgv_SelectModules_Format();
+            FixColumnWidth_dgv_ViewCourse_Format();
         }
 
         private void Create_Course_Btn_Click(object sender, EventArgs e)
@@ -270,14 +282,14 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Clear();
                     Cmd.Transaction = Tr;
                     Cmd.CommandText = sql;
-                    //Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.Int).Value = GradeMaxId;
+                    Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = textBox1.Text.Trim();
                     Cmd.Parameters.Add("@Course_Name", SqlDbType.NChar).Value = txt_CourseName.Text.Trim();
                     Cmd.Parameters.Add("@Course_Description", SqlDbType.NChar).Value = txt_CourseDescription.Text.Trim();
                     Cmd.Parameters.Add("@Course_Create_By", SqlDbType.NChar).Value = userId;
                     Cmd.Parameters.Add("@Course_Create_Date", SqlDbType.DateTime).Value = DateTime.Now;
-                    Cmd.Parameters.Add("@Grade_Modified_By", SqlDbType.NChar).Value = userId;
-                    Cmd.Parameters.Add("@Grade_Modified_Date", SqlDbType.DateTime).Value = DateTime.Now;
-                    Cmd.Parameters.Add("@Grade_Amend", SqlDbType.Int).Value = 0;
+                    Cmd.Parameters.Add("@Course_Modified_By", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@Course_Modified_Date", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@Course_Amend", SqlDbType.Int).Value = 0;
                     Cmd.ExecuteNonQuery();
 
                     for (int i = 0; i <= dgv_SelectModules.Rows.Count - 1; i++)
@@ -292,7 +304,7 @@ namespace PilotTraining.Fundamental
 
                         Cmd.Parameters.Clear();
                         Cmd.CommandText = sql;
-                        //Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = HeadId;
+                        Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = textBox1.Text.Trim();
                         Cmd.Parameters.Add("@Training_Type_ID_RUN", SqlDbType.NChar).Value = dgv_SelectModules.Rows[i].Cells[0].Value.ToString();
 
                         Cmd.ExecuteNonQuery();
@@ -300,9 +312,10 @@ namespace PilotTraining.Fundamental
                     MessageBox.Show("Course generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
 
-                    //Max_Grade_ID(); // Grade Max ID 
-                    //DataHead_Grade(); // show all grade details
-                    //ClearDetails();
+                    Max_Course_ID();
+                    DataHead_Course();
+                    ClearDetails();
+
                 }
                 catch (Exception ex)
                 {
@@ -310,6 +323,175 @@ namespace PilotTraining.Fundamental
                     Tr.Rollback();
                 }
             }
+        }
+        private void Max_Course_ID()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT MAX(SUBSTRING(Course_Head_ID,2,1)) AS MAX_Course_ID FROM Course_Head");
+            String sqlMaxStatementIndex;
+            sqlMaxStatementIndex = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.CommandText = sqlMaxStatementIndex;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            string id = Cmd.ExecuteScalar().ToString();
+
+            if (id == "")
+            {
+                Max_Course_Head_ID = 0;
+            }
+            else
+            {
+                Max_Course_Head_ID = Convert.ToInt32(id.ToString());
+                Max_Course_Head_ID++;
+            }
+            //txtHandId.Text = HeadId.ToString();
+
+            textBox1.Text = "C" + Max_Course_Head_ID;
+            Cmd.Parameters.Clear();
+        }
+        private void ClearDetails()
+        {
+            txt_CourseDescription.Clear();
+            txt_CourseName.Clear();
+            dgv_SelectModules.Columns.Clear();
+        }
+
+        private void DataHead_Course()
+        {
+
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT ");
+            Sbd.Append("C.Course_Name,");
+            Sbd.Append("C.Course_Description,");
+            Sbd.Append("U.Employee_SureName+'   '+U.Employee_LastName,");
+            Sbd.Append("C.Course_Create_Date,");
+            Sbd.Append("U2.Employee_SureName+'   '+U2.Employee_LastName,");
+            Sbd.Append("C.Course_Modified_Date, ");
+            Sbd.Append("C.Course_Amend,");
+            Sbd.Append("C.Course_Head_ID ");
+            Sbd.Append("FROM Course_Head C ");
+            
+            Sbd.Append("INNER JOIN User_Login U ");
+            Sbd.Append("ON C.Course_Create_By = U.Employee_ID ");
+            Sbd.Append("INNER JOIN User_Login U2 ");
+            Sbd.Append("ON C.Course_Create_By = U2.Employee_ID ");
+
+            string sql = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.Parameters.Clear();
+            Cmd.CommandText = sql;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+
+            Sdr = Cmd.ExecuteReader();
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+                dgv_Course_View.DataSource = dt;
+                CheckResult = dt.Rows.Count;
+                dgv_ViewCourse_Format();
+            }
+            else
+            {
+                CheckResult = 0;
+                dgv_Course_View.DataSource = null;
+
+            }
+            lbl_Course_Count.Text = "Courses : " + CheckResult.ToString();
+            Sdr.Close();
+        }
+
+        private void dgv_ViewCourse_Format()
+        {
+            if (dgv_Course_View.RowCount > 0)
+            {
+
+                dgv_Course_View.Columns[0].HeaderText = "Course";
+                dgv_Course_View.Columns[1].HeaderText = "Description";
+                dgv_Course_View.Columns[2].HeaderText = "Create By";
+                dgv_Course_View.Columns[3].HeaderText = "Create Date";
+                dgv_Course_View.Columns[4].HeaderText = "Modified By";
+                dgv_Course_View.Columns[5].HeaderText = "Modified Date";
+                dgv_Course_View.Columns[6].HeaderText = "Amend";
+                dgv_Course_View.Columns[7].Visible = false;
+
+
+                FixColumnWidth_dgv_ViewCourse_Format();
+
+                dgv_Course_View.Columns[3].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+                dgv_Course_View.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+   
+
+            }
+        }
+
+        private void FixColumnWidth_dgv_ViewCourse_Format()
+        {
+            int w = dgv_Course_View.Width;
+            dgv_Course_View.Columns[0].Width = w-200-100-100-100-100-50;
+            dgv_Course_View.Columns[1].Width = 200;
+            dgv_Course_View.Columns[2].Width = 100;
+            dgv_Course_View.Columns[3].Width = 100;
+            dgv_Course_View.Columns[4].Width = 100;
+            dgv_Course_View.Columns[5].Width = 100;
+            dgv_Course_View.Columns[6].Width = 50;
+
+        }
+
+        private void dgv_Course_View_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            ViewCourseID = dgv_Course_View.Rows[e.RowIndex].Cells[7].Value.ToString();
+            ModulesDetail();
+        }
+        private void ModulesDetail()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT (T.Training_Type_ID) AS Modules ");
+            Sbd.Append("FROM Course_Details D ");
+            Sbd.Append("INNER JOIN Course_Head H ");
+            Sbd.Append("ON H.Course_Head_ID	=	D.Course_Head_ID ");
+            Sbd.Append("INNER JOIN Training_Type T ");
+            Sbd.Append("ON D.Training_Type_ID_RUN = T.Training_Type_ID_RUN ");
+            Sbd.Append("WHERE D.Course_Head_ID = @Course_Head_ID");
+            string sql = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.Parameters.Clear();
+            Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = ViewCourseID;
+            Cmd.CommandText = sql;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+
+            Sdr = Cmd.ExecuteReader();
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+                CheckResult = dt.Rows.Count;
+                dgv_Course_Modules_View.DataSource = dt;
+
+            }
+            else
+            {
+                CheckResult = 0;
+                dgv_Course_Modules_View.DataSource = null;
+
+            }
+            lbl_Course_Modules.Text = "Modules :" + CheckResult.ToString();
+            Sdr.Close();
+        }
+
+        private void Refresh_btn_Click(object sender, EventArgs e)
+        {
+            DataHead_Course();
         }
     }
 }

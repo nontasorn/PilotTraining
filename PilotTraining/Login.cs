@@ -22,17 +22,13 @@ namespace PilotTraining
         }
         SqlConnection Conn;
         SqlCommand Cmd;
-        SqlTransaction Tr;  //
         StringBuilder Sb;
         SqlDataReader Sdr;
-        DataTable Dt;
-        DateTime Today;
+
 
         string PwdWithEncrypt;
         string CurrentAuthentication;
-        bool IsChange = false;
 
-        string CUserName = "";
         MemoryStream ms;
         DESCryptoServiceProvider desCrypt;
         CryptoStream cs;

@@ -41,11 +41,13 @@
             this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee_Management2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.assignCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_Training_Management_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
+            this.trainingManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Assign_Course_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +58,7 @@
             this.Menu_Home.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.memuDataMain,
             this.Menu_Administration,
-            this.assignCourseToolStripMenuItem,
+            this.Menu_Training_Management_Menu,
             this.viewToolStripMenuItem});
             this.Menu_Home.Location = new System.Drawing.Point(0, 0);
             this.Menu_Home.Name = "Menu_Home";
@@ -162,11 +164,13 @@
             this.Menu_Employee_Management2.Text = "Employee Management";
             this.Menu_Employee_Management2.Click += new System.EventHandler(this.Menu_Employee_Management2_Click);
             // 
-            // assignCourseToolStripMenuItem
+            // Menu_Training_Management_Menu
             // 
-            this.assignCourseToolStripMenuItem.Name = "assignCourseToolStripMenuItem";
-            this.assignCourseToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
-            this.assignCourseToolStripMenuItem.Text = "Assign Course";
+            this.Menu_Training_Management_Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trainingManagementToolStripMenuItem});
+            this.Menu_Training_Management_Menu.Name = "Menu_Training_Management_Menu";
+            this.Menu_Training_Management_Menu.Size = new System.Drawing.Size(162, 24);
+            this.Menu_Training_Management_Menu.Text = "Training Management";
             // 
             // viewToolStripMenuItem
             // 
@@ -199,6 +203,21 @@
             // 
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
+            // 
+            // trainingManagementToolStripMenuItem
+            // 
+            this.trainingManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Assign_Course_Menu});
+            this.trainingManagementToolStripMenuItem.Name = "trainingManagementToolStripMenuItem";
+            this.trainingManagementToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.trainingManagementToolStripMenuItem.Text = "Training Management";
+            // 
+            // Assign_Course_Menu
+            // 
+            this.Assign_Course_Menu.Name = "Assign_Course_Menu";
+            this.Assign_Course_Menu.Size = new System.Drawing.Size(173, 22);
+            this.Assign_Course_Menu.Text = "Assign Course";
+            this.Assign_Course_Menu.Click += new System.EventHandler(this.Assign_Course_Menu_Click);
             // 
             // frmMain
             // 
@@ -236,11 +255,13 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel lblUser;
-        private System.Windows.Forms.ToolStripMenuItem assignCourseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Menu_Training_Management_Menu;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Menu_Training_Type1;
         private System.Windows.Forms.ToolStripMenuItem Menu_Training_Type_Management2;
         private System.Windows.Forms.ToolStripMenuItem Menu_Course1;
         private System.Windows.Forms.ToolStripMenuItem Menu_Course_Management2;
+        private System.Windows.Forms.ToolStripMenuItem trainingManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Assign_Course_Menu;
     }
 }

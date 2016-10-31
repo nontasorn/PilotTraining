@@ -18,7 +18,6 @@ namespace PilotTraining
         {
             InitializeComponent();
         }
-        private SqlConnection Conn;
 
         private void Menu_Grade_Management2_Click(object sender, EventArgs e)
         {
@@ -52,6 +51,13 @@ namespace PilotTraining
         private void Menu_Course_Management2_Click(object sender, EventArgs e)
         {
             Fundamental.Course_Management frm = new Fundamental.Course_Management();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void Assign_Course_Menu_Click(object sender, EventArgs e)
+        {
+            TrainingManagement.TrainingManagement frm = new TrainingManagement.TrainingManagement();
             frm.MdiParent = this;
             frm.Show();
         }
