@@ -369,9 +369,9 @@ namespace PilotTraining.Fundamental
             Sbd.Append("U.Employee_SureName+'   '+U.Employee_LastName,");
             Sbd.Append("C.Course_Create_Date,");
             Sbd.Append("U2.Employee_SureName+'   '+U2.Employee_LastName,");
-            Sbd.Append("C.Course_Modified_Date, ");
+            Sbd.Append("C.Course_Modified_Date, "); 
             Sbd.Append("C.Course_Amend,");
-            Sbd.Append("C.Course_Head_ID ");
+            Sbd.Append("C.Course_Head_ID, ");
             Sbd.Append("FROM Course_Head C ");
             
             Sbd.Append("INNER JOIN User_Login U ");

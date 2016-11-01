@@ -229,7 +229,7 @@ namespace PilotTraining.Administration
             Sb.Append("U.Employee_Status,");
             Sb.Append("U.Employee_Amend ");
             Sb.Append("FROM User_Login U ");
-            Sb.Append("INNER JOIN LoginRule R ON R.Login_Rule_ID = U.Employee_Rule");
+            Sb.Append("LEFT JOIN LoginRule R ON R.Login_Rule_ID = U.Employee_Rule");
             string sqlShow;
             sqlShow = Sb.ToString();
 
