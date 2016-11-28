@@ -62,6 +62,13 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void Menu_Form_Management2_Click(object sender, EventArgs e)
+        {
+            Fundamental.Form_Details_Management frm = new Fundamental.Form_Details_Management();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
         
     }
 }

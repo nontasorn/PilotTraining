@@ -42,12 +42,12 @@
             this.Menu_Employee1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Training_Management_Menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.trainingManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Assign_Course_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.trainingManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Assign_Course_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -123,6 +123,7 @@
             this.Menu_Form_Management2.Name = "Menu_Form_Management2";
             this.Menu_Form_Management2.Size = new System.Drawing.Size(213, 24);
             this.Menu_Form_Management2.Text = "Form Management";
+            this.Menu_Form_Management2.Click += new System.EventHandler(this.Menu_Form_Management2_Click);
             // 
             // Menu_Course1
             // 
@@ -172,6 +173,21 @@
             this.Menu_Training_Management_Menu.Size = new System.Drawing.Size(162, 24);
             this.Menu_Training_Management_Menu.Text = "Training Management";
             // 
+            // trainingManagementToolStripMenuItem
+            // 
+            this.trainingManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Assign_Course_Menu});
+            this.trainingManagementToolStripMenuItem.Name = "trainingManagementToolStripMenuItem";
+            this.trainingManagementToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.trainingManagementToolStripMenuItem.Text = "Training Management";
+            // 
+            // Assign_Course_Menu
+            // 
+            this.Assign_Course_Menu.Name = "Assign_Course_Menu";
+            this.Assign_Course_Menu.Size = new System.Drawing.Size(173, 22);
+            this.Assign_Course_Menu.Text = "Assign Course";
+            this.Assign_Course_Menu.Click += new System.EventHandler(this.Assign_Course_Menu_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
@@ -203,21 +219,6 @@
             // 
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
-            // 
-            // trainingManagementToolStripMenuItem
-            // 
-            this.trainingManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Assign_Course_Menu});
-            this.trainingManagementToolStripMenuItem.Name = "trainingManagementToolStripMenuItem";
-            this.trainingManagementToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.trainingManagementToolStripMenuItem.Text = "Training Management";
-            // 
-            // Assign_Course_Menu
-            // 
-            this.Assign_Course_Menu.Name = "Assign_Course_Menu";
-            this.Assign_Course_Menu.Size = new System.Drawing.Size(173, 22);
-            this.Assign_Course_Menu.Text = "Assign Course";
-            this.Assign_Course_Menu.Click += new System.EventHandler(this.Assign_Course_Menu_Click);
             // 
             // frmMain
             // 

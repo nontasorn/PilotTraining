@@ -26,3 +26,7 @@ D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotT
 D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Course_Management.resources
 D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Form_Details_Management.resources
 D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.TrainingManagement.resources
+D:\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.Training.resources
+D:\20161122\Pilot Training Project\WindowApplication\trunk\PilotTraining\bin\Debug\PilotTraining.exe.config
+D:\20161122\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.exe
+D:\20161122\Pilot Training Project\WindowApplication\trunk\PilotTraining\obj\Debug\PilotTraining.pdb

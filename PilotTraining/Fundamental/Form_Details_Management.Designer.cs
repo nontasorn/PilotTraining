@@ -28,239 +28,240 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgv_Training_Details_L1 = new System.Windows.Forms.DataGridView();
-            this.lblCustomer = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dgv_Training_Details_L2 = new System.Windows.Forms.DataGridView();
-            this.dgv_Training_Details_L3 = new System.Windows.Forms.DataGridView();
-            this.dgv_Training_Details_L5 = new System.Windows.Forms.DataGridView();
-            this.dgv_Training_Details_L4 = new System.Windows.Forms.DataGridView();
-            this.dgv_Training_Details_L6 = new System.Windows.Forms.DataGridView();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L6)).BeginInit();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.cbo_GradeType = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbo_Status = new System.Windows.Forms.ComboBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rd_Default = new System.Windows.Forms.RadioButton();
+            this.txt_Grade_Name = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comb_Modules = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.Create_Grade_Buton = new System.Windows.Forms.ToolStripButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgv_ViewElement = new System.Windows.Forms.DataGridView();
+            this.toolStrip2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewElement)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // cbo_GradeType
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.tabControl1.Location = new System.Drawing.Point(-1, 1);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1189, 561);
-            this.tabControl1.TabIndex = 0;
+            this.cbo_GradeType.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.cbo_GradeType.FormattingEnabled = true;
+            this.cbo_GradeType.Location = new System.Drawing.Point(111, 259);
+            this.cbo_GradeType.Name = "cbo_GradeType";
+            this.cbo_GradeType.Size = new System.Drawing.Size(286, 26);
+            this.cbo_GradeType.TabIndex = 149;
             // 
-            // tabPage1
+            // label5
             // 
-            this.tabPage1.Controls.Add(this.dgv_Training_Details_L6);
-            this.tabPage1.Controls.Add(this.dgv_Training_Details_L5);
-            this.tabPage1.Controls.Add(this.dgv_Training_Details_L4);
-            this.tabPage1.Controls.Add(this.dgv_Training_Details_L3);
-            this.tabPage1.Controls.Add(this.dgv_Training_Details_L2);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.lblCustomer);
-            this.tabPage1.Controls.Add(this.dgv_Training_Details_L1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 27);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1181, 530);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Training Details Management";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 262);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 18);
+            this.label5.TabIndex = 148;
+            this.label5.Text = "Grade Type :";
             // 
-            // tabPage2
+            // label4
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1076, 530);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "VFR 2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(42, 307);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 18);
+            this.label4.TabIndex = 147;
+            this.label4.Text = "Status :";
             // 
-            // dgv_Training_Details_L1
+            // cbo_Status
             // 
-            this.dgv_Training_Details_L1.AllowUserToAddRows = false;
-            this.dgv_Training_Details_L1.AllowUserToDeleteRows = false;
-            this.dgv_Training_Details_L1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Training_Details_L1.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Training_Details_L1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Training_Details_L1.Location = new System.Drawing.Point(9, 66);
-            this.dgv_Training_Details_L1.Name = "dgv_Training_Details_L1";
-            this.dgv_Training_Details_L1.ReadOnly = true;
-            this.dgv_Training_Details_L1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Training_Details_L1.Size = new System.Drawing.Size(344, 196);
-            this.dgv_Training_Details_L1.TabIndex = 2;
+            this.cbo_Status.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.cbo_Status.FormattingEnabled = true;
+            this.cbo_Status.Location = new System.Drawing.Point(111, 304);
+            this.cbo_Status.Name = "cbo_Status";
+            this.cbo_Status.Size = new System.Drawing.Size(286, 26);
+            this.cbo_Status.TabIndex = 146;
             // 
-            // lblCustomer
+            // radioButton1
             // 
-            this.lblCustomer.BackColor = System.Drawing.Color.ForestGreen;
-            this.lblCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lblCustomer.ForeColor = System.Drawing.Color.White;
-            this.lblCustomer.Location = new System.Drawing.Point(136, 20);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(166, 27);
-            this.lblCustomer.TabIndex = 57;
-            this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.radioButton1.Location = new System.Drawing.Point(111, 225);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(89, 22);
+            this.radioButton1.TabIndex = 144;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Additional";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // rd_Default
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(62, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 16);
-            this.label8.TabIndex = 58;
-            this.label8.Text = "Location : ";
+            this.rd_Default.AutoSize = true;
+            this.rd_Default.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.rd_Default.Location = new System.Drawing.Point(111, 194);
+            this.rd_Default.Name = "rd_Default";
+            this.rd_Default.Size = new System.Drawing.Size(72, 22);
+            this.rd_Default.TabIndex = 143;
+            this.rd_Default.TabStop = true;
+            this.rd_Default.Text = "Default";
+            this.rd_Default.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // txt_Grade_Name
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(377, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 16);
-            this.label1.TabIndex = 60;
-            this.label1.Text = "Training Type : ";
+            this.txt_Grade_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_Grade_Name.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Grade_Name.Location = new System.Drawing.Point(111, 156);
+            this.txt_Grade_Name.Name = "txt_Grade_Name";
+            this.txt_Grade_Name.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_Grade_Name.Size = new System.Drawing.Size(286, 26);
+            this.txt_Grade_Name.TabIndex = 142;
+            this.txt_Grade_Name.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label2
+            // label3
             // 
-            this.label2.BackColor = System.Drawing.Color.ForestGreen;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(484, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 27);
-            this.label2.TabIndex = 59;
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(32, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 18);
+            this.label3.TabIndex = 141;
+            this.label3.Text = "Element :";
             // 
-            // dgv_Training_Details_L2
+            // comb_Modules
             // 
-            this.dgv_Training_Details_L2.AllowUserToAddRows = false;
-            this.dgv_Training_Details_L2.AllowUserToDeleteRows = false;
-            this.dgv_Training_Details_L2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Training_Details_L2.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Training_Details_L2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Training_Details_L2.Location = new System.Drawing.Point(387, 66);
-            this.dgv_Training_Details_L2.Name = "dgv_Training_Details_L2";
-            this.dgv_Training_Details_L2.ReadOnly = true;
-            this.dgv_Training_Details_L2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Training_Details_L2.Size = new System.Drawing.Size(383, 196);
-            this.dgv_Training_Details_L2.TabIndex = 61;
+            this.comb_Modules.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.comb_Modules.FormattingEnabled = true;
+            this.comb_Modules.Location = new System.Drawing.Point(111, 112);
+            this.comb_Modules.Name = "comb_Modules";
+            this.comb_Modules.Size = new System.Drawing.Size(286, 26);
+            this.comb_Modules.TabIndex = 140;
             // 
-            // dgv_Training_Details_L3
+            // label7
             // 
-            this.dgv_Training_Details_L3.AllowUserToAddRows = false;
-            this.dgv_Training_Details_L3.AllowUserToDeleteRows = false;
-            this.dgv_Training_Details_L3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Training_Details_L3.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Training_Details_L3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Training_Details_L3.Location = new System.Drawing.Point(802, 66);
-            this.dgv_Training_Details_L3.Name = "dgv_Training_Details_L3";
-            this.dgv_Training_Details_L3.ReadOnly = true;
-            this.dgv_Training_Details_L3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Training_Details_L3.Size = new System.Drawing.Size(373, 196);
-            this.dgv_Training_Details_L3.TabIndex = 62;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(38, 117);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 18);
+            this.label7.TabIndex = 139;
+            this.label7.Text = "Module :";
             // 
-            // dgv_Training_Details_L5
+            // Refresh_btn
             // 
-            this.dgv_Training_Details_L5.AllowUserToAddRows = false;
-            this.dgv_Training_Details_L5.AllowUserToDeleteRows = false;
-            this.dgv_Training_Details_L5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Training_Details_L5.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Training_Details_L5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Training_Details_L5.Location = new System.Drawing.Point(387, 309);
-            this.dgv_Training_Details_L5.Name = "dgv_Training_Details_L5";
-            this.dgv_Training_Details_L5.ReadOnly = true;
-            this.dgv_Training_Details_L5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Training_Details_L5.Size = new System.Drawing.Size(383, 196);
-            this.dgv_Training_Details_L5.TabIndex = 64;
+            this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Refresh_btn.Image = global::PilotTraining.Properties.Resources.refresh;
+            this.Refresh_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Refresh_btn.Name = "Refresh_btn";
+            this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
+            this.Refresh_btn.Text = "Refresh";
             // 
-            // dgv_Training_Details_L4
+            // toolStrip2
             // 
-            this.dgv_Training_Details_L4.AllowUserToAddRows = false;
-            this.dgv_Training_Details_L4.AllowUserToDeleteRows = false;
-            this.dgv_Training_Details_L4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Training_Details_L4.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Training_Details_L4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Training_Details_L4.Location = new System.Drawing.Point(9, 309);
-            this.dgv_Training_Details_L4.Name = "dgv_Training_Details_L4";
-            this.dgv_Training_Details_L4.ReadOnly = true;
-            this.dgv_Training_Details_L4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Training_Details_L4.Size = new System.Drawing.Size(344, 196);
-            this.dgv_Training_Details_L4.TabIndex = 63;
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Create_Grade_Buton,
+            this.Refresh_btn});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(1191, 39);
+            this.toolStrip2.TabIndex = 145;
+            this.toolStrip2.Text = "toolStrip2";
             // 
-            // dgv_Training_Details_L6
+            // Create_Grade_Buton
             // 
-            this.dgv_Training_Details_L6.AllowUserToAddRows = false;
-            this.dgv_Training_Details_L6.AllowUserToDeleteRows = false;
-            this.dgv_Training_Details_L6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Training_Details_L6.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Training_Details_L6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Training_Details_L6.Location = new System.Drawing.Point(802, 309);
-            this.dgv_Training_Details_L6.Name = "dgv_Training_Details_L6";
-            this.dgv_Training_Details_L6.ReadOnly = true;
-            this.dgv_Training_Details_L6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Training_Details_L6.Size = new System.Drawing.Size(373, 196);
-            this.dgv_Training_Details_L6.TabIndex = 65;
+            this.Create_Grade_Buton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Grade_Buton.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.Create_Grade_Buton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Create_Grade_Buton.Name = "Create_Grade_Buton";
+            this.Create_Grade_Buton.Size = new System.Drawing.Size(146, 36);
+            this.Create_Grade_Buton.Text = "Create Element";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgv_ViewElement);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox1.Location = new System.Drawing.Point(423, 42);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(756, 507);
+            this.groupBox1.TabIndex = 150;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Elements";
+            // 
+            // dgv_ViewElement
+            // 
+            this.dgv_ViewElement.AllowUserToAddRows = false;
+            this.dgv_ViewElement.AllowUserToDeleteRows = false;
+            this.dgv_ViewElement.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgv_ViewElement.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_ViewElement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ViewElement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_ViewElement.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgv_ViewElement.Location = new System.Drawing.Point(3, 18);
+            this.dgv_ViewElement.MultiSelect = false;
+            this.dgv_ViewElement.Name = "dgv_ViewElement";
+            this.dgv_ViewElement.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewElement.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_ViewElement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_ViewElement.Size = new System.Drawing.Size(750, 486);
+            this.dgv_ViewElement.TabIndex = 1;
             // 
             // Form_Details_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1191, 561);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cbo_GradeType);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbo_Status);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rd_Default);
+            this.Controls.Add(this.txt_Grade_Name);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comb_Modules);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.toolStrip2);
             this.Name = "Form_Details_Management";
             this.Text = "Form_Details_Management";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Training_Details_L6)).EndInit();
+            this.Load += new System.EventHandler(this.Form_Details_Management_Load);
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewElement)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dgv_Training_Details_L1;
-        internal System.Windows.Forms.Label label8;
-        internal System.Windows.Forms.Label lblCustomer;
-        internal System.Windows.Forms.Label label1;
-        internal System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgv_Training_Details_L6;
-        private System.Windows.Forms.DataGridView dgv_Training_Details_L5;
-        private System.Windows.Forms.DataGridView dgv_Training_Details_L4;
-        private System.Windows.Forms.DataGridView dgv_Training_Details_L3;
-        private System.Windows.Forms.DataGridView dgv_Training_Details_L2;
+        private System.Windows.Forms.ComboBox cbo_GradeType;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbo_Status;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rd_Default;
+        private System.Windows.Forms.TextBox txt_Grade_Name;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comb_Modules;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripButton Refresh_btn;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton Create_Grade_Buton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgv_ViewElement;
+
     }
 }
