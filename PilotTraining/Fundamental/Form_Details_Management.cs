@@ -26,6 +26,8 @@ namespace PilotTraining.Fundamental
         SqlTransaction Tr;
 
         string userId;
+        int MElement_Id_Sys;
+        string MElement_Id;
 
         private void Form_Details_Management_Load(object sender, EventArgs e)
         {
@@ -39,71 +41,85 @@ namespace PilotTraining.Fundamental
             Conn.ConnectionString = strConn;
             Conn.Open();
             userId = DBConnString.sUserIdLogin;
+            Max_MainElement_ID();
+            InitializeDataGridView_MainElement();
 
-            cmb_Grade_Type();// combo list of grade type
-            cmb_Modules(); // como list of Modules
         }
-
-        private void cmb_Grade_Type()
+        private void Max_MainElement_ID()
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT Grade_Type_ID,Grade_Type_Name FROM Grade_Type");
-
-            string sqlIni = Sbd.ToString();
+            Sbd.Append("SELECT MAX(MElement_Id_Sys) AS MElement_Id_Sys FROM Main_Element");
+            String sqlMaxStatementIndex;
+            sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
+            Cmd.CommandText = sqlMaxStatementIndex;
             Cmd.CommandType = CommandType.Text;
             Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
+            string id = Cmd.ExecuteScalar().ToString();
 
-            if (Sdr.HasRows)
+            if (id == "")
             {
-                DataTable dtUser = new DataTable();
-                dtUser.Load(Sdr);
-
-                cbo_GradeType.BeginUpdate();
-                cbo_GradeType.DisplayMember = "Grade_Type_Name";
-                cbo_GradeType.ValueMember = "Grade_Type_ID";
-                cbo_GradeType.DataSource = dtUser;
-                cbo_GradeType.EndUpdate();
-                cbo_GradeType.SelectedIndex = 0;
-
+                MElement_Id_Sys = 0;
             }
-            Sdr.Close();
+            else
+            {
+                MElement_Id_Sys = Convert.ToInt32(id.ToString());
+                MElement_Id_Sys++;
+            }
+            MElement_Id = "ME-" + MElement_Id_Sys.ToString().Trim();
+            // MessageBox.Show(MElement_Id);
+            Cmd.Parameters.Clear();
         }
 
-        private void cmb_Modules()
+        private void InitializeDataGridView_MainElement()
         {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
+            // Create an unbound DataGridView by declaring a column count.
+            dgv_MainElement.ColumnCount = 2;
+            dgv_MainElement.ColumnHeadersVisible = true;
 
-            Sbd.Append("SELECT Training_Type_ID_RUN,Training_Type_ID FROM Training_Type");
+            // Set the column header style.
+            DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
 
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
+            columnHeaderStyle.BackColor = Color.Beige;
+            columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+            dgv_MainElement.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
 
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
+            // Set the column header names.
+            dgv_MainElement.Columns[0].Name = "Element Name";
+            dgv_MainElement.Columns[1].Name = "Order";
+            //dgv_MainElement.Columns[2].Name = "Type";
+            
+            DataGridViewComboBoxColumn cmb = new DataGridViewComboBoxColumn();
+            cmb.HeaderText = "Type";
+            cmb.Name = "cmb";
+            cmb.MaxDropDownItems = 2;
+            cmb.Items.Add("True");
+            cmb.Items.Add("False");
+            dgv_MainElement.Columns.Add(cmb);
 
-            if (Sdr.HasRows)
-            {
-                DataTable dtUser = new DataTable();
-                dtUser.Load(Sdr);
 
-                comb_Modules.BeginUpdate();
-                comb_Modules.DisplayMember = "Training_Type_ID";
-                comb_Modules.ValueMember = "Training_Type_ID_RUN";
-                comb_Modules.DataSource = dtUser;
-                comb_Modules.EndUpdate();
-                comb_Modules.SelectedIndex = 0;
+            FixColumnWidth_dgv_MainElement_Format();
 
-            }
-            Sdr.Close();
+
+
+            
         }
+        private void FixColumnWidth_dgv_MainElement_Format()
+        {
+            int w = dgv_MainElement.Width;
+            dgv_MainElement.Columns[0].Width = 500;
+            dgv_MainElement.Columns[1].Width = w - 1000;
+            dgv_MainElement.Columns[2].Width = 500;
+            
+
+        }
+
+        private void dgv_MainElement_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_MainElement_Format();
+        }
+        
     }
 }
+
