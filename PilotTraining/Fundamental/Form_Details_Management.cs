@@ -49,7 +49,7 @@ namespace PilotTraining.Fundamental
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(MElement_Id_Sys) AS MElement_Id_Sys FROM Main_Element");
+            Sbd.Append("SELECT MAX(SUBSTRING(MElement_Id,4,6)) AS MElement_Id FROM Main_Element");
             String sqlMaxStatementIndex;
             sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -60,15 +60,19 @@ namespace PilotTraining.Fundamental
 
             if (id == "")
             {
-                MElement_Id_Sys = 0;
+                MElement_Id_Sys = 1;
             }
             else
             {
                 MElement_Id_Sys = Convert.ToInt32(id.ToString());
                 MElement_Id_Sys++;
             }
-            MElement_Id = "ME-" + MElement_Id_Sys.ToString().Trim();
-            // MessageBox.Show(MElement_Id);
+
+            string strMax = "";
+            strMax = String.Format("{0:000000}", Convert.ToInt16(MElement_Id_Sys.ToString()));
+            MElement_Id = "EM" + strMax + '-' + DateTime.Now.ToString("yyyy");
+
+           // MessageBox.Show(MElement_Id);
             Cmd.Parameters.Clear();
         }
 
@@ -81,8 +85,8 @@ namespace PilotTraining.Fundamental
             // Set the column header style.
             DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
 
-            columnHeaderStyle.BackColor = Color.Beige;
-            columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+            //columnHeaderStyle.BackColor = Color.Beige;
+            //columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
             dgv_MainElement.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
 
             // Set the column header names.
@@ -94,9 +98,11 @@ namespace PilotTraining.Fundamental
             cmb.HeaderText = "Type";
             cmb.Name = "cmb";
             cmb.MaxDropDownItems = 2;
-            cmb.Items.Add("True");
-            cmb.Items.Add("False");
+            cmb.Items.Add("Active");
+            cmb.Items.Add("Inactive");
+            
             dgv_MainElement.Columns.Add(cmb);
+            
 
 
             FixColumnWidth_dgv_MainElement_Format();
@@ -109,8 +115,8 @@ namespace PilotTraining.Fundamental
         {
             int w = dgv_MainElement.Width;
             dgv_MainElement.Columns[0].Width = 500;
-            dgv_MainElement.Columns[1].Width = w - 1000;
-            dgv_MainElement.Columns[2].Width = 500;
+            dgv_MainElement.Columns[1].Width = w - 600;
+            dgv_MainElement.Columns[2].Width = 100;
             
 
         }
@@ -118,6 +124,11 @@ namespace PilotTraining.Fundamental
         private void dgv_MainElement_Resize(object sender, EventArgs e)
         {
             FixColumnWidth_dgv_MainElement_Format();
+        }
+
+        private void Create_Element_Buton_Click(object sender, EventArgs e)
+        {
+
         }
         
     }

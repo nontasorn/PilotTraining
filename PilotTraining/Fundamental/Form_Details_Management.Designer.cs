@@ -30,7 +30,7 @@
         {
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.Create_Grade_Buton = new System.Windows.Forms.ToolStripButton();
+            this.Create_Element_Buton = new System.Windows.Forms.ToolStripButton();
             this.dgv_MainElement = new System.Windows.Forms.DataGridView();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_MainElement)).BeginInit();
@@ -49,7 +49,7 @@
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Create_Grade_Buton,
+            this.Create_Element_Buton,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
@@ -57,14 +57,15 @@
             this.toolStrip2.TabIndex = 145;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // Create_Grade_Buton
+            // Create_Element_Buton
             // 
-            this.Create_Grade_Buton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create_Grade_Buton.Image = global::PilotTraining.Properties.Resources.Add_icon;
-            this.Create_Grade_Buton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Create_Grade_Buton.Name = "Create_Grade_Buton";
-            this.Create_Grade_Buton.Size = new System.Drawing.Size(146, 36);
-            this.Create_Grade_Buton.Text = "Create Element";
+            this.Create_Element_Buton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Element_Buton.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.Create_Element_Buton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Create_Element_Buton.Name = "Create_Element_Buton";
+            this.Create_Element_Buton.Size = new System.Drawing.Size(146, 36);
+            this.Create_Element_Buton.Text = "Create Element";
+            this.Create_Element_Buton.Click += new System.EventHandler(this.Create_Element_Buton_Click);
             // 
             // dgv_MainElement
             // 
@@ -99,7 +100,7 @@
 
         private System.Windows.Forms.ToolStripButton Refresh_btn;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton Create_Grade_Buton;
+        private System.Windows.Forms.ToolStripButton Create_Element_Buton;
         private System.Windows.Forms.DataGridView dgv_MainElement;
 
     }

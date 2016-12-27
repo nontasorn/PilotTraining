@@ -339,7 +339,7 @@ namespace PilotTraining.Fundamental
 
             if (id == "")
             {
-                Max_Course_Head_ID = 0;
+                Max_Course_Head_ID = 1;
             }
             else
             {

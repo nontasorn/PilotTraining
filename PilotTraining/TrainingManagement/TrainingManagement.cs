@@ -167,7 +167,6 @@ namespace PilotTraining.TrainingManagement
                     Sbd.Remove(0, Sbd.Length);
                     Sbd.Append("INSERT INTO Assign_Course ");
                     Sbd.Append("(Assign_Course_ID,");
-                    Sbd.Append("Assign_Course_ID_Run,");
                     Sbd.Append("Assign_Pilot,");
                     Sbd.Append("Assign_Course,");
                     Sbd.Append("Assign_Course_Start_Date,");
@@ -182,7 +181,6 @@ namespace PilotTraining.TrainingManagement
                     Sbd.Append("VALUES ");
 
                     Sbd.Append("(@Assign_Course_ID,");
-                    Sbd.Append("@Assign_Course_ID_Run,");
                     Sbd.Append("@Assign_Pilot,");
                     Sbd.Append("@Assign_Course,");
                     Sbd.Append("@Assign_Course_Start_Date,");
@@ -202,7 +200,6 @@ namespace PilotTraining.TrainingManagement
                     Cmd.CommandText = sqlSaveStHead;
                     
                     Cmd.Parameters.Add("@Assign_Course_ID", SqlDbType.NVarChar).Value = txtAssignID.Text.Trim();
-                    Cmd.Parameters.Add("@Assign_Course_ID_Run", SqlDbType.Int).Value = AssignId;
                     
                     Cmd.Parameters.Add("@Assign_Pilot", SqlDbType.NChar).Value = txt_Pilot_Id.Text.Trim();
                     Cmd.Parameters.Add("@Assign_Course", SqlDbType.NChar).Value = comb_Training.SelectedValue.ToString();
@@ -237,7 +234,7 @@ namespace PilotTraining.TrainingManagement
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(Assign_Course_ID_Run) AS MAX_Course_ID FROM Assign_Course");
+            Sbd.Append("SELECT MAX(SUBSTRING(Assign_Course_ID,4,6)) AS MAX_Course_ID FROM Assign_Course");
             String sqlMaxStatementIndex;
             sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -248,7 +245,7 @@ namespace PilotTraining.TrainingManagement
 
             if (id == "")
             {
-                AssignId = 0;
+                AssignId = 1;
             }
             else
             {
@@ -256,8 +253,8 @@ namespace PilotTraining.TrainingManagement
                 AssignId++;
             }
             string strMax = "";
-            strMax = String.Format("{0:0000}", Convert.ToInt16(AssignId.ToString()));
-            txtAssignID.Text = "ASS" + DateTime.Now.ToString("yy") + DateTime.Now.ToString("MM") + strMax;
+            strMax = String.Format("{0:000000}", Convert.ToInt16(AssignId.ToString()));
+            txtAssignID.Text = "ASS" + strMax + '-'+DateTime.Now.ToString("yyyy");
             Cmd.Parameters.Clear();
             
         }

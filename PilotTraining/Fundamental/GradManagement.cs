@@ -205,7 +205,7 @@ namespace PilotTraining.Fundamental
 
             if (id == "")
             {
-                GradeMaxId = 0;
+                GradeMaxId = 1;
             }
             else
             {
