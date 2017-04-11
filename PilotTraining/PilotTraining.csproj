@@ -65,11 +65,23 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="From\frmVFR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\frmVFR.Designer.cs">
+      <DependentUpon>frmVFR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\Course_Management.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fundamental\Course_Management.Designer.cs">
       <DependentUpon>Course_Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\DetailsGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\DetailsGroup.Designer.cs">
+      <DependentUpon>DetailsGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\Form_Details_Management.cs">
       <SubType>Form</SubType>
@@ -121,8 +133,14 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="From\frmVFR.resx">
+      <DependentUpon>frmVFR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Course_Management.resx">
       <DependentUpon>Course_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\DetailsGroup.resx">
+      <DependentUpon>DetailsGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Form_Details_Management.resx">
       <DependentUpon>Form_Details_Management.cs</DependentUpon>

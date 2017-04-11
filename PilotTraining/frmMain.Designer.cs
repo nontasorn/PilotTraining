@@ -48,6 +48,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
+            this.Menu_TrainingDetails1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuCreateTrainingDetails2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +74,8 @@
             this.Menu_Grade1,
             this.Menu_Training_Type1,
             this.Menu_From1,
-            this.Menu_Course1});
+            this.Menu_Course1,
+            this.Menu_TrainingDetails1});
             this.memuDataMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memuDataMain.Image = global::PilotTraining.Properties.Resources._21;
             this.memuDataMain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -85,7 +88,7 @@
             this.Menu_Grade1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Grade_Management2});
             this.Menu_Grade1.Name = "Menu_Grade1";
-            this.Menu_Grade1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Grade1.Size = new System.Drawing.Size(187, 24);
             this.Menu_Grade1.Text = "Grade";
             // 
             // Menu_Grade_Management2
@@ -100,7 +103,7 @@
             this.Menu_Training_Type1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Training_Type_Management2});
             this.Menu_Training_Type1.Name = "Menu_Training_Type1";
-            this.Menu_Training_Type1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Training_Type1.Size = new System.Drawing.Size(187, 24);
             this.Menu_Training_Type1.Text = "Training Type";
             // 
             // Menu_Training_Type_Management2
@@ -115,7 +118,7 @@
             this.Menu_From1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Form_Management2});
             this.Menu_From1.Name = "Menu_From1";
-            this.Menu_From1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_From1.Size = new System.Drawing.Size(187, 24);
             this.Menu_From1.Text = "Form";
             // 
             // Menu_Form_Management2
@@ -130,7 +133,7 @@
             this.Menu_Course1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Course_Management2});
             this.Menu_Course1.Name = "Menu_Course1";
-            this.Menu_Course1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Course1.Size = new System.Drawing.Size(187, 24);
             this.Menu_Course1.Text = "Course";
             // 
             // Menu_Course_Management2
@@ -220,6 +223,21 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
+            // Menu_TrainingDetails1
+            // 
+            this.Menu_TrainingDetails1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuCreateTrainingDetails2});
+            this.Menu_TrainingDetails1.Name = "Menu_TrainingDetails1";
+            this.Menu_TrainingDetails1.Size = new System.Drawing.Size(187, 24);
+            this.Menu_TrainingDetails1.Text = "Training Details";
+            // 
+            // MenuCreateTrainingDetails2
+            // 
+            this.MenuCreateTrainingDetails2.Name = "MenuCreateTrainingDetails2";
+            this.MenuCreateTrainingDetails2.Size = new System.Drawing.Size(239, 24);
+            this.MenuCreateTrainingDetails2.Text = "Create Training Details";
+            this.MenuCreateTrainingDetails2.Click += new System.EventHandler(this.MenuCreateTrainingDetails2_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,5 +282,7 @@
         private System.Windows.Forms.ToolStripMenuItem Menu_Course_Management2;
         private System.Windows.Forms.ToolStripMenuItem trainingManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Assign_Course_Menu;
+        private System.Windows.Forms.ToolStripMenuItem Menu_TrainingDetails1;
+        private System.Windows.Forms.ToolStripMenuItem MenuCreateTrainingDetails2;
     }
 }

@@ -43,7 +43,7 @@ namespace PilotTraining
         {
             if (DB_Online.Checked == true)
             {
-                DBConnString.strConn = "Data Source=ISARA-NB;Initial Catalog=PilotTraining; Persist Security Info=True;User ID=sa;Password=1234";
+                DBConnString.strConn = "Data Source=192.168.1.13;Initial Catalog=PilotTraining; Persist Security Info=True;User ID=sa;Password=Ye11@wwin9";
                 DBConnString.clsDB = new clsDatabase(DBConnString.strConn, DBConnString.sServer);
                 string strConn;
                 strConn = DBConnString.strConn;

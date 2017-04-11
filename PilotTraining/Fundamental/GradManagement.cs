@@ -91,49 +91,49 @@ namespace PilotTraining.Fundamental
             {
                 DataTable dt = new DataTable();
                 dt.Load(Sdr);
-                dgv_ViewGrade.DataSource = dt;
+                dgv_ViewDetails.DataSource = dt;
                 dgv_ViewGrade_Format();
             }
             else
             {
-                dgv_ViewGrade.DataSource = null;
+                dgv_ViewDetails.DataSource = null;
 
             }
             Sdr.Close();
         }
         private void dgv_ViewGrade_Format()
         {
-            if (dgv_ViewGrade.RowCount > 0)
+            if (dgv_ViewDetails.RowCount > 0)
             {
 
-                dgv_ViewGrade.Columns[0].HeaderText = "Grade Type";
-                dgv_ViewGrade.Columns[1].HeaderText = "Grade Name";
-                dgv_ViewGrade.Columns[2].HeaderText = "Grade Rate";
-                dgv_ViewGrade.Columns[3].HeaderText = "Create By";
-                dgv_ViewGrade.Columns[4].HeaderText = "Create Date";
-                dgv_ViewGrade.Columns[5].HeaderText = "Modified By";
-                dgv_ViewGrade.Columns[6].HeaderText = "Modified Date";
-                dgv_ViewGrade.Columns[7].HeaderText = "Amend";
+                dgv_ViewDetails.Columns[0].HeaderText = "Grade Type";
+                dgv_ViewDetails.Columns[1].HeaderText = "Grade Name";
+                dgv_ViewDetails.Columns[2].HeaderText = "Grade Rate";
+                dgv_ViewDetails.Columns[3].HeaderText = "Create By";
+                dgv_ViewDetails.Columns[4].HeaderText = "Create Date";
+                dgv_ViewDetails.Columns[5].HeaderText = "Modified By";
+                dgv_ViewDetails.Columns[6].HeaderText = "Modified Date";
+                dgv_ViewDetails.Columns[7].HeaderText = "Amend";
 
                 FixColumnWidth_dgv_ViewGrade_Format();
 
-                dgv_ViewGrade.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
-                dgv_ViewGrade.Columns[5].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
-                dgv_ViewGrade.Columns[8].Visible = false;
+                dgv_ViewDetails.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+                dgv_ViewDetails.Columns[5].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+                dgv_ViewDetails.Columns[8].Visible = false;
 
             }
         }
         private void FixColumnWidth_dgv_ViewGrade_Format()
         {
-            int w = dgv_ViewGrade.Width;
-            dgv_ViewGrade.Columns[0].Width = 200;
-            dgv_ViewGrade.Columns[1].Width = w - 200 - 100 - 100 - 100 - 100 - 100 -100;
-            dgv_ViewGrade.Columns[2].Width = 100;
-            dgv_ViewGrade.Columns[3].Width = 100;
-            dgv_ViewGrade.Columns[4].Width = 100;
-            dgv_ViewGrade.Columns[5].Width = 100;
-            dgv_ViewGrade.Columns[6].Width = 100;
-            dgv_ViewGrade.Columns[7].Width = 100;
+            int w = dgv_ViewDetails.Width;
+            dgv_ViewDetails.Columns[0].Width = 200;
+            dgv_ViewDetails.Columns[1].Width = w - 200 - 100 - 100 - 100 - 100 - 100 -100;
+            dgv_ViewDetails.Columns[2].Width = 100;
+            dgv_ViewDetails.Columns[3].Width = 100;
+            dgv_ViewDetails.Columns[4].Width = 100;
+            dgv_ViewDetails.Columns[5].Width = 100;
+            dgv_ViewDetails.Columns[6].Width = 100;
+            dgv_ViewDetails.Columns[7].Width = 100;
 
         }
 
@@ -295,13 +295,13 @@ namespace PilotTraining.Fundamental
             {
                 return;
             }
-            GradeId = dgv_ViewGrade.Rows[e.RowIndex].Cells[8].Value.ToString();
+            GradeId = dgv_ViewDetails.Rows[e.RowIndex].Cells[8].Value.ToString();
             Delete_Grade_Button.Enabled = true;
             Edit_Grade_Button.Enabled = true;
-            txt_Grade_Name.Text     =       dgv_ViewGrade.Rows[e.RowIndex].Cells[1].Value.ToString();
-            comb_Grade_Type.Text    =       dgv_ViewGrade.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txt_Grade_Rate.Text     =       dgv_ViewGrade.Rows[e.RowIndex].Cells[2].Value.ToString();
-            amend = Convert.ToInt32(dgv_ViewGrade.Rows[e.RowIndex].Cells[7].Value.ToString());
+            txt_Grade_Name.Text     =       dgv_ViewDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
+            comb_Grade_Type.Text    =       dgv_ViewDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txt_Grade_Rate.Text     =       dgv_ViewDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
+            amend = Convert.ToInt32(dgv_ViewDetails.Rows[e.RowIndex].Cells[7].Value.ToString());
 
 
             
