@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comb_Location = new System.Windows.Forms.ComboBox();
@@ -41,6 +41,7 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.Create_TrainingType_Btn = new System.Windows.Forms.ToolStripButton();
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
+            this.MappingTheSubject = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewTrainingType)).BeginInit();
@@ -157,13 +158,13 @@
             this.dgv_ViewTrainingType.MultiSelect = false;
             this.dgv_ViewTrainingType.Name = "dgv_ViewTrainingType";
             this.dgv_ViewTrainingType.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewTrainingType.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewTrainingType.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_ViewTrainingType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_ViewTrainingType.Size = new System.Drawing.Size(1067, 203);
             this.dgv_ViewTrainingType.TabIndex = 0;
@@ -173,6 +174,7 @@
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Create_TrainingType_Btn,
+            this.MappingTheSubject,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
@@ -199,6 +201,15 @@
             this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
             this.Refresh_btn.Text = "Refresh";
             this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
+            // 
+            // MappingTheSubject
+            // 
+            this.MappingTheSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MappingTheSubject.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.MappingTheSubject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MappingTheSubject.Name = "MappingTheSubject";
+            this.MappingTheSubject.Size = new System.Drawing.Size(148, 36);
+            this.MappingTheSubject.Text = "Map the subject";
             // 
             // Training_Type
             // 
@@ -236,5 +247,6 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton Create_TrainingType_Btn;
         private System.Windows.Forms.ToolStripButton Refresh_btn;
+        private System.Windows.Forms.ToolStripButton MappingTheSubject;
     }
 }

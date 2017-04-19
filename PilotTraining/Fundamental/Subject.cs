@@ -1,0 +1,249 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using PilotTraining.Class;
+using System.Data.SqlClient;
+
+namespace PilotTraining.Fundamental
+{
+    public partial class Subject : Form
+    {
+        public Subject()
+        {
+            InitializeComponent();
+        }
+        SqlConnection Conn;
+        SqlCommand Cmd;
+        StringBuilder Sbd;
+        SqlDataReader Sdr;
+        SqlTransaction Tr;
+        int SubjectId;
+        string userId; // User login
+        private void Subject_Load(object sender, EventArgs e)
+        {
+            string strConn;
+            strConn = DBConnString.strConn;
+            Conn = new SqlConnection();
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+            Conn.ConnectionString = strConn;
+            Conn.Open();
+            userId = DBConnString.sUserIdLogin;
+            Max_Subject_ID();
+            cmb_status();
+            DataHead_Subject();
+        }
+        private void Max_Subject_ID()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT MAX(SUBSTRING(SubjectId,5,5)) AS SubjectId FROM Subject");
+            String sqlMaxStatementIndex;
+            sqlMaxStatementIndex = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.CommandText = sqlMaxStatementIndex;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            string id = Cmd.ExecuteScalar().ToString();
+
+            if (id == "")
+            {
+                SubjectId = 1;
+            }
+            else
+            {
+                SubjectId = Convert.ToInt32(id.ToString());
+                SubjectId++;
+            }
+            string strMax = "";
+            strMax = String.Format("{0:00000}", Convert.ToInt16(SubjectId.ToString()));
+            lblSubjectId.Text = "SUBJ" + strMax + '-' + DateTime.Now.ToString("yyyy");
+            Cmd.Parameters.Clear();
+
+        }
+        private void cmb_status()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT Para_Code,Para_Desc FROM Parameter WHERE Para_BPC = 'Subject' AND Para_Type = 'status' ORDER BY Para_Sort");
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dtUser = new DataTable();
+                dtUser.Load(Sdr);
+
+                comb_status.BeginUpdate();
+                comb_status.DisplayMember = "Para_Desc";
+                comb_status.ValueMember = "Para_Code";
+                comb_status.DataSource = dtUser;
+                comb_status.EndUpdate();
+                comb_status.SelectedIndex = 0;
+
+            }
+            Sdr.Close();
+        }
+
+        private void Create_Subject_Click(object sender, EventArgs e)
+        {
+
+            if (txt_Subject_Name.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter Subject Name", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txt_Subject_Name.Focus();
+                return;
+            }
+
+
+            if (MessageBox.Show("Are you sure to create new Subject " + txt_Subject_Name.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                Tr = Conn.BeginTransaction();
+                try
+                {
+                    string sqlSaveStHead;
+                    Sbd = new StringBuilder();
+                    Sbd.Remove(0, Sbd.Length);
+                    Sbd.Append("INSERT INTO Subject ");
+                    Sbd.Append("(SubjectId,SubjectName,SubjectStatus,SubjectCreateBy,SubjectCreateDatetime,SubjectModifiedBy,SubjectModifiedDatetime,Amend ) ");
+                    Sbd.Append(" VALUES ");
+                    Sbd.Append(" (@SubjectId,@SubjectName,@SubjectStatus,@SubjectCreateBy,@SubjectCreateDatetime,@SubjectModifiedBy,@SubjectModifiedDatetime,@Amend)");
+
+                    sqlSaveStHead = Sbd.ToString();
+
+
+                    Cmd.Parameters.Clear();
+                    Cmd.Transaction = Tr;
+                    Cmd.CommandText = sqlSaveStHead;
+                    Cmd.Parameters.Add("@SubjectId", SqlDbType.NChar).Value = lblSubjectId.Text.Trim();
+
+                    Cmd.Parameters.Add("@SubjectName", SqlDbType.NVarChar).Value = txt_Subject_Name.Text.Trim();
+                    Cmd.Parameters.Add("@SubjectStatus", SqlDbType.NChar).Value = comb_status.SelectedValue.ToString().Trim();
+                    Cmd.Parameters.Add("@SubjectCreateBy", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@SubjectCreateDatetime", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@SubjectModifiedBy", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@SubjectModifiedDatetime", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = 0;
+                    Cmd.ExecuteNonQuery();
+                    MessageBox.Show("Subject generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Tr.Commit();
+
+
+                    // show all data on gridview
+                    txt_Subject_Name.Text = "";
+                    Max_Subject_ID();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to create new Subject" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Tr.Rollback();
+                }
+            }
+        }
+        private void DataHead_Subject()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT ");
+            Sbd.Append("S.SubjectId,");
+            Sbd.Append("S.SubjectName,");
+            Sbd.Append("P.Para_Desc AS SubjectStatus,");
+            Sbd.Append("(U.Employee_SureName+'  '+U.Employee_LastName) AS SubjectCreateBy,");
+            Sbd.Append("S.SubjectCreateDatetime,");
+            Sbd.Append("(U2.Employee_SureName+'  '+U2.Employee_LastName)  AS SubjectModifiedBy,");
+            Sbd.Append("S.SubjectModifiedDatetime,");
+            Sbd.Append("S.Amend ");
+            Sbd.Append("FROM Subject S ");
+            Sbd.Append("INNER JOIN User_Login U ");
+            Sbd.Append("ON U.Employee_ID = S.SubjectCreateBy ");
+            Sbd.Append("INNER JOIN User_Login U2 ");
+            Sbd.Append("ON U2.Employee_ID = S.SubjectModifiedBy ");
+            Sbd.Append("INNER JOIN Parameter P ");
+            Sbd.Append("ON P.Para_BPC	= 'Subject' ");
+            Sbd.Append("AND P.Para_Type	= 'status' ");
+            Sbd.Append("AND P.Para_Code	= S.SubjectStatus ");
+
+
+            string sqlProduct = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.Parameters.Clear();
+            Cmd.CommandText = sqlProduct;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+
+            Sdr = Cmd.ExecuteReader();
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+                dgv_ViewSubject.DataSource = dt;
+                FixColumnWidth_dgv_ViewFormat();
+            }
+            else
+            {
+                dgv_ViewSubject.DataSource = null;
+
+            }
+            Sdr.Close();
+        }
+
+        private void dgv_View_Format()
+        {
+            if (dgv_ViewSubject.RowCount > 0)
+            {
+
+                dgv_ViewSubject.Columns[0].HeaderText = "Subject Id";
+                dgv_ViewSubject.Columns[1].HeaderText = "Subject Name";
+                dgv_ViewSubject.Columns[2].HeaderText = "Status";
+                dgv_ViewSubject.Columns[3].HeaderText = "Create By";
+                dgv_ViewSubject.Columns[4].HeaderText = "Create Date";
+                dgv_ViewSubject.Columns[5].HeaderText = "Modified By";
+                dgv_ViewSubject.Columns[6].HeaderText = "Modified Date";
+                dgv_ViewSubject.Columns[7].HeaderText = "Amend";
+
+                FixColumnWidth_dgv_ViewFormat();
+
+                dgv_ViewSubject.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+                dgv_ViewSubject.Columns[5].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+                dgv_ViewSubject.Columns[8].Visible = false;
+
+            }
+        }
+        private void FixColumnWidth_dgv_ViewFormat()
+        {
+            int w = dgv_ViewSubject.Width;
+            dgv_ViewSubject.Columns[0].Width = 150;
+            dgv_ViewSubject.Columns[1].Width = w - 150 - 100 - 100 - 150 - 150 - 150 - 120;
+            dgv_ViewSubject.Columns[2].Width = 100;
+            dgv_ViewSubject.Columns[3].Width = 150;
+            dgv_ViewSubject.Columns[4].Width = 150;
+            dgv_ViewSubject.Columns[5].Width = 150;
+            dgv_ViewSubject.Columns[6].Width = 150;
+            dgv_ViewSubject.Columns[7].Width = 120;
+
+        }
+
+        private void Refresh_btn_Click(object sender, EventArgs e)
+        {
+            DataHead_Subject();
+        }
+        
+        }
+    }
+
