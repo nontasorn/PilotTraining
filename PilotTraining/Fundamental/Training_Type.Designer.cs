@@ -40,8 +40,9 @@
             this.dgv_ViewTrainingType = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.Create_TrainingType_Btn = new System.Windows.Forms.ToolStripButton();
-            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.MappingTheSubject = new System.Windows.Forms.ToolStripButton();
+            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
+            this.EditTrainingTypeBtn = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewTrainingType)).BeginInit();
@@ -87,7 +88,7 @@
             // 
             this.comb_Location.Font = new System.Drawing.Font("Tahoma", 11.25F);
             this.comb_Location.FormattingEnabled = true;
-            this.comb_Location.Location = new System.Drawing.Point(233, 76);
+            this.comb_Location.Location = new System.Drawing.Point(233, 110);
             this.comb_Location.Name = "comb_Location";
             this.comb_Location.Size = new System.Drawing.Size(286, 26);
             this.comb_Location.TabIndex = 127;
@@ -117,7 +118,7 @@
             // 
             this.txt_Training_Type_ID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Training_Type_ID.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Training_Type_ID.Location = new System.Drawing.Point(233, 113);
+            this.txt_Training_Type_ID.Location = new System.Drawing.Point(233, 71);
             this.txt_Training_Type_ID.Name = "txt_Training_Type_ID";
             this.txt_Training_Type_ID.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_Training_Type_ID.Size = new System.Drawing.Size(286, 26);
@@ -128,7 +129,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(94, 117);
+            this.label1.Location = new System.Drawing.Point(94, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 18);
             this.label1.TabIndex = 123;
@@ -138,7 +139,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(143, 83);
+            this.label7.Location = new System.Drawing.Point(143, 117);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 18);
             this.label7.TabIndex = 121;
@@ -168,12 +169,14 @@
             this.dgv_ViewTrainingType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_ViewTrainingType.Size = new System.Drawing.Size(1067, 203);
             this.dgv_ViewTrainingType.TabIndex = 0;
+            this.dgv_ViewTrainingType.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewTrainingType_CellMouseUp);
             // 
             // toolStrip2
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Create_TrainingType_Btn,
+            this.EditTrainingTypeBtn,
             this.MappingTheSubject,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
@@ -192,6 +195,16 @@
             this.Create_TrainingType_Btn.Text = "Create Training Type";
             this.Create_TrainingType_Btn.Click += new System.EventHandler(this.Create_TrainingType_Btn_Click);
             // 
+            // MappingTheSubject
+            // 
+            this.MappingTheSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MappingTheSubject.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.MappingTheSubject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MappingTheSubject.Name = "MappingTheSubject";
+            this.MappingTheSubject.Size = new System.Drawing.Size(148, 36);
+            this.MappingTheSubject.Text = "Map the subject";
+            this.MappingTheSubject.Click += new System.EventHandler(this.MappingTheSubject_Click);
+            // 
             // Refresh_btn
             // 
             this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
@@ -202,14 +215,15 @@
             this.Refresh_btn.Text = "Refresh";
             this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
-            // MappingTheSubject
+            // EditTrainingTypeBtn
             // 
-            this.MappingTheSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MappingTheSubject.Image = global::PilotTraining.Properties.Resources.Add_icon;
-            this.MappingTheSubject.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MappingTheSubject.Name = "MappingTheSubject";
-            this.MappingTheSubject.Size = new System.Drawing.Size(148, 36);
-            this.MappingTheSubject.Text = "Map the subject";
+            this.EditTrainingTypeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditTrainingTypeBtn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.EditTrainingTypeBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditTrainingTypeBtn.Name = "EditTrainingTypeBtn";
+            this.EditTrainingTypeBtn.Size = new System.Drawing.Size(150, 36);
+            this.EditTrainingTypeBtn.Text = "Edit Traing Type";
+            this.EditTrainingTypeBtn.Click += new System.EventHandler(this.EditTrainingTypeBtn_Click);
             // 
             // Training_Type
             // 
@@ -248,5 +262,6 @@
         private System.Windows.Forms.ToolStripButton Create_TrainingType_Btn;
         private System.Windows.Forms.ToolStripButton Refresh_btn;
         private System.Windows.Forms.ToolStripButton MappingTheSubject;
+        private System.Windows.Forms.ToolStripButton EditTrainingTypeBtn;
     }
 }

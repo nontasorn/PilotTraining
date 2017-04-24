@@ -25,6 +25,7 @@ namespace PilotTraining.Fundamental
         SqlTransaction Tr;
         int SubjectId;
         string userId; // User login
+        int amend;
         private void Subject_Load(object sender, EventArgs e)
         {
             string strConn;
@@ -40,6 +41,8 @@ namespace PilotTraining.Fundamental
             Max_Subject_ID();
             cmb_status();
             DataHead_Subject();
+            Edit_Subject.Enabled = false;
+            
         }
         private void Max_Subject_ID()
         {
@@ -242,7 +245,87 @@ namespace PilotTraining.Fundamental
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             DataHead_Subject();
+            Edit_Subject.Enabled = false;
         }
+
+        private void dgv_ViewSubject_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Create_Subject.Enabled = false;
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            lblSubjectId.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txt_Subject_Name.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[1].Value.ToString();
+            comb_status.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            Edit_Subject.Enabled = true;
+            amend = Convert.ToInt32(dgv_ViewSubject.Rows[e.RowIndex].Cells[7].Value.ToString());
+
+            
+
+        }
+
+        private void Edit_Subject_Click(object sender, EventArgs e)
+        {
+
+
+            if (txt_Subject_Name.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter Subject Name", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txt_Subject_Name.Focus();
+                return;
+            }
+
+
+            if (MessageBox.Show("Are you sure to update Subject  " + txt_Subject_Name.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                Tr = Conn.BeginTransaction();
+                try
+                {
+                    string sqlSaveStHead;
+                    Sbd = new StringBuilder();
+                    Sbd.Remove(0, Sbd.Length);
+                    Sbd.Append("UPDATE Subject ");
+                    Sbd.Append("SET SubjectName = @SubjectName,");
+                    Sbd.Append("SubjectStatus = @SubjectStatus,");                
+                    Sbd.Append("SubjectModifiedBy = @SubjectModifiedBy,");
+                    Sbd.Append("SubjectModifiedDatetime = @SubjectModifiedDatetime,");
+                    Sbd.Append("Amend = @Amend ");
+                    Sbd.Append("WHERE SubjectId = @SubjectId");
+
+                    sqlSaveStHead = Sbd.ToString();
+
+
+                    Cmd.Parameters.Clear();
+                    Cmd.Transaction = Tr;
+                    Cmd.CommandText = sqlSaveStHead;
+                    Cmd.Parameters.Add("@SubjectId", SqlDbType.NVarChar).Value = lblSubjectId.Text.Trim();
+                    Cmd.Parameters.Add("@SubjectName", SqlDbType.NVarChar).Value = txt_Subject_Name.Text.Trim();
+                    Cmd.Parameters.Add("@SubjectStatus", SqlDbType.NChar).Value = comb_status.SelectedValue.ToString();
+
+                    Cmd.Parameters.Add("@SubjectModifiedBy", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@SubjectModifiedDatetime", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = amend + 1;
+                    Cmd.ExecuteNonQuery();
+                    MessageBox.Show("Subject updated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Tr.Commit();
+
+                    Max_Subject_ID();
+                    DataHead_Subject();
+                    txt_Subject_Name.Text = "";
+                    Create_Subject.Enabled = true;
+                    Edit_Subject.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to update Subject" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Tr.Rollback();
+                }
+            }
+        }
+
         
         }
     }

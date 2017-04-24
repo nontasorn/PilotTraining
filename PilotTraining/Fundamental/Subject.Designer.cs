@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comb_status = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblSubjectId = new System.Windows.Forms.Label();
             this.txt_Subject_Name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,10 +40,8 @@
             this.dgv_ViewSubject = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.Create_Subject = new System.Windows.Forms.ToolStripButton();
-            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comb_status = new System.Windows.Forms.ComboBox();
             this.Edit_Subject = new System.Windows.Forms.ToolStripButton();
+            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewSubject)).BeginInit();
@@ -82,6 +82,25 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Subject Management";
+            // 
+            // comb_status
+            // 
+            this.comb_status.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.comb_status.FormattingEnabled = true;
+            this.comb_status.Location = new System.Drawing.Point(269, 142);
+            this.comb_status.Name = "comb_status";
+            this.comb_status.Size = new System.Drawing.Size(96, 26);
+            this.comb_status.TabIndex = 129;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(188, 146);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 18);
+            this.label3.TabIndex = 128;
+            this.label3.Text = "Status :";
             // 
             // lblSubjectId
             // 
@@ -138,16 +157,17 @@
             this.dgv_ViewSubject.MultiSelect = false;
             this.dgv_ViewSubject.Name = "dgv_ViewSubject";
             this.dgv_ViewSubject.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewSubject.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewSubject.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_ViewSubject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_ViewSubject.Size = new System.Drawing.Size(958, 182);
             this.dgv_ViewSubject.TabIndex = 0;
+            this.dgv_ViewSubject.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewSubject_CellMouseUp);
             // 
             // toolStrip2
             // 
@@ -172,6 +192,16 @@
             this.Create_Subject.Text = "Create Subject";
             this.Create_Subject.Click += new System.EventHandler(this.Create_Subject_Click);
             // 
+            // Edit_Subject
+            // 
+            this.Edit_Subject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_Subject.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.Edit_Subject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Edit_Subject.Name = "Edit_Subject";
+            this.Edit_Subject.Size = new System.Drawing.Size(126, 36);
+            this.Edit_Subject.Text = "Edit  Subject";
+            this.Edit_Subject.Click += new System.EventHandler(this.Edit_Subject_Click);
+            // 
             // Refresh_btn
             // 
             this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
@@ -181,34 +211,6 @@
             this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
             this.Refresh_btn.Text = "Refresh";
             this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(188, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 18);
-            this.label3.TabIndex = 128;
-            this.label3.Text = "Status :";
-            // 
-            // comb_status
-            // 
-            this.comb_status.Font = new System.Drawing.Font("Tahoma", 11.25F);
-            this.comb_status.FormattingEnabled = true;
-            this.comb_status.Location = new System.Drawing.Point(269, 142);
-            this.comb_status.Name = "comb_status";
-            this.comb_status.Size = new System.Drawing.Size(96, 26);
-            this.comb_status.TabIndex = 129;
-            // 
-            // Edit_Subject
-            // 
-            this.Edit_Subject.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_Subject.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
-            this.Edit_Subject.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Edit_Subject.Name = "Edit_Subject";
-            this.Edit_Subject.Size = new System.Drawing.Size(126, 36);
-            this.Edit_Subject.Text = "Edit  Subject";
             // 
             // Subject
             // 

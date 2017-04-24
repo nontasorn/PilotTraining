@@ -101,6 +101,12 @@
     <Compile Include="Fundamental\Subject.Designer.cs">
       <DependentUpon>Subject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\TrainingTypeMapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\TrainingTypeMapping.Designer.cs">
+      <DependentUpon>TrainingTypeMapping.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\Training_Type.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Subject.resx">
       <DependentUpon>Subject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\TrainingTypeMapping.resx">
+      <DependentUpon>TrainingTypeMapping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Training_Type.resx">
       <DependentUpon>Training_Type.cs</DependentUpon>
