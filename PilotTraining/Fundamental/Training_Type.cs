@@ -30,6 +30,7 @@ namespace PilotTraining.Fundamental
         int trainingTypeId;
         string strtrainingTypeId;
         string strtrainingName;
+        int CheckResult;
 
 
         private void Training_Type_Load(object sender, EventArgs e)
@@ -71,7 +72,6 @@ namespace PilotTraining.Fundamental
             if (id == "")
             {
                 trainingTypeId = 1;
-                MessageBox.Show("111");
             }
             else
             {
@@ -80,7 +80,7 @@ namespace PilotTraining.Fundamental
             }
             string strMax = "";
             strMax = String.Format("{0:00000}", Convert.ToInt16(trainingTypeId.ToString()));
-            txt_Training_Type_ID.Text = "TRAIN" + strMax + '-' + DateTime.Now.ToString("yyyy");
+            txt_Training_Type_ID.Text = "TRAIN" + strMax + DateTime.Now.ToString("yyyy");
             Cmd.Parameters.Clear();
 
         }
@@ -245,9 +245,8 @@ namespace PilotTraining.Fundamental
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Training Type generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
-
+                    Max_TrainingType_ID();
                     DataHead_TrainingType();
-                    txt_Training_Type_ID.Text = "";
                     txt_Training_Type_Name.Text = "";
                 }
                 catch (Exception ex)
@@ -261,6 +260,8 @@ namespace PilotTraining.Fundamental
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             DataHead_TrainingType();
+            Create_TrainingType_Btn.Enabled = true;
+            EditTrainingTypeBtn.Enabled = false;
         }
 
         private void Training_Type_Resize(object sender, EventArgs e)
@@ -290,6 +291,7 @@ namespace PilotTraining.Fundamental
             EditTrainingTypeBtn.Enabled = true;
             strtrainingTypeId = dgv_ViewTrainingType.Rows[e.RowIndex].Cells[0].Value.ToString();
             strtrainingName = dgv_ViewTrainingType.Rows[e.RowIndex].Cells[1].Value.ToString();
+            ShowTheSubject(); // View subject
         }
 
         private void EditTrainingTypeBtn_Click(object sender, EventArgs e)
@@ -364,6 +366,50 @@ namespace PilotTraining.Fundamental
                 frm.ShowDialog();
 
             }
+
+        }
+        private void ShowTheSubject()
+        {
+            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("SubjectView " + strtrainingTypeId);
+            if (dt.Rows.Count > 0)
+            {
+                dgv_ViewSubject.DataSource = dt;
+                CheckResult = dt.Rows.Count;
+                dgv_ViewSubject_Format();
+
+            }
+            else
+            {
+                CheckResult = 0;
+                dgv_ViewSubject.DataSource = null;
+
+            }
+            lblCountSubject.Text = "Subject : "+ CheckResult.ToString();
+        }
+
+        private void dgv_ViewSubject_Format()
+        {
+            if (dgv_ViewSubject.RowCount > 0)
+            {
+
+                dgv_ViewSubject.Columns[0].HeaderText = "Subject #";
+                dgv_ViewSubject.Columns[1].HeaderText = "Subject Name";
+                dgv_ViewSubject.Columns[2].HeaderText = "Created By";
+                dgv_ViewSubject.Columns[3].HeaderText = "Create Date";
+
+                FixColumnWidth_dgv_ViewSubject_Format();
+
+                dgv_ViewSubject.Columns[3].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+
+            }
+        }
+        private void FixColumnWidth_dgv_ViewSubject_Format()
+        {
+            int w = dgv_ViewSubject.Width;
+            dgv_ViewSubject.Columns[0].Width = 200;
+            dgv_ViewSubject.Columns[1].Width = w - 600;
+            dgv_ViewSubject.Columns[2].Width = 200;
+            dgv_ViewSubject.Columns[3].Width = 200;
 
         }
     }

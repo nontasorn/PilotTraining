@@ -52,7 +52,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.ViewMappingSubjectbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,8 +104,7 @@
             // Menu_Training_Type1
             // 
             this.Menu_Training_Type1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Training_Type_Management2,
-            this.ViewMappingSubjectbtn});
+            this.Menu_Training_Type_Management2});
             this.Menu_Training_Type1.Name = "Menu_Training_Type1";
             this.Menu_Training_Type1.Size = new System.Drawing.Size(187, 24);
             this.Menu_Training_Type1.Text = "Training Type";
@@ -258,12 +256,6 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
-            // ViewMappingSubjectbtn
-            // 
-            this.ViewMappingSubjectbtn.Name = "ViewMappingSubjectbtn";
-            this.ViewMappingSubjectbtn.Size = new System.Drawing.Size(258, 24);
-            this.ViewMappingSubjectbtn.Text = "View Mapping Subject";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +304,5 @@
         private System.Windows.Forms.ToolStripMenuItem MenuCreateTrainingDetails2;
         private System.Windows.Forms.ToolStripMenuItem subjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SubjectManagementMenu;
-        private System.Windows.Forms.ToolStripMenuItem ViewMappingSubjectbtn;
     }
 }

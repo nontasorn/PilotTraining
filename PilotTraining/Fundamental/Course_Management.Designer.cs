@@ -39,29 +39,35 @@
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.dgv_SelectModules = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btn_SelectModules = new System.Windows.Forms.Button();
-            this.txt_CourseDescription = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pn_Modules = new System.Windows.Forms.Panel();
             this.lbSumList = new System.Windows.Forms.Label();
             this.btnCancelSelect = new System.Windows.Forms.Button();
             this.btnOKSelect = new System.Windows.Forms.Button();
             this.btnExitMain = new System.Windows.Forms.Button();
             this.dgv_Modules = new System.Windows.Forms.DataGridView();
+            this.txtCourseId = new System.Windows.Forms.TextBox();
+            this.btn_SelectModules = new System.Windows.Forms.Button();
+            this.txt_CourseDescription = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txt_CourseName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgv_Course_View = new System.Windows.Forms.DataGridView();
-            this.dgv_Course_Modules_View = new System.Windows.Forms.DataGridView();
             this.lbl_Course_Count = new System.Windows.Forms.Label();
             this.lbl_Course_Modules = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgv_Course_Modules_View = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgv_Course_View = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SelectModules)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.pn_Modules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Modules)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Course_View)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Course_Modules_View)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Course_View)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -110,13 +116,14 @@
             // 
             this.dgv_SelectModules.AllowUserToAddRows = false;
             this.dgv_SelectModules.AllowUserToDeleteRows = false;
-            this.dgv_SelectModules.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgv_SelectModules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_SelectModules.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.dgv_SelectModules.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_SelectModules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SelectModules.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_SelectModules.Location = new System.Drawing.Point(0, 87);
+            this.dgv_SelectModules.Location = new System.Drawing.Point(3, 6);
             this.dgv_SelectModules.MultiSelect = false;
             this.dgv_SelectModules.Name = "dgv_SelectModules";
             this.dgv_SelectModules.ReadOnly = true;
@@ -128,70 +135,20 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_SelectModules.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_SelectModules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_SelectModules.Size = new System.Drawing.Size(1084, 220);
+            this.dgv_SelectModules.Size = new System.Drawing.Size(1072, 248);
             this.dgv_SelectModules.TabIndex = 7;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.btn_SelectModules);
-            this.groupBox1.Controls.Add(this.txt_CourseDescription);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.pn_Modules);
-            this.groupBox1.Controls.Add(this.txt_CourseName);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dgv_SelectModules);
-            this.groupBox1.Location = new System.Drawing.Point(0, 42);
+            this.groupBox1.Location = new System.Drawing.Point(3, 108);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1084, 315);
+            this.groupBox1.Size = new System.Drawing.Size(1075, 251);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(497, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox1.Size = new System.Drawing.Size(60, 26);
-            this.textBox1.TabIndex = 130;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btn_SelectModules
-            // 
-            this.btn_SelectModules.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.btn_SelectModules.Location = new System.Drawing.Point(679, 49);
-            this.btn_SelectModules.Name = "btn_SelectModules";
-            this.btn_SelectModules.Size = new System.Drawing.Size(127, 26);
-            this.btn_SelectModules.TabIndex = 129;
-            this.btn_SelectModules.Text = "Select Modules";
-            this.btn_SelectModules.UseVisualStyleBackColor = true;
-            this.btn_SelectModules.Click += new System.EventHandler(this.btn_SelectModules_Click);
-            // 
-            // txt_CourseDescription
-            // 
-            this.txt_CourseDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_CourseDescription.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_CourseDescription.Location = new System.Drawing.Point(222, 49);
-            this.txt_CourseDescription.Name = "txt_CourseDescription";
-            this.txt_CourseDescription.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_CourseDescription.Size = new System.Drawing.Size(451, 26);
-            this.txt_CourseDescription.TabIndex = 128;
-            this.txt_CourseDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(72, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 18);
-            this.label2.TabIndex = 127;
-            this.label2.Text = "Course Description :";
             // 
             // pn_Modules
             // 
@@ -201,9 +158,9 @@
             this.pn_Modules.Controls.Add(this.btnOKSelect);
             this.pn_Modules.Controls.Add(this.btnExitMain);
             this.pn_Modules.Controls.Add(this.dgv_Modules);
-            this.pn_Modules.Location = new System.Drawing.Point(222, 88);
+            this.pn_Modules.Location = new System.Drawing.Point(222, 3);
             this.pn_Modules.Name = "pn_Modules";
-            this.pn_Modules.Size = new System.Drawing.Size(565, 214);
+            this.pn_Modules.Size = new System.Drawing.Size(565, 236);
             this.pn_Modules.TabIndex = 129;
             // 
             // lbSumList
@@ -283,14 +240,58 @@
             this.dgv_Modules.Name = "dgv_Modules";
             this.dgv_Modules.RowHeadersVisible = false;
             this.dgv_Modules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Modules.Size = new System.Drawing.Size(530, 149);
+            this.dgv_Modules.Size = new System.Drawing.Size(530, 178);
             this.dgv_Modules.TabIndex = 134;
+            // 
+            // txtCourseId
+            // 
+            this.txtCourseId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCourseId.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourseId.Location = new System.Drawing.Point(543, 29);
+            this.txtCourseId.Name = "txtCourseId";
+            this.txtCourseId.ReadOnly = true;
+            this.txtCourseId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCourseId.Size = new System.Drawing.Size(176, 26);
+            this.txtCourseId.TabIndex = 130;
+            this.txtCourseId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btn_SelectModules
+            // 
+            this.btn_SelectModules.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.btn_SelectModules.Location = new System.Drawing.Point(725, 64);
+            this.btn_SelectModules.Name = "btn_SelectModules";
+            this.btn_SelectModules.Size = new System.Drawing.Size(127, 26);
+            this.btn_SelectModules.TabIndex = 129;
+            this.btn_SelectModules.Text = "Select Modules";
+            this.btn_SelectModules.UseVisualStyleBackColor = true;
+            this.btn_SelectModules.Click += new System.EventHandler(this.btn_SelectModules_Click);
+            // 
+            // txt_CourseDescription
+            // 
+            this.txt_CourseDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_CourseDescription.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_CourseDescription.Location = new System.Drawing.Point(268, 64);
+            this.txt_CourseDescription.Name = "txt_CourseDescription";
+            this.txt_CourseDescription.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_CourseDescription.Size = new System.Drawing.Size(451, 26);
+            this.txt_CourseDescription.TabIndex = 128;
+            this.txt_CourseDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(118, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 18);
+            this.label2.TabIndex = 127;
+            this.label2.Text = "Course Description :";
             // 
             // txt_CourseName
             // 
             this.txt_CourseName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_CourseName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_CourseName.Location = new System.Drawing.Point(222, 14);
+            this.txt_CourseName.Location = new System.Drawing.Point(268, 29);
             this.txt_CourseName.Name = "txt_CourseName";
             this.txt_CourseName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_CourseName.Size = new System.Drawing.Size(269, 26);
@@ -301,60 +302,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(105, 18);
+            this.label1.Location = new System.Drawing.Point(151, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 18);
             this.label1.TabIndex = 125;
             this.label1.Text = "Course Name :";
-            // 
-            // dgv_Course_View
-            // 
-            this.dgv_Course_View.AllowUserToAddRows = false;
-            this.dgv_Course_View.AllowUserToDeleteRows = false;
-            this.dgv_Course_View.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Course_View.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_Course_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Course_View.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_Course_View.Location = new System.Drawing.Point(2, 382);
-            this.dgv_Course_View.MultiSelect = false;
-            this.dgv_Course_View.Name = "dgv_Course_View";
-            this.dgv_Course_View.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_Course_View.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_Course_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Course_View.Size = new System.Drawing.Size(896, 230);
-            this.dgv_Course_View.TabIndex = 130;
-            this.dgv_Course_View.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_Course_View_CellMouseUp);
-            // 
-            // dgv_Course_Modules_View
-            // 
-            this.dgv_Course_Modules_View.AllowUserToAddRows = false;
-            this.dgv_Course_Modules_View.AllowUserToDeleteRows = false;
-            this.dgv_Course_Modules_View.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Course_Modules_View.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_Course_Modules_View.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_Course_Modules_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Course_Modules_View.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_Course_Modules_View.Location = new System.Drawing.Point(904, 382);
-            this.dgv_Course_Modules_View.MultiSelect = false;
-            this.dgv_Course_Modules_View.Name = "dgv_Course_Modules_View";
-            this.dgv_Course_Modules_View.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_Course_Modules_View.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_Course_Modules_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Course_Modules_View.Size = new System.Drawing.Size(174, 230);
-            this.dgv_Course_Modules_View.TabIndex = 131;
             // 
             // lbl_Course_Count
             // 
@@ -362,9 +314,9 @@
             this.lbl_Course_Count.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Course_Count.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.lbl_Course_Count.ForeColor = System.Drawing.Color.White;
-            this.lbl_Course_Count.Location = new System.Drawing.Point(2, 360);
+            this.lbl_Course_Count.Location = new System.Drawing.Point(3, 0);
             this.lbl_Course_Count.Name = "lbl_Course_Count";
-            this.lbl_Course_Count.Size = new System.Drawing.Size(126, 19);
+            this.lbl_Course_Count.Size = new System.Drawing.Size(126, 18);
             this.lbl_Course_Count.TabIndex = 132;
             this.lbl_Course_Count.Text = "Courses : ";
             this.lbl_Course_Count.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -375,23 +327,123 @@
             this.lbl_Course_Modules.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Course_Modules.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.lbl_Course_Modules.ForeColor = System.Drawing.Color.White;
-            this.lbl_Course_Modules.Location = new System.Drawing.Point(904, 360);
+            this.lbl_Course_Modules.Location = new System.Drawing.Point(761, 0);
             this.lbl_Course_Modules.Name = "lbl_Course_Modules";
-            this.lbl_Course_Modules.Size = new System.Drawing.Size(108, 19);
+            this.lbl_Course_Modules.Size = new System.Drawing.Size(108, 18);
             this.lbl_Course_Modules.TabIndex = 133;
             this.lbl_Course_Modules.Text = "Modules :";
             this.lbl_Course_Modules.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.dgv_Course_Modules_View, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_Course_Modules, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_Course_Count, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgv_Course_View, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 424);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 241F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1084, 244);
+            this.tableLayoutPanel1.TabIndex = 134;
+            // 
+            // dgv_Course_Modules_View
+            // 
+            this.dgv_Course_Modules_View.AllowUserToAddRows = false;
+            this.dgv_Course_Modules_View.AllowUserToDeleteRows = false;
+            this.dgv_Course_Modules_View.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgv_Course_Modules_View.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_Course_Modules_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Course_Modules_View.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Course_Modules_View.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgv_Course_Modules_View.Location = new System.Drawing.Point(761, 21);
+            this.dgv_Course_Modules_View.MultiSelect = false;
+            this.dgv_Course_Modules_View.Name = "dgv_Course_Modules_View";
+            this.dgv_Course_Modules_View.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_Course_Modules_View.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_Course_Modules_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Course_Modules_View.Size = new System.Drawing.Size(320, 235);
+            this.dgv_Course_Modules_View.TabIndex = 131;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtCourseId);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.btn_SelectModules);
+            this.groupBox2.Controls.Add(this.txt_CourseName);
+            this.groupBox2.Controls.Add(this.txt_CourseDescription);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1075, 99);
+            this.groupBox2.TabIndex = 131;
+            this.groupBox2.TabStop = false;
+            // 
+            // dgv_Course_View
+            // 
+            this.dgv_Course_View.AllowUserToAddRows = false;
+            this.dgv_Course_View.AllowUserToDeleteRows = false;
+            this.dgv_Course_View.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgv_Course_View.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_Course_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Course_View.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Course_View.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgv_Course_View.Location = new System.Drawing.Point(3, 21);
+            this.dgv_Course_View.MultiSelect = false;
+            this.dgv_Course_View.Name = "dgv_Course_View";
+            this.dgv_Course_View.ReadOnly = true;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_Course_View.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_Course_View.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Course_View.Size = new System.Drawing.Size(752, 235);
+            this.dgv_Course_View.TabIndex = 130;
+            this.dgv_Course_View.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_Course_View_CellMouseUp);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 56);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.0411F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70.9589F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1081, 362);
+            this.tableLayoutPanel2.TabIndex = 135;
             // 
             // Course_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 611);
-            this.Controls.Add(this.lbl_Course_Modules);
-            this.Controls.Add(this.lbl_Course_Count);
-            this.Controls.Add(this.dgv_Course_Modules_View);
-            this.Controls.Add(this.dgv_Course_View);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1084, 668);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "Course_Management";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -402,12 +454,15 @@
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SelectModules)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.pn_Modules.ResumeLayout(false);
             this.pn_Modules.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Modules)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Course_View)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Course_Modules_View)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Course_View)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,10 +487,13 @@
         private System.Windows.Forms.Button btnCancelSelect;
         private System.Windows.Forms.Button btnOKSelect;
         private System.Windows.Forms.Label lbSumList;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dgv_Course_View;
-        private System.Windows.Forms.DataGridView dgv_Course_Modules_View;
+        private System.Windows.Forms.TextBox txtCourseId;
         internal System.Windows.Forms.Label lbl_Course_Count;
         internal System.Windows.Forms.Label lbl_Course_Modules;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgv_Course_Modules_View;
+        private System.Windows.Forms.DataGridView dgv_Course_View;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

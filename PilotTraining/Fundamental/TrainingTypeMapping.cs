@@ -50,6 +50,7 @@ namespace PilotTraining.Fundamental
             Conn.Open();
             userId = DBConnString.sUserIdLogin;
             pn_Subject.Visible = false;
+            Max_Mapping_ID();
         }
 
         private void btn_SelectSubject_Click(object sender, EventArgs e)
@@ -225,7 +226,35 @@ namespace PilotTraining.Fundamental
                 dgv_SelectSubject.Columns[1].Width = w - 500;
             }
         }
-        
+        private void Max_Mapping_ID()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT MAX(SUBSTRING(MappingId,4,5)) AS MappingId FROM TrainingMapping");
+            String sqlMaxStatementIndex;
+            sqlMaxStatementIndex = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.CommandText = sqlMaxStatementIndex;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            string id = Cmd.ExecuteScalar().ToString();
+
+            if (id == "")
+            {
+                MaxMapping = 1;
+            }
+            else
+            {
+                MaxMapping = Convert.ToInt32(id.ToString());
+                MaxMapping++;
+            }
+            //txtHandId.Text = HeadId.ToString();
+
+            string strMax = "";
+            strMax = String.Format("{0:00000}", Convert.ToInt32(MaxMapping.ToString()));
+            txtMappingId.Text = "MAP" + strMax + '-' + DateTime.Now.ToString("yyyy");
+            Cmd.Parameters.Clear();
+        }
         private void Create_Mapping_Click(object sender, EventArgs e)
         {
             /*
@@ -243,39 +272,55 @@ namespace PilotTraining.Fundamental
                 Tr = Conn.BeginTransaction();
                 try
                 {
+                    string sql;
+                    Sbd = new StringBuilder();
+                    Sbd.Remove(0, Sbd.Length);
+                    Sbd.Append("INSERT INTO TrainingMapping ");
+                    Sbd.Append("(MappingId,Training_Type_ID,Mapping_By,Mapping_Datetime,Mapping_ModifiedBy,Mapping_ModifiedDate,Amend) ");
+                    Sbd.Append(" VALUES ");
+                    Sbd.Append(" (@MappingId,@Training_Type_ID,@Mapping_By,@Mapping_Datetime,@Mapping_ModifiedBy,@Mapping_ModifiedDate,@Amend)");
+                    sql = Sbd.ToString();
+
+                    Cmd.Parameters.Clear();
+                    Cmd.Transaction = Tr;
+                    Cmd.CommandText = sql;
+                    Cmd.Parameters.Add("@MappingId", SqlDbType.NChar).Value = txtMappingId.Text.Trim();
+                    Cmd.Parameters.Add("@Training_Type_ID", SqlDbType.NChar).Value = txtTrainingTypeId.Text.Trim();
+                    Cmd.Parameters.Add("@Mapping_By", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@Mapping_Datetime", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@Mapping_ModifiedBy", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@Mapping_ModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = 0;
+                    Cmd.ExecuteNonQuery();
 
                     for (int i = 0; i <= dgv_SelectSubject.Rows.Count - 1; i++)
                     {
-                        string sql;
-                        Sbd = new StringBuilder();
                         Sbd.Remove(0, Sbd.Length);
-                        Sbd.Append("INSERT INTO TrainingMapping ");
-                        Sbd.Append("(Training_Type_ID,SubjectId,Mapping_By,Mapping_Datetime,Mapping_ModifiedBy,Mapping_ModifiedDate,Amend) ");
-                        Sbd.Append(" VALUES ");
-                        Sbd.Append(" (@Training_Type_ID,@SubjectId,@Mapping_By,@Mapping_Datetime,@Mapping_ModifiedBy,@Mapping_ModifiedDate,@Amend) ");
+                        Sbd.Append("INSERT INTO TrainingMapping_Detail ");
+                        Sbd.Append("(MappingId, SubjectId ) ");
+                        Sbd.Append("VALUES ");
+                        Sbd.Append("(@MappingId, @SubjectId) ");
 
                         sql = Sbd.ToString();
 
                         Cmd.Parameters.Clear();
                         Cmd.CommandText = sql;
-                        Cmd.Parameters.Add("@Training_Type_ID", SqlDbType.NVarChar).Value = txtTrainingTypeId.Text.Trim();
-                        Cmd.Parameters.Add("@SubjectId", SqlDbType.NVarChar).Value = dgv_SelectSubject.Rows[i].Cells[2].Value.ToString();
-                        Cmd.Parameters.Add("@Mapping_By", SqlDbType.NChar).Value = userId;
-                        Cmd.Parameters.Add("@Mapping_Datetime", SqlDbType.DateTime).Value = DateTime.Now;
-                        Cmd.Parameters.Add("@Mapping_ModifiedBy", SqlDbType.NChar).Value = userId;
-                        Cmd.Parameters.Add("@Mapping_ModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                        Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = 0;
-                        
+                        Cmd.Parameters.Add("@MappingId", SqlDbType.NChar).Value = txtMappingId.Text.Trim();
+                        Cmd.Parameters.Add("@SubjectId", SqlDbType.NChar).Value = dgv_SelectSubject.Rows[i].Cells[2].Value.ToString();
 
                         Cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Mapping successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show("mapping successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
+
+                    Max_Mapping_ID();
+                    this.Close();
+
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Unable to create map subject" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Unable to map the subject" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Tr.Rollback();
                 }
             }

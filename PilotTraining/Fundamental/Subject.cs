@@ -151,6 +151,8 @@ namespace PilotTraining.Fundamental
                     // show all data on gridview
                     txt_Subject_Name.Text = "";
                     Max_Subject_ID();
+                    DataHead_Subject();
+                    Edit_Subject.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -231,14 +233,14 @@ namespace PilotTraining.Fundamental
         private void FixColumnWidth_dgv_ViewFormat()
         {
             int w = dgv_ViewSubject.Width;
-            dgv_ViewSubject.Columns[0].Width = 150;
-            dgv_ViewSubject.Columns[1].Width = w - 150 - 100 - 100 - 150 - 150 - 150 - 120;
+            dgv_ViewSubject.Columns[0].Width = 100;
+            dgv_ViewSubject.Columns[1].Width = w - 700;
             dgv_ViewSubject.Columns[2].Width = 100;
-            dgv_ViewSubject.Columns[3].Width = 150;
-            dgv_ViewSubject.Columns[4].Width = 150;
-            dgv_ViewSubject.Columns[5].Width = 150;
-            dgv_ViewSubject.Columns[6].Width = 150;
-            dgv_ViewSubject.Columns[7].Width = 120;
+            dgv_ViewSubject.Columns[3].Width = 100;
+            dgv_ViewSubject.Columns[4].Width = 100;
+            dgv_ViewSubject.Columns[5].Width = 100;
+            dgv_ViewSubject.Columns[6].Width = 100;
+            dgv_ViewSubject.Columns[7].Width = 100;
 
         }
 
@@ -246,6 +248,7 @@ namespace PilotTraining.Fundamental
         {
             DataHead_Subject();
             Edit_Subject.Enabled = false;
+            Create_Subject.Enabled = true;
         }
 
         private void dgv_ViewSubject_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -261,7 +264,7 @@ namespace PilotTraining.Fundamental
 
             Edit_Subject.Enabled = true;
             amend = Convert.ToInt32(dgv_ViewSubject.Rows[e.RowIndex].Cells[7].Value.ToString());
-
+            Create_Subject.Enabled = false;
             
 
         }

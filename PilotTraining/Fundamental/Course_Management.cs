@@ -74,7 +74,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("SELECT ");
             Sbd.Append("Training_Type_Name,");
             Sbd.Append("Location_Name,");
-            Sbd.Append("Training_Type_ID_RUN ");
+            Sbd.Append("Training_Type_ID ");
             Sbd.Append("FROM Training_Type T ");
             Sbd.Append("INNER JOIN Location L ");
             Sbd.Append("ON ");
@@ -282,7 +282,7 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Clear();
                     Cmd.Transaction = Tr;
                     Cmd.CommandText = sql;
-                    Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = textBox1.Text.Trim();
+                    Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = txtCourseId.Text.Trim();
                     Cmd.Parameters.Add("@Course_Name", SqlDbType.NChar).Value = txt_CourseName.Text.Trim();
                     Cmd.Parameters.Add("@Course_Description", SqlDbType.NChar).Value = txt_CourseDescription.Text.Trim();
                     Cmd.Parameters.Add("@Course_Create_By", SqlDbType.NChar).Value = userId;
@@ -291,21 +291,22 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Add("@Course_Modified_Date", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Course_Amend", SqlDbType.Int).Value = 0;
                     Cmd.ExecuteNonQuery();
+                    MessageBox.Show("Head");
 
                     for (int i = 0; i <= dgv_SelectModules.Rows.Count - 1; i++)
                     {
                         Sbd.Remove(0, Sbd.Length);
                         Sbd.Append("INSERT INTO Course_Details ");
-                        Sbd.Append("(Course_Head_ID, Training_Type_ID_RUN ) ");
+                        Sbd.Append("(Course_Head_ID, Training_Type_ID ) ");
                         Sbd.Append("VALUES ");
-                        Sbd.Append("(@Course_Head_ID, @Training_Type_ID_RUN) ");
+                        Sbd.Append("(@Course_Head_ID, @Training_Type_ID) ");
 
                         sql = Sbd.ToString();
 
                         Cmd.Parameters.Clear();
                         Cmd.CommandText = sql;
-                        Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = textBox1.Text.Trim();
-                        Cmd.Parameters.Add("@Training_Type_ID_RUN", SqlDbType.NChar).Value = dgv_SelectModules.Rows[i].Cells[0].Value.ToString();
+                        Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NVarChar).Value = txtCourseId.Text.Trim();
+                        Cmd.Parameters.Add("@Training_Type_ID", SqlDbType.NVarChar).Value = dgv_SelectModules.Rows[i].Cells[2].Value.ToString();
 
                         Cmd.ExecuteNonQuery();
                     }
@@ -328,7 +329,7 @@ namespace PilotTraining.Fundamental
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(SUBSTRING(Course_Head_ID,2,1)) AS MAX_Course_ID FROM Course_Head");
+            Sbd.Append("SELECT MAX(SUBSTRING(Course_Head_ID,7,5)) AS MAX_Course_ID FROM Course_Head");
             String sqlMaxStatementIndex;
             sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -348,7 +349,12 @@ namespace PilotTraining.Fundamental
             }
             //txtHandId.Text = HeadId.ToString();
 
-            textBox1.Text = "C" + Max_Course_Head_ID;
+            /*txtCourseId.Text = "C" + Max_Course_Head_ID;
+            Cmd.Parameters.Clear();
+            */
+            string strMax = "";
+            strMax = String.Format("{0:00000}", Convert.ToInt16(Max_Course_Head_ID.ToString()));
+            txtCourseId.Text = "COURSE" + strMax + DateTime.Now.ToString("yyyy");
             Cmd.Parameters.Clear();
         }
         private void ClearDetails()
@@ -371,7 +377,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("U2.Employee_SureName+'   '+U2.Employee_LastName,");
             Sbd.Append("C.Course_Modified_Date, "); 
             Sbd.Append("C.Course_Amend,");
-            Sbd.Append("C.Course_Head_ID, ");
+            Sbd.Append("C.Course_Head_ID ");
             Sbd.Append("FROM Course_Head C ");
             
             Sbd.Append("INNER JOIN User_Login U ");
@@ -455,12 +461,12 @@ namespace PilotTraining.Fundamental
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT (T.Training_Type_ID) AS Modules ");
+            Sbd.Append("SELECT T.Training_Type_Name ");
             Sbd.Append("FROM Course_Details D ");
             Sbd.Append("INNER JOIN Course_Head H ");
             Sbd.Append("ON H.Course_Head_ID	=	D.Course_Head_ID ");
             Sbd.Append("INNER JOIN Training_Type T ");
-            Sbd.Append("ON D.Training_Type_ID_RUN = T.Training_Type_ID_RUN ");
+            Sbd.Append("ON D.Training_Type_ID = T.Training_Type_ID ");
             Sbd.Append("WHERE D.Course_Head_ID = @Course_Head_ID");
             string sql = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -477,6 +483,7 @@ namespace PilotTraining.Fundamental
                 dt.Load(Sdr);
                 CheckResult = dt.Rows.Count;
                 dgv_Course_Modules_View.DataSource = dt;
+                dgv_Course_View.Columns[0].Width = 200;
 
             }
             else

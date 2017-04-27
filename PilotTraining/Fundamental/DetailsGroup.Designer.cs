@@ -30,17 +30,17 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.Create_Grade_Buton = new System.Windows.Forms.ToolStripButton();
-            this.Edit_Grade_Button = new System.Windows.Forms.ToolStripButton();
-            this.Delete_Grade_Button = new System.Windows.Forms.ToolStripButton();
+            this.Create_Tipic = new System.Windows.Forms.ToolStripButton();
+            this.Edit_Topic = new System.Windows.Forms.ToolStripButton();
+            this.MapingSubtopic = new System.Windows.Forms.ToolStripButton();
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblDetailId = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comb_Status = new System.Windows.Forms.ComboBox();
-            this.txt_Grade_Rate = new System.Windows.Forms.TextBox();
+            this.txtOrder = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,42 +55,43 @@
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Create_Grade_Buton,
-            this.Edit_Grade_Button,
-            this.Delete_Grade_Button,
+            this.Create_Tipic,
+            this.Edit_Topic,
+            this.MapingSubtopic,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(786, 39);
+            this.toolStrip2.Size = new System.Drawing.Size(888, 39);
             this.toolStrip2.TabIndex = 128;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // Create_Grade_Buton
+            // Create_Tipic
             // 
-            this.Create_Grade_Buton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create_Grade_Buton.Image = global::PilotTraining.Properties.Resources.Add_icon;
-            this.Create_Grade_Buton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Create_Grade_Buton.Name = "Create_Grade_Buton";
-            this.Create_Grade_Buton.Size = new System.Drawing.Size(88, 36);
-            this.Create_Grade_Buton.Text = "Create";
+            this.Create_Tipic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Tipic.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.Create_Tipic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Create_Tipic.Name = "Create_Tipic";
+            this.Create_Tipic.Size = new System.Drawing.Size(88, 36);
+            this.Create_Tipic.Text = "Create";
+            this.Create_Tipic.Click += new System.EventHandler(this.Create_Grade_Buton_Click);
             // 
-            // Edit_Grade_Button
+            // Edit_Topic
             // 
-            this.Edit_Grade_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_Grade_Button.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
-            this.Edit_Grade_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Edit_Grade_Button.Name = "Edit_Grade_Button";
-            this.Edit_Grade_Button.Size = new System.Drawing.Size(69, 36);
-            this.Edit_Grade_Button.Text = "Edit";
+            this.Edit_Topic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_Topic.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.Edit_Topic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Edit_Topic.Name = "Edit_Topic";
+            this.Edit_Topic.Size = new System.Drawing.Size(69, 36);
+            this.Edit_Topic.Text = "Edit";
             // 
-            // Delete_Grade_Button
+            // MapingSubtopic
             // 
-            this.Delete_Grade_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Delete_Grade_Button.Image = global::PilotTraining.Properties.Resources.delete_file_icon;
-            this.Delete_Grade_Button.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Delete_Grade_Button.Name = "Delete_Grade_Button";
-            this.Delete_Grade_Button.Size = new System.Drawing.Size(86, 36);
-            this.Delete_Grade_Button.Text = "Delete";
+            this.MapingSubtopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.MapingSubtopic.Image = global::PilotTraining.Properties.Resources.Add;
+            this.MapingSubtopic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MapingSubtopic.Name = "MapingSubtopic";
+            this.MapingSubtopic.Size = new System.Drawing.Size(171, 36);
+            this.MapingSubtopic.Text = "Mapping Sub Topic";
             // 
             // Refresh_btn
             // 
@@ -100,21 +101,24 @@
             this.Refresh_btn.Name = "Refresh_btn";
             this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
             this.Refresh_btn.Text = "Refresh";
+            this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dgv_ViewTrainingDetails, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgv_ViewTrainingDetails, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 39);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.56088F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.43911F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 210F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(786, 420);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 420);
             this.tableLayoutPanel1.TabIndex = 129;
             // 
             // groupBox1
@@ -123,46 +127,46 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.lblDetailId);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtDescription);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comb_Status);
-            this.groupBox1.Controls.Add(this.txt_Grade_Rate);
+            this.groupBox1.Controls.Add(this.txtOrder);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 212);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(780, 200);
+            this.groupBox1.Size = new System.Drawing.Size(882, 181);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Training Details";
+            this.groupBox1.Text = "Training Main Topic";
             // 
             // lblDetailId
             // 
             this.lblDetailId.AutoSize = true;
             this.lblDetailId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailId.Location = new System.Drawing.Point(193, 32);
+            this.lblDetailId.Location = new System.Drawing.Point(283, 32);
             this.lblDetailId.Name = "lblDetailId";
             this.lblDetailId.Size = new System.Drawing.Size(0, 18);
             this.lblDetailId.TabIndex = 130;
             // 
-            // textBox1
+            // txtDescription
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(196, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox1.Size = new System.Drawing.Size(286, 26);
-            this.textBox1.TabIndex = 129;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescription.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(286, 66);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtDescription.Size = new System.Drawing.Size(286, 26);
+            this.txtDescription.TabIndex = 129;
+            this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(93, 68);
+            this.label3.Location = new System.Drawing.Point(183, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 18);
             this.label3.TabIndex = 128;
@@ -172,27 +176,27 @@
             // 
             this.comb_Status.Font = new System.Drawing.Font("Tahoma", 11.25F);
             this.comb_Status.FormattingEnabled = true;
-            this.comb_Status.Location = new System.Drawing.Point(196, 142);
+            this.comb_Status.Location = new System.Drawing.Point(286, 142);
             this.comb_Status.Name = "comb_Status";
             this.comb_Status.Size = new System.Drawing.Size(286, 26);
             this.comb_Status.TabIndex = 127;
             // 
-            // txt_Grade_Rate
+            // txtOrder
             // 
-            this.txt_Grade_Rate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_Grade_Rate.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Grade_Rate.Location = new System.Drawing.Point(196, 104);
-            this.txt_Grade_Rate.Name = "txt_Grade_Rate";
-            this.txt_Grade_Rate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_Grade_Rate.Size = new System.Drawing.Size(286, 26);
-            this.txt_Grade_Rate.TabIndex = 126;
-            this.txt_Grade_Rate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOrder.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOrder.Location = new System.Drawing.Point(286, 104);
+            this.txtOrder.Name = "txtOrder";
+            this.txtOrder.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrder.Size = new System.Drawing.Size(286, 26);
+            this.txtOrder.TabIndex = 126;
+            this.txtOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(130, 106);
+            this.label2.Location = new System.Drawing.Point(220, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 18);
             this.label2.TabIndex = 125;
@@ -202,17 +206,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(119, 32);
+            this.label1.Location = new System.Drawing.Point(209, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 18);
             this.label1.TabIndex = 123;
-            this.label1.Text = "Detail # :";
+            this.label1.Text = "Topic # :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(119, 145);
+            this.label7.Location = new System.Drawing.Point(209, 145);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 18);
             this.label7.TabIndex = 121;
@@ -227,7 +231,7 @@
             this.dgv_ViewTrainingDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_ViewTrainingDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_ViewTrainingDetails.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_ViewTrainingDetails.Location = new System.Drawing.Point(3, 3);
+            this.dgv_ViewTrainingDetails.Location = new System.Drawing.Point(3, 190);
             this.dgv_ViewTrainingDetails.MultiSelect = false;
             this.dgv_ViewTrainingDetails.Name = "dgv_ViewTrainingDetails";
             this.dgv_ViewTrainingDetails.ReadOnly = true;
@@ -239,14 +243,15 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_ViewTrainingDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_ViewTrainingDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(780, 179);
+            this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(882, 227);
             this.dgv_ViewTrainingDetails.TabIndex = 0;
+            this.dgv_ViewTrainingDetails.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewTrainingDetails_CellMouseUp);
             // 
             // DetailsGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 459);
+            this.ClientSize = new System.Drawing.Size(888, 459);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "DetailsGroup";
@@ -266,20 +271,20 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton Create_Grade_Buton;
-        private System.Windows.Forms.ToolStripButton Edit_Grade_Button;
-        private System.Windows.Forms.ToolStripButton Delete_Grade_Button;
+        private System.Windows.Forms.ToolStripButton Create_Tipic;
+        private System.Windows.Forms.ToolStripButton Edit_Topic;
+        private System.Windows.Forms.ToolStripButton MapingSubtopic;
         private System.Windows.Forms.ToolStripButton Refresh_btn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comb_Status;
-        private System.Windows.Forms.TextBox txt_Grade_Rate;
+        private System.Windows.Forms.TextBox txtOrder;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgv_ViewTrainingDetails;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label lblDetailId;
     }
 }

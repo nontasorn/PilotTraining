@@ -82,7 +82,6 @@ D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Training_Type.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Login.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Properties.Resources.resources
-D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.Training.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.TrainingManagement.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.csproj.GenerateResource.Cache
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Subject.resources
