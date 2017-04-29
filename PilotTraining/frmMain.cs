@@ -71,7 +71,7 @@ namespace PilotTraining
 
         private void MenuCreateTrainingDetails2_Click(object sender, EventArgs e)
         {
-            Fundamental.DetailsGroup frm = new Fundamental.DetailsGroup();
+            Fundamental.MainTopic frm = new Fundamental.MainTopic();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -82,6 +82,14 @@ namespace PilotTraining
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void Subtopic_Click(object sender, EventArgs e)
+        {
+            Fundamental.SubTopic frm = new Fundamental.SubTopic();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }

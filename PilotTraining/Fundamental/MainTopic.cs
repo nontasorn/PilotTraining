@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 namespace PilotTraining.Fundamental
 {
-    public partial class DetailsGroup : Form
+    public partial class MainTopic : Form
     {
-        public DetailsGroup()
+        public MainTopic()
         {
             InitializeComponent();
         }
@@ -27,6 +27,7 @@ namespace PilotTraining.Fundamental
         string strloginId;
         int DetailId;
         int maxOrder;
+        int amend;
         
 
         private void DetailsGroup_Load(object sender, EventArgs e)
@@ -60,7 +61,8 @@ namespace PilotTraining.Fundamental
             Sbd.Append("U.Employee_SureName+'   '+U.Employee_LastName AS DetailsGroupCreatedBy,");
             Sbd.Append("D.DetailsGroupCreatedDate,");
             Sbd.Append("U2.Employee_SureName+'   '+U2.Employee_LastName AS DetailsGroupModifiedBy,");
-            Sbd.Append("D.DetailsGroupModifiedDate ");
+            Sbd.Append("D.DetailsGroupModifiedDate, ");
+            Sbd.Append("D.amend ");
             Sbd.Append("FROM DetailsGroup D ");
             Sbd.Append("INNER JOIN User_Login U ");
             Sbd.Append("ON D.DetailsGroupCreatedBy = U.Employee_ID ");
@@ -113,7 +115,7 @@ namespace PilotTraining.Fundamental
             }
             string strMax = "";
             strMax = String.Format("{0:000000}", Convert.ToInt16(DetailId.ToString()));
-            lblDetailId.Text = "D" + strMax;
+            lblDetailId.Text = "M" + strMax;
             Cmd.Parameters.Clear();
 
         }
@@ -202,9 +204,9 @@ namespace PilotTraining.Fundamental
                     Sbd = new StringBuilder();
                     Sbd.Remove(0, Sbd.Length);
                     Sbd.Append("INSERT INTO DetailsGroup ");
-                    Sbd.Append("(DetailGroupId,DetailGroupName,DetailsGroupStatus,DetailsGroupOrder,DetailsGroupCreatedBy,DetailsGroupCreatedDate,DetailsGroupModifiedBy,DetailsGroupModifiedDate ) ");
+                    Sbd.Append("(DetailGroupId,DetailGroupName,DetailsGroupStatus,DetailsGroupOrder,DetailsGroupCreatedBy,DetailsGroupCreatedDate,DetailsGroupModifiedBy,DetailsGroupModifiedDate,amend ) ");
                     Sbd.Append(" VALUES ");
-                    Sbd.Append(" (@DetailGroupId,@DetailGroupName,@DetailsGroupStatus,@DetailsGroupOrder,@DetailsGroupCreatedBy,@DetailsGroupCreatedDate,@DetailsGroupModifiedBy,@DetailsGroupModifiedDate)");
+                    Sbd.Append(" (@DetailGroupId,@DetailGroupName,@DetailsGroupStatus,@DetailsGroupOrder,@DetailsGroupCreatedBy,@DetailsGroupCreatedDate,@DetailsGroupModifiedBy,@DetailsGroupModifiedDate,@amend)");
 
                     sqlSaveStHead = Sbd.ToString();
 
@@ -252,6 +254,7 @@ namespace PilotTraining.Fundamental
                 dgv_ViewTrainingDetails.Columns[4].HeaderText = "Create Date";
                 dgv_ViewTrainingDetails.Columns[5].HeaderText = "Modified By";
                 dgv_ViewTrainingDetails.Columns[6].HeaderText = "Modified Date";
+                dgv_ViewTrainingDetails.Columns[7].HeaderText = "Amend";
 
                 FixColumnWidth_dgv_ViewTrainingDetail_Format();
 
@@ -263,14 +266,14 @@ namespace PilotTraining.Fundamental
         private void FixColumnWidth_dgv_ViewTrainingDetail_Format()
         {
             int w = dgv_ViewTrainingDetails.Width;
-            dgv_ViewTrainingDetails.Columns[0].Width = 150;
-            dgv_ViewTrainingDetails.Columns[1].Width = w - 150 - 100 - 100 - 150 - 150 - 150;
+            dgv_ViewTrainingDetails.Columns[0].Width = 100;
+            dgv_ViewTrainingDetails.Columns[1].Width = w - 700;
             dgv_ViewTrainingDetails.Columns[2].Width = 100;
-            dgv_ViewTrainingDetails.Columns[3].Width = 150;
-            dgv_ViewTrainingDetails.Columns[4].Width = 150;
-            dgv_ViewTrainingDetails.Columns[5].Width = 150;
-            dgv_ViewTrainingDetails.Columns[6].Width = 150;
-
+            dgv_ViewTrainingDetails.Columns[3].Width = 100;
+            dgv_ViewTrainingDetails.Columns[4].Width = 100;
+            dgv_ViewTrainingDetails.Columns[5].Width = 100;
+            dgv_ViewTrainingDetails.Columns[6].Width = 100;
+            dgv_ViewTrainingDetails.Columns[7].Width = 100;
         }
 
         private void Refresh_btn_Click(object sender, EventArgs e)
@@ -282,7 +285,71 @@ namespace PilotTraining.Fundamental
         {
 
             lblDetailId.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
+            amend = Convert.ToInt32(dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[7].Value.ToString());
+            txtOrder.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtDescription.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
             Create_Tipic.Enabled = false;
+
+        }
+
+        private void Edit_Topic_Click(object sender, EventArgs e)
+        {
+            if (txtDescription.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter description", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtDescription.Focus();
+                return;
+            }
+
+
+            if (MessageBox.Show("Are you sure to update main topic  " + txtDescription.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                Tr = Conn.BeginTransaction();
+                try
+                {
+                    string sqlSaveStHead;
+                    Sbd = new StringBuilder();
+                    Sbd.Remove(0, Sbd.Length);
+                    Sbd.Append("UPDATE DetailsGroup ");
+                    Sbd.Append("SET DetailGroupName = @DetailGroupName,");
+                    Sbd.Append("DetailsGroupStatus = @DetailsGroupStatus,");
+                    Sbd.Append("DetailsGroupModifiedBy = @DetailsGroupModifiedBy,");
+                    Sbd.Append("DetailsGroupModifiedDate = @DetailsGroupModifiedDate, ");
+                    Sbd.Append("amend = @amend ");
+                    Sbd.Append("WHERE DetailGroupId = @DetailGroupId");
+
+                    sqlSaveStHead = Sbd.ToString();
+
+
+                    Cmd.Parameters.Clear();
+                    Cmd.Transaction = Tr;
+                    Cmd.CommandText = sqlSaveStHead;
+                    Cmd.Parameters.Add("@DetailGroupId", SqlDbType.NVarChar).Value = lblDetailId.Text.Trim();
+                    Cmd.Parameters.Add("@DetailGroupName", SqlDbType.NVarChar).Value = txtDescription.Text.Trim();
+                    Cmd.Parameters.Add("@DetailsGroupStatus", SqlDbType.NChar).Value = comb_Status.SelectedValue.ToString();
+                    Cmd.Parameters.Add("@DetailsGroupModifiedBy", SqlDbType.NChar).Value = strloginId;
+                    Cmd.Parameters.Add("@DetailsGroupModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = amend + 1;
+                    Cmd.ExecuteNonQuery();
+                    MessageBox.Show("Subject updated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Tr.Commit();
+
+                    Max_Details_ID();
+                    DataHead_Details();
+                    Max_Order(); // Max order details
+                   
+                    txtDescription.Text = "";
+                    Create_Tipic.Enabled = true;
+                    Edit_Topic.Enabled = false;
+                    MapingSubtopic.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to update main tipic successfull" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Tr.Rollback();
+                }
+            }
         }
     }
 }

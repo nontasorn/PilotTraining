@@ -76,7 +76,6 @@ D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.frmMain.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.From.frmVFR.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Course_Management.resources
-D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.DetailsGroup.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Form_Details_Management.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.GradManagement.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Training_Type.resources
@@ -86,3 +85,5 @@ D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.csproj.GenerateResource.Cache
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Subject.resources
 D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.TrainingTypeMapping.resources
+D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.MainTopic.resources
+D:\20161122\Pilot Training Project\Coding\Project1\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.SubTopic.resources

@@ -77,11 +77,11 @@
     <Compile Include="Fundamental\Course_Management.Designer.cs">
       <DependentUpon>Course_Management.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\DetailsGroup.cs">
+    <Compile Include="Fundamental\MainTopic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\DetailsGroup.Designer.cs">
-      <DependentUpon>DetailsGroup.cs</DependentUpon>
+    <Compile Include="Fundamental\MainTopic.Designer.cs">
+      <DependentUpon>MainTopic.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\Form_Details_Management.cs">
       <SubType>Form</SubType>
@@ -100,6 +100,12 @@
     </Compile>
     <Compile Include="Fundamental\Subject.Designer.cs">
       <DependentUpon>Subject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\SubTopic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\SubTopic.Designer.cs">
+      <DependentUpon>SubTopic.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\TrainingTypeMapping.cs">
       <SubType>Form</SubType>
@@ -139,8 +145,8 @@
     <EmbeddedResource Include="Fundamental\Course_Management.resx">
       <DependentUpon>Course_Management.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\DetailsGroup.resx">
-      <DependentUpon>DetailsGroup.cs</DependentUpon>
+    <EmbeddedResource Include="Fundamental\MainTopic.resx">
+      <DependentUpon>MainTopic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Form_Details_Management.resx">
       <DependentUpon>Form_Details_Management.cs</DependentUpon>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Subject.resx">
       <DependentUpon>Subject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\SubTopic.resx">
+      <DependentUpon>SubTopic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\TrainingTypeMapping.resx">
       <DependentUpon>TrainingTypeMapping.cs</DependentUpon>

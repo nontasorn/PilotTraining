@@ -1,6 +1,6 @@
 ﻿namespace PilotTraining.Fundamental
 {
-    partial class DetailsGroup
+    partial class MainTopic
     {
         /// <summary>
         /// Required designer variable.
@@ -83,6 +83,7 @@
             this.Edit_Topic.Name = "Edit_Topic";
             this.Edit_Topic.Size = new System.Drawing.Size(69, 36);
             this.Edit_Topic.Text = "Edit";
+            this.Edit_Topic.Click += new System.EventHandler(this.Edit_Topic_Click);
             // 
             // MapingSubtopic
             // 
@@ -247,15 +248,15 @@
             this.dgv_ViewTrainingDetails.TabIndex = 0;
             this.dgv_ViewTrainingDetails.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewTrainingDetails_CellMouseUp);
             // 
-            // DetailsGroup
+            // MainTopic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 459);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip2);
-            this.Name = "DetailsGroup";
-            this.Text = "DetailsGroup";
+            this.Name = "MainTopic";
+            this.Text = "MainTopic";
             this.Load += new System.EventHandler(this.DetailsGroup_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
