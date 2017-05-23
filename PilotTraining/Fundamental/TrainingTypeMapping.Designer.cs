@@ -45,9 +45,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Edit_Course_Btn = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMappingId = new System.Windows.Forms.TextBox();
             this.dgv_SelectSubject = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.txtMappingId = new System.Windows.Forms.TextBox();
             this.pn_Subject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Subject)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -219,6 +219,7 @@
             this.Edit_Course_Btn.Name = "Edit_Course_Btn";
             this.Edit_Course_Btn.Size = new System.Drawing.Size(129, 36);
             this.Edit_Course_Btn.Text = "Edit Mapping";
+            this.Edit_Course_Btn.Click += new System.EventHandler(this.Edit_Course_Btn_Click);
             // 
             // groupBox1
             // 
@@ -236,6 +237,18 @@
             this.groupBox1.Size = new System.Drawing.Size(995, 390);
             this.groupBox1.TabIndex = 135;
             this.groupBox1.TabStop = false;
+            // 
+            // txtMappingId
+            // 
+            this.txtMappingId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMappingId.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMappingId.Location = new System.Drawing.Point(790, 14);
+            this.txtMappingId.Name = "txtMappingId";
+            this.txtMappingId.ReadOnly = true;
+            this.txtMappingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMappingId.Size = new System.Drawing.Size(154, 26);
+            this.txtMappingId.TabIndex = 131;
+            this.txtMappingId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dgv_SelectSubject
             // 
@@ -272,18 +285,6 @@
             this.toolStrip2.Size = new System.Drawing.Size(995, 39);
             this.toolStrip2.TabIndex = 134;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // txtMappingId
-            // 
-            this.txtMappingId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMappingId.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMappingId.Location = new System.Drawing.Point(790, 14);
-            this.txtMappingId.Name = "txtMappingId";
-            this.txtMappingId.ReadOnly = true;
-            this.txtMappingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMappingId.Size = new System.Drawing.Size(154, 26);
-            this.txtMappingId.TabIndex = 131;
-            this.txtMappingId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TrainingTypeMapping
             // 

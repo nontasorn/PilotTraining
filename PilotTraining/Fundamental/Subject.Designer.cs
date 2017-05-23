@@ -31,6 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboTrainingPart = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.comb_status = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblSubjectId = new System.Windows.Forms.Label();
@@ -42,6 +44,7 @@
             this.Create_Subject = new System.Windows.Forms.ToolStripButton();
             this.Edit_Subject = new System.Windows.Forms.ToolStripButton();
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
+            this.SubSubjectMappingbtn = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewSubject)).BeginInit();
@@ -58,8 +61,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 39);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.56088F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.43911F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.86793F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.132075F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(964, 467);
             this.tableLayoutPanel1.TabIndex = 13;
@@ -69,6 +72,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.cboTrainingPart);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.comb_status);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblSubjectId);
@@ -83,11 +88,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Subject Management";
             // 
+            // cboTrainingPart
+            // 
+            this.cboTrainingPart.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.cboTrainingPart.FormattingEnabled = true;
+            this.cboTrainingPart.Location = new System.Drawing.Point(269, 142);
+            this.cboTrainingPart.Name = "cboTrainingPart";
+            this.cboTrainingPart.Size = new System.Drawing.Size(254, 26);
+            this.cboTrainingPart.TabIndex = 131;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(143, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 18);
+            this.label4.TabIndex = 130;
+            this.label4.Text = "Training Part  :";
+            // 
             // comb_status
             // 
             this.comb_status.Font = new System.Drawing.Font("Tahoma", 11.25F);
             this.comb_status.FormattingEnabled = true;
-            this.comb_status.Location = new System.Drawing.Point(269, 142);
+            this.comb_status.Location = new System.Drawing.Point(269, 183);
             this.comb_status.Name = "comb_status";
             this.comb_status.Size = new System.Drawing.Size(96, 26);
             this.comb_status.TabIndex = 129;
@@ -96,7 +120,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(188, 146);
+            this.label3.Location = new System.Drawing.Point(188, 187);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 128;
@@ -147,11 +171,10 @@
             // 
             this.dgv_ViewSubject.AllowUserToAddRows = false;
             this.dgv_ViewSubject.AllowUserToDeleteRows = false;
-            this.dgv_ViewSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_ViewSubject.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.dgv_ViewSubject.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_ViewSubject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ViewSubject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_ViewSubject.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgv_ViewSubject.Location = new System.Drawing.Point(3, 3);
             this.dgv_ViewSubject.MultiSelect = false;
@@ -165,7 +188,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_ViewSubject.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_ViewSubject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ViewSubject.Size = new System.Drawing.Size(958, 182);
+            this.dgv_ViewSubject.Size = new System.Drawing.Size(958, 193);
             this.dgv_ViewSubject.TabIndex = 0;
             this.dgv_ViewSubject.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewSubject_CellMouseUp);
             // 
@@ -175,7 +198,8 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Create_Subject,
             this.Edit_Subject,
-            this.Refresh_btn});
+            this.Refresh_btn,
+            this.SubSubjectMappingbtn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(964, 39);
@@ -212,6 +236,16 @@
             this.Refresh_btn.Text = "Refresh";
             this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
+            // SubSubjectMappingbtn
+            // 
+            this.SubSubjectMappingbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.SubSubjectMappingbtn.Image = global::PilotTraining.Properties.Resources.Add;
+            this.SubSubjectMappingbtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SubSubjectMappingbtn.Name = "SubSubjectMappingbtn";
+            this.SubSubjectMappingbtn.Size = new System.Drawing.Size(184, 36);
+            this.SubSubjectMappingbtn.Text = "Mapping Sub-Subject";
+            this.SubSubjectMappingbtn.Click += new System.EventHandler(this.SubSubjectMappingbtn_Click);
+            // 
             // Subject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +256,7 @@
             this.Name = "Subject";
             this.Text = "Subject";
             this.Load += new System.EventHandler(this.Subject_Load);
+            this.Resize += new System.EventHandler(this.Subject_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -248,6 +283,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comb_status;
         private System.Windows.Forms.ToolStripButton Edit_Subject;
+        private System.Windows.Forms.ComboBox cboTrainingPart;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripButton SubSubjectMappingbtn;
 
     }
 }

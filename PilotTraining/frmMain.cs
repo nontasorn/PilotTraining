@@ -90,6 +90,13 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void SubSubjectManagementMenu_Click(object sender, EventArgs e)
+        {
+            Fundamental.Sub_Subject frm = new Fundamental.Sub_Subject();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }

@@ -93,6 +93,7 @@
             this.MapingSubtopic.Name = "MapingSubtopic";
             this.MapingSubtopic.Size = new System.Drawing.Size(171, 36);
             this.MapingSubtopic.Text = "Mapping Sub Topic";
+            this.MapingSubtopic.Click += new System.EventHandler(this.MapingSubtopic_Click);
             // 
             // Refresh_btn
             // 

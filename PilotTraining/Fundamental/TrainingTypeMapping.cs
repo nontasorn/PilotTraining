@@ -266,7 +266,7 @@ namespace PilotTraining.Fundamental
              * */
 
 
-            if (MessageBox.Show("Are you sure to map the subject" + txt_TrainingType.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Are you sure to map the subject    " + txt_TrainingType.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
 
                 Tr = Conn.BeginTransaction();
@@ -324,6 +324,11 @@ namespace PilotTraining.Fundamental
                     Tr.Rollback();
                 }
             }
+        }
+
+        private void Edit_Course_Btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

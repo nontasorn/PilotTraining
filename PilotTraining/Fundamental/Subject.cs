@@ -26,6 +26,8 @@ namespace PilotTraining.Fundamental
         int SubjectId;
         string userId; // User login
         int amend;
+        string strSubjectId;
+        string strSubjectName;
         private void Subject_Load(object sender, EventArgs e)
         {
             string strConn;
@@ -42,6 +44,7 @@ namespace PilotTraining.Fundamental
             cmb_status();
             DataHead_Subject();
             Edit_Subject.Enabled = false;
+            cmb_TrainingPart();
             
         }
         private void Max_Subject_ID()
@@ -102,6 +105,36 @@ namespace PilotTraining.Fundamental
             }
             Sdr.Close();
         }
+        private void cmb_TrainingPart()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT TrainingPart_Id,TrainingPart_Name FROM TrainingPart");
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dtUser = new DataTable();
+                dtUser.Load(Sdr);
+
+                cboTrainingPart.BeginUpdate();
+                cboTrainingPart.DisplayMember = "TrainingPart_Name";
+                cboTrainingPart.ValueMember = "TrainingPart_Id";
+                cboTrainingPart.DataSource = dtUser;
+                cboTrainingPart.EndUpdate();
+                cboTrainingPart.SelectedIndex = 0;
+
+            }
+            Sdr.Close();
+        }
 
         private void Create_Subject_Click(object sender, EventArgs e)
         {
@@ -124,9 +157,9 @@ namespace PilotTraining.Fundamental
                     Sbd = new StringBuilder();
                     Sbd.Remove(0, Sbd.Length);
                     Sbd.Append("INSERT INTO Subject ");
-                    Sbd.Append("(SubjectId,SubjectName,SubjectStatus,SubjectCreateBy,SubjectCreateDatetime,SubjectModifiedBy,SubjectModifiedDatetime,Amend ) ");
+                    Sbd.Append("(SubjectId,SubjectName,SubjectStatus,SubjectCreateBy,SubjectCreateDatetime,SubjectModifiedBy,SubjectModifiedDatetime,Amend,TrainingPart_Id ) ");
                     Sbd.Append(" VALUES ");
-                    Sbd.Append(" (@SubjectId,@SubjectName,@SubjectStatus,@SubjectCreateBy,@SubjectCreateDatetime,@SubjectModifiedBy,@SubjectModifiedDatetime,@Amend)");
+                    Sbd.Append(" (@SubjectId,@SubjectName,@SubjectStatus,@SubjectCreateBy,@SubjectCreateDatetime,@SubjectModifiedBy,@SubjectModifiedDatetime,@Amend,@TrainingPart_Id )");
 
                     sqlSaveStHead = Sbd.ToString();
 
@@ -143,6 +176,7 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Add("@SubjectModifiedBy", SqlDbType.NChar).Value = userId;
                     Cmd.Parameters.Add("@SubjectModifiedDatetime", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = 0;
+                    Cmd.Parameters.Add("@TrainingPart_Id", SqlDbType.NChar).Value = cboTrainingPart.SelectedValue.ToString().Trim();
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Subject generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
@@ -168,6 +202,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("SELECT ");
             Sbd.Append("S.SubjectId,");
             Sbd.Append("S.SubjectName,");
+            Sbd.Append("T.TrainingPart_Name,");
             Sbd.Append("P.Para_Desc AS SubjectStatus,");
             Sbd.Append("(U.Employee_SureName+'  '+U.Employee_LastName) AS SubjectCreateBy,");
             Sbd.Append("S.SubjectCreateDatetime,");
@@ -183,6 +218,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("ON P.Para_BPC	= 'Subject' ");
             Sbd.Append("AND P.Para_Type	= 'status' ");
             Sbd.Append("AND P.Para_Code	= S.SubjectStatus ");
+            Sbd.Append("INNER JOIN TrainingPart T ON T.TrainingPart_Id = S.TrainingPart_Id ");
 
 
             string sqlProduct = Sbd.ToString();
@@ -215,18 +251,18 @@ namespace PilotTraining.Fundamental
 
                 dgv_ViewSubject.Columns[0].HeaderText = "Subject Id";
                 dgv_ViewSubject.Columns[1].HeaderText = "Subject Name";
-                dgv_ViewSubject.Columns[2].HeaderText = "Status";
-                dgv_ViewSubject.Columns[3].HeaderText = "Create By";
-                dgv_ViewSubject.Columns[4].HeaderText = "Create Date";
-                dgv_ViewSubject.Columns[5].HeaderText = "Modified By";
-                dgv_ViewSubject.Columns[6].HeaderText = "Modified Date";
-                dgv_ViewSubject.Columns[7].HeaderText = "Amend";
+                dgv_ViewSubject.Columns[2].HeaderText = "Training Part";
+                dgv_ViewSubject.Columns[3].HeaderText = "Status";
+                dgv_ViewSubject.Columns[4].HeaderText = "Create By";
+                dgv_ViewSubject.Columns[5].HeaderText = "Create Date";
+                dgv_ViewSubject.Columns[6].HeaderText = "Modified By";
+                dgv_ViewSubject.Columns[7].HeaderText = "Modified Date";
+                dgv_ViewSubject.Columns[8].HeaderText = "Amend";
 
                 FixColumnWidth_dgv_ViewFormat();
 
-                dgv_ViewSubject.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
                 dgv_ViewSubject.Columns[5].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
-                dgv_ViewSubject.Columns[8].Visible = false;
+                dgv_ViewSubject.Columns[6].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
 
             }
         }
@@ -241,7 +277,7 @@ namespace PilotTraining.Fundamental
             dgv_ViewSubject.Columns[5].Width = 100;
             dgv_ViewSubject.Columns[6].Width = 100;
             dgv_ViewSubject.Columns[7].Width = 100;
-
+            dgv_ViewSubject.Columns[8].Width = 100;
         }
 
         private void Refresh_btn_Click(object sender, EventArgs e)
@@ -259,11 +295,13 @@ namespace PilotTraining.Fundamental
                 return;
             }
             lblSubjectId.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[0].Value.ToString();
+            strSubjectId = dgv_ViewSubject.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt_Subject_Name.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[1].Value.ToString();
+            strSubjectName = dgv_ViewSubject.Rows[e.RowIndex].Cells[1].Value.ToString();
             comb_status.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[2].Value.ToString();
 
             Edit_Subject.Enabled = true;
-            amend = Convert.ToInt32(dgv_ViewSubject.Rows[e.RowIndex].Cells[7].Value.ToString());
+            amend = Convert.ToInt32(dgv_ViewSubject.Rows[e.RowIndex].Cells[8].Value.ToString());
             Create_Subject.Enabled = false;
             
 
@@ -295,7 +333,8 @@ namespace PilotTraining.Fundamental
                     Sbd.Append("SubjectStatus = @SubjectStatus,");                
                     Sbd.Append("SubjectModifiedBy = @SubjectModifiedBy,");
                     Sbd.Append("SubjectModifiedDatetime = @SubjectModifiedDatetime,");
-                    Sbd.Append("Amend = @Amend ");
+                    Sbd.Append("Amend = @Amend, ");
+                    Sbd.Append("TrainingPart_Id = @TrainingPart_Id ");
                     Sbd.Append("WHERE SubjectId = @SubjectId");
 
                     sqlSaveStHead = Sbd.ToString();
@@ -307,7 +346,7 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Add("@SubjectId", SqlDbType.NVarChar).Value = lblSubjectId.Text.Trim();
                     Cmd.Parameters.Add("@SubjectName", SqlDbType.NVarChar).Value = txt_Subject_Name.Text.Trim();
                     Cmd.Parameters.Add("@SubjectStatus", SqlDbType.NChar).Value = comb_status.SelectedValue.ToString();
-
+                    Cmd.Parameters.Add("@TrainingPart_Id", SqlDbType.NChar).Value = cboTrainingPart.SelectedValue.ToString();
                     Cmd.Parameters.Add("@SubjectModifiedBy", SqlDbType.NChar).Value = userId;
                     Cmd.Parameters.Add("@SubjectModifiedDatetime", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = amend + 1;
@@ -327,6 +366,29 @@ namespace PilotTraining.Fundamental
                     Tr.Rollback();
                 }
             }
+        }
+
+        private void Subject_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_ViewFormat();
+        }
+
+        private void SubSubjectMappingbtn_Click(object sender, EventArgs e)
+        {
+            if (strSubjectId == null)
+            {
+                MessageBox.Show("Please choose the item");
+            }
+            else
+            {
+                Fundamental.MappingSubject frm = new MappingSubject();
+                Close();
+                frm.subjectId = strSubjectId.ToString();
+                frm.subjectname = strSubjectName.ToString();
+                frm.ShowDialog();
+
+            }
+
         }
 
         

@@ -53,6 +53,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
+            this.SubSubjectManagementMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -150,7 +151,8 @@
             // subjectToolStripMenuItem
             // 
             this.subjectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SubjectManagementMenu});
+            this.SubjectManagementMenu,
+            this.SubSubjectManagementMenu});
             this.subjectToolStripMenuItem.Name = "subjectToolStripMenuItem";
             this.subjectToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.subjectToolStripMenuItem.Text = "Subject";
@@ -158,7 +160,7 @@
             // SubjectManagementMenu
             // 
             this.SubjectManagementMenu.Name = "SubjectManagementMenu";
-            this.SubjectManagementMenu.Size = new System.Drawing.Size(230, 24);
+            this.SubjectManagementMenu.Size = new System.Drawing.Size(264, 24);
             this.SubjectManagementMenu.Text = "Subject Management";
             this.SubjectManagementMenu.Click += new System.EventHandler(this.SubjectManagementMenu_Click);
             // 
@@ -265,6 +267,13 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
+            // SubSubjectManagementMenu
+            // 
+            this.SubSubjectManagementMenu.Name = "SubSubjectManagementMenu";
+            this.SubSubjectManagementMenu.Size = new System.Drawing.Size(264, 24);
+            this.SubSubjectManagementMenu.Text = "Sub-Subject Management";
+            this.SubSubjectManagementMenu.Click += new System.EventHandler(this.SubSubjectManagementMenu_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,5 +323,6 @@
         private System.Windows.Forms.ToolStripMenuItem subjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SubjectManagementMenu;
         private System.Windows.Forms.ToolStripMenuItem Subtopic;
+        private System.Windows.Forms.ToolStripMenuItem SubSubjectManagementMenu;
     }
 }

@@ -95,6 +95,18 @@
     <Compile Include="Fundamental\GradManagement.Designer.cs">
       <DependentUpon>GradManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\MappingSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\MappingSubject.Designer.cs">
+      <DependentUpon>MappingSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\Sub-Subject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Sub-Subject.Designer.cs">
+      <DependentUpon>Sub-Subject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\Subject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +165,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\GradManagement.resx">
       <DependentUpon>GradManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\MappingSubject.resx">
+      <DependentUpon>MappingSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Sub-Subject.resx">
+      <DependentUpon>Sub-Subject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Subject.resx">
       <DependentUpon>Subject.cs</DependentUpon>
