@@ -298,7 +298,7 @@ namespace PilotTraining.Fundamental
             strSubjectId = dgv_ViewSubject.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt_Subject_Name.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[1].Value.ToString();
             strSubjectName = dgv_ViewSubject.Rows[e.RowIndex].Cells[1].Value.ToString();
-            comb_status.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[2].Value.ToString();
+            comb_status.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[3].Value.ToString();
 
             Edit_Subject.Enabled = true;
             amend = Convert.ToInt32(dgv_ViewSubject.Rows[e.RowIndex].Cells[8].Value.ToString());

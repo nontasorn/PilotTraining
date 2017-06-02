@@ -28,6 +28,7 @@ namespace PilotTraining.TrainingManagement
         int AssignId;
 
         AutoCompleteStringCollection AcPilot = new AutoCompleteStringCollection();
+        AutoCompleteStringCollection AcTeacher = new AutoCompleteStringCollection();
 
         private void TrainingManagement_Load(object sender, EventArgs e)
         {
@@ -42,9 +43,10 @@ namespace PilotTraining.TrainingManagement
             Conn.Open();
             userId = DBConnString.sUserIdLogin;
             cmb_Course();
-            NameAcPilotName(); // selelct pilot name
             Max_Assign_ID();
-         
+            NameAcPilotName(); // selelct pilot name        
+            NameAcTeacherName(); // select teacher name
+            Data_Subject();
 
         }
         private void cmb_Course()
@@ -130,7 +132,7 @@ namespace PilotTraining.TrainingManagement
                 return;
             }
         }
-
+       
         private void Assign_Course_btn_Click(object sender, EventArgs e)
         {
             /*
@@ -155,6 +157,12 @@ namespace PilotTraining.TrainingManagement
                 return;
             }
 
+            if (txtTrainingById.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter train by", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtTrainingBy.Focus();
+                return;
+            }
 
             if (MessageBox.Show("Are you sure to assign course" + txt_Pilot.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -176,7 +184,8 @@ namespace PilotTraining.TrainingManagement
                     Sbd.Append("Assign_Modified_By,");
                     Sbd.Append("Assign_Modified_Date,");
                     Sbd.Append("Assign_Remarks, ");
-                    Sbd.Append("Assign_Amend) ");
+                    Sbd.Append("Assign_Amend, ");
+                    Sbd.Append("Assign_TrainingBy) ");
                     
                     Sbd.Append("VALUES ");
 
@@ -190,7 +199,8 @@ namespace PilotTraining.TrainingManagement
                     Sbd.Append("@Assign_Modified_By,");
                     Sbd.Append("@Assign_Modified_Date,");
                     Sbd.Append("@Assign_Remarks, ");
-                    Sbd.Append("@Assign_Amend) ");
+                    Sbd.Append("@Assign_Amend,");
+                    Sbd.Append("@Assign_TrainingBy) ");
                     
                     sqlSaveStHead = Sbd.ToString();
 
@@ -212,6 +222,7 @@ namespace PilotTraining.TrainingManagement
                     Cmd.Parameters.Add("@Assign_Modified_Date", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Assign_Amend", SqlDbType.Int).Value = 0;
                     Cmd.Parameters.Add("@Assign_Remarks", SqlDbType.NVarChar).Value = txtRemarks.Text.Trim();
+                    Cmd.Parameters.Add("@Assign_TrainingBy", SqlDbType.NChar).Value = txtTrainingById.Text.Trim();
                     
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Assign course successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -263,6 +274,197 @@ namespace PilotTraining.TrainingManagement
             txt_Pilot_Id.Clear();
             txt_Pilot.Clear();
             txtRemarks.Clear();
+        }
+
+        private void NameAcTeacherName()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT DISTINCT Employee_ID, (Employee_SureName+'  '+Employee_LastName) AS TeacherName ");
+            Sbd.Append("FROM User_Login WHERE Employee_Status = 'N' AND Employee_Rule = 'TEACHER'");
+            string sql = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.Parameters.Clear();
+            Cmd.CommandText = sql;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+
+            SqlDataReader dr;
+            Cmd = new SqlCommand(sql, Conn);
+            dr = Cmd.ExecuteReader();
+
+            // ตรวจสอบว่ามีข้อมูล EmployerName ในตารางหรือไม่
+            if (dr.HasRows)
+            {
+                dt = new DataTable();
+                dt.Load(dr);
+                foreach (DataRow drw in dt.Rows)
+                {
+                    AcTeacher.Add(drw["TeacherName"].ToString());
+                }
+            }
+            dr.Close();
+            txtTrainingBy.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtTrainingBy.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtTrainingBy.AutoCompleteCustomSource = AcTeacher;
+        }
+        // txtTrainingBy >> teacher
+        private void txtTrainingBy_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataRow drw in dt.Rows)
+                {
+                    if (drw["TeacherName"].ToString() != "" && drw["TeacherName"].ToString() == txtTrainingBy.Text.Trim())
+                    {
+                        txtTrainingById.Text = drw["Employee_ID"].ToString();
+                        return;
+                    }
+                    txtTrainingById.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+        private void Data_Subject()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+            Sbd.Append("SELECT ");
+            Sbd.Append("A.Assign_Pilot,");
+            Sbd.Append("(U.Employee_SureName+'  '+ U.Employee_LastName) AS Pilot,");
+            Sbd.Append("C.Course_Name,");
+            Sbd.Append("(U1.Employee_SureName+'  '+ U1.Employee_LastName) AS TrainingBy,");
+            Sbd.Append("A.Assign_Course_Start_Date,");
+            Sbd.Append("A.Assign_Remarks, ");
+            Sbd.Append("A.Assign_TrainingBy, ");
+            Sbd.Append("A.Assign_Course_ID ");
+            Sbd.Append("FROM Assign_Course A ");
+            Sbd.Append("INNER JOIN User_Login U ");
+            Sbd.Append("ON A.Assign_Pilot = U.Employee_ID ");
+            Sbd.Append("INNER JOIN Course_Head C ");
+            Sbd.Append("ON C.Course_Head_ID = A.Assign_Course ");
+            Sbd.Append("INNER JOIN User_Login U1 ");
+            Sbd.Append("ON U1.Employee_ID = A.Assign_TrainingBy ");
+
+            
+
+
+            string sqlProduct = Sbd.ToString();
+            Cmd = new SqlCommand();
+            Cmd.Parameters.Clear();
+            Cmd.CommandText = sqlProduct;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+
+            Sdr = Cmd.ExecuteReader();
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+                dgv_ViewAssignCourse.DataSource = dt;
+                dgv_View_Format();
+            }
+            else
+            {
+                dgv_ViewAssignCourse.DataSource = null;
+
+            }
+            Sdr.Close();
+        }
+        private void dgv_View_Format()
+        {
+            if (dgv_ViewAssignCourse.RowCount > 0)
+            {
+                dgv_ViewAssignCourse.Columns[0].HeaderText = "Pilot";
+                dgv_ViewAssignCourse.Columns[1].HeaderText = "Pilot Name";
+                dgv_ViewAssignCourse.Columns[2].HeaderText = "Course";
+                dgv_ViewAssignCourse.Columns[3].HeaderText = "Train By";
+                dgv_ViewAssignCourse.Columns[4].HeaderText = "Train Date";
+                dgv_ViewAssignCourse.Columns[5].HeaderText = "Remarks";
+                dgv_ViewAssignCourse.Columns[6].Visible = false;
+                dgv_ViewAssignCourse.Columns[7].Visible = false;
+
+                FixColumnWidth_dgv_ViewFormat();
+
+                dgv_ViewAssignCourse.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy");
+                
+
+            }
+        }
+        private void FixColumnWidth_dgv_ViewFormat()
+        {
+            int w = dgv_ViewAssignCourse.Width;
+            dgv_ViewAssignCourse.Columns[0].Width = 100;
+            dgv_ViewAssignCourse.Columns[1].Width = 200;
+            dgv_ViewAssignCourse.Columns[2].Width = w - 800;
+            dgv_ViewAssignCourse.Columns[3].Width = 200;
+            dgv_ViewAssignCourse.Columns[4].Width = 200;
+            dgv_ViewAssignCourse.Columns[5].Width = 100;
+            
+        }
+
+        private void TrainingManagement_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_ViewFormat();
+        }
+
+        private void Edit_Assign_Course_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_ViewAssignCourse_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dgv_ViewAssignCourse_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            txt_Pilot_Id.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txt_Pilot.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[1].Value.ToString();
+            comb_Training.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[2].Value.ToString();
+            
+            txtTrainingBy.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[3].Value.ToString();
+            DT_Start.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtRemarks.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txtAssignID.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[6].Value.ToString();
+            txtAssignID.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[7].Value.ToString();
+
+        }
+
+        private void Refresh_btn_Click(object sender, EventArgs e)
+        {
+            Data_Subject();
+            txt_Pilot_Id.Clear();
+            txt_Pilot.Clear();
+            txtTrainingById.Clear();
+            txtRemarks.Clear();
+            
+        }
+
+        private void schedule_btn_Click(object sender, EventArgs e)
+        {
+            string strAssignID = txtAssignID.Text;
+            if (txtAssignID.Text == null)
+            {
+                MessageBox.Show("Please choose the item");
+            }
+            else
+            {
+                PilotTraining.TrainingManagement.ScheduleOfSubject frm = new ScheduleOfSubject();
+                Close();
+                frm.AssignCourseId = strAssignID;
+                frm.ShowDialog();
+
+            }
+
         }
 
         

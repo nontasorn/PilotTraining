@@ -72,13 +72,13 @@ namespace PilotTraining.Fundamental
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
             Sbd.Append("SELECT ");
-            Sbd.Append("Training_Type_Name,");
-            Sbd.Append("Location_Name,");
-            Sbd.Append("Training_Type_ID ");
-            Sbd.Append("FROM Training_Type T ");
-            Sbd.Append("INNER JOIN Location L ");
-            Sbd.Append("ON ");
-            Sbd.Append("L.Location_ID = T.Location_ID ");
+            Sbd.Append("S.SubjectName,");
+            Sbd.Append("T.TrainingPart_Name, ");
+            Sbd.Append("S.SubjectId ");
+            Sbd.Append("FROM Subject S ");
+            Sbd.Append("INNER JOIN TrainingPart T ");
+            Sbd.Append("ON S.TrainingPart_Id = T.TrainingPart_Id ");
+            Sbd.Append("WHERE S.SubjectStatus = 'A'");
 
             string sql = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -102,7 +102,7 @@ namespace PilotTraining.Fundamental
                 dt.Load(Sdr);
                 dgv_Modules.DataSource = dt;
                 dgv_Modules.ClearSelection();
-                lbSumList.Text = "Count Modules :    " + dgv_Modules.Rows.Count.ToString();
+                lbSumList.Text = "Count Subject :    " + dgv_Modules.Rows.Count.ToString();
                 dgv_Modules_Header();
             }
             else
@@ -123,8 +123,8 @@ namespace PilotTraining.Fundamental
                 
 
                 dgv_Modules.Columns[0].HeaderText = "Select";
-                dgv_Modules.Columns[1].HeaderText = "Modules";
-                dgv_Modules.Columns[2].HeaderText = "Location";
+                dgv_Modules.Columns[1].HeaderText = "Subject";
+                dgv_Modules.Columns[2].HeaderText = "Part";
 
                 dgv_Modules.Columns[3].Visible = false;
                 
@@ -170,9 +170,9 @@ namespace PilotTraining.Fundamental
             }
 
             dt = new DataTable();
-            dt.Columns.Add(new DataColumn("Modules"));
-            dt.Columns.Add(new DataColumn("Location"));
-            dt.Columns.Add(new DataColumn("Modules ID"));
+            dt.Columns.Add(new DataColumn("Subject"));
+            dt.Columns.Add(new DataColumn("Part"));
+            dt.Columns.Add(new DataColumn("Subject Id"));
 
 
             for (int i = 0; i <= dgv_Modules.Rows.Count - 1; i++)
@@ -180,9 +180,9 @@ namespace PilotTraining.Fundamental
                 if ((Convert.ToBoolean(dgv_Modules.Rows[i].Cells["chkSelect"].Value) == true))
                 {
                     DataRow drDgvSelect = dt.NewRow();
-                    drDgvSelect["Modules"] = dgv_Modules.Rows[i].Cells[1].Value.ToString();
-                    drDgvSelect["Location"] = dgv_Modules.Rows[i].Cells[2].Value.ToString();
-                    drDgvSelect["Modules ID"] = dgv_Modules.Rows[i].Cells[3].Value.ToString();
+                    drDgvSelect["Subject"] = dgv_Modules.Rows[i].Cells[1].Value.ToString();
+                    drDgvSelect["Part"] = dgv_Modules.Rows[i].Cells[2].Value.ToString();
+                    drDgvSelect["Subject Id"] = dgv_Modules.Rows[i].Cells[3].Value.ToString();
                     dt.Rows.Add(drDgvSelect);
                 }
             }
@@ -204,8 +204,8 @@ namespace PilotTraining.Fundamental
                 dgv_SelectModules.DefaultCellStyle.Font = new Font("Tahoma", 15F, GraphicsUnit.Pixel);
                 dgv_SelectModules.ReadOnly = false;
 
-                dgv_SelectModules.Columns[0].Name = "Modules";
-                dgv_SelectModules.Columns[1].Name = "Location";
+                dgv_SelectModules.Columns[0].Name = "Subject";
+                dgv_SelectModules.Columns[1].Name = "Part";
                 dgv_SelectModules.Columns[2].Visible = false;
 
 
@@ -235,8 +235,10 @@ namespace PilotTraining.Fundamental
 
         private void Course_Management_Resize(object sender, EventArgs e)
         {
+            //FixColumnWidth_dgv_ViewCourseDetail_Format();
             FixColumnWidth_dgv_SelectModules_Format();
             FixColumnWidth_dgv_ViewCourse_Format();
+            
         }
 
         private void Create_Course_Btn_Click(object sender, EventArgs e)
@@ -297,16 +299,16 @@ namespace PilotTraining.Fundamental
                     {
                         Sbd.Remove(0, Sbd.Length);
                         Sbd.Append("INSERT INTO Course_Details ");
-                        Sbd.Append("(Course_Head_ID, Training_Type_ID ) ");
+                        Sbd.Append("(Course_Head_ID, SubjectId ) ");
                         Sbd.Append("VALUES ");
-                        Sbd.Append("(@Course_Head_ID, @Training_Type_ID) ");
+                        Sbd.Append("(@Course_Head_ID, @SubjectId) ");
 
                         sql = Sbd.ToString();
 
                         Cmd.Parameters.Clear();
                         Cmd.CommandText = sql;
                         Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NVarChar).Value = txtCourseId.Text.Trim();
-                        Cmd.Parameters.Add("@Training_Type_ID", SqlDbType.NVarChar).Value = dgv_SelectModules.Rows[i].Cells[2].Value.ToString();
+                        Cmd.Parameters.Add("@SubjectId", SqlDbType.NVarChar).Value = dgv_SelectModules.Rows[i].Cells[2].Value.ToString();
 
                         Cmd.ExecuteNonQuery();
                     }
@@ -407,7 +409,7 @@ namespace PilotTraining.Fundamental
                 dgv_Course_View.DataSource = null;
 
             }
-            lbl_Course_Count.Text = "Courses : " + CheckResult.ToString();
+            //lbl_Course_Count.Text = "Courses : " + CheckResult.ToString();
             Sdr.Close();
         }
 
@@ -438,13 +440,13 @@ namespace PilotTraining.Fundamental
         private void FixColumnWidth_dgv_ViewCourse_Format()
         {
             int w = dgv_Course_View.Width;
-            dgv_Course_View.Columns[0].Width = w-200-100-100-100-100-50;
-            dgv_Course_View.Columns[1].Width = 200;
-            dgv_Course_View.Columns[2].Width = 100;
-            dgv_Course_View.Columns[3].Width = 100;
-            dgv_Course_View.Columns[4].Width = 100;
+            dgv_Course_View.Columns[0].Width = w - 300 - 150 - 150 - 150 - 100 - 100;
+            dgv_Course_View.Columns[1].Width = 300;
+            dgv_Course_View.Columns[2].Width = 150;
+            dgv_Course_View.Columns[3].Width = 150;
+            dgv_Course_View.Columns[4].Width = 150;
             dgv_Course_View.Columns[5].Width = 100;
-            dgv_Course_View.Columns[6].Width = 50;
+            dgv_Course_View.Columns[6].Width = 100;
 
         }
 
@@ -455,19 +457,24 @@ namespace PilotTraining.Fundamental
                 return;
             }
             ViewCourseID = dgv_Course_View.Rows[e.RowIndex].Cells[7].Value.ToString();
+         
             ModulesDetail();
         }
         private void ModulesDetail()
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT T.Training_Type_Name ");
+            Sbd.Append("SELECT S.SubjectId,");
+            Sbd.Append("S.SubjectName,");
+            Sbd.Append("P.TrainingPart_Name ");
             Sbd.Append("FROM Course_Details D ");
-            Sbd.Append("INNER JOIN Course_Head H ");
-            Sbd.Append("ON H.Course_Head_ID	=	D.Course_Head_ID ");
-            Sbd.Append("INNER JOIN Training_Type T ");
-            Sbd.Append("ON D.Training_Type_ID = T.Training_Type_ID ");
-            Sbd.Append("WHERE D.Course_Head_ID = @Course_Head_ID");
+            Sbd.Append("INNER JOIN Course_Head H  ");
+            Sbd.Append("ON H.Course_Head_ID = D.Course_Head_ID ");
+            Sbd.Append("INNER JOIN Subject S ");
+            Sbd.Append("ON S.SubjectId = D.SubjectId ");
+            Sbd.Append("INNER JOIN TrainingPart P ");
+            Sbd.Append("ON P.TrainingPart_Id = S.TrainingPart_Id ");
+            Sbd.Append("WHERE H.Course_Head_ID = @Course_Head_ID");
             string sql = Sbd.ToString();
             Cmd = new SqlCommand();
             Cmd.Parameters.Clear();
@@ -483,7 +490,8 @@ namespace PilotTraining.Fundamental
                 dt.Load(Sdr);
                 CheckResult = dt.Rows.Count;
                 dgv_Course_Modules_View.DataSource = dt;
-                dgv_Course_View.Columns[0].Width = 200;
+                dgv_ViewCourseDetail_Format();
+                
 
             }
             else
@@ -492,13 +500,35 @@ namespace PilotTraining.Fundamental
                 dgv_Course_Modules_View.DataSource = null;
 
             }
-            lbl_Course_Modules.Text = "Modules :" + CheckResult.ToString();
+            //lbl_Course_Modules.Text = "Modules :" + CheckResult.ToString();
             Sdr.Close();
         }
 
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             DataHead_Course();
+        }
+        private void dgv_ViewCourseDetail_Format()
+        {
+            if (dgv_Course_Modules_View.RowCount > 0)
+            {
+
+                dgv_Course_Modules_View.Columns[0].HeaderText = "Subject";
+                dgv_Course_Modules_View.Columns[1].HeaderText = "Description";
+                dgv_Course_Modules_View.Columns[2].HeaderText = "Part";
+                
+               
+                FixColumnWidth_dgv_ViewCourseDetail_Format();
+
+            }
+        }
+        private void FixColumnWidth_dgv_ViewCourseDetail_Format()
+        {
+            int w = dgv_Course_Modules_View.Width;
+            dgv_Course_Modules_View.Columns[0].Width = w - 300 - 300;
+            dgv_Course_Modules_View.Columns[1].Width = 300;
+            dgv_Course_Modules_View.Columns[2].Width = 300;
+            
         }
     }
 }

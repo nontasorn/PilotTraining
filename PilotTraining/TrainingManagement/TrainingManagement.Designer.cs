@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.Assign_Course_btn = new System.Windows.Forms.ToolStripButton();
             this.Edit_Assign_Course_btn = new System.Windows.Forms.ToolStripButton();
             this.Delete_Assign_Course_btn = new System.Windows.Forms.ToolStripButton();
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTrainingById = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTrainingBy = new System.Windows.Forms.TextBox();
             this.txtAssignID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,14 +51,13 @@
             this.DT_Start = new System.Windows.Forms.DateTimePicker();
             this.txt_Pilot = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dgv_ViewGrade = new System.Windows.Forms.DataGridView();
-            this.lbl_Training_Count = new System.Windows.Forms.Label();
-            this.txtTrainingBy = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtTrainingById = new System.Windows.Forms.TextBox();
+            this.dgv_ViewAssignCourse = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.schedule_btn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewGrade)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewAssignCourse)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -64,6 +66,7 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Assign_Course_btn,
             this.Edit_Assign_Course_btn,
+            this.schedule_btn,
             this.Delete_Assign_Course_btn,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
@@ -90,6 +93,7 @@
             this.Edit_Assign_Course_btn.Name = "Edit_Assign_Course_btn";
             this.Edit_Assign_Course_btn.Size = new System.Drawing.Size(117, 36);
             this.Edit_Assign_Course_btn.Text = "Edit Assign";
+            this.Edit_Assign_Course_btn.Click += new System.EventHandler(this.Edit_Assign_Course_btn_Click);
             // 
             // Delete_Assign_Course_btn
             // 
@@ -108,9 +112,13 @@
             this.Refresh_btn.Name = "Refresh_btn";
             this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
             this.Refresh_btn.Text = "Refresh";
+            this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtTrainingById);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtTrainingBy);
@@ -128,12 +136,47 @@
             this.groupBox1.Controls.Add(this.txt_Pilot);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 56);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1106, 189);
+            this.groupBox1.Size = new System.Drawing.Size(1142, 182);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            // 
+            // txtTrainingById
+            // 
+            this.txtTrainingById.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtTrainingById.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTrainingById.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtTrainingById.ForeColor = System.Drawing.Color.Red;
+            this.txtTrainingById.Location = new System.Drawing.Point(798, 31);
+            this.txtTrainingById.Name = "txtTrainingById";
+            this.txtTrainingById.ReadOnly = true;
+            this.txtTrainingById.Size = new System.Drawing.Size(72, 22);
+            this.txtTrainingById.TabIndex = 140;
+            this.txtTrainingById.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(725, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 16);
+            this.label5.TabIndex = 139;
+            this.label5.Text = "Train By :";
+            // 
+            // txtTrainingBy
+            // 
+            this.txtTrainingBy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTrainingBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtTrainingBy.Location = new System.Drawing.Point(878, 31);
+            this.txtTrainingBy.Name = "txtTrainingBy";
+            this.txtTrainingBy.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtTrainingBy.Size = new System.Drawing.Size(218, 22);
+            this.txtTrainingBy.TabIndex = 138;
+            this.txtTrainingBy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTrainingBy.TextChanged += new System.EventHandler(this.txtTrainingBy_TextChanged);
             // 
             // txtAssignID
             // 
@@ -195,7 +238,7 @@
             // DT_End
             // 
             this.DT_End.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.DT_End.Location = new System.Drawing.Point(451, 72);
+            this.DT_End.Location = new System.Drawing.Point(525, 69);
             this.DT_End.Name = "DT_End";
             this.DT_End.Size = new System.Drawing.Size(231, 22);
             this.DT_End.TabIndex = 132;
@@ -223,7 +266,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label2.Location = new System.Drawing.Point(378, 74);
+            this.label2.Location = new System.Drawing.Point(448, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 16);
             this.label2.TabIndex = 129;
@@ -269,94 +312,76 @@
             this.label7.TabIndex = 125;
             this.label7.Text = "Pilot Name :";
             // 
-            // dgv_ViewGrade
+            // dgv_ViewAssignCourse
             // 
-            this.dgv_ViewGrade.AllowUserToAddRows = false;
-            this.dgv_ViewGrade.AllowUserToDeleteRows = false;
-            this.dgv_ViewGrade.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_ViewGrade.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_ViewGrade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_ViewGrade.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_ViewGrade.Location = new System.Drawing.Point(0, 286);
-            this.dgv_ViewGrade.MultiSelect = false;
-            this.dgv_ViewGrade.Name = "dgv_ViewGrade";
-            this.dgv_ViewGrade.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewGrade.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_ViewGrade.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ViewGrade.Size = new System.Drawing.Size(1148, 310);
-            this.dgv_ViewGrade.TabIndex = 8;
+            this.dgv_ViewAssignCourse.AllowUserToAddRows = false;
+            this.dgv_ViewAssignCourse.AllowUserToDeleteRows = false;
+            this.dgv_ViewAssignCourse.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgv_ViewAssignCourse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_ViewAssignCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ViewAssignCourse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_ViewAssignCourse.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgv_ViewAssignCourse.Location = new System.Drawing.Point(3, 191);
+            this.dgv_ViewAssignCourse.MultiSelect = false;
+            this.dgv_ViewAssignCourse.Name = "dgv_ViewAssignCourse";
+            this.dgv_ViewAssignCourse.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewAssignCourse.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_ViewAssignCourse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_ViewAssignCourse.Size = new System.Drawing.Size(1142, 361);
+            this.dgv_ViewAssignCourse.TabIndex = 8;
+            this.dgv_ViewAssignCourse.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewAssignCourse_CellMouseUp);
             // 
-            // lbl_Training_Count
+            // tableLayoutPanel1
             // 
-            this.lbl_Training_Count.BackColor = System.Drawing.Color.ForestGreen;
-            this.lbl_Training_Count.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_Training_Count.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lbl_Training_Count.ForeColor = System.Drawing.Color.White;
-            this.lbl_Training_Count.Location = new System.Drawing.Point(3, 264);
-            this.lbl_Training_Count.Name = "lbl_Training_Count";
-            this.lbl_Training_Count.Size = new System.Drawing.Size(126, 19);
-            this.lbl_Training_Count.TabIndex = 133;
-            this.lbl_Training_Count.Text = "Training : ";
-            this.lbl_Training_Count.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dgv_ViewAssignCourse, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 42);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.87387F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.12613F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1148, 555);
+            this.tableLayoutPanel1.TabIndex = 135;
             // 
-            // txtTrainingBy
+            // schedule_btn
             // 
-            this.txtTrainingBy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTrainingBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtTrainingBy.Location = new System.Drawing.Point(878, 31);
-            this.txtTrainingBy.Name = "txtTrainingBy";
-            this.txtTrainingBy.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTrainingBy.Size = new System.Drawing.Size(218, 22);
-            this.txtTrainingBy.TabIndex = 138;
-            this.txtTrainingBy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(710, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 16);
-            this.label5.TabIndex = 139;
-            this.label5.Text = "Training By :";
-            // 
-            // txtTrainingById
-            // 
-            this.txtTrainingById.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtTrainingById.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTrainingById.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtTrainingById.ForeColor = System.Drawing.Color.Red;
-            this.txtTrainingById.Location = new System.Drawing.Point(798, 31);
-            this.txtTrainingById.Name = "txtTrainingById";
-            this.txtTrainingById.ReadOnly = true;
-            this.txtTrainingById.Size = new System.Drawing.Size(72, 22);
-            this.txtTrainingById.TabIndex = 140;
-            this.txtTrainingById.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.schedule_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.schedule_btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.schedule_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.schedule_btn.Name = "schedule_btn";
+            this.schedule_btn.Size = new System.Drawing.Size(105, 36);
+            this.schedule_btn.Text = "Schedule";
+            this.schedule_btn.Click += new System.EventHandler(this.schedule_btn_Click);
             // 
             // TrainingManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 598);
-            this.Controls.Add(this.lbl_Training_Count);
-            this.Controls.Add(this.dgv_ViewGrade);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "TrainingManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TrainingManagement";
             this.Load += new System.EventHandler(this.TrainingManagement_Load);
+            this.Resize += new System.EventHandler(this.TrainingManagement_Resize);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewGrade)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewAssignCourse)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,12 +399,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker DT_Start;
-        private System.Windows.Forms.DataGridView dgv_ViewGrade;
+        private System.Windows.Forms.DataGridView dgv_ViewAssignCourse;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker DT_End;
         private System.Windows.Forms.ComboBox comb_Training;
-        internal System.Windows.Forms.Label lbl_Training_Count;
         private System.Windows.Forms.TextBox txt_Pilot_Id;
         private System.Windows.Forms.TextBox txtRemarks;
         private System.Windows.Forms.Label label4;
@@ -388,5 +412,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTrainingBy;
         private System.Windows.Forms.TextBox txtTrainingById;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ToolStripButton schedule_btn;
     }
 }
