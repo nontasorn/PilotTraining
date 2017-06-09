@@ -459,7 +459,7 @@ namespace PilotTraining.TrainingManagement
             else
             {
                 PilotTraining.TrainingManagement.ScheduleOfSubject frm = new ScheduleOfSubject();
-                Close();
+               // Close();
                 frm.AssignCourseId = strAssignID;
                 frm.ShowDialog();
 
