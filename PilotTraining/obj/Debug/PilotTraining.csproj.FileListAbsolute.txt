@@ -111,3 +111,4 @@ D:\20161122\Pilot Training Project\Project5\trunk\PilotTraining\obj\Debug\PilotT
 D:\20161122\Pilot Training Project\Project5\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Sub_Subject.resources
 D:\20161122\Pilot Training Project\Project5\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.MappingSubject.resources
 D:\20161122\Pilot Training Project\Project5\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.ScheduleOfSubject.resources
+D:\20161122\Pilot Training Project\Project5\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.ViewSchedule.resources

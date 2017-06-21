@@ -45,11 +45,9 @@
             this.txt_Pilot = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_ShowSubject = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ShowSubject)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -72,6 +70,7 @@
             this.Create_Schedule_btn.Name = "Create_Schedule_btn";
             this.Create_Schedule_btn.Size = new System.Drawing.Size(153, 36);
             this.Create_Schedule_btn.Text = "Create Schedule";
+            this.Create_Schedule_btn.Click += new System.EventHandler(this.Create_Schedule_btn_Click);
             // 
             // Refresh_btn
             // 
@@ -99,9 +98,9 @@
             this.groupBox1.Controls.Add(this.txt_Pilot);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 51);
+            this.groupBox1.Location = new System.Drawing.Point(0, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(938, 152);
+            this.groupBox1.Size = new System.Drawing.Size(962, 157);
             this.groupBox1.TabIndex = 143;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Course Details";
@@ -220,46 +219,38 @@
             // 
             // dgv_ShowSubject
             // 
+            this.dgv_ShowSubject.AllowUserToAddRows = false;
             this.dgv_ShowSubject.AllowUserToDeleteRows = false;
+            this.dgv_ShowSubject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_ShowSubject.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.dgv_ShowSubject.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_ShowSubject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_ShowSubject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_ShowSubject.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_ShowSubject.Location = new System.Drawing.Point(3, 18);
+            this.dgv_ShowSubject.Location = new System.Drawing.Point(0, 214);
             this.dgv_ShowSubject.MultiSelect = false;
             this.dgv_ShowSubject.Name = "dgv_ShowSubject";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_ShowSubject.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_ShowSubject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ShowSubject.Size = new System.Drawing.Size(932, 195);
+            this.dgv_ShowSubject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgv_ShowSubject.Size = new System.Drawing.Size(962, 254);
             this.dgv_ShowSubject.TabIndex = 9;
             this.dgv_ShowSubject.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ShowSubject_CellClick);
             this.dgv_ShowSubject.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgv_ShowSubject_ColumnWidthChanged);
             this.dgv_ShowSubject.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgv_ShowSubject_Scroll);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgv_ShowSubject);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(12, 209);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(938, 216);
-            this.groupBox2.TabIndex = 144;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Subject Details";
-            // 
             // ScheduleOfSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 437);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(962, 472);
+            this.Controls.Add(this.dgv_ShowSubject);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip2);
             this.Name = "ScheduleOfSubject";
@@ -271,7 +262,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ShowSubject)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,6 +285,5 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCourse;
         private System.Windows.Forms.DataGridView dgv_ShowSubject;
-        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

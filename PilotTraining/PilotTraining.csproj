@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Class\clsDatabase.cs" />
     <Compile Include="Class\DBConnString.cs" />
+    <Compile Include="Class\TimeCell.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +152,12 @@
     <Compile Include="TrainingManagement\TrainingManagement.Designer.cs">
       <DependentUpon>TrainingManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrainingManagement\ViewSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainingManagement\ViewSchedule.Designer.cs">
+      <DependentUpon>ViewSchedule.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administration\Employee_Management.resx">
       <DependentUpon>Employee_Management.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrainingManagement\TrainingManagement.resx">
       <DependentUpon>TrainingManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainingManagement\ViewSchedule.resx">
+      <DependentUpon>ViewSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

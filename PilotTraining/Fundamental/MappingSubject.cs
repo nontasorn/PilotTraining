@@ -327,5 +327,10 @@ namespace PilotTraining.Fundamental
                 }
             }
         }
+
+        private void Edit_Course_Btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

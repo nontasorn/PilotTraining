@@ -185,6 +185,7 @@ namespace PilotTraining.TrainingManagement
                     Sbd.Append("Assign_Modified_Date,");
                     Sbd.Append("Assign_Remarks, ");
                     Sbd.Append("Assign_Amend, ");
+                    Sbd.Append("status,");
                     Sbd.Append("Assign_TrainingBy) ");
                     
                     Sbd.Append("VALUES ");
@@ -200,6 +201,7 @@ namespace PilotTraining.TrainingManagement
                     Sbd.Append("@Assign_Modified_Date,");
                     Sbd.Append("@Assign_Remarks, ");
                     Sbd.Append("@Assign_Amend,");
+                    Sbd.Append("@status,");
                     Sbd.Append("@Assign_TrainingBy) ");
                     
                     sqlSaveStHead = Sbd.ToString();
@@ -223,6 +225,7 @@ namespace PilotTraining.TrainingManagement
                     Cmd.Parameters.Add("@Assign_Amend", SqlDbType.Int).Value = 0;
                     Cmd.Parameters.Add("@Assign_Remarks", SqlDbType.NVarChar).Value = txtRemarks.Text.Trim();
                     Cmd.Parameters.Add("@Assign_TrainingBy", SqlDbType.NChar).Value = txtTrainingById.Text.Trim();
+                    Cmd.Parameters.Add("@status", SqlDbType.NChar).Value = "A"; // assigned status
                     
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Assign course successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -330,7 +333,7 @@ namespace PilotTraining.TrainingManagement
         }
         private void Data_Subject()
         {
-            Sbd = new StringBuilder();
+            /*Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
             Sbd.Append("SELECT ");
             Sbd.Append("A.Assign_Pilot,");
@@ -339,6 +342,7 @@ namespace PilotTraining.TrainingManagement
             Sbd.Append("(U1.Employee_SureName+'  '+ U1.Employee_LastName) AS TrainingBy,");
             Sbd.Append("A.Assign_Course_Start_Date,");
             Sbd.Append("A.Assign_Remarks, ");
+            Sbd.Append("A.status,");
             Sbd.Append("A.Assign_TrainingBy, ");
             Sbd.Append("A.Assign_Course_ID ");
             Sbd.Append("FROM Assign_Course A ");
@@ -373,6 +377,23 @@ namespace PilotTraining.TrainingManagement
 
             }
             Sdr.Close();
+             * */
+
+
+            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("ShowAssignCourse");
+                if (dt.Rows.Count > 0)
+                {
+                    dgv_ViewAssignCourse.DataSource = dt;
+                    //CheckResult = dt.Rows.Count;
+                    dgv_View_Format();
+                }
+                else
+                {
+                    //CheckResult = 0;
+                    dgv_ViewAssignCourse.DataSource = null;
+                }
+                //Count.Text = CheckResult.ToString() + "  รายการ";
+            
         }
         private void dgv_View_Format()
         {
@@ -384,9 +405,9 @@ namespace PilotTraining.TrainingManagement
                 dgv_ViewAssignCourse.Columns[3].HeaderText = "Train By";
                 dgv_ViewAssignCourse.Columns[4].HeaderText = "Train Date";
                 dgv_ViewAssignCourse.Columns[5].HeaderText = "Remarks";
-                dgv_ViewAssignCourse.Columns[6].Visible = false;
+                dgv_ViewAssignCourse.Columns[6].HeaderText = "Status";
                 dgv_ViewAssignCourse.Columns[7].Visible = false;
-
+                dgv_ViewAssignCourse.Columns[8].Visible = false;
                 FixColumnWidth_dgv_ViewFormat();
 
                 dgv_ViewAssignCourse.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy");
@@ -399,11 +420,11 @@ namespace PilotTraining.TrainingManagement
             int w = dgv_ViewAssignCourse.Width;
             dgv_ViewAssignCourse.Columns[0].Width = 100;
             dgv_ViewAssignCourse.Columns[1].Width = 200;
-            dgv_ViewAssignCourse.Columns[2].Width = w - 800;
+            dgv_ViewAssignCourse.Columns[2].Width = w - 900;
             dgv_ViewAssignCourse.Columns[3].Width = 200;
             dgv_ViewAssignCourse.Columns[4].Width = 200;
             dgv_ViewAssignCourse.Columns[5].Width = 100;
-            
+            dgv_ViewAssignCourse.Columns[6].Width = 100;
         }
 
         private void TrainingManagement_Resize(object sender, EventArgs e)
@@ -465,6 +486,15 @@ namespace PilotTraining.TrainingManagement
 
             }
 
+        }
+
+        private void Delete_Assign_Course_btn_Click(object sender, EventArgs e)
+        {
+            // Check the status of assign
+            /*
+             * this button for change the status to cancel only
+             * if status is successful then cannot delete
+             */
         }
 
         

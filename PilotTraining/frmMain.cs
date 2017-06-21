@@ -97,6 +97,13 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void ViewSchedulebtn_Click(object sender, EventArgs e)
+        {
+            TrainingManagement.ViewSchedule frm = new TrainingManagement.ViewSchedule();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }

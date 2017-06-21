@@ -40,6 +40,7 @@
             this.Menu_Course_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SubjectManagementMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubSubjectManagementMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_TrainingDetails1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCreateTrainingDetails2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Subtopic = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.SubSubjectManagementMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewSchedulebtn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -164,6 +165,13 @@
             this.SubjectManagementMenu.Text = "Subject Management";
             this.SubjectManagementMenu.Click += new System.EventHandler(this.SubjectManagementMenu_Click);
             // 
+            // SubSubjectManagementMenu
+            // 
+            this.SubSubjectManagementMenu.Name = "SubSubjectManagementMenu";
+            this.SubSubjectManagementMenu.Size = new System.Drawing.Size(264, 24);
+            this.SubSubjectManagementMenu.Text = "Sub-Subject Management";
+            this.SubSubjectManagementMenu.Click += new System.EventHandler(this.SubSubjectManagementMenu_Click);
+            // 
             // Menu_TrainingDetails1
             // 
             this.Menu_TrainingDetails1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -223,7 +231,8 @@
             // trainingManagementToolStripMenuItem
             // 
             this.trainingManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Assign_Course_Menu});
+            this.Assign_Course_Menu,
+            this.ViewSchedulebtn});
             this.trainingManagementToolStripMenuItem.Name = "trainingManagementToolStripMenuItem";
             this.trainingManagementToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.trainingManagementToolStripMenuItem.Text = "Training Management";
@@ -267,12 +276,12 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
-            // SubSubjectManagementMenu
+            // ViewSchedulebtn
             // 
-            this.SubSubjectManagementMenu.Name = "SubSubjectManagementMenu";
-            this.SubSubjectManagementMenu.Size = new System.Drawing.Size(264, 24);
-            this.SubSubjectManagementMenu.Text = "Sub-Subject Management";
-            this.SubSubjectManagementMenu.Click += new System.EventHandler(this.SubSubjectManagementMenu_Click);
+            this.ViewSchedulebtn.Name = "ViewSchedulebtn";
+            this.ViewSchedulebtn.Size = new System.Drawing.Size(173, 22);
+            this.ViewSchedulebtn.Text = "View Schedule";
+            this.ViewSchedulebtn.Click += new System.EventHandler(this.ViewSchedulebtn_Click);
             // 
             // frmMain
             // 
@@ -324,5 +333,6 @@
         private System.Windows.Forms.ToolStripMenuItem SubjectManagementMenu;
         private System.Windows.Forms.ToolStripMenuItem Subtopic;
         private System.Windows.Forms.ToolStripMenuItem SubSubjectManagementMenu;
+        private System.Windows.Forms.ToolStripMenuItem ViewSchedulebtn;
     }
 }

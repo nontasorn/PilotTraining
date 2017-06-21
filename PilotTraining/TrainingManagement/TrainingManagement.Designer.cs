@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.Assign_Course_btn = new System.Windows.Forms.ToolStripButton();
             this.Edit_Assign_Course_btn = new System.Windows.Forms.ToolStripButton();
+            this.schedule_btn = new System.Windows.Forms.ToolStripButton();
             this.Delete_Assign_Course_btn = new System.Windows.Forms.ToolStripButton();
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -53,7 +54,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_ViewAssignCourse = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.schedule_btn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewAssignCourse)).BeginInit();
@@ -95,6 +95,16 @@
             this.Edit_Assign_Course_btn.Text = "Edit Assign";
             this.Edit_Assign_Course_btn.Click += new System.EventHandler(this.Edit_Assign_Course_btn_Click);
             // 
+            // schedule_btn
+            // 
+            this.schedule_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.schedule_btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.schedule_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.schedule_btn.Name = "schedule_btn";
+            this.schedule_btn.Size = new System.Drawing.Size(105, 36);
+            this.schedule_btn.Text = "Schedule";
+            this.schedule_btn.Click += new System.EventHandler(this.schedule_btn_Click);
+            // 
             // Delete_Assign_Course_btn
             // 
             this.Delete_Assign_Course_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
@@ -103,6 +113,7 @@
             this.Delete_Assign_Course_btn.Name = "Delete_Assign_Course_btn";
             this.Delete_Assign_Course_btn.Size = new System.Drawing.Size(134, 36);
             this.Delete_Assign_Course_btn.Text = "Delete Assign";
+            this.Delete_Assign_Course_btn.Click += new System.EventHandler(this.Delete_Assign_Course_btn_Click);
             // 
             // Refresh_btn
             // 
@@ -138,7 +149,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1142, 182);
+            this.groupBox1.Size = new System.Drawing.Size(1142, 181);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
@@ -321,19 +332,19 @@
             this.dgv_ViewAssignCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_ViewAssignCourse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_ViewAssignCourse.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_ViewAssignCourse.Location = new System.Drawing.Point(3, 191);
+            this.dgv_ViewAssignCourse.Location = new System.Drawing.Point(3, 190);
             this.dgv_ViewAssignCourse.MultiSelect = false;
             this.dgv_ViewAssignCourse.Name = "dgv_ViewAssignCourse";
             this.dgv_ViewAssignCourse.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewAssignCourse.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewAssignCourse.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_ViewAssignCourse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ViewAssignCourse.Size = new System.Drawing.Size(1142, 361);
+            this.dgv_ViewAssignCourse.Size = new System.Drawing.Size(1142, 362);
             this.dgv_ViewAssignCourse.TabIndex = 8;
             this.dgv_ViewAssignCourse.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewAssignCourse_CellMouseUp);
             // 
@@ -353,16 +364,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.12613F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1148, 555);
             this.tableLayoutPanel1.TabIndex = 135;
-            // 
-            // schedule_btn
-            // 
-            this.schedule_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.schedule_btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
-            this.schedule_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.schedule_btn.Name = "schedule_btn";
-            this.schedule_btn.Size = new System.Drawing.Size(105, 36);
-            this.schedule_btn.Text = "Schedule";
-            this.schedule_btn.Click += new System.EventHandler(this.schedule_btn_Click);
             // 
             // TrainingManagement
             // 
