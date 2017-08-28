@@ -32,8 +32,6 @@
             this.memuDataMain = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Grade1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Grade_Management2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Training_Type1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Training_Type_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_From1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Form_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Course1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,11 +48,11 @@
             this.Menu_Training_Management_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.trainingManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Assign_Course_Menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewSchedulebtn = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.ViewSchedulebtn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +75,6 @@
             // 
             this.memuDataMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Grade1,
-            this.Menu_Training_Type1,
             this.Menu_From1,
             this.Menu_Course1,
             this.subjectToolStripMenuItem,
@@ -94,7 +91,7 @@
             this.Menu_Grade1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Grade_Management2});
             this.Menu_Grade1.Name = "Menu_Grade1";
-            this.Menu_Grade1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Grade1.Size = new System.Drawing.Size(152, 24);
             this.Menu_Grade1.Text = "Grade";
             // 
             // Menu_Grade_Management2
@@ -104,27 +101,12 @@
             this.Menu_Grade_Management2.Text = "Grade Management";
             this.Menu_Grade_Management2.Click += new System.EventHandler(this.Menu_Grade_Management2_Click);
             // 
-            // Menu_Training_Type1
-            // 
-            this.Menu_Training_Type1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Training_Type_Management2});
-            this.Menu_Training_Type1.Name = "Menu_Training_Type1";
-            this.Menu_Training_Type1.Size = new System.Drawing.Size(172, 24);
-            this.Menu_Training_Type1.Text = "Training Type";
-            // 
-            // Menu_Training_Type_Management2
-            // 
-            this.Menu_Training_Type_Management2.Name = "Menu_Training_Type_Management2";
-            this.Menu_Training_Type_Management2.Size = new System.Drawing.Size(258, 24);
-            this.Menu_Training_Type_Management2.Text = "Traing Type Management";
-            this.Menu_Training_Type_Management2.Click += new System.EventHandler(this.Menu_Training_Type_Management2_Click);
-            // 
             // Menu_From1
             // 
             this.Menu_From1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Form_Management2});
             this.Menu_From1.Name = "Menu_From1";
-            this.Menu_From1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_From1.Size = new System.Drawing.Size(152, 24);
             this.Menu_From1.Text = "Form";
             // 
             // Menu_Form_Management2
@@ -139,7 +121,7 @@
             this.Menu_Course1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Course_Management2});
             this.Menu_Course1.Name = "Menu_Course1";
-            this.Menu_Course1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_Course1.Size = new System.Drawing.Size(152, 24);
             this.Menu_Course1.Text = "Course";
             // 
             // Menu_Course_Management2
@@ -155,7 +137,7 @@
             this.SubjectManagementMenu,
             this.SubSubjectManagementMenu});
             this.subjectToolStripMenuItem.Name = "subjectToolStripMenuItem";
-            this.subjectToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.subjectToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.subjectToolStripMenuItem.Text = "Subject";
             // 
             // SubjectManagementMenu
@@ -178,7 +160,7 @@
             this.MenuCreateTrainingDetails2,
             this.Subtopic});
             this.Menu_TrainingDetails1.Name = "Menu_TrainingDetails1";
-            this.Menu_TrainingDetails1.Size = new System.Drawing.Size(172, 24);
+            this.Menu_TrainingDetails1.Size = new System.Drawing.Size(152, 24);
             this.Menu_TrainingDetails1.Text = "Topic";
             // 
             // MenuCreateTrainingDetails2
@@ -244,6 +226,13 @@
             this.Assign_Course_Menu.Text = "Assign Course";
             this.Assign_Course_Menu.Click += new System.EventHandler(this.Assign_Course_Menu_Click);
             // 
+            // ViewSchedulebtn
+            // 
+            this.ViewSchedulebtn.Name = "ViewSchedulebtn";
+            this.ViewSchedulebtn.Size = new System.Drawing.Size(173, 22);
+            this.ViewSchedulebtn.Text = "View Schedule";
+            this.ViewSchedulebtn.Click += new System.EventHandler(this.ViewSchedulebtn_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
@@ -275,13 +264,6 @@
             // 
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
-            // 
-            // ViewSchedulebtn
-            // 
-            this.ViewSchedulebtn.Name = "ViewSchedulebtn";
-            this.ViewSchedulebtn.Size = new System.Drawing.Size(173, 22);
-            this.ViewSchedulebtn.Text = "View Schedule";
-            this.ViewSchedulebtn.Click += new System.EventHandler(this.ViewSchedulebtn_Click);
             // 
             // frmMain
             // 
@@ -321,8 +303,6 @@
         private System.Windows.Forms.ToolStripLabel lblUser;
         private System.Windows.Forms.ToolStripMenuItem Menu_Training_Management_Menu;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Menu_Training_Type1;
-        private System.Windows.Forms.ToolStripMenuItem Menu_Training_Type_Management2;
         private System.Windows.Forms.ToolStripMenuItem Menu_Course1;
         private System.Windows.Forms.ToolStripMenuItem Menu_Course_Management2;
         private System.Windows.Forms.ToolStripMenuItem trainingManagementToolStripMenuItem;

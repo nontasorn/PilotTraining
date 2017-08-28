@@ -455,8 +455,8 @@ namespace PilotTraining.TrainingManagement
             txtTrainingBy.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[3].Value.ToString();
             DT_Start.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[4].Value.ToString();
             txtRemarks.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txtAssignID.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[6].Value.ToString();
-            txtAssignID.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[7].Value.ToString();
+           // txtAssignID.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[6].Value.ToString();
+            txtAssignID.Text = dgv_ViewAssignCourse.Rows[e.RowIndex].Cells[8].Value.ToString();
 
         }
 
