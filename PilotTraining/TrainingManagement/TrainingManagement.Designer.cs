@@ -54,6 +54,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_ViewAssignCourse = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.score_btn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewAssignCourse)).BeginInit();
@@ -68,6 +69,7 @@
             this.Edit_Assign_Course_btn,
             this.schedule_btn,
             this.Delete_Assign_Course_btn,
+            this.score_btn,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
@@ -365,6 +367,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1148, 555);
             this.tableLayoutPanel1.TabIndex = 135;
             // 
+            // score_btn
+            // 
+            this.score_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.score_btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.score_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.score_btn.Name = "score_btn";
+            this.score_btn.Size = new System.Drawing.Size(84, 36);
+            this.score_btn.Text = "Score";
+            // 
             // TrainingManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,5 +426,6 @@
         private System.Windows.Forms.TextBox txtTrainingById;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripButton schedule_btn;
+        private System.Windows.Forms.ToolStripButton score_btn;
     }
 }
