@@ -356,5 +356,10 @@ namespace PilotTraining.Fundamental
         {
 
         }
+
+        private void MainTopic_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_ViewTrainingDetail_Format();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PilotTraining.Fundamental
 {
-    partial class MainTopic
+    partial class NonTechnicalList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.Create_Tipic = new System.Windows.Forms.ToolStripButton();
-            this.Edit_Topic = new System.Windows.Forms.ToolStripButton();
-            this.MapingSubtopic = new System.Windows.Forms.ToolStripButton();
+            this.Create_Btn = new System.Windows.Forms.ToolStripButton();
+            this.Edit_Btn = new System.Windows.Forms.ToolStripButton();
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblDetailId = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comb_Status = new System.Windows.Forms.ComboBox();
@@ -44,56 +43,45 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dgv_ViewTrainingDetails = new System.Windows.Forms.DataGridView();
+            this.dgv_ViewNonTechList = new System.Windows.Forms.DataGridView();
             this.toolStrip2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewTrainingDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewNonTechList)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip2
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Create_Tipic,
-            this.Edit_Topic,
-            this.MapingSubtopic,
+            this.Create_Btn,
+            this.Edit_Btn,
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(888, 39);
-            this.toolStrip2.TabIndex = 128;
+            this.toolStrip2.Size = new System.Drawing.Size(862, 39);
+            this.toolStrip2.TabIndex = 130;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // Create_Tipic
+            // Create_Btn
             // 
-            this.Create_Tipic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create_Tipic.Image = global::PilotTraining.Properties.Resources.Add_icon;
-            this.Create_Tipic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Create_Tipic.Name = "Create_Tipic";
-            this.Create_Tipic.Size = new System.Drawing.Size(88, 36);
-            this.Create_Tipic.Text = "Create";
-            this.Create_Tipic.Click += new System.EventHandler(this.Create_Grade_Buton_Click);
+            this.Create_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Btn.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.Create_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Create_Btn.Name = "Create_Btn";
+            this.Create_Btn.Size = new System.Drawing.Size(88, 36);
+            this.Create_Btn.Text = "Create";
+            this.Create_Btn.Click += new System.EventHandler(this.Create_Btn_Click);
             // 
-            // Edit_Topic
+            // Edit_Btn
             // 
-            this.Edit_Topic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_Topic.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
-            this.Edit_Topic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Edit_Topic.Name = "Edit_Topic";
-            this.Edit_Topic.Size = new System.Drawing.Size(69, 36);
-            this.Edit_Topic.Text = "Edit";
-            this.Edit_Topic.Click += new System.EventHandler(this.Edit_Topic_Click);
-            // 
-            // MapingSubtopic
-            // 
-            this.MapingSubtopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.MapingSubtopic.Image = global::PilotTraining.Properties.Resources.Add;
-            this.MapingSubtopic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MapingSubtopic.Name = "MapingSubtopic";
-            this.MapingSubtopic.Size = new System.Drawing.Size(171, 36);
-            this.MapingSubtopic.Text = "Mapping Sub Topic";
-            this.MapingSubtopic.Click += new System.EventHandler(this.MapingSubtopic_Click);
+            this.Edit_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_Btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.Edit_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Edit_Btn.Name = "Edit_Btn";
+            this.Edit_Btn.Size = new System.Drawing.Size(69, 36);
+            this.Edit_Btn.Text = "Edit";
+            this.Edit_Btn.Click += new System.EventHandler(this.Edit_Btn_Click);
             // 
             // Refresh_btn
             // 
@@ -107,28 +95,27 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dgv_ViewNonTechList, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dgv_ViewTrainingDetails, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 39);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 42);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 420);
-            this.tableLayoutPanel1.TabIndex = 129;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(862, 421);
+            this.tableLayoutPanel1.TabIndex = 131;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.Controls.Add(this.lblDetailId);
+            this.groupBox1.Controls.Add(this.lblId);
             this.groupBox1.Controls.Add(this.txtDescription);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comb_Status);
@@ -139,19 +126,19 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(882, 181);
+            this.groupBox1.Size = new System.Drawing.Size(856, 192);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Training Main Topic";
+            this.groupBox1.Text = "Non Technical Skill";
             // 
-            // lblDetailId
+            // lblId
             // 
-            this.lblDetailId.AutoSize = true;
-            this.lblDetailId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailId.Location = new System.Drawing.Point(283, 32);
-            this.lblDetailId.Name = "lblDetailId";
-            this.lblDetailId.Size = new System.Drawing.Size(0, 18);
-            this.lblDetailId.TabIndex = 130;
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.Location = new System.Drawing.Point(283, 32);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 18);
+            this.lblId.TabIndex = 130;
             // 
             // txtDescription
             // 
@@ -224,48 +211,49 @@
             this.label7.TabIndex = 121;
             this.label7.Text = "Status :";
             // 
-            // dgv_ViewTrainingDetails
+            // dgv_ViewNonTechList
             // 
-            this.dgv_ViewTrainingDetails.AllowUserToAddRows = false;
-            this.dgv_ViewTrainingDetails.AllowUserToDeleteRows = false;
-            this.dgv_ViewTrainingDetails.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgv_ViewTrainingDetails.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_ViewTrainingDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_ViewTrainingDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_ViewTrainingDetails.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_ViewTrainingDetails.Location = new System.Drawing.Point(3, 190);
-            this.dgv_ViewTrainingDetails.MultiSelect = false;
-            this.dgv_ViewTrainingDetails.Name = "dgv_ViewTrainingDetails";
-            this.dgv_ViewTrainingDetails.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewTrainingDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_ViewTrainingDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(882, 227);
-            this.dgv_ViewTrainingDetails.TabIndex = 0;
-            this.dgv_ViewTrainingDetails.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewTrainingDetails_CellMouseUp);
+            this.dgv_ViewNonTechList.AllowUserToAddRows = false;
+            this.dgv_ViewNonTechList.AllowUserToDeleteRows = false;
+            this.dgv_ViewNonTechList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_ViewNonTechList.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgv_ViewNonTechList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_ViewNonTechList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ViewNonTechList.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgv_ViewNonTechList.Location = new System.Drawing.Point(3, 209);
+            this.dgv_ViewNonTechList.MultiSelect = false;
+            this.dgv_ViewNonTechList.Name = "dgv_ViewNonTechList";
+            this.dgv_ViewNonTechList.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewNonTechList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_ViewNonTechList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_ViewNonTechList.Size = new System.Drawing.Size(856, 209);
+            this.dgv_ViewNonTechList.TabIndex = 2;
+            this.dgv_ViewNonTechList.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewNonTechList_CellMouseUp);
             // 
-            // MainTopic
+            // NonTechnicalList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 459);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(862, 466);
             this.Controls.Add(this.toolStrip2);
-            this.Name = "MainTopic";
-            this.Text = "MainTopic";
-            this.Load += new System.EventHandler(this.DetailsGroup_Load);
-            this.Resize += new System.EventHandler(this.MainTopic_Resize);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "NonTechnicalList";
+            this.Text = "NonTechnicalList";
+            this.Load += new System.EventHandler(this.NonTechnicalList_Load);
+            this.Resize += new System.EventHandler(this.NonTechnicalList_Resize);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewTrainingDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewNonTechList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,20 +262,20 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton Create_Tipic;
-        private System.Windows.Forms.ToolStripButton Edit_Topic;
-        private System.Windows.Forms.ToolStripButton MapingSubtopic;
+        private System.Windows.Forms.ToolStripButton Create_Btn;
+        private System.Windows.Forms.ToolStripButton Edit_Btn;
         private System.Windows.Forms.ToolStripButton Refresh_btn;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comb_Status;
         private System.Windows.Forms.TextBox txtOrder;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dgv_ViewTrainingDetails;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.Label lblDetailId;
+        private System.Windows.Forms.DataGridView dgv_ViewNonTechList;
+
     }
 }
