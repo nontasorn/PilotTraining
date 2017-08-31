@@ -62,19 +62,20 @@ namespace PilotTraining.Fundamental
             Cmd.CommandType = CommandType.Text;
             Cmd.Connection = Conn;
             string id = Cmd.ExecuteScalar().ToString();
-
-            if (strMaxOrder == "")
+            if (id == "")
             {
-                MaxOrder = 1;
+                NonTechMainId = 1;
             }
             else
             {
-                MaxOrder = Convert.ToInt32(id.ToString());
-                MaxOrder++;
+                NonTechMainId = Convert.ToInt32(id.ToString());
+                NonTechMainId++;
             }
-
-            txtOrder.Text = MaxOrder.ToString();
+            string strMax = "";
+            strMax = String.Format("{0:000000}", Convert.ToInt16(NonTechMainId.ToString()));
+            lblId.Text = "NT" + strMax;
             Cmd.Parameters.Clear();
+           
 
         }
         private void Max_Order()
@@ -90,18 +91,17 @@ namespace PilotTraining.Fundamental
             Cmd.Connection = Conn;
             string id = Cmd.ExecuteScalar().ToString();
 
-            if (id == "")
+            if (strMaxOrder == "")
             {
-                NonTechMainId = 1;
+                MaxOrder = 1;
             }
             else
             {
-                NonTechMainId = Convert.ToInt32(id.ToString());
-                NonTechMainId++;
+                MaxOrder = Convert.ToInt32(id.ToString());
+                MaxOrder++;
             }
-            string strMax = "";
-            strMax = String.Format("{0:000000}", Convert.ToInt16(NonTechMainId.ToString()));
-            lblId.Text = "NT" + strMax;
+
+            txtOrder.Text = MaxOrder.ToString();
             Cmd.Parameters.Clear();
 
         }

@@ -102,6 +102,12 @@
     <Compile Include="Fundamental\MappingSubject.Designer.cs">
       <DependentUpon>MappingSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\NonTechnicalCategoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\NonTechnicalCategoryList.Designer.cs">
+      <DependentUpon>NonTechnicalCategoryList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\NonTechnicalList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,12 @@
     </Compile>
     <Compile Include="Fundamental\Training_Type.Designer.cs">
       <DependentUpon>Training_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\UniversityList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\UniversityList.Designer.cs">
+      <DependentUpon>UniversityList.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -193,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\MappingSubject.resx">
       <DependentUpon>MappingSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\NonTechnicalCategoryList.resx">
+      <DependentUpon>NonTechnicalCategoryList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\NonTechnicalList.resx">
       <DependentUpon>NonTechnicalList.cs</DependentUpon>

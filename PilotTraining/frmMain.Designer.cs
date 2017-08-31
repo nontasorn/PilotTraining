@@ -42,6 +42,10 @@
             this.Menu_TrainingDetails1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCreateTrainingDetails2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Subtopic = new System.Windows.Forms.ToolStripMenuItem();
+            this.nonTechnicalSkillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.University_Btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.University_Manag_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee_Management2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,10 +57,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.nonTechnicalSkillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
-            this.University_Btn = new System.Windows.Forms.ToolStripMenuItem();
-            this.University_Manag_Btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.Category_Btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.subcate_btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.mappingMainToTrainingFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -183,6 +186,38 @@
             this.Subtopic.Text = "Sub Topic";
             this.Subtopic.Click += new System.EventHandler(this.Subtopic_Click);
             // 
+            // nonTechnicalSkillToolStripMenuItem
+            // 
+            this.nonTechnicalSkillToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NonTechnicalSkill_Btn,
+            this.Category_Btn,
+            this.subcate_btn,
+            this.mappingMainToTrainingFromToolStripMenuItem});
+            this.nonTechnicalSkillToolStripMenuItem.Name = "nonTechnicalSkillToolStripMenuItem";
+            this.nonTechnicalSkillToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.nonTechnicalSkillToolStripMenuItem.Text = "Non Technical Skill";
+            // 
+            // NonTechnicalSkill_Btn
+            // 
+            this.NonTechnicalSkill_Btn.Name = "NonTechnicalSkill_Btn";
+            this.NonTechnicalSkill_Btn.Size = new System.Drawing.Size(312, 24);
+            this.NonTechnicalSkill_Btn.Text = "Main Non Technical Skll";
+            this.NonTechnicalSkill_Btn.Click += new System.EventHandler(this.NonTechnicalSkill_Btn_Click);
+            // 
+            // University_Btn
+            // 
+            this.University_Btn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.University_Manag_Btn});
+            this.University_Btn.Name = "University_Btn";
+            this.University_Btn.Size = new System.Drawing.Size(266, 24);
+            this.University_Btn.Text = "University Of Texas Marker";
+            // 
+            // University_Manag_Btn
+            // 
+            this.University_Manag_Btn.Name = "University_Manag_Btn";
+            this.University_Manag_Btn.Size = new System.Drawing.Size(364, 24);
+            this.University_Manag_Btn.Text = "University Of Texas Marker Management";
+            // 
             // Menu_Administration
             // 
             this.Menu_Administration.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -271,34 +306,24 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
-            // nonTechnicalSkillToolStripMenuItem
+            // Category_Btn
             // 
-            this.nonTechnicalSkillToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NonTechnicalSkill_Btn});
-            this.nonTechnicalSkillToolStripMenuItem.Name = "nonTechnicalSkillToolStripMenuItem";
-            this.nonTechnicalSkillToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
-            this.nonTechnicalSkillToolStripMenuItem.Text = "Non Technical Skill";
+            this.Category_Btn.Name = "Category_Btn";
+            this.Category_Btn.Size = new System.Drawing.Size(312, 24);
+            this.Category_Btn.Text = "Category Non Technical Skill";
+            this.Category_Btn.Click += new System.EventHandler(this.Category_Btn_Click);
             // 
-            // NonTechnicalSkill_Btn
+            // subcate_btn
             // 
-            this.NonTechnicalSkill_Btn.Name = "NonTechnicalSkill_Btn";
-            this.NonTechnicalSkill_Btn.Size = new System.Drawing.Size(305, 24);
-            this.NonTechnicalSkill_Btn.Text = "Non Technical Skll Management";
-            this.NonTechnicalSkill_Btn.Click += new System.EventHandler(this.NonTechnicalSkill_Btn_Click);
+            this.subcate_btn.Name = "subcate_btn";
+            this.subcate_btn.Size = new System.Drawing.Size(312, 24);
+            this.subcate_btn.Text = "Sub-Category Non Technical Skill";
             // 
-            // University_Btn
+            // mappingMainToTrainingFromToolStripMenuItem
             // 
-            this.University_Btn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.University_Manag_Btn});
-            this.University_Btn.Name = "University_Btn";
-            this.University_Btn.Size = new System.Drawing.Size(266, 24);
-            this.University_Btn.Text = "University Of Texas Marker";
-            // 
-            // University_Manag_Btn
-            // 
-            this.University_Manag_Btn.Name = "University_Manag_Btn";
-            this.University_Manag_Btn.Size = new System.Drawing.Size(364, 24);
-            this.University_Manag_Btn.Text = "University Of Texas Marker Management";
+            this.mappingMainToTrainingFromToolStripMenuItem.Name = "mappingMainToTrainingFromToolStripMenuItem";
+            this.mappingMainToTrainingFromToolStripMenuItem.Size = new System.Drawing.Size(312, 24);
+            this.mappingMainToTrainingFromToolStripMenuItem.Text = "Mapping to training from";
             // 
             // frmMain
             // 
@@ -310,7 +335,6 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.Menu_Home;
             this.Name = "frmMain";
-            this.Text = "frmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Menu_Home.ResumeLayout(false);
@@ -353,5 +377,8 @@
         private System.Windows.Forms.ToolStripMenuItem NonTechnicalSkill_Btn;
         private System.Windows.Forms.ToolStripMenuItem University_Btn;
         private System.Windows.Forms.ToolStripMenuItem University_Manag_Btn;
+        private System.Windows.Forms.ToolStripMenuItem Category_Btn;
+        private System.Windows.Forms.ToolStripMenuItem subcate_btn;
+        private System.Windows.Forms.ToolStripMenuItem mappingMainToTrainingFromToolStripMenuItem;
     }
 }
