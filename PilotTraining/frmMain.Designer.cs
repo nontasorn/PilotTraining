@@ -44,6 +44,9 @@
             this.Subtopic = new System.Windows.Forms.ToolStripMenuItem();
             this.nonTechnicalSkillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.Category_Btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.subcate_btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.mappingMainToTrainingFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Manag_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,9 +60,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.Category_Btn = new System.Windows.Forms.ToolStripMenuItem();
-            this.subcate_btn = new System.Windows.Forms.ToolStripMenuItem();
-            this.mappingMainToTrainingFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -204,6 +204,26 @@
             this.NonTechnicalSkill_Btn.Text = "Main Non Technical Skll";
             this.NonTechnicalSkill_Btn.Click += new System.EventHandler(this.NonTechnicalSkill_Btn_Click);
             // 
+            // Category_Btn
+            // 
+            this.Category_Btn.Name = "Category_Btn";
+            this.Category_Btn.Size = new System.Drawing.Size(312, 24);
+            this.Category_Btn.Text = "Category Non Technical Skill";
+            this.Category_Btn.Click += new System.EventHandler(this.Category_Btn_Click);
+            // 
+            // subcate_btn
+            // 
+            this.subcate_btn.Name = "subcate_btn";
+            this.subcate_btn.Size = new System.Drawing.Size(312, 24);
+            this.subcate_btn.Text = "Sub-Category Non Technical Skill";
+            this.subcate_btn.Click += new System.EventHandler(this.subcate_btn_Click);
+            // 
+            // mappingMainToTrainingFromToolStripMenuItem
+            // 
+            this.mappingMainToTrainingFromToolStripMenuItem.Name = "mappingMainToTrainingFromToolStripMenuItem";
+            this.mappingMainToTrainingFromToolStripMenuItem.Size = new System.Drawing.Size(312, 24);
+            this.mappingMainToTrainingFromToolStripMenuItem.Text = "Mapping to training from";
+            // 
             // University_Btn
             // 
             this.University_Btn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -305,25 +325,6 @@
             // 
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
-            // 
-            // Category_Btn
-            // 
-            this.Category_Btn.Name = "Category_Btn";
-            this.Category_Btn.Size = new System.Drawing.Size(312, 24);
-            this.Category_Btn.Text = "Category Non Technical Skill";
-            this.Category_Btn.Click += new System.EventHandler(this.Category_Btn_Click);
-            // 
-            // subcate_btn
-            // 
-            this.subcate_btn.Name = "subcate_btn";
-            this.subcate_btn.Size = new System.Drawing.Size(312, 24);
-            this.subcate_btn.Text = "Sub-Category Non Technical Skill";
-            // 
-            // mappingMainToTrainingFromToolStripMenuItem
-            // 
-            this.mappingMainToTrainingFromToolStripMenuItem.Name = "mappingMainToTrainingFromToolStripMenuItem";
-            this.mappingMainToTrainingFromToolStripMenuItem.Size = new System.Drawing.Size(312, 24);
-            this.mappingMainToTrainingFromToolStripMenuItem.Text = "Mapping to training from";
             // 
             // frmMain
             // 

@@ -12,26 +12,23 @@ using System.Data.SqlClient;
 
 namespace PilotTraining.Fundamental
 {
-    public partial class NonTechnicalCategoryList : Form
+    public partial class NonTechnicalSubList : Form
     {
-        public NonTechnicalCategoryList()
+        public NonTechnicalSubList()
         {
             InitializeComponent();
         }
-
         SqlConnection Conn;
         SqlCommand Cmd;
         StringBuilder Sbd;
         SqlDataReader Sdr;
         SqlTransaction Tr;
         string strloginId;
-        
-        int NonTechMainId;
-        int amend;
+        int NonTechSubId;
         int MaxOrder;
-        
+        int amend;
 
-        private void NonTechnicalCategoryList_Load(object sender, EventArgs e)
+        private void NonTechnicalSubList_Load(object sender, EventArgs e)
         {
             string strConn;
             strConn = DBConnString.strConn;
@@ -42,19 +39,21 @@ namespace PilotTraining.Fundamental
             }
             Conn.ConnectionString = strConn;
             Conn.Open();
+           
 
             strloginId = DBConnString.sUserIdLogin;
-            ShowNonTechCatList();
-            Max_NonTechCate_ID();
-            cmb_MainTopic();
+
+            Max_NonTechSubCate_ID();
+            cmb_CateTopic();
             Max_Order();
+            ShowNonTechSubList();
             cmb_status();
         }
-        private void Max_NonTechCate_ID()
+        private void Max_NonTechSubCate_ID()
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(SUBSTRING(NonTechCateList_Id,4,6)) AS NonTechCateList_Id FROM NonTech_Category_List");
+            Sbd.Append("SELECT MAX(SUBSTRING(NonTechSecSubList_Id,4,6)) AS NonTechSecSubList_Id FROM NonTech_SubCategory_List");
             String sqlMaxStatementIndex;
             sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -65,25 +64,25 @@ namespace PilotTraining.Fundamental
 
             if (id == "")
             {
-                NonTechMainId = 1;
+                NonTechSubId = 1;
             }
             else
             {
-                NonTechMainId = Convert.ToInt32(id.ToString());
-                NonTechMainId++;
+                NonTechSubId = Convert.ToInt32(id.ToString());
+                NonTechSubId++;
             }
             string strMax = "";
-            strMax = String.Format("{0:000000}", Convert.ToInt16(NonTechMainId.ToString()));
-            lblId.Text = "NC" + strMax;
+            strMax = String.Format("{0:000000}", Convert.ToInt16(NonTechSubId.ToString()));
+            lblId.Text = "NS" + strMax;
             Cmd.Parameters.Clear();
 
         }
-        private void cmb_MainTopic()
+        private void cmb_CateTopic()
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
 
-            Sbd.Append("SELECT NonTechMainList_Id, NonTechMainList_Name FROM NonTech_Main_List ORDER BY NonTechMainList_Order");
+            Sbd.Append("SELECT NonTechCateList_Id, NonTechCateList_Name FROM NonTech_Category_List ORDER BY NonTechCateList_Order");
 
             string sqlIni = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -98,12 +97,12 @@ namespace PilotTraining.Fundamental
                 DataTable dtUser = new DataTable();
                 dtUser.Load(Sdr);
 
-                cboMaintopic.BeginUpdate();
-                cboMaintopic.DisplayMember = "NonTechMainList_Name";
-                cboMaintopic.ValueMember = "NonTechMainList_Id";
-                cboMaintopic.DataSource = dtUser;
-                cboMaintopic.EndUpdate();
-                cboMaintopic.SelectedIndex = 0;
+                cboSubtopic.BeginUpdate();
+                cboSubtopic.DisplayMember = "NonTechCateList_Name";
+                cboSubtopic.ValueMember = "NonTechCateList_Id";
+                cboSubtopic.DataSource = dtUser;
+                cboSubtopic.EndUpdate();
+                cboSubtopic.SelectedIndex = 0;
 
             }
             Sdr.Close();
@@ -112,7 +111,7 @@ namespace PilotTraining.Fundamental
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(NonTechCateList_Order) AS MaxOrder FROM NonTech_Category_List");
+            Sbd.Append("SELECT MAX(NonTechSecSubList_Order) AS NonTechSecSubList_Order FROM NonTech_SubCategory_List");
             String sqlMaxStatementIndex;
             sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -120,7 +119,7 @@ namespace PilotTraining.Fundamental
             Cmd.CommandType = CommandType.Text;
             Cmd.Connection = Conn;
             string strMaxOrder = Cmd.ExecuteScalar().ToString();
-           
+
             if (strMaxOrder == "")
             {
                 MaxOrder = 1;
@@ -133,7 +132,7 @@ namespace PilotTraining.Fundamental
 
             txtOrder.Text = MaxOrder.ToString();
             Cmd.Parameters.Clear();
-           
+
 
         }
         private void cmb_status()
@@ -166,99 +165,32 @@ namespace PilotTraining.Fundamental
             }
             Sdr.Close();
         }
-
-        private void Create_Btn_Click(object sender, EventArgs e)
-        {
-            /*
-            if (clsCash.IsPermissionId("P01") == false)
-            {
-                MessageBox.Show("คุณไม่มีสิทธิ์เพิ่มผู้ใช้ใหม่ กรุณาติดต่อผู้ดูแลระบบ...");
-                return;
-            }
-             * */
-
-            if (txtDescription.Text.Trim() == "")
-            {
-                MessageBox.Show("Please enter description", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtDescription.Focus();
-                return;
-            }
-
-
-            if (MessageBox.Show("Are you sure to create    " + txtDescription.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            {
-
-                Tr = Conn.BeginTransaction();
-                try
-                {
-                    string sqlSaveStHead;
-                    Sbd = new StringBuilder();
-                    Sbd.Remove(0, Sbd.Length);
-                    Sbd.Append("INSERT INTO NonTech_Category_List ");
-                    Sbd.Append("(NonTechCateList_Id,NonTechCateList_Name,NonTechCateList_Order,NonTechCateList_Status,NonTechCateList_CreateBy,NonTechCateList_CreateDate,NonTechCateList_Amend,NonTechMainList_Id) ");
-                    Sbd.Append(" VALUES ");
-                    Sbd.Append(" (@NonTechCateList_Id,@NonTechCateList_Name,@NonTechCateList_Order,@NonTechCateList_Status,@NonTechCateList_CreateBy,@NonTechCateList_CreateDate,@NonTechCateList_Amend,@NonTechMainList_Id )");
-
-                    sqlSaveStHead = Sbd.ToString();
-
-
-                    Cmd.Parameters.Clear();
-                    Cmd.Transaction = Tr;
-                    Cmd.CommandText = sqlSaveStHead;
-
-                    Cmd.Parameters.Add("@NonTechCateList_Id", SqlDbType.NChar).Value = lblId.Text.Trim();
-                    Cmd.Parameters.Add("@NonTechCateList_Name", SqlDbType.NVarChar).Value = txtDescription.Text.Trim();
-                    Cmd.Parameters.Add("@NonTechCateList_Order", SqlDbType.Int).Value = Convert.ToInt64(txtOrder.Text.Trim());
-                    Cmd.Parameters.Add("@NonTechCateList_Status", SqlDbType.NChar).Value = comb_Status.SelectedValue.ToString().Trim();
-
-
-                    Cmd.Parameters.Add("@NonTechCateList_CreateBy", SqlDbType.NChar).Value = strloginId;
-                    Cmd.Parameters.Add("@NonTechCateList_CreateDate", SqlDbType.DateTime).Value = DateTime.Now;
-
-                    Cmd.Parameters.Add("@NonTechCateList_Amend", SqlDbType.Int).Value = 0;
-                    Cmd.Parameters.Add("@NonTechMainList_Id", SqlDbType.NChar).Value = cboMaintopic.SelectedValue.ToString().Trim();
-                    
-                    Cmd.ExecuteNonQuery();
-                    MessageBox.Show("Generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    Tr.Commit();
-                    Max_NonTechCate_ID();
-                    ShowNonTechCatList();
-                    txtDescription.Text = "";
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Unable to create" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Tr.Rollback();
-                }
-            }
-        }
-        private void ShowNonTechCatList()
+        private void ShowNonTechSubList()
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
             Sbd.Append("SELECT ");
-            Sbd.Append("M.NonTechCateList_Id, ");
-            Sbd.Append("M.NonTechCateList_Name,");
-            Sbd.Append("M.NonTechCateList_Order,");
+            Sbd.Append("M.NonTechSecSubList_Id, ");
+            Sbd.Append("M.NonTechSecSubList_Name,");
+            Sbd.Append("M.NonTechSecSubList_Order,");
             Sbd.Append("P.Para_Desc AS Status,");
             Sbd.Append("(U.Employee_SureName+' '+U.Employee_LastName) AS CreateBy,");
-            Sbd.Append("M.NonTechCateList_CreateDate,");
+            Sbd.Append("M.NonTechSecSubList_CreateDate,");
             Sbd.Append("(U2.Employee_SureName+' '+U2.Employee_LastName) AS ModifyBy, ");
-            Sbd.Append("M.NonTechCateList_ModifiedBy,");
-            Sbd.Append("M.NonTechCateList_Amend, ");
-            Sbd.Append("H.NonTechMainList_Name ");
-            Sbd.Append("FROM NonTech_Category_List M ");
+            Sbd.Append("M.NonTechSecSubList_ModifiedDate,");
+            Sbd.Append("M.NonTechSecSubList_Amend, ");
+            Sbd.Append("H.NonTechCateList_Name ");
+            Sbd.Append("FROM NonTech_SubCategory_List M ");
             Sbd.Append("INNER JOIN User_Login U ON ");
-            Sbd.Append("M.NonTechCateList_CreateBy = U.Employee_ID ");
+            Sbd.Append("M.NonTechSecSubList_CreateBy = U.Employee_ID ");
             Sbd.Append("LEFT JOIN User_Login U2 ");
-            Sbd.Append("ON M.NonTechCateList_ModifiedBy = U2.Employee_ID  ");
+            Sbd.Append("ON M.NonTechSecSubList_ModifiedBy = U2.Employee_ID  ");
             Sbd.Append("INNER JOIN Parameter P ");
             Sbd.Append("ON P.Para_BPC		= 'NonTechnicalSkill' ");
             Sbd.Append("AND P.Para_Type		= 'status' ");
-            Sbd.Append("AND P.Para_Code		= M.NonTechCateList_Status ");
-            Sbd.Append("INNER JOIN NonTech_Main_List H ");
-            Sbd.Append("ON H.NonTechMainList_Id = M.NonTechMainList_Id ");
+            Sbd.Append("AND P.Para_Code		= M.NonTechSecSubList_Status ");
+            Sbd.Append("INNER JOIN NonTech_Category_List H ");
+            Sbd.Append("ON H.NonTechCateList_Id = M.NonTechCateList_Id ");
 
 
             string sqlProduct = Sbd.ToString();
@@ -321,9 +253,77 @@ namespace PilotTraining.Fundamental
             dgv_ViewNonTechList.Columns[8].Width = 100;
         }
 
-        private void NonTechnicalCategoryList_Resize(object sender, EventArgs e)
+        private void Create_Btn_Click(object sender, EventArgs e)
         {
-            FixColumnWidth_dgv_ViewTrainingDetail_Format();
+            /*
+            if (clsCash.IsPermissionId("P01") == false)
+            {
+                MessageBox.Show("คุณไม่มีสิทธิ์เพิ่มผู้ใช้ใหม่ กรุณาติดต่อผู้ดูแลระบบ...");
+                return;
+            }
+             * */
+
+            if (txtDescription.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter description", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtDescription.Focus();
+                return;
+            }
+
+
+            if (MessageBox.Show("Are you sure to create    " + txtDescription.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                Tr = Conn.BeginTransaction();
+                try
+                {
+                    string sqlSaveStHead;
+                    Sbd = new StringBuilder();
+                    Sbd.Remove(0, Sbd.Length);
+                    Sbd.Append("INSERT INTO NonTech_SubCategory_List ");
+                    Sbd.Append("(NonTechSecSubList_Id,NonTechSecSubList_Name,NonTechSecSubList_Order,NonTechSecSubList_CreateBy,NonTechSecSubList_CreateDate,NonTechSecSubList_Amend,NonTechSecSubList_Status,NonTechCateList_Id) ");
+                    Sbd.Append(" VALUES ");
+                    Sbd.Append(" (@NonTechSecSubList_Id,@NonTechSecSubList_Name,@NonTechSecSubList_Order,@NonTechSecSubList_CreateBy,@NonTechSecSubList_CreateDate,@NonTechSecSubList_Amend,@NonTechSecSubList_Status,@NonTechCateList_Id )");
+
+                    sqlSaveStHead = Sbd.ToString();
+
+
+                    Cmd.Parameters.Clear();
+                    Cmd.Transaction = Tr;
+                    Cmd.CommandText = sqlSaveStHead;
+
+                    Cmd.Parameters.Add("@NonTechSecSubList_Id", SqlDbType.NChar).Value = lblId.Text.Trim();
+                    Cmd.Parameters.Add("@NonTechSecSubList_Name", SqlDbType.NVarChar).Value = txtDescription.Text.Trim();
+                    Cmd.Parameters.Add("@NonTechSecSubList_Order", SqlDbType.Int).Value = Convert.ToInt64(txtOrder.Text.Trim());
+                    Cmd.Parameters.Add("@NonTechSecSubList_Status", SqlDbType.NChar).Value = comb_Status.SelectedValue.ToString().Trim();
+
+
+                    Cmd.Parameters.Add("@NonTechSecSubList_CreateBy", SqlDbType.NChar).Value = strloginId;
+                    Cmd.Parameters.Add("@NonTechSecSubList_CreateDate", SqlDbType.DateTime).Value = DateTime.Now;
+
+                    Cmd.Parameters.Add("@NonTechSecSubList_Amend", SqlDbType.Int).Value = 0;
+                    Cmd.Parameters.Add("@NonTechCateList_Id", SqlDbType.NChar).Value = cboSubtopic.SelectedValue.ToString().Trim();
+
+                    Cmd.ExecuteNonQuery();
+                    MessageBox.Show("Generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Tr.Commit();
+                    Max_NonTechSubCate_ID();
+                    
+                    ShowNonTechSubList();
+                    txtDescription.Text = "";
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to create  " + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Tr.Rollback();
+                }
+            }
+        }
+
+        private void Refresh_btn_Click(object sender, EventArgs e)
+        {
+            ShowNonTechSubList();
         }
 
         private void Edit_Btn_Click(object sender, EventArgs e)
@@ -345,15 +345,15 @@ namespace PilotTraining.Fundamental
                     string sqlSaveStHead;
                     Sbd = new StringBuilder();
                     Sbd.Remove(0, Sbd.Length);
-                    Sbd.Append("UPDATE NonTech_Category_List ");
-                    Sbd.Append("SET NonTechCateList_Name = @NonTechCateList_Name,");
-                    Sbd.Append("NonTechCateList_Order = @NonTechCateList_Order,");
-                    Sbd.Append("NonTechCateList_Status = @NonTechCateList_Status,");
-                    Sbd.Append("NonTechCateList_ModifiedBy = @NonTechCateList_ModifiedBy,");
-                    Sbd.Append("NonTechCateList_ModifiedDate = @NonTechCateList_ModifiedDate, ");
-                    Sbd.Append("NonTechCateList_Amend = @NonTechCateList_Amend, ");
-                    Sbd.Append("NonTechMainList_Id = @NonTechMainList_Id ");
-                    Sbd.Append("WHERE NonTechCateList_Id = @NonTechCateList_Id");
+                    Sbd.Append("UPDATE NonTech_SubCategory_List ");
+                    Sbd.Append("SET NonTechSecSubList_Name = @NonTechSecSubList_Name,");
+                    Sbd.Append("NonTechSecSubList_Order = @NonTechSecSubList_Order,");
+                    Sbd.Append("NonTechSecSubList_Status = @NonTechSecSubList_Status,");
+                    Sbd.Append("NonTechSecSubList_ModifiedBy = @NonTechSecSubList_ModifiedBy,");
+                    Sbd.Append("NonTechSecSubList_ModifiedDate = @NonTechSecSubList_ModifiedDate, ");
+                    Sbd.Append("NonTechSecSubList_Amend = @NonTechSecSubList_Amend, ");
+                    Sbd.Append("NonTechCateList_Id = @NonTechCateList_Id ");
+                    Sbd.Append("WHERE NonTechSecSubList_Id = @NonTechSecSubList_Id");
 
                     sqlSaveStHead = Sbd.ToString();
 
@@ -362,21 +362,21 @@ namespace PilotTraining.Fundamental
                     Cmd.Transaction = Tr;
                     Cmd.CommandText = sqlSaveStHead;
 
-                    Cmd.Parameters.Add("@NonTechCateList_Id", SqlDbType.NVarChar).Value = lblId.Text.Trim();
-                    Cmd.Parameters.Add("@NonTechCateList_Order", SqlDbType.Int).Value = txtOrder.Text.Trim();
+                    Cmd.Parameters.Add("@NonTechSecSubList_Id", SqlDbType.NVarChar).Value = lblId.Text.Trim();
+                    Cmd.Parameters.Add("@NonTechSecSubList_Order", SqlDbType.Int).Value = txtOrder.Text.Trim();
 
-                    Cmd.Parameters.Add("@NonTechCateList_Name", SqlDbType.NVarChar).Value = txtDescription.Text.Trim();
-                    Cmd.Parameters.Add("@NonTechCateList_Status", SqlDbType.NChar).Value = comb_Status.SelectedValue.ToString();
-                    Cmd.Parameters.Add("@NonTechCateList_ModifiedBy", SqlDbType.NChar).Value = strloginId;
-                    Cmd.Parameters.Add("@NonTechCateList_ModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
-                    Cmd.Parameters.Add("@NonTechCateList_Amend", SqlDbType.Int).Value = amend + 1;
-                    Cmd.Parameters.Add("@NonTechMainList_Id", SqlDbType.NChar).Value = cboMaintopic.SelectedValue.ToString();
+                    Cmd.Parameters.Add("@NonTechSecSubList_Name", SqlDbType.NVarChar).Value = txtDescription.Text.Trim();
+                    Cmd.Parameters.Add("@NonTechSecSubList_Status", SqlDbType.NChar).Value = comb_Status.SelectedValue.ToString();
+                    Cmd.Parameters.Add("@NonTechSecSubList_ModifiedBy", SqlDbType.NChar).Value = strloginId;
+                    Cmd.Parameters.Add("@NonTechSecSubList_ModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@NonTechSecSubList_Amend", SqlDbType.Int).Value = amend + 1;
+                    Cmd.Parameters.Add("@NonTechCateList_Id", SqlDbType.NChar).Value = cboSubtopic.SelectedValue.ToString();
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Updated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
-
-                    ShowNonTechCatList();
-                    Max_NonTechCate_ID();            
+                    ShowNonTechSubList();
+                    Max_NonTechSubCate_ID();
+                   
                     Max_Order();
                     // Max_Order(); // Max order details
 
@@ -396,18 +396,14 @@ namespace PilotTraining.Fundamental
 
         private void dgv_ViewNonTechList_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            cboMaintopic.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[9].Value.ToString();
+            cboSubtopic.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[9].Value.ToString();
             lblId.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[0].Value.ToString();
             amend = Convert.ToInt32(dgv_ViewNonTechList.Rows[e.RowIndex].Cells[8].Value.ToString());
             txtOrder.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[1].Value.ToString();
             comb_Status.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[3].Value.ToString();
             Create_Btn.Enabled = false;
-        }
-
-        private void Refresh_btn_Click(object sender, EventArgs e)
-        {
-            ShowNonTechCatList();
+            Edit_Btn.Enabled = true;
         }
     }
 }

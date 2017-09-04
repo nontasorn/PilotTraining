@@ -118,6 +118,13 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void subcate_btn_Click(object sender, EventArgs e)
+        {
+            Fundamental.NonTechnicalSubList frm = new Fundamental.NonTechnicalSubList();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }

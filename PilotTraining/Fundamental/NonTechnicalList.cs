@@ -49,6 +49,7 @@ namespace PilotTraining.Fundamental
             ShowNonTechList();
             Create_Btn.Enabled = true;
             Max_NonTechMain_ID();
+            Max_Order();
         }
         private void Max_NonTechMain_ID()
         {
@@ -154,7 +155,7 @@ namespace PilotTraining.Fundamental
             }
 
 
-            if (MessageBox.Show("Are you sure to create new detail   " + txtDescription.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Are you sure to create    " + txtDescription.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
 
                 Tr = Conn.BeginTransaction();
@@ -189,8 +190,7 @@ namespace PilotTraining.Fundamental
                     MessageBox.Show("Generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
                     Max_NonTechMain_ID();
-                   // DataHead_Details();
-                    //Max_Order(); // Max order details
+                    ShowNonTechList();
                     txtDescription.Text = "";
 
                 }

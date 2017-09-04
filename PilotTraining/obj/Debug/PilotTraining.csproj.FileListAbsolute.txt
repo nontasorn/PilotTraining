@@ -165,3 +165,5 @@ D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotT
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.TrainingManagement.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.ViewSchedule.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.csproj.GenerateResource.Cache
+D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.NonTechnicalCategoryList.resources
+D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.NonTechnicalSubList.resources

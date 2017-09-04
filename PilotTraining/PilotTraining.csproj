@@ -114,6 +114,12 @@
     <Compile Include="Fundamental\NonTechnicalList.Designer.cs">
       <DependentUpon>NonTechnicalList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\NonTechnicalSubList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\NonTechnicalSubList.Designer.cs">
+      <DependentUpon>NonTechnicalSubList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\Sub-Subject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\NonTechnicalList.resx">
       <DependentUpon>NonTechnicalList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\NonTechnicalSubList.resx">
+      <DependentUpon>NonTechnicalSubList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Sub-Subject.resx">
       <DependentUpon>Sub-Subject.cs</DependentUpon>
