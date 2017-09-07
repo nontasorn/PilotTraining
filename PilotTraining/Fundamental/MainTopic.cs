@@ -260,14 +260,14 @@ namespace PilotTraining.Fundamental
 
                 dgv_ViewTrainingDetails.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
                 dgv_ViewTrainingDetails.Columns[5].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
-
+                dgv_ViewTrainingDetails.Columns[0].Visible = false;
             }
         }
         private void FixColumnWidth_dgv_ViewTrainingDetail_Format()
         {
             int w = dgv_ViewTrainingDetails.Width;
             dgv_ViewTrainingDetails.Columns[0].Width = 100;
-            dgv_ViewTrainingDetails.Columns[1].Width = w - 700;
+            dgv_ViewTrainingDetails.Columns[1].Width = w - 600;
             dgv_ViewTrainingDetails.Columns[2].Width = 100;
             dgv_ViewTrainingDetails.Columns[3].Width = 100;
             dgv_ViewTrainingDetails.Columns[4].Width = 100;
@@ -289,6 +289,7 @@ namespace PilotTraining.Fundamental
             txtOrder.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
             Create_Tipic.Enabled = false;
+            MapingSubtopic.Enabled = true;
 
         }
 
@@ -354,6 +355,21 @@ namespace PilotTraining.Fundamental
 
         private void MapingSubtopic_Click(object sender, EventArgs e)
         {
+            if (lblDetailId.Text == null)
+            {
+                MessageBox.Show("Please choose the item");
+            }
+            else
+            {
+
+                Fundamental.MappingSubject frm = new MappingSubject();
+                Close();
+
+                frm.subjectId = lblDetailId.Text;
+                frm.subjectname = txtDescription.Text;
+                frm.ShowDialog();
+
+            }
 
         }
 

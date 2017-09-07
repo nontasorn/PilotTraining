@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.Create_Tipic = new System.Windows.Forms.ToolStripButton();
             this.Edit_Topic = new System.Windows.Forms.ToolStripButton();
@@ -81,6 +81,7 @@
             this.Edit_Topic.Name = "Edit_Topic";
             this.Edit_Topic.Size = new System.Drawing.Size(69, 36);
             this.Edit_Topic.Text = "Edit";
+            this.Edit_Topic.Click += new System.EventHandler(this.Edit_Topic_Click);
             // 
             // Refresh_btn
             // 
@@ -90,6 +91,7 @@
             this.Refresh_btn.Name = "Refresh_btn";
             this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
             this.Refresh_btn.Text = "Refresh";
+            this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -223,16 +225,17 @@
             this.dgv_ViewTrainingDetails.MultiSelect = false;
             this.dgv_ViewTrainingDetails.Name = "dgv_ViewTrainingDetails";
             this.dgv_ViewTrainingDetails.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewTrainingDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewTrainingDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_ViewTrainingDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(882, 227);
             this.dgv_ViewTrainingDetails.TabIndex = 0;
+            this.dgv_ViewTrainingDetails.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewTrainingDetails_CellMouseUp);
             // 
             // SubTopic
             // 
@@ -244,6 +247,7 @@
             this.Name = "SubTopic";
             this.Text = "SubTopic";
             this.Load += new System.EventHandler(this.SubTopic_Load);
+            this.Resize += new System.EventHandler(this.SubTopic_Resize);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
