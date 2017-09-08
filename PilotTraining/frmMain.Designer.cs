@@ -46,7 +46,6 @@
             this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Category_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.subcate_btn = new System.Windows.Forms.ToolStripMenuItem();
-            this.mappingMainToTrainingFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Manag_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +59,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
+            this.MappingToForm_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -167,7 +167,8 @@
             // 
             this.Menu_TrainingDetails1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuCreateTrainingDetails2,
-            this.Subtopic});
+            this.Subtopic,
+            this.MappingToForm_btn});
             this.Menu_TrainingDetails1.Name = "Menu_TrainingDetails1";
             this.Menu_TrainingDetails1.Size = new System.Drawing.Size(266, 24);
             this.Menu_TrainingDetails1.Text = "Topic";
@@ -175,14 +176,14 @@
             // MenuCreateTrainingDetails2
             // 
             this.MenuCreateTrainingDetails2.Name = "MenuCreateTrainingDetails2";
-            this.MenuCreateTrainingDetails2.Size = new System.Drawing.Size(154, 24);
+            this.MenuCreateTrainingDetails2.Size = new System.Drawing.Size(202, 24);
             this.MenuCreateTrainingDetails2.Text = "Main Topic";
             this.MenuCreateTrainingDetails2.Click += new System.EventHandler(this.MenuCreateTrainingDetails2_Click);
             // 
             // Subtopic
             // 
             this.Subtopic.Name = "Subtopic";
-            this.Subtopic.Size = new System.Drawing.Size(154, 24);
+            this.Subtopic.Size = new System.Drawing.Size(202, 24);
             this.Subtopic.Text = "Sub Topic";
             this.Subtopic.Click += new System.EventHandler(this.Subtopic_Click);
             // 
@@ -191,8 +192,7 @@
             this.nonTechnicalSkillToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NonTechnicalSkill_Btn,
             this.Category_Btn,
-            this.subcate_btn,
-            this.mappingMainToTrainingFromToolStripMenuItem});
+            this.subcate_btn});
             this.nonTechnicalSkillToolStripMenuItem.Name = "nonTechnicalSkillToolStripMenuItem";
             this.nonTechnicalSkillToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
             this.nonTechnicalSkillToolStripMenuItem.Text = "Non Technical Skill";
@@ -217,12 +217,6 @@
             this.subcate_btn.Size = new System.Drawing.Size(312, 24);
             this.subcate_btn.Text = "Sub-Category Non Technical Skill";
             this.subcate_btn.Click += new System.EventHandler(this.subcate_btn_Click);
-            // 
-            // mappingMainToTrainingFromToolStripMenuItem
-            // 
-            this.mappingMainToTrainingFromToolStripMenuItem.Name = "mappingMainToTrainingFromToolStripMenuItem";
-            this.mappingMainToTrainingFromToolStripMenuItem.Size = new System.Drawing.Size(312, 24);
-            this.mappingMainToTrainingFromToolStripMenuItem.Text = "Mapping to training from";
             // 
             // University_Btn
             // 
@@ -326,6 +320,12 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
+            // MappingToForm_btn
+            // 
+            this.MappingToForm_btn.Name = "MappingToForm_btn";
+            this.MappingToForm_btn.Size = new System.Drawing.Size(202, 24);
+            this.MappingToForm_btn.Text = "Mapping To Form";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,6 +380,6 @@
         private System.Windows.Forms.ToolStripMenuItem University_Manag_Btn;
         private System.Windows.Forms.ToolStripMenuItem Category_Btn;
         private System.Windows.Forms.ToolStripMenuItem subcate_btn;
-        private System.Windows.Forms.ToolStripMenuItem mappingMainToTrainingFromToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MappingToForm_btn;
     }
 }

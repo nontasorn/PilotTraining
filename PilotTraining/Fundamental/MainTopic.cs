@@ -28,7 +28,8 @@ namespace PilotTraining.Fundamental
         int DetailId;
         int maxOrder;
         int amend;
-        
+        string strMainTopicId;
+        string strMainTopicName;
 
         private void DetailsGroup_Load(object sender, EventArgs e)
         {
@@ -285,9 +286,11 @@ namespace PilotTraining.Fundamental
         {
 
             lblDetailId.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
+            strMainTopicId = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
             amend = Convert.ToInt32(dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[7].Value.ToString());
             txtOrder.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
+            strMainTopicName = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
             Create_Tipic.Enabled = false;
             MapingSubtopic.Enabled = true;
 
