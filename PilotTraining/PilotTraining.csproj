@@ -78,10 +78,10 @@
     <Compile Include="Fundamental\Course_Management.Designer.cs">
       <DependentUpon>Course_Management.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\MainTopic.cs">
+    <Compile Include="Fundamental\Topic\MainTopic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\MainTopic.Designer.cs">
+    <Compile Include="Fundamental\Topic\MainTopic.Designer.cs">
       <DependentUpon>MainTopic.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\Form_Details_Management.cs">
@@ -96,46 +96,52 @@
     <Compile Include="Fundamental\GradManagement.Designer.cs">
       <DependentUpon>GradManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\MappingSubject.cs">
+    <Compile Include="Fundamental\Subject\MappingSubject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\MappingSubject.Designer.cs">
+    <Compile Include="Fundamental\Subject\MappingSubject.Designer.cs">
       <DependentUpon>MappingSubject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\NonTechnicalCategoryList.cs">
+    <Compile Include="Fundamental\List\NonTechnicalCategoryList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\NonTechnicalCategoryList.Designer.cs">
+    <Compile Include="Fundamental\List\NonTechnicalCategoryList.Designer.cs">
       <DependentUpon>NonTechnicalCategoryList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\NonTechnicalList.cs">
+    <Compile Include="Fundamental\List\NonTechnicalList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\NonTechnicalList.Designer.cs">
+    <Compile Include="Fundamental\List\NonTechnicalList.Designer.cs">
       <DependentUpon>NonTechnicalList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\NonTechnicalSubList.cs">
+    <Compile Include="Fundamental\List\NonTechnicalSubList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\NonTechnicalSubList.Designer.cs">
+    <Compile Include="Fundamental\List\NonTechnicalSubList.Designer.cs">
       <DependentUpon>NonTechnicalSubList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\Sub-Subject.cs">
+    <Compile Include="Fundamental\Subject\Sub-Subject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\Sub-Subject.Designer.cs">
+    <Compile Include="Fundamental\Subject\Sub-Subject.Designer.cs">
       <DependentUpon>Sub-Subject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\Subject.cs">
+    <Compile Include="Fundamental\Subject\Subject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\Subject.Designer.cs">
+    <Compile Include="Fundamental\Subject\Subject.Designer.cs">
       <DependentUpon>Subject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\SubTopic.cs">
+    <Compile Include="Fundamental\Topic\MappingTopic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\SubTopic.Designer.cs">
+    <Compile Include="Fundamental\Topic\MappingTopic.Designer.cs">
+      <DependentUpon>MappingTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\Topic\SubTopic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Topic\SubTopic.Designer.cs">
       <DependentUpon>SubTopic.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\TrainingTypeMapping.cs">
@@ -150,10 +156,10 @@
     <Compile Include="Fundamental\Training_Type.Designer.cs">
       <DependentUpon>Training_Type.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\UniversityList.cs">
+    <Compile Include="Fundamental\List\UniversityList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\UniversityList.Designer.cs">
+    <Compile Include="Fundamental\List\UniversityList.Designer.cs">
       <DependentUpon>UniversityList.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -200,7 +206,7 @@
     <EmbeddedResource Include="Fundamental\Course_Management.resx">
       <DependentUpon>Course_Management.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\MainTopic.resx">
+    <EmbeddedResource Include="Fundamental\Topic\MainTopic.resx">
       <DependentUpon>MainTopic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Form_Details_Management.resx">
@@ -209,25 +215,28 @@
     <EmbeddedResource Include="Fundamental\GradManagement.resx">
       <DependentUpon>GradManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\MappingSubject.resx">
+    <EmbeddedResource Include="Fundamental\Subject\MappingSubject.resx">
       <DependentUpon>MappingSubject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\NonTechnicalCategoryList.resx">
+    <EmbeddedResource Include="Fundamental\List\NonTechnicalCategoryList.resx">
       <DependentUpon>NonTechnicalCategoryList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\NonTechnicalList.resx">
+    <EmbeddedResource Include="Fundamental\List\NonTechnicalList.resx">
       <DependentUpon>NonTechnicalList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\NonTechnicalSubList.resx">
+    <EmbeddedResource Include="Fundamental\List\NonTechnicalSubList.resx">
       <DependentUpon>NonTechnicalSubList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\Sub-Subject.resx">
+    <EmbeddedResource Include="Fundamental\Subject\Sub-Subject.resx">
       <DependentUpon>Sub-Subject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\Subject.resx">
+    <EmbeddedResource Include="Fundamental\Subject\Subject.resx">
       <DependentUpon>Subject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\SubTopic.resx">
+    <EmbeddedResource Include="Fundamental\Topic\MappingTopic.resx">
+      <DependentUpon>MappingTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Topic\SubTopic.resx">
       <DependentUpon>SubTopic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\TrainingTypeMapping.resx">

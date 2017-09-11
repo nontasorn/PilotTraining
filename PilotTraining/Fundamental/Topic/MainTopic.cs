@@ -365,11 +365,11 @@ namespace PilotTraining.Fundamental
             else
             {
 
-                Fundamental.MappingSubject frm = new MappingSubject();
+                Fundamental.Topic.MappingTopic frm = new Topic.MappingTopic();
                 Close();
 
-                frm.subjectId = lblDetailId.Text;
-                frm.subjectname = txtDescription.Text;
+                frm.subjectId = strMainTopicId;
+                frm.subjectname = strMainTopicName;
                 frm.ShowDialog();
 
             }
