@@ -168,3 +168,4 @@ D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotT
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.NonTechnicalSubList.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Topic.MappingTopic.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.UniversityList.resources
+D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.List.UniversityCategoryList.resources

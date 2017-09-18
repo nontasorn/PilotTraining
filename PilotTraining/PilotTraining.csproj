@@ -78,6 +78,12 @@
     <Compile Include="Fundamental\Course_Management.Designer.cs">
       <DependentUpon>Course_Management.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\List\UniversityCategoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\List\UniversityCategoryList.Designer.cs">
+      <DependentUpon>UniversityCategoryList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\Topic\MainTopic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Course_Management.resx">
       <DependentUpon>Course_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\List\UniversityCategoryList.resx">
+      <DependentUpon>UniversityCategoryList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\List\UniversityList.resx">
       <DependentUpon>UniversityList.cs</DependentUpon>

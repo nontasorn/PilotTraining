@@ -380,5 +380,9 @@ namespace PilotTraining.Fundamental
         {
             FixColumnWidth_dgv_ViewTrainingDetail_Format();
         }
+        private void Combo_Fromname(object sender, EventArgs e)
+        { 
+
+        }
     }
 }

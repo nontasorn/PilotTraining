@@ -130,6 +130,13 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void University_Category_List_Click(object sender, EventArgs e)
+        {
+            Fundamental.List.UniversityCategoryList frm = new Fundamental.List.UniversityCategoryList();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }

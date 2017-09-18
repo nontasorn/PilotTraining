@@ -83,7 +83,7 @@ namespace PilotTraining.Fundamental
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
 
-            Sbd.Append("SELECT NonTechMainList_Id, NonTechMainList_Name FROM NonTech_Main_List ORDER BY NonTechMainList_Order");
+            Sbd.Append("SELECT NonTechMainList_Id, NonTechMainList_Name FROM NonTech_Main_List WHERE NonTechMainList_Status = 'A' ORDER BY NonTechMainList_Order ");
 
             string sqlIni = Sbd.ToString();
             Cmd = new SqlCommand();

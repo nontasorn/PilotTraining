@@ -45,6 +45,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_ViewTrainingDetails = new System.Windows.Forms.DataGridView();
+            this.Comb_FormName = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -118,7 +120,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 213F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 420);
             this.tableLayoutPanel1.TabIndex = 129;
@@ -128,6 +130,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.Comb_FormName);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lblDetailId);
             this.groupBox1.Controls.Add(this.txtDescription);
             this.groupBox1.Controls.Add(this.label3);
@@ -139,7 +143,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(882, 181);
+            this.groupBox1.Size = new System.Drawing.Size(882, 201);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Training Main Topic";
@@ -148,7 +152,7 @@
             // 
             this.lblDetailId.AutoSize = true;
             this.lblDetailId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailId.Location = new System.Drawing.Point(283, 32);
+            this.lblDetailId.Location = new System.Drawing.Point(283, 28);
             this.lblDetailId.Name = "lblDetailId";
             this.lblDetailId.Size = new System.Drawing.Size(0, 18);
             this.lblDetailId.TabIndex = 130;
@@ -157,7 +161,7 @@
             // 
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescription.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(286, 66);
+            this.txtDescription.Location = new System.Drawing.Point(286, 94);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDescription.Size = new System.Drawing.Size(286, 26);
@@ -168,7 +172,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(183, 68);
+            this.label3.Location = new System.Drawing.Point(183, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 18);
             this.label3.TabIndex = 128;
@@ -178,7 +182,7 @@
             // 
             this.comb_Status.Font = new System.Drawing.Font("Tahoma", 11.25F);
             this.comb_Status.FormattingEnabled = true;
-            this.comb_Status.Location = new System.Drawing.Point(286, 142);
+            this.comb_Status.Location = new System.Drawing.Point(286, 166);
             this.comb_Status.Name = "comb_Status";
             this.comb_Status.Size = new System.Drawing.Size(286, 26);
             this.comb_Status.TabIndex = 127;
@@ -187,7 +191,7 @@
             // 
             this.txtOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOrder.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrder.Location = new System.Drawing.Point(286, 104);
+            this.txtOrder.Location = new System.Drawing.Point(286, 130);
             this.txtOrder.Name = "txtOrder";
             this.txtOrder.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtOrder.Size = new System.Drawing.Size(286, 26);
@@ -198,7 +202,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(220, 106);
+            this.label2.Location = new System.Drawing.Point(220, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 18);
             this.label2.TabIndex = 125;
@@ -208,7 +212,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(209, 32);
+            this.label1.Location = new System.Drawing.Point(209, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 18);
             this.label1.TabIndex = 123;
@@ -218,7 +222,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(209, 145);
+            this.label7.Location = new System.Drawing.Point(209, 169);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 18);
             this.label7.TabIndex = 121;
@@ -233,7 +237,7 @@
             this.dgv_ViewTrainingDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_ViewTrainingDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_ViewTrainingDetails.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_ViewTrainingDetails.Location = new System.Drawing.Point(3, 190);
+            this.dgv_ViewTrainingDetails.Location = new System.Drawing.Point(3, 210);
             this.dgv_ViewTrainingDetails.MultiSelect = false;
             this.dgv_ViewTrainingDetails.Name = "dgv_ViewTrainingDetails";
             this.dgv_ViewTrainingDetails.ReadOnly = true;
@@ -245,9 +249,28 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_ViewTrainingDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_ViewTrainingDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(882, 227);
+            this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(882, 207);
             this.dgv_ViewTrainingDetails.TabIndex = 0;
             this.dgv_ViewTrainingDetails.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewTrainingDetails_CellMouseUp);
+            // 
+            // Comb_FormName
+            // 
+            this.Comb_FormName.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.Comb_FormName.FormattingEnabled = true;
+            this.Comb_FormName.Location = new System.Drawing.Point(286, 57);
+            this.Comb_FormName.Name = "Comb_FormName";
+            this.Comb_FormName.Size = new System.Drawing.Size(286, 26);
+            this.Comb_FormName.TabIndex = 132;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(178, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 18);
+            this.label4.TabIndex = 131;
+            this.label4.Text = "Form Name :";
             // 
             // MainTopic
             // 
@@ -289,5 +312,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label lblDetailId;
+        private System.Windows.Forms.ComboBox Comb_FormName;
+        private System.Windows.Forms.Label label4;
     }
 }

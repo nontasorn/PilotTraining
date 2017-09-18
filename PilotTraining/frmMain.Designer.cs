@@ -50,7 +50,6 @@
             this.University_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Main_List = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Category_List = new System.Windows.Forms.ToolStripMenuItem();
-            this.University_Sub_Category_List = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee_Management2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -230,8 +229,7 @@
             // 
             this.University_Btn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.University_Main_List,
-            this.University_Category_List,
-            this.University_Sub_Category_List});
+            this.University_Category_List});
             this.University_Btn.Name = "University_Btn";
             this.University_Btn.Size = new System.Drawing.Size(266, 24);
             this.University_Btn.Text = "University Of Texas Marker";
@@ -239,21 +237,16 @@
             // University_Main_List
             // 
             this.University_Main_List.Name = "University_Main_List";
-            this.University_Main_List.Size = new System.Drawing.Size(368, 24);
+            this.University_Main_List.Size = new System.Drawing.Size(334, 24);
             this.University_Main_List.Text = "Main University Of Texas Marker";
             this.University_Main_List.Click += new System.EventHandler(this.University_Main_List_Click);
             // 
             // University_Category_List
             // 
             this.University_Category_List.Name = "University_Category_List";
-            this.University_Category_List.Size = new System.Drawing.Size(368, 24);
+            this.University_Category_List.Size = new System.Drawing.Size(334, 24);
             this.University_Category_List.Text = "Category University Of Texas Marker";
-            // 
-            // University_Sub_Category_List
-            // 
-            this.University_Sub_Category_List.Name = "University_Sub_Category_List";
-            this.University_Sub_Category_List.Size = new System.Drawing.Size(368, 24);
-            this.University_Sub_Category_List.Text = "Sub-Category University Of Texas Marker";
+            this.University_Category_List.Click += new System.EventHandler(this.University_Category_List_Click);
             // 
             // Menu_Administration
             // 
@@ -270,7 +263,7 @@
             this.Menu_Employee1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Employee_Management2});
             this.Menu_Employee1.Name = "Menu_Employee1";
-            this.Menu_Employee1.Size = new System.Drawing.Size(152, 22);
+            this.Menu_Employee1.Size = new System.Drawing.Size(142, 22);
             this.Menu_Employee1.Text = "Employee";
             // 
             // Menu_Employee_Management2
@@ -399,6 +392,5 @@
         private System.Windows.Forms.ToolStripMenuItem subcate_btn;
         private System.Windows.Forms.ToolStripMenuItem MappingToForm_btn;
         private System.Windows.Forms.ToolStripMenuItem University_Category_List;
-        private System.Windows.Forms.ToolStripMenuItem University_Sub_Category_List;
     }
 }
