@@ -42,12 +42,15 @@
             this.Menu_TrainingDetails1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCreateTrainingDetails2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Subtopic = new System.Windows.Forms.ToolStripMenuItem();
+            this.MappingToForm_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.nonTechnicalSkillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Category_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.subcate_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Btn = new System.Windows.Forms.ToolStripMenuItem();
-            this.University_Manag_Btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.University_Main_List = new System.Windows.Forms.ToolStripMenuItem();
+            this.University_Category_List = new System.Windows.Forms.ToolStripMenuItem();
+            this.University_Sub_Category_List = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Administration = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Employee_Management2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +62,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.MappingToForm_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -187,6 +189,12 @@
             this.Subtopic.Text = "Sub Topic";
             this.Subtopic.Click += new System.EventHandler(this.Subtopic_Click);
             // 
+            // MappingToForm_btn
+            // 
+            this.MappingToForm_btn.Name = "MappingToForm_btn";
+            this.MappingToForm_btn.Size = new System.Drawing.Size(202, 24);
+            this.MappingToForm_btn.Text = "Mapping To Form";
+            // 
             // nonTechnicalSkillToolStripMenuItem
             // 
             this.nonTechnicalSkillToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -221,16 +229,31 @@
             // University_Btn
             // 
             this.University_Btn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.University_Manag_Btn});
+            this.University_Main_List,
+            this.University_Category_List,
+            this.University_Sub_Category_List});
             this.University_Btn.Name = "University_Btn";
             this.University_Btn.Size = new System.Drawing.Size(266, 24);
             this.University_Btn.Text = "University Of Texas Marker";
             // 
-            // University_Manag_Btn
+            // University_Main_List
             // 
-            this.University_Manag_Btn.Name = "University_Manag_Btn";
-            this.University_Manag_Btn.Size = new System.Drawing.Size(364, 24);
-            this.University_Manag_Btn.Text = "University Of Texas Marker Management";
+            this.University_Main_List.Name = "University_Main_List";
+            this.University_Main_List.Size = new System.Drawing.Size(368, 24);
+            this.University_Main_List.Text = "Main University Of Texas Marker";
+            this.University_Main_List.Click += new System.EventHandler(this.University_Main_List_Click);
+            // 
+            // University_Category_List
+            // 
+            this.University_Category_List.Name = "University_Category_List";
+            this.University_Category_List.Size = new System.Drawing.Size(368, 24);
+            this.University_Category_List.Text = "Category University Of Texas Marker";
+            // 
+            // University_Sub_Category_List
+            // 
+            this.University_Sub_Category_List.Name = "University_Sub_Category_List";
+            this.University_Sub_Category_List.Size = new System.Drawing.Size(368, 24);
+            this.University_Sub_Category_List.Text = "Sub-Category University Of Texas Marker";
             // 
             // Menu_Administration
             // 
@@ -247,7 +270,7 @@
             this.Menu_Employee1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Employee_Management2});
             this.Menu_Employee1.Name = "Menu_Employee1";
-            this.Menu_Employee1.Size = new System.Drawing.Size(142, 22);
+            this.Menu_Employee1.Size = new System.Drawing.Size(152, 22);
             this.Menu_Employee1.Text = "Employee";
             // 
             // Menu_Employee_Management2
@@ -320,12 +343,6 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
-            // MappingToForm_btn
-            // 
-            this.MappingToForm_btn.Name = "MappingToForm_btn";
-            this.MappingToForm_btn.Size = new System.Drawing.Size(202, 24);
-            this.MappingToForm_btn.Text = "Mapping To Form";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,9 +394,11 @@
         private System.Windows.Forms.ToolStripMenuItem nonTechnicalSkillToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NonTechnicalSkill_Btn;
         private System.Windows.Forms.ToolStripMenuItem University_Btn;
-        private System.Windows.Forms.ToolStripMenuItem University_Manag_Btn;
+        private System.Windows.Forms.ToolStripMenuItem University_Main_List;
         private System.Windows.Forms.ToolStripMenuItem Category_Btn;
         private System.Windows.Forms.ToolStripMenuItem subcate_btn;
         private System.Windows.Forms.ToolStripMenuItem MappingToForm_btn;
+        private System.Windows.Forms.ToolStripMenuItem University_Category_List;
+        private System.Windows.Forms.ToolStripMenuItem University_Sub_Category_List;
     }
 }

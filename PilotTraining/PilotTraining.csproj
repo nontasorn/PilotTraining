@@ -84,12 +84,6 @@
     <Compile Include="Fundamental\Topic\MainTopic.Designer.cs">
       <DependentUpon>MainTopic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\Form_Details_Management.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fundamental\Form_Details_Management.Designer.cs">
-      <DependentUpon>Form_Details_Management.cs</DependentUpon>
-    </Compile>
     <Compile Include="Fundamental\GradManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,11 +200,11 @@
     <EmbeddedResource Include="Fundamental\Course_Management.resx">
       <DependentUpon>Course_Management.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\List\UniversityList.resx">
+      <DependentUpon>UniversityList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Topic\MainTopic.resx">
       <DependentUpon>MainTopic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\Form_Details_Management.resx">
-      <DependentUpon>Form_Details_Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\GradManagement.resx">
       <DependentUpon>GradManagement.cs</DependentUpon>

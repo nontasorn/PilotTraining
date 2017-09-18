@@ -64,9 +64,7 @@ namespace PilotTraining
 
         private void Menu_Form_Management2_Click(object sender, EventArgs e)
         {
-            Fundamental.Form_Details_Management frm = new Fundamental.Form_Details_Management();
-            frm.MdiParent = this;
-            frm.Show();
+            
         }
 
         private void MenuCreateTrainingDetails2_Click(object sender, EventArgs e)
@@ -121,6 +119,13 @@ namespace PilotTraining
         private void subcate_btn_Click(object sender, EventArgs e)
         {
             Fundamental.NonTechnicalSubList frm = new Fundamental.NonTechnicalSubList();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void University_Main_List_Click(object sender, EventArgs e)
+        {
+            Fundamental.UniversityList frm = new Fundamental.UniversityList();
             frm.MdiParent = this;
             frm.Show();
         }
