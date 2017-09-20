@@ -187,6 +187,7 @@
             this.btnOKSelect.TabIndex = 137;
             this.btnOKSelect.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnOKSelect.UseVisualStyleBackColor = false;
+            this.btnOKSelect.Click += new System.EventHandler(this.btnOKSelect_Click);
             // 
             // btnExitMain
             // 
@@ -199,6 +200,7 @@
             this.btnExitMain.TabIndex = 136;
             this.btnExitMain.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExitMain.UseVisualStyleBackColor = true;
+            this.btnExitMain.Click += new System.EventHandler(this.btnExitMain_Click);
             // 
             // dgv_SubTopic
             // 

@@ -47,8 +47,12 @@ namespace PilotTraining.Fundamental
             Max_Details_ID(); // Max Id details
             cmb_status();
             Max_Order(); // Max order details
+            cmb_formname();
+
             Create_Tipic.Enabled = true;
+            Edit_Topic.Enabled = false;
             MapingSubtopic.Enabled = false;
+            
 
         }
         private void DataHead_Details()
@@ -56,6 +60,7 @@ namespace PilotTraining.Fundamental
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
             Sbd.Append("SELECT ");
+            Sbd.Append("S.SubSubjectName, ");
             Sbd.Append("D.DetailGroupId,");
             Sbd.Append("D.DetailGroupName,");
             Sbd.Append("D.DetailsGroupOrder,");
@@ -63,12 +68,17 @@ namespace PilotTraining.Fundamental
             Sbd.Append("D.DetailsGroupCreatedDate,");
             Sbd.Append("U2.Employee_SureName+'   '+U2.Employee_LastName AS DetailsGroupModifiedBy,");
             Sbd.Append("D.DetailsGroupModifiedDate, ");
-            Sbd.Append("D.amend ");
+            Sbd.Append("D.amend, ");
+            Sbd.Append("P.Para_Desc 'status' ");
+            
             Sbd.Append("FROM DetailsGroup D ");
             Sbd.Append("INNER JOIN User_Login U ");
             Sbd.Append("ON D.DetailsGroupCreatedBy = U.Employee_ID ");
             Sbd.Append("LEFT JOIN User_Login U2 ");
-            Sbd.Append("ON D.DetailsGroupCreatedBy = U2.Employee_ID");
+            Sbd.Append("ON D.DetailsGroupCreatedBy = U2.Employee_ID ");
+            Sbd.Append("INNER JOIN Parameter P ON ");
+            Sbd.Append("P.Para_BPC = 'DetailsGroup' AND P.Para_Type = 'status' AND P.Para_Code = D.DetailsGroupStatus ");
+            Sbd.Append("INNER JOIN SubSubject S ON D.SubSubjectId = S.SubSubjectId ");
 
             string sqlProduct = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -205,9 +215,9 @@ namespace PilotTraining.Fundamental
                     Sbd = new StringBuilder();
                     Sbd.Remove(0, Sbd.Length);
                     Sbd.Append("INSERT INTO DetailsGroup ");
-                    Sbd.Append("(DetailGroupId,DetailGroupName,DetailsGroupStatus,DetailsGroupOrder,DetailsGroupCreatedBy,DetailsGroupCreatedDate,DetailsGroupModifiedBy,DetailsGroupModifiedDate,amend ) ");
+                    Sbd.Append("(DetailGroupId,DetailGroupName,DetailsGroupStatus,DetailsGroupOrder,DetailsGroupCreatedBy,DetailsGroupCreatedDate,DetailsGroupModifiedBy,DetailsGroupModifiedDate,amend,SubSubjectId ) ");
                     Sbd.Append(" VALUES ");
-                    Sbd.Append(" (@DetailGroupId,@DetailGroupName,@DetailsGroupStatus,@DetailsGroupOrder,@DetailsGroupCreatedBy,@DetailsGroupCreatedDate,@DetailsGroupModifiedBy,@DetailsGroupModifiedDate,@amend)");
+                    Sbd.Append(" (@DetailGroupId,@DetailGroupName,@DetailsGroupStatus,@DetailsGroupOrder,@DetailsGroupCreatedBy,@DetailsGroupCreatedDate,@DetailsGroupModifiedBy,@DetailsGroupModifiedDate,@amend,@SubSubjectId)");
 
                     sqlSaveStHead = Sbd.ToString();
 
@@ -220,13 +230,14 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Add("@DetailGroupName", SqlDbType.NVarChar).Value = txtDescription.Text.Trim();
                     Cmd.Parameters.Add("@DetailsGroupOrder", SqlDbType.NVarChar).Value = txtOrder.Text.Trim();
                     Cmd.Parameters.Add("@DetailsGroupStatus", SqlDbType.NChar).Value = comb_Status.SelectedValue.ToString().Trim();
-
-
                     Cmd.Parameters.Add("@DetailsGroupCreatedBy", SqlDbType.NChar).Value = strloginId;
                     Cmd.Parameters.Add("@DetailsGroupCreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@DetailsGroupModifiedBy", SqlDbType.NChar).Value = strloginId;
                     Cmd.Parameters.Add("@DetailsGroupModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = 0;
+                    Cmd.Parameters.Add("@SubSubjectId", SqlDbType.NChar).Value = Comb_FormName.SelectedValue.ToString().Trim();
+                    
+
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Detail generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
@@ -248,50 +259,66 @@ namespace PilotTraining.Fundamental
             if (dgv_ViewTrainingDetails.RowCount > 0)
             {
 
-                dgv_ViewTrainingDetails.Columns[0].HeaderText = "#";
-                dgv_ViewTrainingDetails.Columns[1].HeaderText = "Main topic";
-                dgv_ViewTrainingDetails.Columns[2].HeaderText = "Order";
-                dgv_ViewTrainingDetails.Columns[3].HeaderText = "Create By";
-                dgv_ViewTrainingDetails.Columns[4].HeaderText = "Create Date";
-                dgv_ViewTrainingDetails.Columns[5].HeaderText = "Modified By";
-                dgv_ViewTrainingDetails.Columns[6].HeaderText = "Modified Date";
-                dgv_ViewTrainingDetails.Columns[7].HeaderText = "Amend";
+                dgv_ViewTrainingDetails.Columns[0].HeaderText = "Form";
+                dgv_ViewTrainingDetails.Columns[1].HeaderText = "#";
+                dgv_ViewTrainingDetails.Columns[2].HeaderText = "Main topic";
+                dgv_ViewTrainingDetails.Columns[3].HeaderText = "Order";
+                dgv_ViewTrainingDetails.Columns[4].HeaderText = "Create By";
+                dgv_ViewTrainingDetails.Columns[5].HeaderText = "Create Date";
+                dgv_ViewTrainingDetails.Columns[6].HeaderText = "Modified By";
+                dgv_ViewTrainingDetails.Columns[7].HeaderText = "Modified Date";
+                dgv_ViewTrainingDetails.Columns[8].HeaderText = "Amend";
+                dgv_ViewTrainingDetails.Columns[9].HeaderText = "Status";
 
                 FixColumnWidth_dgv_ViewTrainingDetail_Format();
 
-                dgv_ViewTrainingDetails.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
                 dgv_ViewTrainingDetails.Columns[5].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
-                dgv_ViewTrainingDetails.Columns[0].Visible = false;
+                dgv_ViewTrainingDetails.Columns[6].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+                dgv_ViewTrainingDetails.Columns[1].Visible = false;
             }
         }
         private void FixColumnWidth_dgv_ViewTrainingDetail_Format()
         {
             int w = dgv_ViewTrainingDetails.Width;
-            dgv_ViewTrainingDetails.Columns[0].Width = 100;
-            dgv_ViewTrainingDetails.Columns[1].Width = w - 600;
-            dgv_ViewTrainingDetails.Columns[2].Width = 100;
+            dgv_ViewTrainingDetails.Columns[0].Width = 200;
+            dgv_ViewTrainingDetails.Columns[1].Width = 50;
+            dgv_ViewTrainingDetails.Columns[2].Width = w - 900;
             dgv_ViewTrainingDetails.Columns[3].Width = 100;
             dgv_ViewTrainingDetails.Columns[4].Width = 100;
             dgv_ViewTrainingDetails.Columns[5].Width = 100;
             dgv_ViewTrainingDetails.Columns[6].Width = 100;
             dgv_ViewTrainingDetails.Columns[7].Width = 100;
+            dgv_ViewTrainingDetails.Columns[8].Width = 100;
+            dgv_ViewTrainingDetails.Columns[9].Width = 100;
         }
 
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             DataHead_Details();
+            Max_Details_ID();
+            txtDescription.Clear();
+            Max_Order();
+            cmb_status();
+            cmb_formname();
+            Create_Tipic.Enabled = true;
+            Edit_Topic.Enabled = false;
+            MapingSubtopic.Enabled = false;
         }
 
         private void dgv_ViewTrainingDetails_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            lblDetailId.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
-            strMainTopicId = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
-            amend = Convert.ToInt32(dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[7].Value.ToString());
-            txtOrder.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtDescription.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
-            strMainTopicName = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
+            lblDetailId.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
+            strMainTopicId = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
+            amend = Convert.ToInt32(dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[8].Value.ToString());
+            txtOrder.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtDescription.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
+            strMainTopicName = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
+            comb_Status.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[9].Value.ToString();
+            Comb_FormName.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
+
             Create_Tipic.Enabled = false;
+            Edit_Topic.Enabled = true;
             MapingSubtopic.Enabled = true;
 
         }
@@ -301,7 +328,7 @@ namespace PilotTraining.Fundamental
             if (txtDescription.Text.Trim() == "")
             {
                 MessageBox.Show("Please enter description", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtDescription.Focus();
+                txtDescription.Focus(); 
                 return;
             }
 
@@ -320,7 +347,8 @@ namespace PilotTraining.Fundamental
                     Sbd.Append("DetailsGroupStatus = @DetailsGroupStatus,");
                     Sbd.Append("DetailsGroupModifiedBy = @DetailsGroupModifiedBy,");
                     Sbd.Append("DetailsGroupModifiedDate = @DetailsGroupModifiedDate, ");
-                    Sbd.Append("amend = @amend ");
+                    Sbd.Append("amend = @amend, ");
+                    Sbd.Append("SubSubjectId = @SubSubjectId ");
                     Sbd.Append("WHERE DetailGroupId = @DetailGroupId");
 
                     sqlSaveStHead = Sbd.ToString();
@@ -335,6 +363,7 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Add("@DetailsGroupModifiedBy", SqlDbType.NChar).Value = strloginId;
                     Cmd.Parameters.Add("@DetailsGroupModifiedDate", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = amend + 1;
+                    Cmd.Parameters.Add("@SubSubjectId", SqlDbType.NChar).Value = Comb_FormName.SelectedValue.ToString();
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Subject updated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
@@ -347,6 +376,8 @@ namespace PilotTraining.Fundamental
                     Create_Tipic.Enabled = true;
                     Edit_Topic.Enabled = false;
                     MapingSubtopic.Enabled = false;
+                    cmb_formname();
+                    cmb_status();
                 }
                 catch (Exception ex)
                 {
@@ -383,6 +414,36 @@ namespace PilotTraining.Fundamental
         private void Combo_Fromname(object sender, EventArgs e)
         { 
 
+        }
+        private void cmb_formname()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT SubSubjectId,SubSubjectName FROM SubSubject WHERE SubSubjectStatus = 'A' ");
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dtUser = new DataTable();
+                dtUser.Load(Sdr);
+
+                Comb_FormName.BeginUpdate();
+                Comb_FormName.DisplayMember = "SubSubjectName";
+                Comb_FormName.ValueMember = "SubSubjectId";
+                Comb_FormName.DataSource = dtUser;
+                Comb_FormName.EndUpdate();
+                Comb_FormName.SelectedIndex = 0;
+
+            }
+            Sdr.Close();
         }
     }
 }

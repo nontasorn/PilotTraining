@@ -159,5 +159,97 @@ namespace PilotTraining.Fundamental.Topic
 
             }
         }
+
+        private void btnExitMain_Click(object sender, EventArgs e)
+        {
+            {
+                DialogResult Dlr;
+                Dlr = MessageBox.Show("Are you sure to close this window", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (Dlr == DialogResult.Yes)
+                {
+
+                    dgv_SubTopic.Columns.Clear();
+                    pn_SubTopic.Visible = false;
+                }
+            }
+        }
+
+        private void btnOKSelect_Click(object sender, EventArgs e)
+        {
+            {
+                int countChk = 0;
+                for (int i = 0; i <= dgv_SubTopic.Rows.Count - 1; i++)
+                {
+                    if (Convert.ToBoolean(dgv_SubTopic.Rows[i].Cells["chkSelect"].Value) == true)
+                    {
+                        countChk++;
+                    }
+                }
+                if (countChk == 0)
+                {
+                    MessageBox.Show("Please select the Sub-Topic", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                dt = new DataTable();
+                dt.Columns.Add(new DataColumn("Sub-Topic Name"));
+                dt.Columns.Add(new DataColumn("Status"));
+                dt.Columns.Add(new DataColumn("Sub-Topic Id"));
+
+
+                for (int i = 0; i <= dgv_SubTopic.Rows.Count - 1; i++)
+                {
+                    if ((Convert.ToBoolean(dgv_SubTopic.Rows[i].Cells["chkSelect"].Value) == true))
+                    {
+                        DataRow drDgvSelect = dt.NewRow();
+                        drDgvSelect["Sub-Topic Name"] = dgv_SubTopic.Rows[i].Cells[1].Value.ToString();
+                        drDgvSelect["Status"] = dgv_SubTopic.Rows[i].Cells[2].Value.ToString();
+                        drDgvSelect["Sub-Topic Id"] = dgv_SubTopic.Rows[i].Cells[3].Value.ToString();
+                        
+                        dt.Rows.Add(drDgvSelect);
+                    }
+                }
+                dgv_SelectSubTopic.DataSource = dt;
+                dgv_SelectSubTopic.ClearSelection();
+                FormatDgvSelect();
+
+
+                pn_SubTopic.Visible = false;
+
+            }
+        }
+        private void FormatDgvSelect()
+        {
+            if (dgv_SelectSubTopic.RowCount >= 0)
+            {
+                dgv_SelectSubTopic.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 14F, GraphicsUnit.Pixel);
+                dgv_SelectSubTopic.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgv_SelectSubTopic.DefaultCellStyle.Font = new Font("Tahoma", 15F, GraphicsUnit.Pixel);
+                dgv_SelectSubTopic.ReadOnly = false;
+
+                dgv_SelectSubTopic.Columns[0].Name = "Topic";
+                dgv_SelectSubTopic.Columns[1].Name = "Status";
+                dgv_SelectSubTopic.Columns[2].Visible = false;
+
+
+                FixColumnWidth_dgv_Select_Format();
+
+
+                dgv_SelectSubTopic.Columns[0].ReadOnly = true;
+                dgv_SelectSubTopic.Columns[1].ReadOnly = true;
+                dgv_SelectSubTopic.Columns[2].ReadOnly = true;
+
+            }
+        }
+        private void FixColumnWidth_dgv_Select_Format()
+        {
+            if (dgv_SelectSubTopic.RowCount > 0)
+            {
+
+                int w = dgv_SelectSubTopic.Width;
+                dgv_SelectSubTopic.Columns[0].Width = 500;
+                dgv_SelectSubTopic.Columns[1].Width = w - 500;
+            }
+        }
     }
 }
