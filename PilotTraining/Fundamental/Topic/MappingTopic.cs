@@ -120,12 +120,29 @@ namespace PilotTraining.Fundamental.Topic
                 chkColSelect.DisplayIndex = 18;
                 chkColSelect.FlatStyle = FlatStyle.Popup;
                 dgv_SubTopic.Columns.Add(chkColSelect);
+
+                
                 
                 DataTable dt = new DataTable();
+                
+
                 dt.Load(Sdr);
                 dgv_SubTopic.DataSource = dt;
+
+                DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
+                column.HeaderText = "Style";
+                column.Items.Add("Default");
+                column.Items.Add("Additional");
+        
+                column.Name = "cmbName";
+                
+                dgv_SubTopic.Columns.Add(column);
+
+                
+
                 dgv_SubTopic.ClearSelection();
                 lbSumList.Text = "Count Sub-Topic :     " + dgv_SubTopic.Rows.Count.ToString();
+                
                 dgv_Header();
             }
             else
@@ -148,16 +165,20 @@ namespace PilotTraining.Fundamental.Topic
                 dgv_SubTopic.Columns[1].HeaderText = "Name";
                 dgv_SubTopic.Columns[2].HeaderText = "Status";
                 dgv_SubTopic.Columns[3].Visible = false;
-                dgv_SubTopic.Columns[0].Width = 100;
+                dgv_SubTopic.Columns[4].HeaderText = "Style";
+
+                dgv_SubTopic.Columns[0].Width = 50;
                 dgv_SubTopic.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv_SubTopic.Columns[1].Width = 300;
-                dgv_SubTopic.Columns[2].Width = 200;
+                dgv_SubTopic.Columns[1].Width = 275;
+                dgv_SubTopic.Columns[2].Width = 100;
+                
+                dgv_SubTopic.Columns[4].Width = 100;
 
                 dgv_SubTopic.Columns[1].ReadOnly = true;
                 dgv_SubTopic.Columns[2].ReadOnly = true;
                 dgv_SubTopic.Columns[3].ReadOnly = true;
 
-            }
+            } 
         }
 
         private void btnExitMain_Click(object sender, EventArgs e)
@@ -195,17 +216,26 @@ namespace PilotTraining.Fundamental.Topic
                 dt.Columns.Add(new DataColumn("Sub-Topic Name"));
                 dt.Columns.Add(new DataColumn("Status"));
                 dt.Columns.Add(new DataColumn("Sub-Topic Id"));
+                dt.Columns.Add(new DataColumn("Stlye"));
+                
+
 
 
                 for (int i = 0; i <= dgv_SubTopic.Rows.Count - 1; i++)
                 {
+                   /* if (dgv_SubTopic.Rows[i].Cells[4].Value  == null)
+                    {
+                        MessageBox.Show("Please choose the style");
+                    }
+                    */
+
                     if ((Convert.ToBoolean(dgv_SubTopic.Rows[i].Cells["chkSelect"].Value) == true))
                     {
                         DataRow drDgvSelect = dt.NewRow();
                         drDgvSelect["Sub-Topic Name"] = dgv_SubTopic.Rows[i].Cells[1].Value.ToString();
                         drDgvSelect["Status"] = dgv_SubTopic.Rows[i].Cells[2].Value.ToString();
                         drDgvSelect["Sub-Topic Id"] = dgv_SubTopic.Rows[i].Cells[3].Value.ToString();
-                        
+                        drDgvSelect["Stlye"] = dgv_SubTopic.Rows[i].Cells[4].Value.ToString();
                         dt.Rows.Add(drDgvSelect);
                     }
                 }
@@ -229,6 +259,7 @@ namespace PilotTraining.Fundamental.Topic
 
                 dgv_SelectSubTopic.Columns[0].Name = "Topic";
                 dgv_SelectSubTopic.Columns[1].Name = "Status";
+                dgv_SelectSubTopic.Columns[3].Name = "Style";
                 dgv_SelectSubTopic.Columns[2].Visible = false;
 
 
@@ -238,7 +269,7 @@ namespace PilotTraining.Fundamental.Topic
                 dgv_SelectSubTopic.Columns[0].ReadOnly = true;
                 dgv_SelectSubTopic.Columns[1].ReadOnly = true;
                 dgv_SelectSubTopic.Columns[2].ReadOnly = true;
-
+                dgv_SelectSubTopic.Columns[3].ReadOnly = true;
             }
         }
         private void FixColumnWidth_dgv_Select_Format()
@@ -247,8 +278,10 @@ namespace PilotTraining.Fundamental.Topic
             {
 
                 int w = dgv_SelectSubTopic.Width;
-                dgv_SelectSubTopic.Columns[0].Width = 500;
+                dgv_SelectSubTopic.Columns[0].Width = 300;
                 dgv_SelectSubTopic.Columns[1].Width = w - 500;
+                dgv_SelectSubTopic.Columns[2].Width = 100;
+                dgv_SelectSubTopic.Columns[3].Width = 200;
             }
         }
     }
