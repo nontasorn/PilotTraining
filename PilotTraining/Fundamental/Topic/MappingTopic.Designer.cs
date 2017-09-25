@@ -46,8 +46,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pn_SubTopic = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
-            this.Edit_Mapping_btn = new System.Windows.Forms.ToolStripButton();
             this.Create_Mapping = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.groupBox1.SuspendLayout();
@@ -271,24 +269,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(964, 464);
             this.tableLayoutPanel1.TabIndex = 139;
             // 
-            // Refresh_btn
-            // 
-            this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Refresh_btn.Image = global::PilotTraining.Properties.Resources.refresh;
-            this.Refresh_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Refresh_btn.Name = "Refresh_btn";
-            this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
-            this.Refresh_btn.Text = "Refresh";
-            // 
-            // Edit_Mapping_btn
-            // 
-            this.Edit_Mapping_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_Mapping_btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
-            this.Edit_Mapping_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Edit_Mapping_btn.Name = "Edit_Mapping_btn";
-            this.Edit_Mapping_btn.Size = new System.Drawing.Size(129, 36);
-            this.Edit_Mapping_btn.Text = "Edit Mapping";
-            // 
             // Create_Mapping
             // 
             this.Create_Mapping.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -297,14 +277,13 @@
             this.Create_Mapping.Name = "Create_Mapping";
             this.Create_Mapping.Size = new System.Drawing.Size(100, 36);
             this.Create_Mapping.Text = "Mapping";
+            this.Create_Mapping.Click += new System.EventHandler(this.Create_Mapping_Click);
             // 
             // toolStrip2
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Create_Mapping,
-            this.Edit_Mapping_btn,
-            this.Refresh_btn});
+            this.Create_Mapping});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(964, 39);
@@ -353,8 +332,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel pn_SubTopic;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ToolStripButton Refresh_btn;
-        private System.Windows.Forms.ToolStripButton Edit_Mapping_btn;
         private System.Windows.Forms.ToolStripButton Create_Mapping;
         private System.Windows.Forms.ToolStrip toolStrip2;
     }

@@ -284,5 +284,77 @@ namespace PilotTraining.Fundamental.Topic
                 dgv_SelectSubTopic.Columns[3].Width = 200;
             }
         }
+
+        private void Create_Mapping_Click(object sender, EventArgs e)
+        {
+            /*
+            if (clsCash.IsPermissionId("P01") == false)
+            {
+                MessageBox.Show("คุณไม่มีสิทธิ์เพิ่มผู้ใช้ใหม่ กรุณาติดต่อผู้ดูแลระบบ...");
+                return;
+            }
+             * */
+
+
+            if (MessageBox.Show("Are you sure to map the sub-topic    " + txtMainTopic.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                Tr = Conn.BeginTransaction();
+                try
+                {
+                    string sql;
+                    Sbd = new StringBuilder();
+                    Sbd.Remove(0, Sbd.Length);
+                    Sbd.Append("INSERT INTO MainTopicMapping ");
+                    Sbd.Append("(TopicMappingId,DetailGroupId,TopicMappingCreatedBy,TopicMappingCreatedDate,TopicMappingModifiedBy,TopicMappingModidiedDate,TopicMappingAmend) ");
+                    Sbd.Append(" VALUES ");
+                    Sbd.Append(" (@TopicMappingId,@DetailGroupId,@TopicMappingCreatedBy,@TopicMappingCreatedDate,@TopicMappingModifiedBy,@TopicMappingModidiedDate,@TopicMappingAmend)");
+                    sql = Sbd.ToString();
+
+                    Cmd.Parameters.Clear();
+                    Cmd.Transaction = Tr;
+                    Cmd.CommandText = sql;
+                    Cmd.Parameters.Add("@TopicMappingId", SqlDbType.NChar).Value = txtMappingId.Text.Trim();
+                    Cmd.Parameters.Add("@DetailGroupId", SqlDbType.NChar).Value = txtMainTopicId.Text.Trim();
+                    Cmd.Parameters.Add("@TopicMappingCreatedBy", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@TopicMappingCreatedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@TopicMappingModifiedBy", SqlDbType.NChar).Value = userId;
+                    Cmd.Parameters.Add("@TopicMappingModidiedDate", SqlDbType.DateTime).Value = DateTime.Now;
+                    Cmd.Parameters.Add("@TopicMappingAmend", SqlDbType.Int).Value = 0;
+                    Cmd.ExecuteNonQuery();
+
+                    for (int i = 0; i <= dgv_SelectSubTopic.Rows.Count - 1; i++)
+                    {
+                        Sbd.Remove(0, Sbd.Length);
+                        Sbd.Append("INSERT INTO MainTopicMappingDetail ");
+                        Sbd.Append("(TopicMappingId,SubTopicId,MapType ) ");
+                        Sbd.Append("VALUES ");
+                        Sbd.Append("(@TopicMappingId,@SubTopicId,@MapType) ");
+
+                        sql = Sbd.ToString();
+
+                        Cmd.Parameters.Clear();
+                        Cmd.CommandText = sql;
+                        Cmd.Parameters.Add("@TopicMappingId", SqlDbType.NVarChar).Value = txtMappingId.Text.Trim();
+                        Cmd.Parameters.Add("@SubTopicId", SqlDbType.NVarChar).Value = dgv_SelectSubTopic.Rows[i].Cells[2].Value.ToString();
+                        Cmd.Parameters.Add("@MapType", SqlDbType.NVarChar).Value = dgv_SelectSubTopic.Rows[i].Cells[3].Value.ToString();
+
+                        Cmd.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("mapping successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Tr.Commit();
+
+                    Max_Mapping_ID();
+                    this.Close();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to map the subject" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Tr.Rollback();
+                }
+            }
+        }
     }
 }
