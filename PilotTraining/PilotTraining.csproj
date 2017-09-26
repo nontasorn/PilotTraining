@@ -66,6 +66,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="From\frmFromSubmit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From\frmFromSubmit.Designer.cs">
+      <DependentUpon>frmFromSubmit.cs</DependentUpon>
+    </Compile>
     <Compile Include="From\frmVFR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="From\frmFromSubmit.resx">
+      <DependentUpon>frmFromSubmit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="From\frmVFR.resx">
       <DependentUpon>frmVFR.cs</DependentUpon>

@@ -187,7 +187,7 @@ namespace PilotTraining.Fundamental
                     MessageBox.Show("Generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
                     Max_University_Main_ID();
-                    //ShowNonTechList();
+                    ShowUniversityList();
                     txtDescription.Text = "";
 
                 }

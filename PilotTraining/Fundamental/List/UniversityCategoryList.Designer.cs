@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboMaintopic = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
@@ -60,6 +60,7 @@
             this.cboMaintopic.Name = "cboMaintopic";
             this.cboMaintopic.Size = new System.Drawing.Size(286, 26);
             this.cboMaintopic.TabIndex = 132;
+            this.cboMaintopic.SelectedIndexChanged += new System.EventHandler(this.cboMaintopic_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -165,13 +166,13 @@
             this.dgv_ViewUniversityCategoryList.MultiSelect = false;
             this.dgv_ViewUniversityCategoryList.Name = "dgv_ViewUniversityCategoryList";
             this.dgv_ViewUniversityCategoryList.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewUniversityCategoryList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewUniversityCategoryList.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_ViewUniversityCategoryList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_ViewUniversityCategoryList.Size = new System.Drawing.Size(856, 190);
             this.dgv_ViewUniversityCategoryList.TabIndex = 2;

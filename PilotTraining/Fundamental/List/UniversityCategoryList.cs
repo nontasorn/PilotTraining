@@ -141,8 +141,12 @@ namespace PilotTraining.Fundamental.List
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(UniversityCateList_Order) AS MaxOrder FROM Univesity_Category_List");
+            //Sbd.Append("SELECT MAX(UniversityCateList_Order) AS MaxOrder FROM Univesity_Category_List");
+            Sbd.Append("SELECT MAX(UniversityCateList_Order) AS MaxOrder FROM Univesity_Category_List WHERE (UnivesityMainList_Id IN (SELECT UnivesityMainList_Id FROM Univesity_Main_List WHERE  UnivesityMainList_Id = ");
+            Sbd.Append("'"+cboMaintopic.SelectedValue.ToString()+"'))");
+            
             String sqlMaxStatementIndex;
+            
             sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
             Cmd.CommandText = sqlMaxStatementIndex;
@@ -221,6 +225,7 @@ namespace PilotTraining.Fundamental.List
                     MessageBox.Show("Generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
                     Max_UniversityCate_ID();
+                    Max_Order();
                     ShowUniversityCatList();
                    
                     txtDescription.Text = "";
@@ -408,6 +413,11 @@ namespace PilotTraining.Fundamental.List
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             ShowUniversityCatList();
+        }
+
+        private void cboMaintopic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Max_Order();
         }
     }
 }

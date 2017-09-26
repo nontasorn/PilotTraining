@@ -54,6 +54,7 @@ namespace PilotTraining.Fundamental
             }
             Conn.ConnectionString = strConn;
             Conn.Open();
+            //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             userId = DBConnString.sUserIdLogin;
             pn_Modules.Visible = false;
             Max_Course_ID();

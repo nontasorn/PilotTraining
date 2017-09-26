@@ -137,6 +137,13 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void formToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            From.frmFromSubmit frm = new From.frmFromSubmit();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }
