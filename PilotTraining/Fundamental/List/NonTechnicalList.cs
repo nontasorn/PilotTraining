@@ -190,6 +190,7 @@ namespace PilotTraining.Fundamental
                     MessageBox.Show("Generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
                     Max_NonTechMain_ID();
+                    Max_Order();
                     ShowNonTechList();
                     txtDescription.Text = "";
 
