@@ -30,6 +30,9 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.Create_Btn = new System.Windows.Forms.ToolStripButton();
+            this.Edit_Btn = new System.Windows.Forms.ToolStripButton();
+            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_ViewNonTechList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,9 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.Create_Btn = new System.Windows.Forms.ToolStripButton();
-            this.Edit_Btn = new System.Windows.Forms.ToolStripButton();
-            this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewNonTechList)).BeginInit();
@@ -64,6 +64,36 @@
             this.toolStrip2.Size = new System.Drawing.Size(862, 39);
             this.toolStrip2.TabIndex = 132;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // Create_Btn
+            // 
+            this.Create_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Btn.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.Create_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Create_Btn.Name = "Create_Btn";
+            this.Create_Btn.Size = new System.Drawing.Size(88, 36);
+            this.Create_Btn.Text = "Create";
+            this.Create_Btn.Click += new System.EventHandler(this.Create_Btn_Click);
+            // 
+            // Edit_Btn
+            // 
+            this.Edit_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit_Btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
+            this.Edit_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Edit_Btn.Name = "Edit_Btn";
+            this.Edit_Btn.Size = new System.Drawing.Size(69, 36);
+            this.Edit_Btn.Text = "Edit";
+            this.Edit_Btn.Click += new System.EventHandler(this.Edit_Btn_Click);
+            // 
+            // Refresh_btn
+            // 
+            this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Refresh_btn.Image = global::PilotTraining.Properties.Resources.refresh;
+            this.Refresh_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Refresh_btn.Name = "Refresh_btn";
+            this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
+            this.Refresh_btn.Text = "Refresh";
+            this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -139,6 +169,7 @@
             this.cboMaintopic.Name = "cboMaintopic";
             this.cboMaintopic.Size = new System.Drawing.Size(286, 26);
             this.cboMaintopic.TabIndex = 132;
+            this.cboMaintopic.SelectedIndexChanged += new System.EventHandler(this.cboMaintopic_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -229,36 +260,6 @@
             this.label7.Size = new System.Drawing.Size(58, 18);
             this.label7.TabIndex = 121;
             this.label7.Text = "Status :";
-            // 
-            // Create_Btn
-            // 
-            this.Create_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create_Btn.Image = global::PilotTraining.Properties.Resources.Add_icon;
-            this.Create_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Create_Btn.Name = "Create_Btn";
-            this.Create_Btn.Size = new System.Drawing.Size(88, 36);
-            this.Create_Btn.Text = "Create";
-            this.Create_Btn.Click += new System.EventHandler(this.Create_Btn_Click);
-            // 
-            // Edit_Btn
-            // 
-            this.Edit_Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit_Btn.Image = global::PilotTraining.Properties.Resources.edit_file_icon;
-            this.Edit_Btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Edit_Btn.Name = "Edit_Btn";
-            this.Edit_Btn.Size = new System.Drawing.Size(69, 36);
-            this.Edit_Btn.Text = "Edit";
-            this.Edit_Btn.Click += new System.EventHandler(this.Edit_Btn_Click);
-            // 
-            // Refresh_btn
-            // 
-            this.Refresh_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Refresh_btn.Image = global::PilotTraining.Properties.Resources.refresh;
-            this.Refresh_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Refresh_btn.Name = "Refresh_btn";
-            this.Refresh_btn.Size = new System.Drawing.Size(96, 36);
-            this.Refresh_btn.Text = "Refresh";
-            this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
             // 
             // NonTechnicalCategoryList
             // 

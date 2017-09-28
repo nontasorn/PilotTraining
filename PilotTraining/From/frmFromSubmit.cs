@@ -27,6 +27,7 @@ namespace PilotTraining.From
         string strloginId;
         string strBRF, strPS, strMC, strAM, strCE;
         string strCO, strLM;
+        string strSubCO;
 
         private void frmFromSubmit_Load(object sender, EventArgs e)
         {
@@ -205,69 +206,7 @@ namespace PilotTraining.From
             Sdr.Close();
         }
 
-        private void cmb_CO()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT NonTechCateList_Id,NonTechCateList_Name,NonTechMainList_Id FROM NonTech_Category_List WHERE NonTechMainList_Id = " + "'" + strCO.ToString() + "'");
-
-
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
-
-            if (Sdr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(Sdr);
-
-                cmbCO.BeginUpdate();
-                cmbCO.DisplayMember = "NonTechCateList_Name";
-                cmbCO.ValueMember = "NonTechCateList_Id";
-                cmbCO.DataSource = dt;
-                cmbCO.EndUpdate();
-                cmbCO.SelectedIndex = 0;
-
-            }
-            Sdr.Close();
-        }
-
-        private void cmb_LM()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT NonTechCateList_Id,NonTechCateList_Name,NonTechMainList_Id FROM NonTech_Category_List WHERE NonTechMainList_Id = " + "'" + strLM.ToString() + "'");
-
-
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
-
-            if (Sdr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(Sdr);
-
-                cmbLM.BeginUpdate();
-                cmbLM.DisplayMember = "NonTechCateList_Name";
-                cmbLM.ValueMember = "NonTechCateList_Id";
-                cmbLM.DataSource = dt;
-                cmbLM.EndUpdate();
-                cmbLM.SelectedIndex = 0;
-
-            }
-            Sdr.Close();
-        }
+        
 
         private void University()
         {           
@@ -332,6 +271,119 @@ namespace PilotTraining.From
                 }
             }
 
+        }
+        private void cmb_CO()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT NonTechCateList_Id,NonTechCateList_Name,NonTechMainList_Id FROM NonTech_Category_List WHERE NonTechMainList_Id = " + "'" + strCO.ToString() + "'");
+
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+
+                cmbCO.BeginUpdate();
+                cmbCO.DisplayMember = "NonTechCateList_Name";
+                cmbCO.ValueMember = "NonTechCateList_Id";
+                cmbCO.DataSource = dt;
+                cmbCO.EndUpdate();
+                cmbCO.SelectedIndex = 0;
+
+            }
+            Sdr.Close();
+        }
+
+        private void cmb_LM()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT NonTechCateList_Id,NonTechCateList_Name,NonTechMainList_Id FROM NonTech_Category_List WHERE NonTechMainList_Id = " + "'" + strLM.ToString() + "'");
+
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+
+                cmbLM.BeginUpdate();
+                cmbLM.DisplayMember = "NonTechCateList_Name";
+                cmbLM.ValueMember = "NonTechCateList_Id";
+                cmbLM.DataSource = dt;
+                cmbLM.EndUpdate();
+                cmbLM.SelectedIndex = 0;
+
+            }
+            Sdr.Close();
+        }
+
+        private void cmbCO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cmb_SubCO()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT NonTechSecSubList_Id,NonTechSecSubList_Name,NonTechCateList_Id FROM NonTech_SubCategory_List WHERE NonTechCateList_Id = " + "'" + strSubCO.ToString() + "'");
+
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+
+                cmbSubCO.BeginUpdate();
+                cmbSubCO.DisplayMember = "NonTechSecSubList_Name";
+                cmbSubCO.ValueMember = "NonTechSecSubList_Id";
+                cmbSubCO.DataSource = dt;
+                cmbSubCO.EndUpdate();
+                cmbSubCO.SelectedIndex = 0;
+
+            }
+           
+            Sdr.Close();
+        }
+
+        private void cmbCO_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            {
+                strSubCO = cmbCO.SelectedValue.ToString();
+                if (strSubCO != null)
+                {
+                    //MessageBox.Show(strSubCO.ToString());
+                    cmb_SubCO();
+                }
+            }
         }
     }
 }

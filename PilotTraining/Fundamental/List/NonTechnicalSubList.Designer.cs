@@ -60,6 +60,7 @@
             this.cboSubtopic.Name = "cboSubtopic";
             this.cboSubtopic.Size = new System.Drawing.Size(286, 26);
             this.cboSubtopic.TabIndex = 132;
+            this.cboSubtopic.SelectedIndexChanged += new System.EventHandler(this.cboSubtopic_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -270,6 +271,7 @@
             this.Name = "NonTechnicalSubList";
             this.Text = "NonTechnicalSubList";
             this.Load += new System.EventHandler(this.NonTechnicalSubList_Load);
+            this.Resize += new System.EventHandler(this.NonTechnicalSubList_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ViewNonTechList)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

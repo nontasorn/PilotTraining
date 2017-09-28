@@ -42,6 +42,8 @@ namespace PilotTraining.Fundamental
             }
             Conn.ConnectionString = strConn;
             Conn.Open();
+            Create_Btn.Enabled = true;
+            Edit_Btn.Enabled = false;
 
             strloginId = DBConnString.sUserIdLogin;
             ShowNonTechCatList();
@@ -112,9 +114,13 @@ namespace PilotTraining.Fundamental
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(NonTechCateList_Order) AS MaxOrder FROM NonTech_Category_List");
+           // Sbd.Append("SELECT MAX(NonTechCateList_Order) AS MaxOrder FROM NonTech_Category_List");
+            Sbd.Append("SELECT MAX(NonTechCateList_Order) AS MaxOrder FROM NonTech_Category_List WHERE (NonTechMainList_Id IN (SELECT NonTechMainList_Id FROM NonTech_Main_List WHERE  NonTechMainList_Id = ");
+            Sbd.Append("'" + cboMaintopic.SelectedValue.ToString() + "'))");
+            
             String sqlMaxStatementIndex;
             sqlMaxStatementIndex = Sbd.ToString();
+            //MessageBox.Show(Sbd.ToString());
             Cmd = new SqlCommand();
             Cmd.CommandText = sqlMaxStatementIndex;
             Cmd.CommandType = CommandType.Text;
@@ -223,6 +229,7 @@ namespace PilotTraining.Fundamental
                     Tr.Commit();
                     Max_NonTechCate_ID();
                     ShowNonTechCatList();
+                    Max_Order();
                     txtDescription.Text = "";
 
                 }
@@ -259,6 +266,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("AND P.Para_Code		= M.NonTechCateList_Status ");
             Sbd.Append("INNER JOIN NonTech_Main_List H ");
             Sbd.Append("ON H.NonTechMainList_Id = M.NonTechMainList_Id ");
+            Sbd.Append("ORDER BY M.NonTechMainList_Id");
 
 
             string sqlProduct = Sbd.ToString();
@@ -403,11 +411,19 @@ namespace PilotTraining.Fundamental
             txtDescription.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[1].Value.ToString();
             comb_Status.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[3].Value.ToString();
             Create_Btn.Enabled = false;
+            Edit_Btn.Enabled = true;
         }
 
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             ShowNonTechCatList();
+            Create_Btn.Enabled = true;
+            Edit_Btn.Enabled = false;
+        }
+
+        private void cboMaintopic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Max_Order();
         }
     }
 }

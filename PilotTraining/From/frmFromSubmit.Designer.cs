@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.Create_Course_Btn = new System.Windows.Forms.ToolStripButton();
             this.Edit_Course_Btn = new System.Windows.Forms.ToolStripButton();
@@ -140,13 +140,13 @@
             this.dgvTopic.MultiSelect = false;
             this.dgvTopic.Name = "dgvTopic";
             this.dgvTopic.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvTopic.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvTopic.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTopic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTopic.Size = new System.Drawing.Size(1231, 266);
             this.dgvTopic.TabIndex = 9;
@@ -358,6 +358,8 @@
             this.cmbCO.Name = "cmbCO";
             this.cmbCO.Size = new System.Drawing.Size(243, 26);
             this.cmbCO.TabIndex = 146;
+            this.cmbCO.SelectedIndexChanged += new System.EventHandler(this.cmbCO_SelectedIndexChanged);
+            this.cmbCO.SelectionChangeCommitted += new System.EventHandler(this.cmbCO_SelectionChangeCommitted);
             // 
             // textBox16
             // 

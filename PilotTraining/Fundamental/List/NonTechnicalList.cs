@@ -42,12 +42,14 @@ namespace PilotTraining.Fundamental
             }
             Conn.ConnectionString = strConn;
             Conn.Open();
+            Create_Btn.Enabled = true;
+            Edit_Btn.Enabled = false;
 
             strloginId = DBConnString.sUserIdLogin;
             Max_NonTechMain_ID();
             cmb_status();
             ShowNonTechList();
-            Create_Btn.Enabled = true;
+            
             Max_NonTechMain_ID();
             Max_Order();
         }
@@ -293,6 +295,7 @@ namespace PilotTraining.Fundamental
             txtOrder.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[1].Value.ToString();
             Create_Btn.Enabled = false;
+            Edit_Btn.Enabled = true;
         }
 
         private void Edit_Btn_Click(object sender, EventArgs e)
@@ -368,6 +371,8 @@ namespace PilotTraining.Fundamental
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             ShowNonTechList();
+            Create_Btn.Enabled = true;
+            Edit_Btn.Enabled = false;
         }
     }
 }

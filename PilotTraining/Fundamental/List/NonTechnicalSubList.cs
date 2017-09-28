@@ -39,7 +39,9 @@ namespace PilotTraining.Fundamental
             }
             Conn.ConnectionString = strConn;
             Conn.Open();
-           
+            Create_Btn.Enabled = true;
+            Edit_Btn.Enabled = false;
+
 
             strloginId = DBConnString.sUserIdLogin;
 
@@ -82,7 +84,7 @@ namespace PilotTraining.Fundamental
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
 
-            Sbd.Append("SELECT NonTechCateList_Id, NonTechCateList_Name FROM NonTech_Category_List ORDER BY NonTechCateList_Order");
+            Sbd.Append("SELECT NonTechCateList_Id, NonTechCateList_Name FROM NonTech_Category_List ORDER BY NonTechMainList_Id ");
 
             string sqlIni = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -111,7 +113,9 @@ namespace PilotTraining.Fundamental
         {
             Sbd = new StringBuilder();
             Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(NonTechSecSubList_Order) AS NonTechSecSubList_Order FROM NonTech_SubCategory_List");
+            //Sbd.Append("SELECT MAX(NonTechSecSubList_Order) AS NonTechSecSubList_Order FROM NonTech_SubCategory_List");
+            Sbd.Append("SELECT MAX(NonTechSecSubList_Order) AS MaxOrder FROM NonTech_SubCategory_List WHERE (NonTechCateList_Id IN (SELECT NonTechCateList_Id FROM NonTech_Category_List WHERE  NonTechCateList_Id = ");
+            Sbd.Append("'" + cboSubtopic.SelectedValue.ToString() + "'))");
             String sqlMaxStatementIndex;
             sqlMaxStatementIndex = Sbd.ToString();
             Cmd = new SqlCommand();
@@ -191,6 +195,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("AND P.Para_Code		= M.NonTechSecSubList_Status ");
             Sbd.Append("INNER JOIN NonTech_Category_List H ");
             Sbd.Append("ON H.NonTechCateList_Id = M.NonTechCateList_Id ");
+            Sbd.Append("ORDER BY M.NonTechCateList_Id");
 
 
             string sqlProduct = Sbd.ToString();
@@ -308,9 +313,9 @@ namespace PilotTraining.Fundamental
                     MessageBox.Show("Generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
                     Max_NonTechSubCate_ID();
-                    
+                    Max_Order();
                     ShowNonTechSubList();
-                    txtDescription.Text = "";
+                    txtDescription.Clear();
 
                 }
                 catch (Exception ex)
@@ -324,6 +329,9 @@ namespace PilotTraining.Fundamental
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             ShowNonTechSubList();
+            Create_Btn.Enabled = true;
+            Edit_Btn.Enabled = false;
+            txtDescription.Clear();
         }
 
         private void Edit_Btn_Click(object sender, EventArgs e)
@@ -404,6 +412,16 @@ namespace PilotTraining.Fundamental
             comb_Status.Text = dgv_ViewNonTechList.Rows[e.RowIndex].Cells[3].Value.ToString();
             Create_Btn.Enabled = false;
             Edit_Btn.Enabled = true;
+        }
+
+        private void NonTechnicalSubList_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_ViewTrainingDetail_Format();
+        }
+         
+        private void cboSubtopic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Max_Order();
         }
     }
 }
