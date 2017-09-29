@@ -150,6 +150,12 @@
     <Compile Include="Fundamental\Topic\SubTopic.Designer.cs">
       <DependentUpon>SubTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\Topic\ViewTopic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Topic\ViewTopic.Designer.cs">
+      <DependentUpon>ViewTopic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\TrainingTypeMapping.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Topic\SubTopic.resx">
       <DependentUpon>SubTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Topic\ViewTopic.resx">
+      <DependentUpon>ViewTopic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\TrainingTypeMapping.resx">
       <DependentUpon>TrainingTypeMapping.cs</DependentUpon>

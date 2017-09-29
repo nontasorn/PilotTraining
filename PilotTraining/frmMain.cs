@@ -144,6 +144,13 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void ViewTopic_Click(object sender, EventArgs e)
+        {
+            Fundamental.Topic.ViewTopic frm = new Fundamental.Topic.ViewTopic();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }

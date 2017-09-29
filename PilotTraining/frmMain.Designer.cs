@@ -42,7 +42,7 @@
             this.Menu_TrainingDetails1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCreateTrainingDetails2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Subtopic = new System.Windows.Forms.ToolStripMenuItem();
-            this.MappingToForm_btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewTopic = new System.Windows.Forms.ToolStripMenuItem();
             this.nonTechnicalSkillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Category_Btn = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,11 +57,11 @@
             this.trainingManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Assign_Course_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewSchedulebtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.formToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.formToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -170,7 +170,7 @@
             this.Menu_TrainingDetails1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuCreateTrainingDetails2,
             this.Subtopic,
-            this.MappingToForm_btn});
+            this.ViewTopic});
             this.Menu_TrainingDetails1.Name = "Menu_TrainingDetails1";
             this.Menu_TrainingDetails1.Size = new System.Drawing.Size(266, 24);
             this.Menu_TrainingDetails1.Text = "Topic";
@@ -178,22 +178,23 @@
             // MenuCreateTrainingDetails2
             // 
             this.MenuCreateTrainingDetails2.Name = "MenuCreateTrainingDetails2";
-            this.MenuCreateTrainingDetails2.Size = new System.Drawing.Size(202, 24);
+            this.MenuCreateTrainingDetails2.Size = new System.Drawing.Size(154, 24);
             this.MenuCreateTrainingDetails2.Text = "Main Topic";
             this.MenuCreateTrainingDetails2.Click += new System.EventHandler(this.MenuCreateTrainingDetails2_Click);
             // 
             // Subtopic
             // 
             this.Subtopic.Name = "Subtopic";
-            this.Subtopic.Size = new System.Drawing.Size(202, 24);
+            this.Subtopic.Size = new System.Drawing.Size(154, 24);
             this.Subtopic.Text = "Sub Topic";
             this.Subtopic.Click += new System.EventHandler(this.Subtopic_Click);
             // 
-            // MappingToForm_btn
+            // ViewTopic
             // 
-            this.MappingToForm_btn.Name = "MappingToForm_btn";
-            this.MappingToForm_btn.Size = new System.Drawing.Size(202, 24);
-            this.MappingToForm_btn.Text = "Mapping To Form";
+            this.ViewTopic.Name = "ViewTopic";
+            this.ViewTopic.Size = new System.Drawing.Size(154, 24);
+            this.ViewTopic.Text = "View Topic";
+            this.ViewTopic.Click += new System.EventHandler(this.ViewTopic_Click);
             // 
             // nonTechnicalSkillToolStripMenuItem
             // 
@@ -264,7 +265,7 @@
             this.Menu_Employee1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_Employee_Management2});
             this.Menu_Employee1.Name = "Menu_Employee1";
-            this.Menu_Employee1.Size = new System.Drawing.Size(152, 22);
+            this.Menu_Employee1.Size = new System.Drawing.Size(142, 22);
             this.Menu_Employee1.Text = "Employee";
             // 
             // Menu_Employee_Management2
@@ -306,6 +307,13 @@
             this.ViewSchedulebtn.Text = "View Schedule";
             this.ViewSchedulebtn.Click += new System.EventHandler(this.ViewSchedulebtn_Click);
             // 
+            // formToolStripMenuItem
+            // 
+            this.formToolStripMenuItem.Name = "formToolStripMenuItem";
+            this.formToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.formToolStripMenuItem.Text = "Form";
+            this.formToolStripMenuItem.Click += new System.EventHandler(this.formToolStripMenuItem_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
@@ -337,13 +345,6 @@
             // 
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
-            // 
-            // formToolStripMenuItem
-            // 
-            this.formToolStripMenuItem.Name = "formToolStripMenuItem";
-            this.formToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.formToolStripMenuItem.Text = "Form";
-            this.formToolStripMenuItem.Click += new System.EventHandler(this.formToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -399,7 +400,7 @@
         private System.Windows.Forms.ToolStripMenuItem University_Main_List;
         private System.Windows.Forms.ToolStripMenuItem Category_Btn;
         private System.Windows.Forms.ToolStripMenuItem subcate_btn;
-        private System.Windows.Forms.ToolStripMenuItem MappingToForm_btn;
+        private System.Windows.Forms.ToolStripMenuItem ViewTopic;
         private System.Windows.Forms.ToolStripMenuItem University_Category_List;
         private System.Windows.Forms.ToolStripMenuItem formToolStripMenuItem;
     }
