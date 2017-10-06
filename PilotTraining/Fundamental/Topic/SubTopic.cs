@@ -42,7 +42,8 @@ namespace PilotTraining.Fundamental
             Conn.ConnectionString = strConn;
             Conn.Open();
             strloginId = DBConnString.sUserIdLogin;
-
+            Create_Tipic.Enabled = true;
+            Edit_Topic.Enabled = false;
             Max_SubTipc_ID();
             cmb_status();
             Max_Order();
@@ -163,7 +164,7 @@ namespace PilotTraining.Fundamental
                     MessageBox.Show("Sub topic generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
                     Max_SubTipc_ID();
-                    //DataHead_Details();
+                    DataHead_Details();
                     Max_Order(); // Max order details
                     txtDescription.Text = "";
 
@@ -287,6 +288,8 @@ namespace PilotTraining.Fundamental
         private void Refresh_btn_Click(object sender, EventArgs e)
         {
             DataHead_Details();
+            Edit_Topic.Enabled = false;
+            Create_Tipic.Enabled = true;
         }
 
         private void SubTopic_Resize(object sender, EventArgs e)
@@ -301,6 +304,7 @@ namespace PilotTraining.Fundamental
             txtOrder.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
             Create_Tipic.Enabled = false;
+            Edit_Topic.Enabled = true;
         }
 
         private void Edit_Topic_Click(object sender, EventArgs e)
