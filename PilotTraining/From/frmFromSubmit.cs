@@ -449,22 +449,14 @@ namespace PilotTraining.From
         private void dgvTopicHead_Format()
         {
             if (dgvTopic.RowCount > 0)
-            {
-                
-
+            {            
                 dgvTopic.Columns[0].HeaderText = "";
                 dgvTopic.Columns[1].HeaderText = "";
-                dgvTopic.Columns[2].HeaderText = "";
-                
-
-
-                FixColumnWidth_dgv_ViewScheduleHead_Format();
-
-
-                
+                dgvTopic.Columns[2].HeaderText = "";           
+                FixColumnWidth_dgv_ViewScheduleHead_Format();        
                 dgvTopic.Columns[0].Visible = false;
                 dgvTopic.Columns[1].Visible = false;
-
+                 
             }
         }
        
@@ -474,8 +466,7 @@ namespace PilotTraining.From
             dgvTopic.Columns[0].Width = 0;
             dgvTopic.Columns[1].Width = 0;
             dgvTopic.Columns[2].Width = 300;
-            
-
+           
         }
 
         private void dgvTopic_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
