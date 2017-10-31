@@ -30,6 +30,7 @@ namespace PilotTraining.From
         string strBRF, strPS, strMC, strAM, strCE;
         string strCO, strLM;
         string strSubCO;
+        string strTopic1, strTopic2;
 
         private void frmFromSubmit_Load(object sender, EventArgs e)
         {
@@ -46,7 +47,8 @@ namespace PilotTraining.From
             strloginId = DBConnString.sUserIdLogin;
             University();
             NonTechNical();
-            
+            LoadTopic();
+            LoadTopic();
         }
         private void cmb_BRF()
         {
@@ -417,6 +419,79 @@ namespace PilotTraining.From
 
             }
 
+        }
+        private void LoadTopic()
+        {
+            string strsubjectName = "VFR";
+
+            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("ShowTrainingForn " + "'" + strsubjectName + "'");
+            
+            if (dt.Rows.Count > 0)
+            {
+                dgvTopic.DataSource = dt;
+                //CheckResult = dt.Rows.Count;
+
+                strTopic1 = dt.Rows[0]["TopicId"].ToString();
+                strTopic2 = dt.Rows[0]["MappingId"].ToString();
+
+                dgvTopicHead_Format();
+
+               
+            }
+            else
+            {
+                
+                //CheckResult = 0;
+                dgvTopic.DataSource = null;
+            }
+            //Count.Text = CheckResult.ToString() + "  รายการ";
+        }
+        private void dgvTopicHead_Format()
+        {
+            if (dgvTopic.RowCount > 0)
+            {
+                
+
+                dgvTopic.Columns[0].HeaderText = "";
+                dgvTopic.Columns[1].HeaderText = "";
+                dgvTopic.Columns[2].HeaderText = "";
+                
+
+
+                FixColumnWidth_dgv_ViewScheduleHead_Format();
+
+
+                
+                dgvTopic.Columns[0].Visible = false;
+                dgvTopic.Columns[1].Visible = false;
+
+            }
+        }
+       
+        private void FixColumnWidth_dgv_ViewScheduleHead_Format()
+        {
+            int w = dgvTopic.Width;
+            dgvTopic.Columns[0].Width = 0;
+            dgvTopic.Columns[1].Width = 0;
+            dgvTopic.Columns[2].Width = 300;
+            
+
+        }
+
+        private void dgvTopic_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            int iRow = e.RowIndex;
+            DataGridViewRow r = dgvTopic.Rows[iRow];
+            string cellValue1 = r.Cells[0].Value.ToString();
+            string cellValue2 = r.Cells[1].Value.ToString();
+            if (cellValue1 == cellValue2)
+            { 
+                r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
+                r.DefaultCellStyle.Font = new Font(dgvTopic.Font,FontStyle.Bold);
+                r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            }
         }
     }
 }

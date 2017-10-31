@@ -96,7 +96,7 @@
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1184, 39);
+            this.toolStrip2.Size = new System.Drawing.Size(1035, 39);
             this.toolStrip2.TabIndex = 8;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -136,29 +136,30 @@
             this.dgvTopic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTopic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTopic.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgvTopic.Location = new System.Drawing.Point(3, 16);
+            this.dgvTopic.Location = new System.Drawing.Point(3, 17);
             this.dgvTopic.MultiSelect = false;
             this.dgvTopic.Name = "dgvTopic";
             this.dgvTopic.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgvTopic.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTopic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTopic.Size = new System.Drawing.Size(1172, 353);
+            this.dgvTopic.Size = new System.Drawing.Size(1023, 202);
             this.dgvTopic.TabIndex = 9;
+            this.dgvTopic.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTopic_CellFormatting_1);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 42);
+            this.groupBox1.Location = new System.Drawing.Point(3, 122);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1181, 87);
+            this.groupBox1.Size = new System.Drawing.Size(1032, 0);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "                           ";
@@ -169,10 +170,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dgvTopic);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1178, 372);
+            this.groupBox2.Size = new System.Drawing.Size(1029, 222);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "TOPIC";
@@ -203,9 +204,9 @@
             this.groupBox3.Controls.Add(this.txtLM);
             this.groupBox3.Controls.Add(this.txtCO);
             this.groupBox3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 381);
+            this.groupBox3.Location = new System.Drawing.Point(3, 231);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1178, 133);
+            this.groupBox3.Size = new System.Drawing.Size(1029, 134);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "NON-TECHNICAL SKILLS";
@@ -426,13 +427,13 @@
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox4, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 135);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 179);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.11412F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.88588F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.89189F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.10811F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 159F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 677);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1035, 528);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox4
@@ -460,9 +461,9 @@
             this.groupBox4.Controls.Add(this.txtPS);
             this.groupBox4.Controls.Add(this.txtBRF);
             this.groupBox4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox4.Location = new System.Drawing.Point(3, 520);
+            this.groupBox4.Location = new System.Drawing.Point(3, 371);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1178, 154);
+            this.groupBox4.Size = new System.Drawing.Size(1029, 154);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "UNIVERSITY OF TEXAS  MARKERS";
@@ -476,7 +477,7 @@
             this.cmbCE.FormattingEnabled = true;
             this.cmbCE.Location = new System.Drawing.Point(452, 125);
             this.cmbCE.Name = "cmbCE";
-            this.cmbCE.Size = new System.Drawing.Size(514, 21);
+            this.cmbCE.Size = new System.Drawing.Size(365, 21);
             this.cmbCE.TabIndex = 149;
             // 
             // cmbAM
@@ -487,7 +488,7 @@
             this.cmbAM.FormattingEnabled = true;
             this.cmbAM.Location = new System.Drawing.Point(452, 97);
             this.cmbAM.Name = "cmbAM";
-            this.cmbAM.Size = new System.Drawing.Size(514, 21);
+            this.cmbAM.Size = new System.Drawing.Size(365, 21);
             this.cmbAM.TabIndex = 148;
             // 
             // cmbMC
@@ -498,7 +499,7 @@
             this.cmbMC.FormattingEnabled = true;
             this.cmbMC.Location = new System.Drawing.Point(452, 71);
             this.cmbMC.Name = "cmbMC";
-            this.cmbMC.Size = new System.Drawing.Size(514, 21);
+            this.cmbMC.Size = new System.Drawing.Size(365, 21);
             this.cmbMC.TabIndex = 147;
             // 
             // cmbPS
@@ -509,7 +510,7 @@
             this.cmbPS.FormattingEnabled = true;
             this.cmbPS.Location = new System.Drawing.Point(452, 47);
             this.cmbPS.Name = "cmbPS";
-            this.cmbPS.Size = new System.Drawing.Size(514, 21);
+            this.cmbPS.Size = new System.Drawing.Size(365, 21);
             this.cmbPS.TabIndex = 146;
             // 
             // cmbBRF
@@ -520,7 +521,7 @@
             this.cmbBRF.FormattingEnabled = true;
             this.cmbBRF.Location = new System.Drawing.Point(452, 19);
             this.cmbBRF.Name = "cmbBRF";
-            this.cmbBRF.Size = new System.Drawing.Size(514, 21);
+            this.cmbBRF.Size = new System.Drawing.Size(365, 21);
             this.cmbBRF.TabIndex = 145;
             // 
             // textBox9
@@ -694,7 +695,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1184, 812);
+            this.ClientSize = new System.Drawing.Size(1035, 709);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip2);
