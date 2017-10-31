@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PilotTraining.Class;
 using System.Data.SqlClient;
+using System.Globalization;
+using System.Threading;
 
 namespace PilotTraining.From
 {
@@ -384,6 +386,37 @@ namespace PilotTraining.From
                     cmb_SubCO();
                 }
             }
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+        // order enter textbox
+        private void textBox16_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+
+                textBox15.Focus();
+        }
+        private void DataHead()
+        {
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("AranalysisReport ");
+
+            if (dt.Rows.Count > 0)
+            {
+                dgvTopic.DataSource = dt;
+                //HeadData();                              
+            }
+            else
+            {
+                //CheckResult = 0;
+                dgvTopic.DataSource = null;
+
+            }
+
         }
     }
 }

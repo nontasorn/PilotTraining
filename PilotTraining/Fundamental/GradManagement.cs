@@ -19,7 +19,7 @@ namespace PilotTraining.Fundamental
         {
             InitializeComponent();
         }
-
+        // ประกาศตัวแปร
         SqlConnection Conn;
         SqlCommand Cmd;
         StringBuilder Sbd;
