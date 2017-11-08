@@ -62,6 +62,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -279,7 +280,8 @@
             // 
             this.Menu_Training_Management_Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.trainingManagementToolStripMenuItem,
-            this.formToolStripMenuItem});
+            this.formToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.Menu_Training_Management_Menu.Name = "Menu_Training_Management_Menu";
             this.Menu_Training_Management_Menu.Size = new System.Drawing.Size(162, 24);
             this.Menu_Training_Management_Menu.Text = "Training Management";
@@ -346,6 +348,13 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.testToolStripMenuItem.Text = "test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,5 +412,6 @@
         private System.Windows.Forms.ToolStripMenuItem ViewTopic;
         private System.Windows.Forms.ToolStripMenuItem University_Category_List;
         private System.Windows.Forms.ToolStripMenuItem formToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }

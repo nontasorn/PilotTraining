@@ -20,12 +20,15 @@ namespace PilotTraining.From
         {
             InitializeComponent();
         }
-
+        
         SqlConnection Conn;
         SqlCommand Cmd;
         StringBuilder Sbd;
         SqlDataReader Sdr;
         SqlTransaction Tr;
+        DataTable dtTopicDefault = new DataTable();
+        DataTable dtTopicAdd = new DataTable();
+
         string strloginId;
         string strBRF, strPS, strMC, strAM, strCE;
         string strCO, strLM;
@@ -410,12 +413,14 @@ namespace PilotTraining.From
             if (dt.Rows.Count > 0)
             {
                 dgvTopic.DataSource = dt;
+                
                 //HeadData();                              
             }
             else
             {
                 //CheckResult = 0;
                 dgvTopic.DataSource = null;
+                
 
             }
 
@@ -424,15 +429,74 @@ namespace PilotTraining.From
         {
             string strsubjectName = "VFR";
 
-            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("ShowTrainingForn " + "'" + strsubjectName + "'");
             
-            if (dt.Rows.Count > 0)
-            {
-                dgvTopic.DataSource = dt;
-                //CheckResult = dt.Rows.Count;
+            SqlCommand cmd = new SqlCommand("ShowTrainingForn", Conn); // Change from STATEMENT_SHOWDEBTOR_FOR_CLEAR to STATEMENT
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@SubjectName", SqlDbType.NVarChar).Value = strsubjectName;
 
-                strTopic1 = dt.Rows[0]["TopicId"].ToString();
-                strTopic2 = dt.Rows[0]["MappingId"].ToString();
+            DataTable master = new DataTable();
+            DataTable child = new DataTable();
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(master);
+
+            
+            SqlCommand cmd2 = new SqlCommand("ShowTrainingFormAdditional", Conn); // Change from STATEMENT_SHOWDEBTOR_FOR_CLEAR to STATEMENT
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+
+            SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+            da.Fill(child);
+
+            DataSet ds = new DataSet();
+           
+
+
+            //Add two DataTables  in Dataset 
+
+            ds.Tables.Add(master);
+            ds.Tables.Add(child);
+
+
+
+            // Create a Relation in Memory 
+
+            /*DataRelation relation = new DataRelation("", ds.Tables[0].Columns[0], ds.Tables[1].Columns[0], true);
+
+            ds.Relations.Add(relation);*/
+
+            // Set DataSource
+            dgvTopic.DataSource = ds.Tables[0];
+            MessageBox.Show(ds.Tables[0].ToString());
+/*
+
+
+
+            DataGridViewCheckBoxColumn chkColSelect = new DataGridViewCheckBoxColumn();
+            chkColSelect.Name = "chkSelect";
+            chkColSelect.TrueValue = true;
+            chkColSelect.Width = 130;
+            chkColSelect.DisplayIndex = 18;
+            chkColSelect.FlatStyle = FlatStyle.Popup;
+            dgvTopic.Columns.Add(chkColSelect);
+
+            dgvTopic.DataSource = ds.Tables["ds"];
+            
+            dgvTopic.ClearSelection();
+            */
+
+            /*
+            string strsubjectName = "VFR";
+
+            dtTopicDefault = Class.DBConnString.clsDB.QueryDataTable("ShowTrainingForn " + "'" + strsubjectName + "'");
+            dtTopicAdd = Class.DBConnString.clsDB.QueryDataTable("ShowTrainingFormAdditional");          
+
+            if (dtTopicDefault.Rows.Count > 0)
+            {
+                dgvTopic.DataSource = dtTopicDefault;
+                //CheckResult = dt.Rows.Count;
+                strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
+                strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
 
                 dgvTopicHead_Format();
 
@@ -445,6 +509,7 @@ namespace PilotTraining.From
                 dgvTopic.DataSource = null;
             }
             //Count.Text = CheckResult.ToString() + "  รายการ";
+           */
         }
         private void dgvTopicHead_Format()
         {
@@ -463,26 +528,39 @@ namespace PilotTraining.From
         private void FixColumnWidth_dgv_ViewScheduleHead_Format()
         {
             int w = dgvTopic.Width;
-            dgvTopic.Columns[0].Width = 0;
-            dgvTopic.Columns[1].Width = 0;
+            dgvTopic.Columns[0].Width = 100;
+            dgvTopic.Columns[1].Width = 100;
             dgvTopic.Columns[2].Width = 300;
            
         }
 
         private void dgvTopic_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
+            /*
             int iRow = e.RowIndex;
             DataGridViewRow r = dgvTopic.Rows[iRow];
-            string cellValue1 = r.Cells[0].Value.ToString();
-            string cellValue2 = r.Cells[1].Value.ToString();
-            if (cellValue1 == cellValue2)
+           string cellValue1 = r.Cells[0].Value.ToString();
+           string cellValue2 = r.Cells[1].Value.ToString();
+           if (cellValue1 == cellValue2)
             { 
                 r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
                 r.DefaultCellStyle.Font = new Font(dgvTopic.Font,FontStyle.Bold);
                 r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             }
+             * */
+        }
+
+
+
+        private void textBox15_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(textBox15, "Tooltip text"); 
+        }
+
+        private void cmbSubCO_MouseMove(object sender, MouseEventArgs e)
+        {
+            toolTip1.SetToolTip(cmbSubCO, "Establishes atmosphere for open communication and participation");
         }
     }
 }

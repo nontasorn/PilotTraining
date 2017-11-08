@@ -171,3 +171,4 @@ D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotT
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.List.UniversityCategoryList.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.From.frmFromSubmit.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Topic.ViewTopic.resources
+D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.From.test.resources
