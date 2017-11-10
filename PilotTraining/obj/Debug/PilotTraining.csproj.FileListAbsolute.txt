@@ -172,3 +172,5 @@ D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotT
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.From.frmFromSubmit.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Topic.ViewTopic.resources
 D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\obj\Debug\PilotTraining.From.test.resources
+D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\bin\Debug\AdvancedControls.dll
+D:\20161122\Pilot Training Project\Project8\trunk\PilotTraining\bin\Debug\AdvancedControls.pdb
