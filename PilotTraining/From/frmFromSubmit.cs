@@ -30,10 +30,7 @@ namespace PilotTraining.From
         DataTable dtTopicAdd = new DataTable();
         DataTable dt;
 
-        string strloginId;
-        string strBRF, strPS, strMC, strAM, strCE;
-        string strCO, strLM;
-        string strSubCO;
+        string strloginId;      
         string strTopic1, strTopic2;
 
         private void frmFromSubmit_Load(object sender, EventArgs e)
@@ -49,220 +46,13 @@ namespace PilotTraining.From
             Conn.ConnectionString = strConn;
             Conn.Open();
             strloginId = DBConnString.sUserIdLogin;
-            University();
             
-            LoadTopic();
+            
             LoadTopic();
             LoadTechnicalSkill();
+            LoadUTSkill();
         }
-        private void cmb_BRF()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT UniversityCateList_Id,UniversityCateList_Name,UnivesityMainList_Id FROM Univesity_Category_List WHERE UnivesityMainList_Id = " + "'" + strBRF.ToString()+"'");
-
-
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
-
-            if (Sdr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(Sdr);
-
-                cmbBRF.BeginUpdate();
-                cmbBRF.DisplayMember = "UniversityCateList_Name";
-                cmbBRF.ValueMember = "UniversityCateList_Id";
-                cmbBRF.DataSource = dt;
-                cmbBRF.EndUpdate();
-                cmbBRF.SelectedIndex = 0;
-
-            }
-            Sdr.Close();
-        }
-        private void cmb_PS()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT UniversityCateList_Id,UniversityCateList_Name,UnivesityMainList_Id FROM Univesity_Category_List WHERE UnivesityMainList_Id = " + "'" + strPS.ToString() + "'");
-
-
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
-
-            if (Sdr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(Sdr);
-
-                cmbPS.BeginUpdate();
-                cmbPS.DisplayMember = "UniversityCateList_Name";
-                cmbPS.ValueMember = "UniversityCateList_Id";
-                cmbPS.DataSource = dt;
-                cmbPS.EndUpdate();
-                cmbPS.SelectedIndex = 0;
-
-            }
-            Sdr.Close();
-        }
-
-        private void cmb_MC()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT UniversityCateList_Id,UniversityCateList_Name,UnivesityMainList_Id FROM Univesity_Category_List WHERE UnivesityMainList_Id = " + "'" + strMC.ToString() + "'");
-
-
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
-
-            if (Sdr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(Sdr);
-
-                cmbMC.BeginUpdate();
-                cmbMC.DisplayMember = "UniversityCateList_Name";
-                cmbMC.ValueMember = "UniversityCateList_Id";
-                cmbMC.DataSource = dt;
-                cmbMC.EndUpdate();
-                cmbMC.SelectedIndex = 0;
-
-            }
-            Sdr.Close();
-        }
-
-
-        private void cmb_AM()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT UniversityCateList_Id,UniversityCateList_Name,UnivesityMainList_Id FROM Univesity_Category_List WHERE UnivesityMainList_Id = " + "'" + strAM.ToString() + "'");
-
-
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
-
-            if (Sdr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(Sdr);
-
-                cmbAM.BeginUpdate();
-                cmbAM.DisplayMember = "UniversityCateList_Name";
-                cmbAM.ValueMember = "UniversityCateList_Id";
-                cmbAM.DataSource = dt;
-                cmbAM.EndUpdate();
-                cmbAM.SelectedIndex = 0;
-
-            }
-            Sdr.Close();
-        }
-
-        private void cmb_CE()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-
-            Sbd.Append("SELECT UniversityCateList_Id,UniversityCateList_Name,UnivesityMainList_Id FROM Univesity_Category_List WHERE UnivesityMainList_Id = " + "'" + strCE.ToString() + "'");
-
-
-            string sqlIni = Sbd.ToString();
-            Cmd = new SqlCommand();
-
-            Cmd.CommandText = sqlIni;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            Sdr = Cmd.ExecuteReader();
-
-            if (Sdr.HasRows)
-            {
-                DataTable dt = new DataTable();
-                dt.Load(Sdr);
-
-                cmbCE.BeginUpdate();
-                cmbCE.DisplayMember = "UniversityCateList_Name";
-                cmbCE.ValueMember = "UniversityCateList_Id";
-                cmbCE.DataSource = dt;
-                cmbCE.EndUpdate();
-                cmbCE.SelectedIndex = 0;
-
-            }
-            Sdr.Close();
-        }
-
         
-
-        private void University()
-        {           
-           DataTable dt = Class.DBConnString.clsDB.QueryDataTable("SELECT UnivesityMainList_Id,UnivesityMainList_Name,(SELECT count(UnivesityMainList_Id) AS Count FROM Univesity_Main_List)AS Count FROM Univesity_Main_List");
-            if (dt.Rows.Count > 0)
-            {               
-                int count = Convert.ToInt32(dt.Rows[0]["Count"].ToString());
-                for (int i = 0; i < count; ++i)
-                {
-
-                    txtBRF.Text = dt.Rows[0]["UnivesityMainList_Name"].ToString();
-                    strBRF = dt.Rows[0]["UnivesityMainList_Id"].ToString();
-                    cmb_BRF();
-
-                    txtPS.Text = dt.Rows[1]["UnivesityMainList_Name"].ToString();
-                    strPS = dt.Rows[1]["UnivesityMainList_Id"].ToString();
-                    cmb_PS();
-
-                    txtMC.Text = dt.Rows[2]["UnivesityMainList_Name"].ToString();
-                    strMC = dt.Rows[2]["UnivesityMainList_Id"].ToString();
-                    cmb_MC();
-
-
-                    txtAM.Text = dt.Rows[3]["UnivesityMainList_Name"].ToString();
-                    strAM = dt.Rows[3]["UnivesityMainList_Id"].ToString();
-                    cmb_AM();
-
-                    txtCE.Text = dt.Rows[4]["UnivesityMainList_Name"].ToString();
-                    strCE = dt.Rows[4]["UnivesityMainList_Id"].ToString();
-                    cmb_CE();
-                }                         
-            }
-
-        }
-       
-        
-
-        
-
-        private void cmbCO_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        
-
-       
         private void groupBox4_Enter(object sender, EventArgs e)
         {
 
@@ -375,7 +165,9 @@ namespace PilotTraining.From
             {            
                 dgvTopic.Columns[0].HeaderText = "";
                 dgvTopic.Columns[1].HeaderText = "";
-                dgvTopic.Columns[2].HeaderText = "";           
+                dgvTopic.Columns[2].HeaderText = "";
+                dgvTopic.Columns[3].HeaderText = "";
+                dgvTopic.Columns[4].HeaderText = ""; 
                 FixColumnWidth_dgv_ViewScheduleHead_Format();        
                 dgvTopic.Columns[0].Visible = false;
                 dgvTopic.Columns[1].Visible = false;
@@ -388,7 +180,9 @@ namespace PilotTraining.From
             int w = dgvTopic.Width;
             dgvTopic.Columns[0].Width = 100;
             dgvTopic.Columns[1].Width = 100;
-            dgvTopic.Columns[2].Width = 300;
+            dgvTopic.Columns[2].Width = 522;
+            dgvTopic.Columns[3].Width = 150;
+            dgvTopic.Columns[4].Width = 150;
            
         }
 
@@ -496,7 +290,7 @@ namespace PilotTraining.From
                 //strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
                 //strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
 
-                //dgvTopicHead_Format();
+                dgvTechnicalSkillHead_Format();
 
 
             }
@@ -509,5 +303,175 @@ namespace PilotTraining.From
             //Count.Text = CheckResult.ToString() + "  รายการ";
 
         }
+
+        private void dgvTechnicalSkillHead_Format()
+        {
+            if (dgvNonTechnicalSkill.RowCount > 0)
+            {
+                dgvNonTechnicalSkill.Columns[0].HeaderText = "";
+                dgvNonTechnicalSkill.Columns[1].HeaderText = "";
+                dgvNonTechnicalSkill.Columns[2].HeaderText = "PF";
+                dgvNonTechnicalSkill.Columns[3].HeaderText = "PM";
+                dgvNonTechnicalSkill.Columns[4].HeaderText = "";
+                dgvNonTechnicalSkill.Columns[5].HeaderText = "";
+                dgvNonTechnicalSkill.Columns[6].HeaderText = "PF";
+                dgvNonTechnicalSkill.Columns[7].HeaderText = "PM";
+                
+                FixColumnWidth_dgvTechnicalSkill_Format();
+                dgvNonTechnicalSkill.Columns[0].Visible = false;
+                dgvNonTechnicalSkill.Columns[4].Visible = false;
+                
+            }
+        }
+
+        private void FixColumnWidth_dgvTechnicalSkill_Format()
+        {
+            int w = dgvNonTechnicalSkill.Width;
+           
+            dgvNonTechnicalSkill.Columns[1].Width = 414;
+            dgvNonTechnicalSkill.Columns[2].Width = 100;
+            dgvNonTechnicalSkill.Columns[3].Width = 100;
+            
+            dgvNonTechnicalSkill.Columns[5].Width = 414;
+            dgvNonTechnicalSkill.Columns[6].Width = 100;
+            dgvNonTechnicalSkill.Columns[7].Width = 100;
+        }
+
+        private void LoadUTSkill()
+        {
+
+            dt = Class.DBConnString.clsDB.QueryDataTable("UT_Skill");
+
+
+            if (dt.Rows.Count > 0)
+            {
+                dgvUT.DataSource = dt;
+                //CheckResult = dt.Rows.Count;
+                //strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
+                //strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
+
+                dgvUTSkillHead_Format();
+
+
+            }
+            else
+            {
+
+                //CheckResult = 0;
+                dgvUT.DataSource = null;
+            }
+            //Count.Text = CheckResult.ToString() + "  รายการ";
+
+        }
+
+        private void dgvUTSkillHead_Format()
+        {
+            if (dgvUT.RowCount > 0)
+            {
+                dgvUT.Columns[0].HeaderText = "";
+                dgvUT.Columns[1].HeaderText = "";
+                dgvUT.Columns[2].HeaderText = "";
+                dgvUT.Columns[3].HeaderText = "";
+                dgvUT.Columns[4].HeaderText = "";
+                dgvUT.Columns[5].HeaderText = "";
+                dgvUT.Columns[6].HeaderText = "";
+                dgvUT.Columns[7].HeaderText = "";
+
+                FixColumnWidth_dgvUTSkill_Format();
+                dgvUT.Columns[0].Visible = false;
+                dgvUT.Columns[4].Visible = false;
+
+            }
+        }
+
+        private void FixColumnWidth_dgvUTSkill_Format()
+        {
+            int w = dgvUT.Width;
+
+            dgvUT.Columns[1].Width = 414;
+            dgvUT.Columns[2].Width = 100;
+            dgvUT.Columns[3].Width = 100;
+
+            dgvUT.Columns[5].Width = 414;
+            dgvUT.Columns[6].Width = 100;
+            dgvUT.Columns[7].Width = 100;
+        }
+
+        private void dgvNonTechnicalSkill_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgvTechnicalSkill_Format();
+        }
+
+        private void groupBox3_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgvTechnicalSkill_Format();
+        }
+
+        private void dgvNonTechnicalSkill_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            int iRow = e.RowIndex;
+            DataGridViewRow r = dgvNonTechnicalSkill.Rows[iRow];
+            string cellValue1 = r.Cells[4].Value.ToString();
+           //MessageBox.Show(cellValue1);
+            if (cellValue1 == "")
+            {
+                r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
+                r.DefaultCellStyle.Font = new Font(dgvNonTechnicalSkill.Font, FontStyle.Bold);
+                //r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            }
+            if ((e.ColumnIndex == this.dgvNonTechnicalSkill.Columns["PF"].Index) && e.Value != null)
+            {
+                DataGridViewCell cell = this.dgvNonTechnicalSkill.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                //MessageBox.Show(e.Value.ToString());
+                if (e.Value.ToString() == "0.00")
+                {
+                    cell.ToolTipText = "very bad";
+
+                }
+                else
+                {
+                    MessageBox.Show("no");
+                }
+                
+            }
+
+
+            
+
+
+        }
+
+        private void dgvUT_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            int iRow = e.RowIndex;
+            DataGridViewRow r = dgvUT.Rows[iRow];
+            string cellValue1 = r.Cells[4].Value.ToString();
+            //MessageBox.Show(cellValue1);
+            if (cellValue1 == "")
+            {
+                r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
+                r.DefaultCellStyle.Font = new Font(dgvUT.Font, FontStyle.Bold);
+                //r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            }
+
+
+            if ((e.ColumnIndex == this.dgvUT.Columns["PF"].Index) && e.Value != null)
+            {
+                DataGridViewCell cell = this.dgvUT.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (e.Value.Equals("0.00"))
+                {
+                    cell.ToolTipText = "very bad";
+                }
+
+            }
+
+
+        }
+
+
     }
 }
