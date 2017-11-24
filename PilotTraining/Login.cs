@@ -97,7 +97,7 @@ namespace PilotTraining
         private bool EmpLogin(string _UserName, string _Password)
         {
             Sb = new StringBuilder();
-            Sb.Append("SELECT Employee_ID,Employee_Password,Employee_SureName,Employee_LastName");
+            Sb.Append("SELECT Employee_ID,Employee_Password,Employee_SureName,Employee_LastName,Employee_Rule");
             Sb.Append(" FROM User_Login");
             Sb.Append(" WHERE (Employee_ID=@UserName)");
             Sb.Append(" AND (Employee_Password=@Password)");
@@ -160,7 +160,9 @@ namespace PilotTraining
                 string UserName = Sdr.GetString(Sdr.GetOrdinal("Employee_ID"));
                 string SureName = Sdr.GetString(Sdr.GetOrdinal("Employee_SureName"));
                 string LastName = Sdr.GetString(Sdr.GetOrdinal("Employee_LastName"));
+                string Employee_Rule = Sdr.GetString(Sdr.GetOrdinal("Employee_Rule"));
                 DBConnString.sUserIdLogin = UserName;
+                DBConnString.Rulelogin = Employee_Rule;
                 DBConnString.sUserlogin = SureName + " " + LastName;
                 return true;
             }

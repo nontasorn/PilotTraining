@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 namespace PilotTraining.Fundamental
 {
-    public partial class Subject : Form
+    public partial class SubjectDeatil : Form
     {
-        public Subject()
+        public SubjectDeatil()
         {
             InitializeComponent();
         }

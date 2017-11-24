@@ -7,10 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PilotTraining.Class;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Threading;
+
+using PilotTraining.Class;
+
+
 
 namespace PilotTraining.From
 {
@@ -29,9 +32,14 @@ namespace PilotTraining.From
         DataTable dtTopicDefault = new DataTable();
         DataTable dtTopicAdd = new DataTable();
         DataTable dt;
+        SqlDataAdapter masterDataAdapter;
+        SqlDataAdapter detailsDataAdapter;
 
         string strloginId;      
         string strTopic1, strTopic2;
+
+        AutoCompleteStringCollection AcPilotName = new AutoCompleteStringCollection();
+        AutoCompleteStringCollection AcPMPilotName = new AutoCompleteStringCollection();
 
         private void frmFromSubmit_Load(object sender, EventArgs e)
         {
@@ -46,11 +54,57 @@ namespace PilotTraining.From
             Conn.ConnectionString = strConn;
             Conn.Open();
             strloginId = DBConnString.sUserIdLogin;
-            
-            
+            cmb_Form();
             LoadTopic();
             LoadTechnicalSkill();
             LoadUTSkill();
+            ACPFPilotName();
+            ACPMPilotName();
+            
+        }
+        private void ACPFPilotName()
+        {
+            string sqlNameAcCustomer = "SELECT Employee_ID,(Employee_SureName+'  '+Employee_LastName) AS PilotName FROM User_Login WHERE Employee_Rule = 'USER' ";
+            SqlDataReader dr;
+            Cmd = new SqlCommand(sqlNameAcCustomer, Conn);
+            dr = Cmd.ExecuteReader();
+
+            // ตรวจสอบว่ามีข้อมูล EmployerName ในตารางหรือไม่
+            if (dr.HasRows)
+            {
+                dt = new DataTable();
+                dt.Load(dr);
+                foreach (DataRow drw in dt.Rows)
+                {
+                    AcPilotName.Add(drw["PilotName"].ToString());
+                }
+            }
+            dr.Close();
+            txtSearchPF.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearchPF.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtSearchPF.AutoCompleteCustomSource = AcPilotName;
+        }
+        private void ACPMPilotName()
+        {
+            string sqlNameAcCustomer = "SELECT Employee_ID,(Employee_SureName+'  '+Employee_LastName) AS PilotName FROM User_Login WHERE Employee_Rule = 'USER' ";
+            SqlDataReader dr;
+            Cmd = new SqlCommand(sqlNameAcCustomer, Conn);
+            dr = Cmd.ExecuteReader();
+
+            // ตรวจสอบว่ามีข้อมูล EmployerName ในตารางหรือไม่
+            if (dr.HasRows)
+            {
+                dt = new DataTable();
+                dt.Load(dr);
+                foreach (DataRow drw in dt.Rows)
+                {
+                    AcPMPilotName.Add(drw["PilotName"].ToString());
+                }
+            }
+            dr.Close();
+            txtSearchPM.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearchPM.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtSearchPM.AutoCompleteCustomSource = AcPMPilotName;
         }
         
         private void groupBox4_Enter(object sender, EventArgs e)
@@ -88,60 +142,18 @@ namespace PilotTraining.From
         }
         private void LoadTopic()
         {
-            /*
-            string strsubjectName = "VFR";
 
-            
-            SqlCommand cmd = new SqlCommand("ShowTrainingForn", Conn); // Change from STATEMENT_SHOWDEBTOR_FOR_CLEAR to STATEMENT
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@SubjectName", SqlDbType.NVarChar).Value = strsubjectName;
-
-            DataTable master = new DataTable();
-            DataTable child = new DataTable();
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(master);
-
-            
-            SqlCommand cmd2 = new SqlCommand("ShowTrainingFormAdditional", Conn); // Change from STATEMENT_SHOWDEBTOR_FOR_CLEAR to STATEMENT
-            cmd.CommandType = CommandType.StoredProcedure;
+            string strsubjectName = cboTrainingFormName.ComboBox.SelectedValue.ToString();
             
 
-            SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
-            da.Fill(child);
+            dtTopicDefault = Class.DBConnString.clsDB.QueryDataTable("ShowMainTopic " + "'" + strsubjectName + "'");
+            dtTopicAdd = Class.DBConnString.clsDB.QueryDataTable("ShowAdditionalTopic");
 
-            DataSet ds = new DataSet();
-           
-
-
-            //Add two DataTables  in Dataset 
-
-            ds.Tables.Add(master);
-            ds.Tables.Add(child);
-
-
-
-            // Create a Relation in Memory 
-
-            /*DataRelation relation = new DataRelation("", ds.Tables[0].Columns[0], ds.Tables[1].Columns[0], true);
-
-            ds.Relations.Add(relation);*/
-
-            // Set DataSource
-            //dgvTopic.DataSource = ds.Tables[0];
-            
-
-
-
-            
-            string strsubjectName = "VFR";
-
-            dtTopicDefault = Class.DBConnString.clsDB.QueryDataTable("ShowTrainingForn " + "'" + strsubjectName + "'");
-            dtTopicAdd = Class.DBConnString.clsDB.QueryDataTable("ShowTrainingFormAdditional");          
 
             if (dtTopicDefault.Rows.Count > 0)
             {
                 dgvTopic.DataSource = dtTopicDefault;
+                
                 //CheckResult = dt.Rows.Count;
                 strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
                 strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
@@ -157,7 +169,7 @@ namespace PilotTraining.From
                 dgvTopic.DataSource = null;
             }
             //Count.Text = CheckResult.ToString() + "  รายการ";
-           
+          
         }
         private void dgvTopicHead_Format()
         {
@@ -345,11 +357,10 @@ namespace PilotTraining.From
 
             if (dt.Rows.Count > 0)
             {
-                dgvUT.DataSource = dt;
-                //CheckResult = dt.Rows.Count;
-                //strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
-                //strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
 
+                strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
+                strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
+                dgvUT.DataSource = dt;
                 dgvUTSkillHead_Format();
 
 
@@ -358,6 +369,7 @@ namespace PilotTraining.From
             {
 
                 //CheckResult = 0;
+                
                 dgvUT.DataSource = null;
             }
             //Count.Text = CheckResult.ToString() + "  รายการ";
@@ -432,7 +444,7 @@ namespace PilotTraining.From
                 }
                 else
                 {
-                    MessageBox.Show("no");
+                    
                 }
                 
             }
@@ -471,6 +483,193 @@ namespace PilotTraining.From
 
 
         }
+
+        private void txtPF_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataRow drw in dt.Rows)
+                {
+                    if (drw["PilotName"].ToString() != "" && drw["PilotName"].ToString() == txtSearchPF.Text.Trim())
+                    {
+                        txtPFId.Text = drw["Employee_ID"].ToString();
+                        return;
+                    }
+                    txtPFId.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private void txtPM_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataRow drw in dt.Rows)
+                {
+                    if (drw["PilotName"].ToString() != "" && drw["PilotName"].ToString() == txtSearchPM.Text.Trim())
+                    {
+                        txtPMId.Text = drw["Employee_ID"].ToString();
+                        return;
+                    }
+                    
+                    txtPMId.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+        private void cmb_Form()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT SubSubjectId, SubSubjectName FROM SubSubject");
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(Sdr);
+
+                cboTrainingFormName.BeginUpdate();
+                cboTrainingFormName.ComboBox.DisplayMember = "SubSubjectName";
+                cboTrainingFormName.ComboBox.ValueMember = "SubSubjectId";
+                cboTrainingFormName.ComboBox.DataSource = dt;
+                cboTrainingFormName.EndUpdate();
+                cboTrainingFormName.SelectedIndex = 0;
+
+            }
+            Sdr.Close();
+        }
+
+        private void cboTrainingFormName_Click(object sender, EventArgs e)
+        {
+            LoadTopic();
+        }
+
+        // Setting edit datagridview
+
+        private void setDgvRead(int i)
+        {
+            try
+            {
+                dgvTopic.ReadOnly = false;
+                DataGridViewRow row = dgvTopic.Rows[i];
+                row.Cells[0].ReadOnly = true;
+                row.Cells[1].ReadOnly = true;
+                row.Cells[2].ReadOnly = true;
+                row.Cells[3].ReadOnly = false;
+                row.Cells[4].ReadOnly = false;
+                
+
+                dgvTopic.BeginEdit(true);
+            }
+            catch { }
+        }
+
+        private void dgvTopic_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvTopic.Rows[e.RowIndex];
+            if (e.ColumnIndex == 3)
+            {
+                setCellString(row, 3);
+            }
+            if (e.ColumnIndex == 4)
+            {
+                setCellString(row, 4);
+
+            }
+            SetTxtTotalScore(row);
+
+            
+
+
+            //MessageBox.Show("test");
+        }
+        private void setCellString(DataGridViewRow row, int i)
+        {
+            if (row.Cells[i].Value.ToString() + "" != "")
+            {
+                if (row.Cells[i].Value.ToString() == Convert.ToDouble(row.Cells[i].Value + "").ToString("N2"))
+                {
+                    row.Cells[i].Value = row.Cells[i].Value.ToString();
+                }
+                else
+                {
+                    row.Cells[i].Value = Convert.ToDouble(row.Cells[i].Value + "").ToString("N2");
+                }
+            }
+            else
+            {
+                row.Cells[i].Value = 0.00;
+            }
+        }
+        private void SetTxtTotalScore(DataGridViewRow row)
+        {
+            /*
+            Double UnitPrice = (row.Cells[7].Value + "" == "" ? 0.00 : Convert.ToDouble(row.Cells[7].Value)); // New Unit Price
+            Double Qty = (row.Cells[4].Value + "" == "" ? 0.00 : Convert.ToDouble(row.Cells[4].Value)); // Qty
+            Double Total = (UnitPrice * Qty); // New Total after additional debit
+            row.Cells[8].Value = Total.ToString();
+            lbldrow.Text = row.Cells[1].Value.ToString();
+
+            //Calculated the sum of after additional debit
+            Double sumAfter = 0;
+            for (int i = 0; i < dgvTopic.Rows.Count; ++i)
+            {
+                sumAfter += Convert.ToDouble(dgvTopic.Rows[i].Cells[8].Value);
+            }
+            lblTotalAfter.Text = sumAfter.ToString("#,##0.00");
+
+            // Calculated the additional Debit
+            Double AddDebit = Convert.ToDouble(lblTotalAfter.Text) - Convert.ToDouble(lblTotalBefore.Text);
+            lblAddDebit.Text = AddDebit.ToString("#,##0.00");
+            */
+
+            decimal sumScore = 0;
+
+            for (int i = 0; i < dgvTopic.Rows.Count; ++i)
+            {
+                if (dgvTopic[0, i].Value.ToString() == dgvTopic[1, i].Value.ToString())
+                {
+                    for (int j = 00; j < dgvTopic.Rows.Count; ++j)
+                    {
+                        sumScore = sumScore + Convert.ToDecimal(dgvTopic[3, i].Value);
+                    }
+                    
+                    
+                }
+                
+            }
+            txtPFId.Text = sumScore.ToString();
+        }
+
+        private void dgvTopic_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            setDgvRead(e.RowIndex);
+        }
+        
+
+        private void dgvTopic_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            
+        }
+        
+
 
 
     }

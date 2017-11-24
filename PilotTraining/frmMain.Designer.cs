@@ -42,6 +42,7 @@
             this.Menu_TrainingDetails1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuCreateTrainingDetails2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Subtopic = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChildSubTopic = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewTopic = new System.Windows.Forms.ToolStripMenuItem();
             this.nonTechnicalSkillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,11 +59,13 @@
             this.Assign_Course_Menu = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewSchedulebtn = new System.Windows.Forms.ToolStripMenuItem();
             this.formToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.lblUser = new System.Windows.Forms.ToolStripLabel();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.lblRule = new System.Windows.Forms.ToolStripLabel();
             this.Menu_Home.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -171,6 +174,7 @@
             this.Menu_TrainingDetails1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuCreateTrainingDetails2,
             this.Subtopic,
+            this.ChildSubTopic,
             this.ViewTopic});
             this.Menu_TrainingDetails1.Name = "Menu_TrainingDetails1";
             this.Menu_TrainingDetails1.Size = new System.Drawing.Size(266, 24);
@@ -179,21 +183,28 @@
             // MenuCreateTrainingDetails2
             // 
             this.MenuCreateTrainingDetails2.Name = "MenuCreateTrainingDetails2";
-            this.MenuCreateTrainingDetails2.Size = new System.Drawing.Size(154, 24);
+            this.MenuCreateTrainingDetails2.Size = new System.Drawing.Size(188, 24);
             this.MenuCreateTrainingDetails2.Text = "Main Topic";
             this.MenuCreateTrainingDetails2.Click += new System.EventHandler(this.MenuCreateTrainingDetails2_Click);
             // 
             // Subtopic
             // 
             this.Subtopic.Name = "Subtopic";
-            this.Subtopic.Size = new System.Drawing.Size(154, 24);
+            this.Subtopic.Size = new System.Drawing.Size(188, 24);
             this.Subtopic.Text = "Sub Topic";
             this.Subtopic.Click += new System.EventHandler(this.Subtopic_Click);
+            // 
+            // ChildSubTopic
+            // 
+            this.ChildSubTopic.Name = "ChildSubTopic";
+            this.ChildSubTopic.Size = new System.Drawing.Size(188, 24);
+            this.ChildSubTopic.Text = "Child Sub Topic";
+            this.ChildSubTopic.Click += new System.EventHandler(this.ChildSubTopic_Click);
             // 
             // ViewTopic
             // 
             this.ViewTopic.Name = "ViewTopic";
-            this.ViewTopic.Size = new System.Drawing.Size(154, 24);
+            this.ViewTopic.Size = new System.Drawing.Size(188, 24);
             this.ViewTopic.Text = "View Topic";
             this.ViewTopic.Click += new System.EventHandler(this.ViewTopic_Click);
             // 
@@ -316,6 +327,13 @@
             this.formToolStripMenuItem.Text = "Form";
             this.formToolStripMenuItem.Click += new System.EventHandler(this.formToolStripMenuItem_Click);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.testToolStripMenuItem.Text = "test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
@@ -327,7 +345,9 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.lblUser});
+            this.lblUser,
+            this.toolStripLabel2,
+            this.lblRule});
             this.toolStrip1.Location = new System.Drawing.Point(0, 536);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(984, 25);
@@ -348,12 +368,17 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 22);
             // 
-            // testToolStripMenuItem
+            // toolStripLabel2
             // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.testToolStripMenuItem.Text = "test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            this.toolStripLabel2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(36, 22);
+            this.toolStripLabel2.Text = "Rule :";
+            // 
+            // lblRule
+            // 
+            this.lblRule.Name = "lblRule";
+            this.lblRule.Size = new System.Drawing.Size(0, 22);
             // 
             // frmMain
             // 
@@ -413,5 +438,8 @@
         private System.Windows.Forms.ToolStripMenuItem University_Category_List;
         private System.Windows.Forms.ToolStripMenuItem formToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel lblRule;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripMenuItem ChildSubTopic;
     }
 }

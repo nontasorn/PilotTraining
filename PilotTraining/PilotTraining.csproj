@@ -63,7 +63,9 @@
       <DependentUpon>Employee_Management.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\clsDatabase.cs" />
-    <Compile Include="Class\CollapsingGridview.cs" />
+    <Compile Include="CollapsingGridview.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Class\DBConnString.cs" />
     <Compile Include="Class\TimeCell.cs" />
     <Compile Include="Components\DropDownPanel.cs">
@@ -104,6 +106,12 @@
     </Compile>
     <Compile Include="Fundamental\List\UniversityCategoryList.Designer.cs">
       <DependentUpon>UniversityCategoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\Topic\ChildSub-Subject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Topic\ChildSub-Subject.Designer.cs">
+      <DependentUpon>ChildSub-Subject.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\Topic\MainTopic.cs">
       <SubType>Form</SubType>
@@ -147,11 +155,11 @@
     <Compile Include="Fundamental\Subject\Sub-Subject.Designer.cs">
       <DependentUpon>Sub-Subject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\Subject\Subject.cs">
+    <Compile Include="Fundamental\Subject\SubjectDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\Subject\Subject.Designer.cs">
-      <DependentUpon>Subject.cs</DependentUpon>
+    <Compile Include="Fundamental\Subject\SubjectDetail.Designer.cs">
+      <DependentUpon>SubjectDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\Topic\MappingTopic.cs">
       <SubType>Form</SubType>
@@ -245,6 +253,9 @@
     <EmbeddedResource Include="Fundamental\List\UniversityList.resx">
       <DependentUpon>UniversityList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Topic\ChildSub-Subject.resx">
+      <DependentUpon>ChildSub-Subject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Topic\MainTopic.resx">
       <DependentUpon>MainTopic.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,8 +277,8 @@
     <EmbeddedResource Include="Fundamental\Subject\Sub-Subject.resx">
       <DependentUpon>Sub-Subject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\Subject\Subject.resx">
-      <DependentUpon>Subject.cs</DependentUpon>
+    <EmbeddedResource Include="Fundamental\Subject\SubjectDetail.resx">
+      <DependentUpon>SubjectDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Topic\MappingTopic.resx">
       <DependentUpon>MappingTopic.cs</DependentUpon>

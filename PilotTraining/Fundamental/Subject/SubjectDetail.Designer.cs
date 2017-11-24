@@ -1,6 +1,6 @@
 ﻿namespace PilotTraining.Fundamental
 {
-    partial class Subject
+    partial class SubjectDeatil
     {
         /// <summary>
         /// Required designer variable.

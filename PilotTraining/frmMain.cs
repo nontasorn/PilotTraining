@@ -37,7 +37,13 @@ namespace PilotTraining
         {
 
             lblUser.Text= DBConnString.sUserlogin;
+            lblRule.Text = DBConnString.Rulelogin;
             this.Activate();
+            if (lblRule.Text.Trim() == "USER")
+            {
+                memuDataMain.Visible = false;
+            }
+            //
             
         }
 
@@ -76,9 +82,10 @@ namespace PilotTraining
 
         private void SubjectManagementMenu_Click(object sender, EventArgs e)
         {
-            Fundamental.Subject frm = new Fundamental.Subject();
+            Fundamental.SubjectDeatil frm = new Fundamental.SubjectDeatil();
             frm.MdiParent = this;
             frm.Show();
+
         }
 
         private void Subtopic_Click(object sender, EventArgs e)
@@ -153,7 +160,17 @@ namespace PilotTraining
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             From.test frm = new From.test();
+            frm.MdiParent = this;
+            frm.Show();
+             * */
+           
+        }
+
+        private void ChildSubTopic_Click(object sender, EventArgs e)
+        {
+            Fundamental.Topic.ChildSub_Subject frm = new Fundamental.Topic.ChildSub_Subject();
             frm.MdiParent = this;
             frm.Show();
         }

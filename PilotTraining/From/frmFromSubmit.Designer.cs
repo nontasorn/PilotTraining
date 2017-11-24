@@ -33,11 +33,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.lbltrainingName = new System.Windows.Forms.ToolStripLabel();
+            this.cboTrainingFormName = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.Create_Course_Btn = new System.Windows.Forms.ToolStripButton();
             this.Edit_Course_Btn = new System.Windows.Forms.ToolStripButton();
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.dgvTopic = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dropDownPanel1 = new ScrewTurn.DropDownPanel();
+            this.txtPMId = new System.Windows.Forms.TextBox();
+            this.txtPFId = new System.Windows.Forms.TextBox();
+            this.txtSearchPM = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearchPF = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -46,10 +56,10 @@
             this.dgvUT = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.eToolTip1 = new AdvancedControls.eToolTip();
-            this.dropDownPanel1 = new ScrewTurn.DropDownPanel();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.dropDownPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -62,6 +72,9 @@
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbltrainingName,
+            this.cboTrainingFormName,
+            this.toolStripSeparator1,
             this.Create_Course_Btn,
             this.Edit_Course_Btn,
             this.Refresh_btn});
@@ -70,6 +83,25 @@
             this.toolStrip2.Size = new System.Drawing.Size(1240, 39);
             this.toolStrip2.TabIndex = 8;
             this.toolStrip2.Text = "                                                                ";
+            // 
+            // lbltrainingName
+            // 
+            this.lbltrainingName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltrainingName.Name = "lbltrainingName";
+            this.lbltrainingName.Size = new System.Drawing.Size(108, 36);
+            this.lbltrainingName.Text = "Training Form :";
+            // 
+            // cboTrainingFormName
+            // 
+            this.cboTrainingFormName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.cboTrainingFormName.Name = "cboTrainingFormName";
+            this.cboTrainingFormName.Size = new System.Drawing.Size(121, 39);
+            this.cboTrainingFormName.Click += new System.EventHandler(this.cboTrainingFormName_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // Create_Course_Btn
             // 
@@ -110,18 +142,20 @@
             this.dgvTopic.Location = new System.Drawing.Point(3, 17);
             this.dgvTopic.MultiSelect = false;
             this.dgvTopic.Name = "dgvTopic";
-            this.dgvTopic.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgvTopic.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTopic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTopic.Size = new System.Drawing.Size(822, 180);
+            this.dgvTopic.Size = new System.Drawing.Size(858, 180);
             this.dgvTopic.TabIndex = 9;
+            this.dgvTopic.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTopic_CellEndEdit);
+            this.dgvTopic.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTopic_CellEndEdit);
             this.dgvTopic.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTopic_CellFormatting_1);
+            this.dgvTopic.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTopic_CellMouseClick);
             // 
             // groupBox2
             // 
@@ -138,15 +172,113 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // dropDownPanel1
+            // 
+            this.dropDownPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dropDownPanel1.AutoCollapseDelay = -1;
+            this.dropDownPanel1.Controls.Add(this.txtPMId);
+            this.dropDownPanel1.Controls.Add(this.txtPFId);
+            this.dropDownPanel1.Controls.Add(this.txtSearchPM);
+            this.dropDownPanel1.Controls.Add(this.label1);
+            this.dropDownPanel1.Controls.Add(this.txtSearchPF);
+            this.dropDownPanel1.Controls.Add(this.label3);
+            this.dropDownPanel1.EnableHeaderMenu = true;
+            this.dropDownPanel1.ExpandAnimationSpeed = ScrewTurn.AnimationSpeed.Medium;
+            this.dropDownPanel1.Expanded = true;
+            this.dropDownPanel1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.dropDownPanel1.HeaderHeight = 20;
+            this.dropDownPanel1.HeaderIconNormal = null;
+            this.dropDownPanel1.HeaderIconOver = null;
+            this.dropDownPanel1.HeaderText = "Pilot Information";
+            this.dropDownPanel1.HomeLocation = new System.Drawing.Point(870, 15);
+            this.dropDownPanel1.HotTrackStyle = ScrewTurn.HotTrackStyle.Both;
+            this.dropDownPanel1.Location = new System.Drawing.Point(870, 15);
+            this.dropDownPanel1.ManageControls = false;
+            this.dropDownPanel1.Moveable = false;
+            this.dropDownPanel1.Name = "dropDownPanel1";
+            this.dropDownPanel1.RoundedCorners = true;
+            this.dropDownPanel1.Size = new System.Drawing.Size(358, 182);
+            this.dropDownPanel1.TabIndex = 12;
+            // 
+            // txtPMId
+            // 
+            this.txtPMId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtPMId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPMId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPMId.ForeColor = System.Drawing.Color.Red;
+            this.txtPMId.Location = new System.Drawing.Point(62, 102);
+            this.txtPMId.Name = "txtPMId";
+            this.txtPMId.ReadOnly = true;
+            this.txtPMId.Size = new System.Drawing.Size(82, 27);
+            this.txtPMId.TabIndex = 135;
+            this.txtPMId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPFId
+            // 
+            this.txtPFId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtPFId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPFId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPFId.ForeColor = System.Drawing.Color.Red;
+            this.txtPFId.Location = new System.Drawing.Point(62, 35);
+            this.txtPFId.Name = "txtPFId";
+            this.txtPFId.ReadOnly = true;
+            this.txtPFId.Size = new System.Drawing.Size(82, 27);
+            this.txtPFId.TabIndex = 134;
+            this.txtPFId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtSearchPM
+            // 
+            this.txtSearchPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearchPM.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchPM.Location = new System.Drawing.Point(150, 102);
+            this.txtSearchPM.Name = "txtSearchPM";
+            this.txtSearchPM.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtSearchPM.Size = new System.Drawing.Size(185, 26);
+            this.txtSearchPM.TabIndex = 133;
+            this.txtSearchPM.TextChanged += new System.EventHandler(this.txtPM_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 18);
+            this.label1.TabIndex = 132;
+            this.label1.Text = "PM  :";
+            // 
+            // txtSearchPF
+            // 
+            this.txtSearchPF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearchPF.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchPF.Location = new System.Drawing.Point(150, 35);
+            this.txtSearchPF.Name = "txtSearchPF";
+            this.txtSearchPF.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtSearchPF.Size = new System.Drawing.Size(185, 26);
+            this.txtSearchPF.TabIndex = 131;
+            this.txtSearchPF.TextChanged += new System.EventHandler(this.txtPF_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 18);
+            this.label3.TabIndex = 130;
+            this.label3.Text = "PF  :";
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.dgvTopic);
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(828, 200);
+            this.groupBox1.Size = new System.Drawing.Size(864, 200);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TOPIC";
@@ -279,27 +411,6 @@
             this.eToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.eToolTip1.ToolTipTitle = "";
             // 
-            // dropDownPanel1
-            // 
-            this.dropDownPanel1.AutoCollapseDelay = -1;
-            this.dropDownPanel1.EnableHeaderMenu = true;
-            this.dropDownPanel1.ExpandAnimationSpeed = ScrewTurn.AnimationSpeed.Medium;
-            this.dropDownPanel1.Expanded = true;
-            this.dropDownPanel1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.dropDownPanel1.HeaderHeight = 20;
-            this.dropDownPanel1.HeaderIconNormal = null;
-            this.dropDownPanel1.HeaderIconOver = null;
-            this.dropDownPanel1.HeaderText = "GOOD PRACTICE";
-            this.dropDownPanel1.HomeLocation = new System.Drawing.Point(834, 15);
-            this.dropDownPanel1.HotTrackStyle = ScrewTurn.HotTrackStyle.Both;
-            this.dropDownPanel1.Location = new System.Drawing.Point(834, 15);
-            this.dropDownPanel1.ManageControls = false;
-            this.dropDownPanel1.Moveable = false;
-            this.dropDownPanel1.Name = "dropDownPanel1";
-            this.dropDownPanel1.RoundedCorners = true;
-            this.dropDownPanel1.Size = new System.Drawing.Size(394, 182);
-            this.dropDownPanel1.TabIndex = 12;
-            // 
             // frmFromSubmit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,6 +427,8 @@
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.dropDownPanel1.ResumeLayout(false);
+            this.dropDownPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -344,5 +457,14 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvNonTechnicalSkill;
         private System.Windows.Forms.DataGridView dgvUT;
+        private System.Windows.Forms.TextBox txtSearchPF;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSearchPM;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPMId;
+        private System.Windows.Forms.TextBox txtPFId;
+        private System.Windows.Forms.ToolStripLabel lbltrainingName;
+        private System.Windows.Forms.ToolStripComboBox cboTrainingFormName;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

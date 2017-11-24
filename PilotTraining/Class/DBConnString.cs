@@ -13,6 +13,7 @@ namespace PilotTraining.Class
         public static string sServer = "";
         public static clsDatabase clsDB = null;
         public static string sUserlogin = "";
+        public static string Rulelogin = "";
         public static string UserName = "";
         public static string UserAuthentication = "";
         public static string sUserIdLogin = "";
