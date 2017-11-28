@@ -41,13 +41,6 @@
             this.Refresh_btn = new System.Windows.Forms.ToolStripButton();
             this.dgvTopic = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dropDownPanel1 = new ScrewTurn.DropDownPanel();
-            this.txtPMId = new System.Windows.Forms.TextBox();
-            this.txtPFId = new System.Windows.Forms.TextBox();
-            this.txtSearchPM = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearchPF = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,16 +49,29 @@
             this.dgvUT = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.eToolTip1 = new AdvancedControls.eToolTip();
+            this.BtnEmergencyTimeSubmit = new System.Windows.Forms.ToolStripButton();
+            this.txtEmergencyTime = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.BtnRefreshTime = new System.Windows.Forms.ToolStripButton();
+            this.dropDownPanel1 = new ScrewTurn.DropDownPanel();
+            this.txtPMId = new System.Windows.Forms.TextBox();
+            this.txtPFId = new System.Windows.Forms.TextBox();
+            this.txtSearchPM = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearchPF = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BtnSwap = new System.Windows.Forms.Button();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.dropDownPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNonTechnicalSkill)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUT)).BeginInit();
+            this.dropDownPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip2
@@ -77,7 +83,12 @@
             this.toolStripSeparator1,
             this.Create_Course_Btn,
             this.Edit_Course_Btn,
-            this.Refresh_btn});
+            this.Refresh_btn,
+            this.toolStripSeparator2,
+            this.toolStripLabel1,
+            this.txtEmergencyTime,
+            this.BtnEmergencyTimeSubmit,
+            this.BtnRefreshTime});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(1240, 39);
@@ -170,105 +181,6 @@
             this.groupBox2.Size = new System.Drawing.Size(1234, 206);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // dropDownPanel1
-            // 
-            this.dropDownPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dropDownPanel1.AutoCollapseDelay = -1;
-            this.dropDownPanel1.Controls.Add(this.txtPMId);
-            this.dropDownPanel1.Controls.Add(this.txtPFId);
-            this.dropDownPanel1.Controls.Add(this.txtSearchPM);
-            this.dropDownPanel1.Controls.Add(this.label1);
-            this.dropDownPanel1.Controls.Add(this.txtSearchPF);
-            this.dropDownPanel1.Controls.Add(this.label3);
-            this.dropDownPanel1.EnableHeaderMenu = true;
-            this.dropDownPanel1.ExpandAnimationSpeed = ScrewTurn.AnimationSpeed.Medium;
-            this.dropDownPanel1.Expanded = true;
-            this.dropDownPanel1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.dropDownPanel1.HeaderHeight = 20;
-            this.dropDownPanel1.HeaderIconNormal = null;
-            this.dropDownPanel1.HeaderIconOver = null;
-            this.dropDownPanel1.HeaderText = "Pilot Information";
-            this.dropDownPanel1.HomeLocation = new System.Drawing.Point(870, 15);
-            this.dropDownPanel1.HotTrackStyle = ScrewTurn.HotTrackStyle.Both;
-            this.dropDownPanel1.Location = new System.Drawing.Point(870, 15);
-            this.dropDownPanel1.ManageControls = false;
-            this.dropDownPanel1.Moveable = false;
-            this.dropDownPanel1.Name = "dropDownPanel1";
-            this.dropDownPanel1.RoundedCorners = true;
-            this.dropDownPanel1.Size = new System.Drawing.Size(358, 182);
-            this.dropDownPanel1.TabIndex = 12;
-            // 
-            // txtPMId
-            // 
-            this.txtPMId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtPMId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPMId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPMId.ForeColor = System.Drawing.Color.Red;
-            this.txtPMId.Location = new System.Drawing.Point(62, 102);
-            this.txtPMId.Name = "txtPMId";
-            this.txtPMId.ReadOnly = true;
-            this.txtPMId.Size = new System.Drawing.Size(82, 27);
-            this.txtPMId.TabIndex = 135;
-            this.txtPMId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtPFId
-            // 
-            this.txtPFId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtPFId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPFId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPFId.ForeColor = System.Drawing.Color.Red;
-            this.txtPFId.Location = new System.Drawing.Point(62, 35);
-            this.txtPFId.Name = "txtPFId";
-            this.txtPFId.ReadOnly = true;
-            this.txtPFId.Size = new System.Drawing.Size(82, 27);
-            this.txtPFId.TabIndex = 134;
-            this.txtPFId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtSearchPM
-            // 
-            this.txtSearchPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearchPM.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchPM.Location = new System.Drawing.Point(150, 102);
-            this.txtSearchPM.Name = "txtSearchPM";
-            this.txtSearchPM.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSearchPM.Size = new System.Drawing.Size(185, 26);
-            this.txtSearchPM.TabIndex = 133;
-            this.txtSearchPM.TextChanged += new System.EventHandler(this.txtPM_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 18);
-            this.label1.TabIndex = 132;
-            this.label1.Text = "PM  :";
-            // 
-            // txtSearchPF
-            // 
-            this.txtSearchPF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearchPF.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchPF.Location = new System.Drawing.Point(150, 35);
-            this.txtSearchPF.Name = "txtSearchPF";
-            this.txtSearchPF.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSearchPF.Size = new System.Drawing.Size(185, 26);
-            this.txtSearchPF.TabIndex = 131;
-            this.txtSearchPF.TextChanged += new System.EventHandler(this.txtPF_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 18);
-            this.label3.TabIndex = 130;
-            this.label3.Text = "PF  :";
             // 
             // groupBox1
             // 
@@ -411,6 +323,153 @@
             this.eToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.eToolTip1.ToolTipTitle = "";
             // 
+            // BtnEmergencyTimeSubmit
+            // 
+            this.BtnEmergencyTimeSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEmergencyTimeSubmit.Image = global::PilotTraining.Properties.Resources.Add_icon;
+            this.BtnEmergencyTimeSubmit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnEmergencyTimeSubmit.Name = "BtnEmergencyTimeSubmit";
+            this.BtnEmergencyTimeSubmit.Size = new System.Drawing.Size(156, 36);
+            this.BtnEmergencyTimeSubmit.Text = "Emergency Time";
+            // 
+            // txtEmergencyTime
+            // 
+            this.txtEmergencyTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmergencyTime.Name = "txtEmergencyTime";
+            this.txtEmergencyTime.Size = new System.Drawing.Size(100, 39);
+            this.txtEmergencyTime.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(132, 36);
+            this.toolStripLabel1.Text = "Emergency Time : ";
+            // 
+            // BtnRefreshTime
+            // 
+            this.BtnRefreshTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRefreshTime.Image = global::PilotTraining.Properties.Resources.time;
+            this.BtnRefreshTime.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnRefreshTime.Name = "BtnRefreshTime";
+            this.BtnRefreshTime.Size = new System.Drawing.Size(88, 36);
+            this.BtnRefreshTime.Text = "Flt.Hrs";
+            this.BtnRefreshTime.Click += new System.EventHandler(this.BtnRefreshTime_Click);
+            // 
+            // dropDownPanel1
+            // 
+            this.dropDownPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dropDownPanel1.AutoCollapseDelay = -1;
+            this.dropDownPanel1.Controls.Add(this.BtnSwap);
+            this.dropDownPanel1.Controls.Add(this.txtPMId);
+            this.dropDownPanel1.Controls.Add(this.txtPFId);
+            this.dropDownPanel1.Controls.Add(this.txtSearchPM);
+            this.dropDownPanel1.Controls.Add(this.label1);
+            this.dropDownPanel1.Controls.Add(this.txtSearchPF);
+            this.dropDownPanel1.Controls.Add(this.label3);
+            this.dropDownPanel1.EnableHeaderMenu = true;
+            this.dropDownPanel1.ExpandAnimationSpeed = ScrewTurn.AnimationSpeed.Medium;
+            this.dropDownPanel1.Expanded = true;
+            this.dropDownPanel1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.dropDownPanel1.HeaderHeight = 20;
+            this.dropDownPanel1.HeaderIconNormal = null;
+            this.dropDownPanel1.HeaderIconOver = null;
+            this.dropDownPanel1.HeaderText = "Pilot Information";
+            this.dropDownPanel1.HomeLocation = new System.Drawing.Point(870, 15);
+            this.dropDownPanel1.HotTrackStyle = ScrewTurn.HotTrackStyle.Both;
+            this.dropDownPanel1.Location = new System.Drawing.Point(870, 15);
+            this.dropDownPanel1.ManageControls = false;
+            this.dropDownPanel1.Moveable = false;
+            this.dropDownPanel1.Name = "dropDownPanel1";
+            this.dropDownPanel1.RoundedCorners = true;
+            this.dropDownPanel1.Size = new System.Drawing.Size(358, 182);
+            this.dropDownPanel1.TabIndex = 12;
+            // 
+            // txtPMId
+            // 
+            this.txtPMId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtPMId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPMId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPMId.ForeColor = System.Drawing.Color.Red;
+            this.txtPMId.Location = new System.Drawing.Point(62, 76);
+            this.txtPMId.Name = "txtPMId";
+            this.txtPMId.ReadOnly = true;
+            this.txtPMId.Size = new System.Drawing.Size(82, 27);
+            this.txtPMId.TabIndex = 135;
+            this.txtPMId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPFId
+            // 
+            this.txtPFId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtPFId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPFId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPFId.ForeColor = System.Drawing.Color.Red;
+            this.txtPFId.Location = new System.Drawing.Point(62, 35);
+            this.txtPFId.Name = "txtPFId";
+            this.txtPFId.ReadOnly = true;
+            this.txtPFId.Size = new System.Drawing.Size(82, 27);
+            this.txtPFId.TabIndex = 134;
+            this.txtPFId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtSearchPM
+            // 
+            this.txtSearchPM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearchPM.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchPM.Location = new System.Drawing.Point(150, 76);
+            this.txtSearchPM.Name = "txtSearchPM";
+            this.txtSearchPM.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtSearchPM.Size = new System.Drawing.Size(185, 26);
+            this.txtSearchPM.TabIndex = 133;
+            this.txtSearchPM.TextChanged += new System.EventHandler(this.txtPM_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 18);
+            this.label1.TabIndex = 132;
+            this.label1.Text = "PM  :";
+            // 
+            // txtSearchPF
+            // 
+            this.txtSearchPF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearchPF.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchPF.Location = new System.Drawing.Point(150, 35);
+            this.txtSearchPF.Name = "txtSearchPF";
+            this.txtSearchPF.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtSearchPF.Size = new System.Drawing.Size(185, 26);
+            this.txtSearchPF.TabIndex = 131;
+            this.txtSearchPF.TextChanged += new System.EventHandler(this.txtPF_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 18);
+            this.label3.TabIndex = 130;
+            this.label3.Text = "PF  :";
+            // 
+            // BtnSwap
+            // 
+            this.BtnSwap.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSwap.Location = new System.Drawing.Point(277, 117);
+            this.BtnSwap.Name = "BtnSwap";
+            this.BtnSwap.Size = new System.Drawing.Size(58, 29);
+            this.BtnSwap.TabIndex = 136;
+            this.BtnSwap.Text = "Swap";
+            this.BtnSwap.UseVisualStyleBackColor = true;
+            // 
             // frmFromSubmit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,14 +486,14 @@
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopic)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.dropDownPanel1.ResumeLayout(false);
-            this.dropDownPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNonTechnicalSkill)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUT)).EndInit();
+            this.dropDownPanel1.ResumeLayout(false);
+            this.dropDownPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +525,11 @@
         private System.Windows.Forms.ToolStripLabel lbltrainingName;
         private System.Windows.Forms.ToolStripComboBox cboTrainingFormName;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton BtnEmergencyTimeSubmit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripTextBox txtEmergencyTime;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton BtnRefreshTime;
+        private System.Windows.Forms.Button BtnSwap;
     }
 }

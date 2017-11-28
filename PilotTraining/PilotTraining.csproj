@@ -107,11 +107,11 @@
     <Compile Include="Fundamental\List\UniversityCategoryList.Designer.cs">
       <DependentUpon>UniversityCategoryList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fundamental\Topic\ChildSub-Subject.cs">
+    <Compile Include="Fundamental\Topic\Child_Topic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fundamental\Topic\ChildSub-Subject.Designer.cs">
-      <DependentUpon>ChildSub-Subject.cs</DependentUpon>
+    <Compile Include="Fundamental\Topic\Child_Topic.Designer.cs">
+      <DependentUpon>Child_Topic.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\Topic\MainTopic.cs">
       <SubType>Form</SubType>
@@ -253,8 +253,8 @@
     <EmbeddedResource Include="Fundamental\List\UniversityList.resx">
       <DependentUpon>UniversityList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fundamental\Topic\ChildSub-Subject.resx">
-      <DependentUpon>ChildSub-Subject.cs</DependentUpon>
+    <EmbeddedResource Include="Fundamental\Topic\Child_Topic.resx">
+      <DependentUpon>Child_Topic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Topic\MainTopic.resx">
       <DependentUpon>MainTopic.cs</DependentUpon>
@@ -383,6 +383,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wrong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\swap.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

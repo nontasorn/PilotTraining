@@ -1,6 +1,6 @@
 ﻿namespace PilotTraining.Fundamental.Topic
 {
-    partial class ChildSub_Subject
+    partial class Child_Topic
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@
             this.Refresh_btn});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(964, 39);
+            this.toolStrip2.Size = new System.Drawing.Size(888, 39);
             this.toolStrip2.TabIndex = 132;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -71,6 +71,7 @@
             this.Create_Tipic.Name = "Create_Tipic";
             this.Create_Tipic.Size = new System.Drawing.Size(88, 36);
             this.Create_Tipic.Text = "Create";
+            this.Create_Tipic.Click += new System.EventHandler(this.Create_Tipic_Click);
             // 
             // Edit_Topic
             // 
@@ -80,6 +81,7 @@
             this.Edit_Topic.Name = "Edit_Topic";
             this.Edit_Topic.Size = new System.Drawing.Size(69, 36);
             this.Edit_Topic.Text = "Edit";
+            this.Edit_Topic.Click += new System.EventHandler(this.Edit_Topic_Click);
             // 
             // Refresh_btn
             // 
@@ -99,13 +101,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgv_ViewTrainingDetails, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 64);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 42);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 235F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 420);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 419);
             this.tableLayoutPanel1.TabIndex = 133;
             // 
             // groupBox1
@@ -124,7 +126,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(882, 181);
+            this.groupBox1.Size = new System.Drawing.Size(882, 178);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Training Child Topic";
@@ -218,7 +220,7 @@
             this.dgv_ViewTrainingDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_ViewTrainingDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_ViewTrainingDetails.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgv_ViewTrainingDetails.Location = new System.Drawing.Point(3, 190);
+            this.dgv_ViewTrainingDetails.Location = new System.Drawing.Point(3, 187);
             this.dgv_ViewTrainingDetails.MultiSelect = false;
             this.dgv_ViewTrainingDetails.Name = "dgv_ViewTrainingDetails";
             this.dgv_ViewTrainingDetails.ReadOnly = true;
@@ -230,17 +232,17 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_ViewTrainingDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_ViewTrainingDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(882, 227);
+            this.dgv_ViewTrainingDetails.Size = new System.Drawing.Size(882, 229);
             this.dgv_ViewTrainingDetails.TabIndex = 0;
             // 
-            // ChildSub_Subject
+            // Child_Topic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 506);
+            this.ClientSize = new System.Drawing.Size(888, 462);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ChildSub_Subject";
+            this.Name = "Child_Topic";
             this.Text = "ChildSub_Subject";
             this.Load += new System.EventHandler(this.ChildSub_Subject_Load);
             this.toolStrip2.ResumeLayout(false);

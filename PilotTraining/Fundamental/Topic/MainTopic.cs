@@ -30,6 +30,7 @@ namespace PilotTraining.Fundamental
         int amend;
         string strMainTopicId;
         string strMainTopicName;
+        string strFormName;
 
         private void DetailsGroup_Load(object sender, EventArgs e)
         {
@@ -307,7 +308,7 @@ namespace PilotTraining.Fundamental
 
         private void dgv_ViewTrainingDetails_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-
+            strFormName = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[0].Value.ToString();
             lblDetailId.Text = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
             strMainTopicId = dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[1].Value.ToString();
             amend = Convert.ToInt32(dgv_ViewTrainingDetails.Rows[e.RowIndex].Cells[8].Value.ToString());
@@ -401,6 +402,7 @@ namespace PilotTraining.Fundamental
 
                 frm.subjectId = strMainTopicId;
                 frm.subjectname = strMainTopicName;
+                frm.FormName = strFormName;
                 frm.ShowDialog();
 
             }

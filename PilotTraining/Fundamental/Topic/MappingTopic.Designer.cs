@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtMappingId = new System.Windows.Forms.TextBox();
             this.txtMainTopicId = new System.Windows.Forms.TextBox();
             this.btn_SelectSubTopic = new System.Windows.Forms.Button();
@@ -48,6 +48,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Create_Mapping = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFormName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SelectSubTopic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SubTopic)).BeginInit();
@@ -61,7 +63,7 @@
             // 
             this.txtMappingId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMappingId.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMappingId.Location = new System.Drawing.Point(789, 32);
+            this.txtMappingId.Location = new System.Drawing.Point(789, 40);
             this.txtMappingId.Name = "txtMappingId";
             this.txtMappingId.ReadOnly = true;
             this.txtMappingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -73,7 +75,7 @@
             // 
             this.txtMainTopicId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMainTopicId.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMainTopicId.Location = new System.Drawing.Point(452, 32);
+            this.txtMainTopicId.Location = new System.Drawing.Point(452, 40);
             this.txtMainTopicId.Name = "txtMainTopicId";
             this.txtMainTopicId.ReadOnly = true;
             this.txtMainTopicId.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -84,7 +86,7 @@
             // btn_SelectSubTopic
             // 
             this.btn_SelectSubTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.btn_SelectSubTopic.Location = new System.Drawing.Point(612, 32);
+            this.btn_SelectSubTopic.Location = new System.Drawing.Point(612, 40);
             this.btn_SelectSubTopic.Name = "btn_SelectSubTopic";
             this.btn_SelectSubTopic.Size = new System.Drawing.Size(157, 26);
             this.btn_SelectSubTopic.TabIndex = 134;
@@ -96,7 +98,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 36);
+            this.label1.Location = new System.Drawing.Point(79, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 18);
             this.label1.TabIndex = 132;
@@ -104,6 +106,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtFormName);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtMappingId);
             this.groupBox1.Controls.Add(this.txtMainTopicId);
             this.groupBox1.Controls.Add(this.btn_SelectSubTopic);
@@ -119,7 +123,7 @@
             // 
             this.txtMainTopic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMainTopic.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMainTopic.Location = new System.Drawing.Point(177, 32);
+            this.txtMainTopic.Location = new System.Drawing.Point(177, 40);
             this.txtMainTopic.Name = "txtMainTopic";
             this.txtMainTopic.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtMainTopic.Size = new System.Drawing.Size(269, 26);
@@ -139,13 +143,13 @@
             this.dgv_SelectSubTopic.MultiSelect = false;
             this.dgv_SelectSubTopic.Name = "dgv_SelectSubTopic";
             this.dgv_SelectSubTopic.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_SelectSubTopic.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_SelectSubTopic.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_SelectSubTopic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_SelectSubTopic.Size = new System.Drawing.Size(952, 350);
             this.dgv_SelectSubTopic.TabIndex = 7;
@@ -205,23 +209,23 @@
             this.dgv_SubTopic.AllowUserToAddRows = false;
             this.dgv_SubTopic.AllowUserToDeleteRows = false;
             this.dgv_SubTopic.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_SubTopic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_SubTopic.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_SubTopic.ColumnHeadersHeight = 25;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_SubTopic.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_SubTopic.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_SubTopic.Location = new System.Drawing.Point(18, 50);
             this.dgv_SubTopic.Name = "dgv_SubTopic";
             this.dgv_SubTopic.RowHeadersVisible = false;
@@ -290,6 +294,28 @@
             this.toolStrip2.TabIndex = 138;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(71, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 18);
+            this.label2.TabIndex = 137;
+            this.label2.Text = "Form Name  :";
+            // 
+            // txtFormName
+            // 
+            this.txtFormName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFormName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFormName.Location = new System.Drawing.Point(177, 8);
+            this.txtFormName.Name = "txtFormName";
+            this.txtFormName.ReadOnly = true;
+            this.txtFormName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtFormName.Size = new System.Drawing.Size(154, 26);
+            this.txtFormName.TabIndex = 138;
+            this.txtFormName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // MappingTopic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,5 +360,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripButton Create_Mapping;
         private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtFormName;
     }
 }

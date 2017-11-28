@@ -36,6 +36,11 @@ namespace PilotTraining.Fundamental.Topic
         {
             set { txtMainTopicId.Text = value; }
         }
+        internal string FormName
+        {
+            set { txtFormName.Text = value; }
+        }
+
 
         private void MappingTopic_Load(object sender, EventArgs e)
         {
@@ -99,9 +104,12 @@ namespace PilotTraining.Fundamental.Topic
             Sbd.Append("P.Para_Desc 'TopicStatus',");
             Sbd.Append("S.SubTopicId ");
             Sbd.Append("FROM SubTopic S ");
-            Sbd.Append("INNER JOIN Parameter P ON P.Para_BPC		= 'DetailsGroup' AND P.Para_Type	= 'status' AND P.Para_Code	= S.SubTopicStatus ");
-
+            Sbd.Append("INNER JOIN Parameter P ON P.Para_BPC = 'DetailsGroup' AND P.Para_Type = 'status' AND P.Para_Code	= S.SubTopicStatus ");
             Sbd.Append("WHERE S.SubTopicStatus <> 'I' ");
+            Sbd.Append(" AND S.SubTopicId NOT IN (SELECT M.SubTopicId FROM MainTopicMappingDetail M ");
+            Sbd.Append("INNER JOIN MainTopicMapping T ON M.TopicMappingId = T.TopicMappingId ");
+            Sbd.Append("INNER JOIN DetailsGroup G ON G.DetailGroupId = T.DetailGroupId ");
+            Sbd.Append("INNER JOIN SubSubject S ON S.SubSubjectId = G.SubSubjectId WHERE S.SubSubjectName = 'VFR' )");
 
             string sql = Sbd.ToString();
             Cmd = new SqlCommand();

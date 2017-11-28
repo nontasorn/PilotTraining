@@ -170,7 +170,7 @@ namespace PilotTraining
 
         private void ChildSubTopic_Click(object sender, EventArgs e)
         {
-            Fundamental.Topic.ChildSub_Subject frm = new Fundamental.Topic.ChildSub_Subject();
+            Fundamental.Topic.Child_Topic frm = new Fundamental.Topic.Child_Topic();
             frm.MdiParent = this;
             frm.Show();
         }

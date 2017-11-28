@@ -60,6 +60,7 @@ namespace PilotTraining.From
             LoadUTSkill();
             ACPFPilotName();
             ACPMPilotName();
+            txtEmergencyTime.TextBox.Text = DateTime.Now.ToString("HH:mm:ss");
             
         }
         private void ACPFPilotName()
@@ -119,27 +120,7 @@ namespace PilotTraining.From
                 textBox15.Focus();
         }
          * */
-        private void DataHead()
-        {
-
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("AranalysisReport ");
-
-            if (dt.Rows.Count > 0)
-            {
-                dgvTopic.DataSource = dt;
-                
-                //HeadData();                              
-            }
-            else
-            {
-                //CheckResult = 0;
-                dgvTopic.DataSource = null;
-                
-
-            }
-
-        }
+       
         private void LoadTopic()
         {
 
@@ -212,6 +193,9 @@ namespace PilotTraining.From
                 r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             }
+           else
+               r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Regular);
+
            
         }
 
@@ -276,18 +260,9 @@ namespace PilotTraining.From
             
         }
 
-        private void cmbSubLM_MouseMove(object sender, MouseEventArgs e)
-        {
+       
 
-            toolTip1.ToolTipTitle = "GOOD PRACTICE";
-
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void LoadTechnicalSkill()
         {
@@ -638,16 +613,16 @@ namespace PilotTraining.From
             Double AddDebit = Convert.ToDouble(lblTotalAfter.Text) - Convert.ToDouble(lblTotalBefore.Text);
             lblAddDebit.Text = AddDebit.ToString("#,##0.00");
             */
-
+            /*
             decimal sumScore = 0;
 
             for (int i = 0; i < dgvTopic.Rows.Count; ++i)
             {
                 if (dgvTopic[0, i].Value.ToString() == dgvTopic[1, i].Value.ToString())
                 {
-                    for (int j = 00; j < dgvTopic.Rows.Count; ++j)
+                    for (int j = 00; j < dgvTopic.Rows.Count+1; ++j)
                     {
-                        sumScore = sumScore + Convert.ToDecimal(dgvTopic[3, i].Value);
+                        sumScore = sumScore + Convert.ToDecimal(dgvTopic[3, i+1].Value);
                     }
                     
                     
@@ -655,6 +630,7 @@ namespace PilotTraining.From
                 
             }
             txtPFId.Text = sumScore.ToString();
+             * */
         }
 
         private void dgvTopic_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -667,6 +643,11 @@ namespace PilotTraining.From
         {
             
             
+        }
+
+        private void BtnRefreshTime_Click(object sender, EventArgs e)
+        {
+            txtEmergencyTime.TextBox.Text = DateTime.Now.ToString("HH:mm:ss");
         }
         
 
