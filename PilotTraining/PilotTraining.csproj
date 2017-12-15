@@ -385,6 +385,7 @@
     <None Include="Resources\wrong.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\emergency.png" />
     <Content Include="Resources\swap.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

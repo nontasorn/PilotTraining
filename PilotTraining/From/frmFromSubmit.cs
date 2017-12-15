@@ -37,7 +37,7 @@ namespace PilotTraining.From
 
         string strloginId;      
         string strTopic1, strTopic2;
-
+        decimal sum;
         AutoCompleteStringCollection AcPilotName = new AutoCompleteStringCollection();
         AutoCompleteStringCollection AcPMPilotName = new AutoCompleteStringCollection();
 
@@ -61,6 +61,7 @@ namespace PilotTraining.From
             ACPFPilotName();
             ACPMPilotName();
             txtEmergencyTime.TextBox.Text = DateTime.Now.ToString("HH:mm:ss");
+            dtTrainingDate.Value = DateTime.Now;
             
         }
         private void ACPFPilotName()
@@ -139,6 +140,31 @@ namespace PilotTraining.From
                 strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
                 strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
 
+
+                // add combo box to datagridview
+                string selectQueryStringItem = "SELECT FhaseOfFlightId,FhaseOfFlightName FROM PhaseOfFlight";
+
+                SqlDataAdapter sqlDataAdapterItem = new SqlDataAdapter(selectQueryStringItem, Conn);
+                SqlCommandBuilder sqlCommandBuilderItem = new SqlCommandBuilder(sqlDataAdapterItem);
+
+                DataTable dataTableItem = new DataTable();
+                sqlDataAdapterItem.Fill(dataTableItem);
+                BindingSource bindingSourceItem = new BindingSource();
+                bindingSourceItem.DataSource = dataTableItem;
+                //Adding  Item ComboBox
+
+                DataGridViewComboBoxColumn ColumnItem = new DataGridViewComboBoxColumn();
+                ColumnItem.DataPropertyName = "FhaseOfFlightId";
+                ColumnItem.HeaderText = "FhaseOfFlightName";
+                ColumnItem.Width = 120;
+
+                ColumnItem.DataSource = bindingSourceItem;
+                ColumnItem.ValueMember = "FhaseOfFlightId";
+                ColumnItem.DisplayMember = "FhaseOfFlightName";
+
+                dgvTopic.Columns.Add(ColumnItem);
+
+
                 dgvTopicHead_Format();
 
                
@@ -159,8 +185,8 @@ namespace PilotTraining.From
                 dgvTopic.Columns[0].HeaderText = "";
                 dgvTopic.Columns[1].HeaderText = "";
                 dgvTopic.Columns[2].HeaderText = "";
-                dgvTopic.Columns[3].HeaderText = "";
-                dgvTopic.Columns[4].HeaderText = ""; 
+                dgvTopic.Columns[3].HeaderText = "PF";
+                dgvTopic.Columns[4].HeaderText = "PM";
                 FixColumnWidth_dgv_ViewScheduleHead_Format();        
                 dgvTopic.Columns[0].Visible = false;
                 dgvTopic.Columns[1].Visible = false;
@@ -173,31 +199,35 @@ namespace PilotTraining.From
             int w = dgvTopic.Width;
             dgvTopic.Columns[0].Width = 100;
             dgvTopic.Columns[1].Width = 100;
-            dgvTopic.Columns[2].Width = 522;
-            dgvTopic.Columns[3].Width = 150;
-            dgvTopic.Columns[4].Width = 150;
-           
+            dgvTopic.Columns[2].Width = 600;
+            dgvTopic.Columns[3].Width = 100;
+            dgvTopic.Columns[4].Width = 100;
         }
 
         private void dgvTopic_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
-           
+
             int iRow = e.RowIndex;
             DataGridViewRow r = dgvTopic.Rows[iRow];
-           string cellValue1 = r.Cells[0].Value.ToString();
-           string cellValue2 = r.Cells[1].Value.ToString();
-           if (cellValue1 == cellValue2)
-            { 
+            string cellValue1 = r.Cells[1].Value.ToString();
+            string cellValue2 = r.Cells[2].Value.ToString();
+           
+
+
+            if (cellValue1 == cellValue2)
+            {
+
                 r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
-                r.DefaultCellStyle.Font = new Font(dgvTopic.Font,FontStyle.Bold);
+                r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Bold);
                 r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            }
-           else
-               r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Regular);
 
-           
+            }
+            else
+                r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Regular);
+
         }
+            
 
         /*
 
@@ -394,41 +424,6 @@ namespace PilotTraining.From
             FixColumnWidth_dgvTechnicalSkill_Format();
         }
 
-        private void dgvNonTechnicalSkill_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-
-            int iRow = e.RowIndex;
-            DataGridViewRow r = dgvNonTechnicalSkill.Rows[iRow];
-            string cellValue1 = r.Cells[4].Value.ToString();
-           //MessageBox.Show(cellValue1);
-            if (cellValue1 == "")
-            {
-                r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
-                r.DefaultCellStyle.Font = new Font(dgvNonTechnicalSkill.Font, FontStyle.Bold);
-                //r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            }
-            if ((e.ColumnIndex == this.dgvNonTechnicalSkill.Columns["PF"].Index) && e.Value != null)
-            {
-                DataGridViewCell cell = this.dgvNonTechnicalSkill.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                //MessageBox.Show(e.Value.ToString());
-                if (e.Value.ToString() == "0.00")
-                {
-                    cell.ToolTipText = "very bad";
-
-                }
-                else
-                {
-                    
-                }
-                
-            }
-
-
-            
-
-
-        }
 
         private void dgvUT_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -548,8 +543,9 @@ namespace PilotTraining.From
                 row.Cells[2].ReadOnly = true;
                 row.Cells[3].ReadOnly = false;
                 row.Cells[4].ReadOnly = false;
-                
-
+                row.Cells[5].ReadOnly = true;
+                row.Cells[6].ReadOnly = true;
+                row.Cells[7].ReadOnly = true;
                 dgvTopic.BeginEdit(true);
             }
             catch { }
@@ -558,16 +554,15 @@ namespace PilotTraining.From
         private void dgvTopic_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvTopic.Rows[e.RowIndex];
-            if (e.ColumnIndex == 3)
-            {
-                setCellString(row, 3);
-            }
             if (e.ColumnIndex == 4)
             {
                 setCellString(row, 4);
+            }
+            if (e.ColumnIndex == 5)
+            {
+                setCellString(row, 5);
 
             }
-            SetTxtTotalScore(row);
 
             
 
@@ -592,7 +587,7 @@ namespace PilotTraining.From
                 row.Cells[i].Value = 0.00;
             }
         }
-        private void SetTxtTotalScore(DataGridViewRow row)
+        private void SetTxtTotalScore(DataGridViewRow dgv)
         {
             /*
             Double UnitPrice = (row.Cells[7].Value + "" == "" ? 0.00 : Convert.ToDouble(row.Cells[7].Value)); // New Unit Price
@@ -614,23 +609,53 @@ namespace PilotTraining.From
             lblAddDebit.Text = AddDebit.ToString("#,##0.00");
             */
             /*
-            decimal sumScore = 0;
-
-            for (int i = 0; i < dgvTopic.Rows.Count; ++i)
-            {
-                if (dgvTopic[0, i].Value.ToString() == dgvTopic[1, i].Value.ToString())
-                {
-                    for (int j = 00; j < dgvTopic.Rows.Count+1; ++j)
-                    {
-                        sumScore = sumScore + Convert.ToDecimal(dgvTopic[3, i+1].Value);
-                    }
-                    
-                    
-                }
-                
+            foreach (DataGridViewRow grdRows in dgvNonTechnicalSkill.Rows)
+            { 
+                if(grdRows.Cells["NonTechMainList_Id"].Value.Equals("NT000001"))
+                    if(grdRows.Cells["PFSub"].Value != DBNull.Value)
+ 
+                    sum += Convert.ToInt32(grdRows.Cells["PFSub"].Value);
+                MessageBox.Show(sum.ToString());
             }
-            txtPFId.Text = sumScore.ToString();
              * */
+            
+            int SumCount = 0;
+            int AllSumCount = 0;
+            string strNonTechMainList_Id;
+            int i = 0;
+            for (i = AllSumCount; i < dgvNonTechnicalSkill.Rows.Count - 1; i++)
+            {
+                strNonTechMainList_Id = dgvNonTechnicalSkill.Rows[i].Cells["NonTechMainList_Id"].Value.ToString();
+                MessageBox.Show("i=  "+i.ToString());
+                AllSumCount += (SumCount + i);
+                MessageBox.Show("AllSumCount=  "+AllSumCount.ToString());
+                
+
+                MessageBox.Show(dgvNonTechnicalSkill.Rows[i].Cells["NonTechMainList_Id"].Value.ToString().Trim() + "    " + dgvNonTechnicalSkill.Rows[i].Cells["NonTechCateList_Id"].Value.ToString().Trim());
+                SumCount = Convert.ToInt32(dgvNonTechnicalSkill.Rows[i + 1].Cells["SumCount"].Value);
+                if (dgvNonTechnicalSkill.Rows[i].Cells["NonTechMainList_Id"].Value.ToString().Trim() == dgvNonTechnicalSkill.Rows[i].Cells["NonTechCateList_Id"].Value.ToString().Trim())
+                {
+                    
+                    for (int j = 0; j < SumCount; j++)
+                    {
+                        MessageBox.Show("j=  "+j.ToString());
+                        MessageBox.Show("Grade=  "+dgvNonTechnicalSkill.Rows[j + 1].Cells["PFSub"].Value.ToString());
+
+                        sum += Convert.ToDecimal(dgvNonTechnicalSkill.Rows[j + 1].Cells["PFSub"].Value.ToString());
+                       MessageBox.Show("SumGrade=  "+sum.ToString());
+                    }
+                    txtPFId.Text = sum.ToString();
+                }
+                else {
+                    MessageBox.Show("111");
+              }
+                
+
+            }
+            
+            
+            
+             
         }
 
         private void dgvTopic_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -649,7 +674,104 @@ namespace PilotTraining.From
         {
             txtEmergencyTime.TextBox.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void BtnSwap_Click(object sender, EventArgs e)
+        {
+            string strPFId , strPFName;
+            string strPMId , strPMName;
+
+            // Change PM
+            strPFId = txtPFId.Text.Trim();
+            strPFName = txtSearchPF.Text.Trim();
+            strPMId = txtPMId.Text.Trim();
+            strPMName = txtSearchPM.Text.Trim();
+
+            txtPMId.Text = strPFId;
+            txtSearchPM.Text = strPFName;
+
+            txtPFId.Text = strPMId;
+            txtSearchPF.Text = strPMName;
+
+            
+        }
+
+        private void dgvNonTechnicalSkill_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvNonTechnicalSkill.Rows[e.RowIndex];
+            if (e.ColumnIndex == 6)
+            {
+                setCellString(row, 6);
+            }
+            if (e.ColumnIndex == 7)
+            {
+                setCellString(row, 7);
+
+            }
+            //SetTxtTotalScore(row);
+
+
+
+
+            //MessageBox.Show("test");
+        }
+
+        private void dgvNonTechnicalSkill_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            setDgvTechnicalSkillRead(e.RowIndex);
+        }
+
+        private void setDgvTechnicalSkillRead(int i)
+        {
+            try
+            {
+                dgvNonTechnicalSkill.ReadOnly = false;
+                DataGridViewRow row = dgvNonTechnicalSkill.Rows[i];
+                row.Cells[0].ReadOnly = true;
+                row.Cells[1].ReadOnly = true;
+                row.Cells[2].ReadOnly = false;
+                row.Cells[3].ReadOnly = false;
+                row.Cells[4].ReadOnly = true;
+                row.Cells[5].ReadOnly = true;
+                row.Cells[6].ReadOnly = false;
+                row.Cells[7].ReadOnly = false;
+
+                dgvNonTechnicalSkill.BeginEdit(true);
+            }
+            catch { }
+        }
+
+        private void dgvNonTechnicalSkill_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            
+
+            int iRow = e.RowIndex;
+            DataGridViewRow r = dgvNonTechnicalSkill.Rows[iRow];
+            string cellValue1 = r.Cells[4].Value.ToString();
+           //MessageBox.Show(cellValue1);
+            if (cellValue1 == "")
+            {
+                r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
+                r.DefaultCellStyle.Font = new Font(dgvNonTechnicalSkill.Font, FontStyle.Bold);
+                //r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            }
+            
         
+        }
+
+        private void dgvTopic_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                //TODO - Button Clicked - Execute Code Here
+                MessageBox.Show("mess");
+            }
+        }
+
+        
+       
 
 
 
