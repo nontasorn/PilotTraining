@@ -41,6 +41,10 @@ namespace PilotTraining.From
         AutoCompleteStringCollection AcPilotName = new AutoCompleteStringCollection();
         AutoCompleteStringCollection AcPMPilotName = new AutoCompleteStringCollection();
 
+        DateTimePicker timepicker = new DateTimePicker();
+        Rectangle _Rec;
+
+
         private void frmFromSubmit_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -60,8 +64,14 @@ namespace PilotTraining.From
             LoadUTSkill();
             ACPFPilotName();
             ACPMPilotName();
-            txtEmergencyTime.TextBox.Text = DateTime.Now.ToString("HH:mm:ss");
+
             dtTrainingDate.Value = DateTime.Now;
+
+            dgvTopic.Controls.Add(timepicker);
+            timepicker.ShowUpDown = true;
+            timepicker.CustomFormat = "mm:ss";
+            timepicker.Format = DateTimePickerFormat.Custom;
+            timepicker.TextChanged += new EventHandler(timepicker_MouseDown);
             
         }
         private void ACPFPilotName()
@@ -142,6 +152,54 @@ namespace PilotTraining.From
 
 
                 // add combo box to datagridview
+                /*
+                // Grade
+                string selectQueryStringItem_Grade = "SELECT Grade_Rate,Grade_Name FROM Grade WHERE Grade_Type_ID = 'T1' ORDER BY Grade_Rate";
+                SqlDataAdapter sqlDataAdapterItem_Grade = new SqlDataAdapter(selectQueryStringItem_Grade, Conn);
+                SqlCommandBuilder sqlCommandBuilderItem_Grade = new SqlCommandBuilder(sqlDataAdapterItem_Grade);
+
+                DataTable dataTableItem_Grade = new DataTable();
+                sqlDataAdapterItem_Grade.Fill(dataTableItem_Grade);
+                BindingSource bindingSourceItem_Grade = new BindingSource();
+                bindingSourceItem_Grade.DataSource = dataTableItem_Grade;
+                //Adding  Item ComboBox
+
+                DataGridViewComboBoxColumn ColumnItem_Grade = new DataGridViewComboBoxColumn();
+                ColumnItem_Grade.DataPropertyName = "Grade_Rate";
+                ColumnItem_Grade.HeaderText = "PF";
+                ColumnItem_Grade.Width = 120;
+
+                ColumnItem_Grade.DataSource = bindingSourceItem_Grade;
+                ColumnItem_Grade.ValueMember = "Grade_Rate";
+                ColumnItem_Grade.DisplayMember = "Grade_Name";
+
+                dgvTopic.Columns.Add(ColumnItem_Grade);
+
+                
+                // Grade
+                string selectQueryStringItem_GradePM = "SELECT Grade_Rate,Grade_Name FROM Grade WHERE Grade_Type_ID = 'T1' ORDER BY Grade_Rate";
+                SqlDataAdapter sqlDataAdapterItem_GradePM = new SqlDataAdapter(selectQueryStringItem_GradePM, Conn);
+                SqlCommandBuilder sqlCommandBuilderItem_GradePM = new SqlCommandBuilder(sqlDataAdapterItem_GradePM);
+
+                DataTable dataTableItem_GradePM = new DataTable();
+                sqlDataAdapterItem_GradePM.Fill(dataTableItem_GradePM);
+                BindingSource bindingSourceItem_GradePM = new BindingSource();
+                bindingSourceItem_GradePM.DataSource = dataTableItem_GradePM;
+                //Adding  Item ComboBox
+
+                DataGridViewComboBoxColumn ColumnItem_GradePM = new DataGridViewComboBoxColumn();
+                ColumnItem_GradePM.DataPropertyName = "Grade_Rate";
+                ColumnItem_GradePM.HeaderText = "PM";
+                ColumnItem_GradePM.Width = 120;
+
+                ColumnItem_GradePM.DataSource = bindingSourceItem_GradePM;
+                ColumnItem_GradePM.ValueMember = "Grade_Rate";
+                ColumnItem_GradePM.DisplayMember = "Grade_Name";
+
+                dgvTopic.Columns.Add(ColumnItem_GradePM);
+              */
+                //--
+                
                 string selectQueryStringItem = "SELECT FhaseOfFlightId,FhaseOfFlightName FROM PhaseOfFlight";
 
                 SqlDataAdapter sqlDataAdapterItem = new SqlDataAdapter(selectQueryStringItem, Conn);
@@ -152,6 +210,9 @@ namespace PilotTraining.From
                 BindingSource bindingSourceItem = new BindingSource();
                 bindingSourceItem.DataSource = dataTableItem;
                 //Adding  Item ComboBox
+        
+                
+
 
                 DataGridViewComboBoxColumn ColumnItem = new DataGridViewComboBoxColumn();
                 ColumnItem.DataPropertyName = "FhaseOfFlightId";
@@ -162,9 +223,7 @@ namespace PilotTraining.From
                 ColumnItem.ValueMember = "FhaseOfFlightId";
                 ColumnItem.DisplayMember = "FhaseOfFlightName";
 
-                dgvTopic.Columns.Add(ColumnItem);
-
-
+                dgvTopic.Columns.Add(ColumnItem);  
                 dgvTopicHead_Format();
 
                
@@ -178,6 +237,7 @@ namespace PilotTraining.From
             //Count.Text = CheckResult.ToString() + "  รายการ";
           
         }
+        
         private void dgvTopicHead_Format()
         {
             if (dgvTopic.RowCount > 0)
@@ -187,10 +247,12 @@ namespace PilotTraining.From
                 dgvTopic.Columns[2].HeaderText = "";
                 dgvTopic.Columns[3].HeaderText = "PF";
                 dgvTopic.Columns[4].HeaderText = "PM";
+                dgvTopic.Columns[5].HeaderText = "Time";
+                dgvTopic.Columns[6].HeaderText = "Phase Of Flight";
                 FixColumnWidth_dgv_ViewScheduleHead_Format();        
                 dgvTopic.Columns[0].Visible = false;
                 dgvTopic.Columns[1].Visible = false;
-                 
+                dgvTopic.Columns[6].DefaultCellStyle.Format = "hh:mm";
             }
         }
        
@@ -199,43 +261,44 @@ namespace PilotTraining.From
             int w = dgvTopic.Width;
             dgvTopic.Columns[0].Width = 100;
             dgvTopic.Columns[1].Width = 100;
-            dgvTopic.Columns[2].Width = 600;
+            dgvTopic.Columns[2].Width = 350;
             dgvTopic.Columns[3].Width = 100;
             dgvTopic.Columns[4].Width = 100;
+            dgvTopic.Columns[5].Width = 150;
+            dgvTopic.Columns[6].Width = 100;
         }
 
         private void dgvTopic_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
+            
             int iRow = e.RowIndex;
             DataGridViewRow r = dgvTopic.Rows[iRow];
-            string cellValue1 = r.Cells[1].Value.ToString();
-            string cellValue2 = r.Cells[2].Value.ToString();
-           
+            string cellValue1 = r.Cells["MappingId"].Value.ToString();
+            string cellValue2 = r.Cells["TopicId"].Value.ToString();
+
+                if (cellValue1 == cellValue2)
+                {
+
+                    r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
+                    r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Bold);
+                    r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
-            if (cellValue1 == cellValue2)
-            {
-
-                r.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 255);
-                r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Bold);
-                r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-
-            }
-            else
-                r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Regular);
-
-        }
+                }
+                else
+                    r.DefaultCellStyle.Font = new Font(dgvTopic.Font, FontStyle.Regular);
             
-
-        /*
-
-        private void textBox15_MouseMove(object sender, MouseEventArgs e)
-        {
-            toolTip1.SetToolTip(textBox15, "Tooltip text"); 
         }
-         * */
+        private void timepicker_MouseDown(object sender, EventArgs e)
+        {
+            dgvTopic.CurrentCell.Value = timepicker.Text.ToString();
+        }
+
+        private void timepicker_TextChange(object sender, EventArgs e)
+        {
+            dgvTopic.CurrentCell.Value = timepicker.Text.ToString();
+
+        }
 
         private void cmbSubCO_MouseMove(object sender, MouseEventArgs e)
         {
@@ -307,6 +370,25 @@ namespace PilotTraining.From
                 //strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
                 //strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
 
+                //Adding  Item ComboBox
+                string selectQueryStringItem_SubTech = "SELECT NonTechSecSubList_Id,NonTechSecSubList_Name FROM NonTech_SubCategory_List S INNER JOIN NonTech_Category_List C ON C.NonTechCateList_Id = S.NonTechCateList_Id";
+                SqlDataAdapter sqlDataAdapterItem_SubTech = new SqlDataAdapter(selectQueryStringItem_SubTech, Conn);
+                SqlCommandBuilder sqlCommandBuilderItem_SubTech = new SqlCommandBuilder(sqlDataAdapterItem_SubTech);
+                DataTable dataTableItem_SubTech = new DataTable();
+                sqlDataAdapterItem_SubTech.Fill(dataTableItem_SubTech);
+                BindingSource bindingSourceItem_SubTech = new BindingSource();
+                bindingSourceItem_SubTech.DataSource = dataTableItem_SubTech;
+                DataGridViewComboBoxColumn ColumnItem_SubTech = new DataGridViewComboBoxColumn();
+                ColumnItem_SubTech.DataPropertyName = "SubTech";
+                ColumnItem_SubTech.HeaderText = "";
+                ColumnItem_SubTech.Width = 120;
+
+                ColumnItem_SubTech.DataSource = bindingSourceItem_SubTech;
+                ColumnItem_SubTech.ValueMember = "NonTechSecSubList_Id";
+                ColumnItem_SubTech.DisplayMember = "NonTechSecSubList_Name";
+
+                dgvNonTechnicalSkill.Columns.Add(ColumnItem_SubTech);
+
                 dgvTechnicalSkillHead_Format();
 
 
@@ -331,8 +413,7 @@ namespace PilotTraining.From
                 dgvNonTechnicalSkill.Columns[3].HeaderText = "PM";
                 dgvNonTechnicalSkill.Columns[4].HeaderText = "";
                 dgvNonTechnicalSkill.Columns[5].HeaderText = "";
-                dgvNonTechnicalSkill.Columns[6].HeaderText = "PF";
-                dgvNonTechnicalSkill.Columns[7].HeaderText = "PM";
+                dgvNonTechnicalSkill.Columns[6].HeaderText = "";
                 
                 FixColumnWidth_dgvTechnicalSkill_Format();
                 dgvNonTechnicalSkill.Columns[0].Visible = false;
@@ -350,8 +431,7 @@ namespace PilotTraining.From
             dgvNonTechnicalSkill.Columns[3].Width = 100;
             
             dgvNonTechnicalSkill.Columns[5].Width = 414;
-            dgvNonTechnicalSkill.Columns[6].Width = 100;
-            dgvNonTechnicalSkill.Columns[7].Width = 100;
+            dgvNonTechnicalSkill.Columns[6].Width = 200;
         }
 
         private void LoadUTSkill()
@@ -363,8 +443,8 @@ namespace PilotTraining.From
             if (dt.Rows.Count > 0)
             {
 
-                strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
-                strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
+                //strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
+                //strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
                 dgvUT.DataSource = dt;
                 dgvUTSkillHead_Format();
 
@@ -430,7 +510,7 @@ namespace PilotTraining.From
 
             int iRow = e.RowIndex;
             DataGridViewRow r = dgvUT.Rows[iRow];
-            string cellValue1 = r.Cells[4].Value.ToString();
+            string cellValue1 = r.Cells["UniversityCateList_Id"].Value.ToString();
             //MessageBox.Show(cellValue1);
             if (cellValue1 == "")
             {
@@ -439,18 +519,6 @@ namespace PilotTraining.From
                 //r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             }
-
-
-            if ((e.ColumnIndex == this.dgvUT.Columns["PF"].Index) && e.Value != null)
-            {
-                DataGridViewCell cell = this.dgvUT.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (e.Value.Equals("0.00"))
-                {
-                    cell.ToolTipText = "very bad";
-                }
-
-            }
-
 
         }
 
@@ -554,109 +622,51 @@ namespace PilotTraining.From
         private void dgvTopic_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvTopic.Rows[e.RowIndex];
+            if (e.ColumnIndex == 3)
+            {
+                setCellString(row, 3);
+            }
             if (e.ColumnIndex == 4)
             {
                 setCellString(row, 4);
+
             }
-            if (e.ColumnIndex == 5)
+            switch (dgvTopic.Columns[e.ColumnIndex].Name)
             {
-                setCellString(row, 5);
+
+                case "Time":
+
+                    _Rec = dgvTopic.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    timepicker.Size = new Size(_Rec.Width, _Rec.Height);
+                    timepicker.Location = new Point(_Rec.X, _Rec.Y);
+                    timepicker.Visible = true;
+                    break;
+
 
             }
-
             
-
-
-            //MessageBox.Show("test");
         }
         private void setCellString(DataGridViewRow row, int i)
         {
+            
             if (row.Cells[i].Value.ToString() + "" != "")
             {
-                if (row.Cells[i].Value.ToString() == Convert.ToDouble(row.Cells[i].Value + "").ToString("N2"))
+                if (row.Cells[i].Value.ToString() == Convert.ToInt32(row.Cells[i].Value + "").ToString())
                 {
                     row.Cells[i].Value = row.Cells[i].Value.ToString();
                 }
                 else
                 {
-                    row.Cells[i].Value = Convert.ToDouble(row.Cells[i].Value + "").ToString("N2");
+                    row.Cells[i].Value = Convert.ToInt32(row.Cells[i].Value + "").ToString();
                 }
             }
             else
             {
-                row.Cells[i].Value = 0.00;
+                row.Cells[i].Value = 0;
             }
-        }
-        private void SetTxtTotalScore(DataGridViewRow dgv)
-        {
-            /*
-            Double UnitPrice = (row.Cells[7].Value + "" == "" ? 0.00 : Convert.ToDouble(row.Cells[7].Value)); // New Unit Price
-            Double Qty = (row.Cells[4].Value + "" == "" ? 0.00 : Convert.ToDouble(row.Cells[4].Value)); // Qty
-            Double Total = (UnitPrice * Qty); // New Total after additional debit
-            row.Cells[8].Value = Total.ToString();
-            lbldrow.Text = row.Cells[1].Value.ToString();
-
-            //Calculated the sum of after additional debit
-            Double sumAfter = 0;
-            for (int i = 0; i < dgvTopic.Rows.Count; ++i)
-            {
-                sumAfter += Convert.ToDouble(dgvTopic.Rows[i].Cells[8].Value);
-            }
-            lblTotalAfter.Text = sumAfter.ToString("#,##0.00");
-
-            // Calculated the additional Debit
-            Double AddDebit = Convert.ToDouble(lblTotalAfter.Text) - Convert.ToDouble(lblTotalBefore.Text);
-            lblAddDebit.Text = AddDebit.ToString("#,##0.00");
-            */
-            /*
-            foreach (DataGridViewRow grdRows in dgvNonTechnicalSkill.Rows)
-            { 
-                if(grdRows.Cells["NonTechMainList_Id"].Value.Equals("NT000001"))
-                    if(grdRows.Cells["PFSub"].Value != DBNull.Value)
- 
-                    sum += Convert.ToInt32(grdRows.Cells["PFSub"].Value);
-                MessageBox.Show(sum.ToString());
-            }
-             * */
-            
-            int SumCount = 0;
-            int AllSumCount = 0;
-            string strNonTechMainList_Id;
-            int i = 0;
-            for (i = AllSumCount; i < dgvNonTechnicalSkill.Rows.Count - 1; i++)
-            {
-                strNonTechMainList_Id = dgvNonTechnicalSkill.Rows[i].Cells["NonTechMainList_Id"].Value.ToString();
-                MessageBox.Show("i=  "+i.ToString());
-                AllSumCount += (SumCount + i);
-                MessageBox.Show("AllSumCount=  "+AllSumCount.ToString());
-                
-
-                MessageBox.Show(dgvNonTechnicalSkill.Rows[i].Cells["NonTechMainList_Id"].Value.ToString().Trim() + "    " + dgvNonTechnicalSkill.Rows[i].Cells["NonTechCateList_Id"].Value.ToString().Trim());
-                SumCount = Convert.ToInt32(dgvNonTechnicalSkill.Rows[i + 1].Cells["SumCount"].Value);
-                if (dgvNonTechnicalSkill.Rows[i].Cells["NonTechMainList_Id"].Value.ToString().Trim() == dgvNonTechnicalSkill.Rows[i].Cells["NonTechCateList_Id"].Value.ToString().Trim())
-                {
-                    
-                    for (int j = 0; j < SumCount; j++)
-                    {
-                        MessageBox.Show("j=  "+j.ToString());
-                        MessageBox.Show("Grade=  "+dgvNonTechnicalSkill.Rows[j + 1].Cells["PFSub"].Value.ToString());
-
-                        sum += Convert.ToDecimal(dgvNonTechnicalSkill.Rows[j + 1].Cells["PFSub"].Value.ToString());
-                       MessageBox.Show("SumGrade=  "+sum.ToString());
-                    }
-                    txtPFId.Text = sum.ToString();
-                }
-                else {
-                    MessageBox.Show("111");
-              }
-                
-
-            }
-            
-            
-            
              
         }
+        
 
         private void dgvTopic_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -670,10 +680,7 @@ namespace PilotTraining.From
             
         }
 
-        private void BtnRefreshTime_Click(object sender, EventArgs e)
-        {
-            txtEmergencyTime.TextBox.Text = DateTime.Now.ToString("HH:mm:ss");
-        }
+        
 
         private void BtnSwap_Click(object sender, EventArgs e)
         {
@@ -698,13 +705,13 @@ namespace PilotTraining.From
         private void dgvNonTechnicalSkill_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvNonTechnicalSkill.Rows[e.RowIndex];
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 2)
             {
-                setCellString(row, 6);
+                setCellString(row, 2);
             }
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 3)
             {
-                setCellString(row, 7);
+                setCellString(row, 3);
 
             }
             //SetTxtTotalScore(row);
@@ -732,8 +739,7 @@ namespace PilotTraining.From
                 row.Cells[3].ReadOnly = false;
                 row.Cells[4].ReadOnly = true;
                 row.Cells[5].ReadOnly = true;
-                row.Cells[6].ReadOnly = false;
-                row.Cells[7].ReadOnly = false;
+                row.Cells[6].ReadOnly = true;
 
                 dgvNonTechnicalSkill.BeginEdit(true);
             }
@@ -746,7 +752,8 @@ namespace PilotTraining.From
 
             int iRow = e.RowIndex;
             DataGridViewRow r = dgvNonTechnicalSkill.Rows[iRow];
-            string cellValue1 = r.Cells[4].Value.ToString();
+            string cellValue1 = r.Cells["NonTechCateList_Name"].Value.ToString();
+            //string cellValue1 = r.Cells[4].Value.ToString();
            //MessageBox.Show(cellValue1);
             if (cellValue1 == "")
             {
@@ -766,9 +773,9 @@ namespace PilotTraining.From
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 //TODO - Button Clicked - Execute Code Here
-                MessageBox.Show("mess");
             }
         }
+
 
         
        

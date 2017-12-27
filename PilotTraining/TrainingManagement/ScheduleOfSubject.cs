@@ -167,13 +167,13 @@ namespace PilotTraining.TrainingManagement
         {
             dgv_ShowSubject.CurrentCell.Value = timepicker.Text.ToString();
         }
-        /*
+      
         private void timepicker_TextChange(object sender, EventArgs e)
         {
             dgv_ShowSubject.CurrentCell.Value = timepicker.Text.ToString();
 
         }
-         * */
+   
         private void dgv_ShowSubject_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
             dtp.Visible = false;

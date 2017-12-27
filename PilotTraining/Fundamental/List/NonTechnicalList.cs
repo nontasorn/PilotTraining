@@ -30,7 +30,6 @@ namespace PilotTraining.Fundamental
         int MaxOrder;
         string strMaxOrder;
 
-
         private void NonTechnicalList_Load(object sender, EventArgs e)
         {
             string strConn;

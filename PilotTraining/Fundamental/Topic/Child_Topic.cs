@@ -28,7 +28,6 @@ namespace PilotTraining.Fundamental.Topic
         int ChildsubtopicId;
         int maxOrder;
         int amend;
-
         private void ChildSub_Subject_Load(object sender, EventArgs e)
         {
             string strConn;
