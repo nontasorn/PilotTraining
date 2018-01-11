@@ -36,6 +36,7 @@
             this.Menu_Form_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Course1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Course_Management2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SubjectManagementMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.SubSubjectManagementMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@
             this.NonTechnicalSkill_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.Category_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.subcate_btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.Child_NonTech = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Btn = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Main_List = new System.Windows.Forms.ToolStripMenuItem();
             this.University_Category_List = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,7 +136,8 @@
             // Menu_Course1
             // 
             this.Menu_Course1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Course_Management2});
+            this.Menu_Course_Management2,
+            this.viewCourseToolStripMenuItem});
             this.Menu_Course1.Name = "Menu_Course1";
             this.Menu_Course1.Size = new System.Drawing.Size(266, 24);
             this.Menu_Course1.Text = "Course";
@@ -142,9 +145,16 @@
             // Menu_Course_Management2
             // 
             this.Menu_Course_Management2.Name = "Menu_Course_Management2";
-            this.Menu_Course_Management2.Size = new System.Drawing.Size(227, 24);
-            this.Menu_Course_Management2.Text = "Course Management";
+            this.Menu_Course_Management2.Size = new System.Drawing.Size(181, 24);
+            this.Menu_Course_Management2.Text = "Create Course";
             this.Menu_Course_Management2.Click += new System.EventHandler(this.Menu_Course_Management2_Click);
+            // 
+            // viewCourseToolStripMenuItem
+            // 
+            this.viewCourseToolStripMenuItem.Name = "viewCourseToolStripMenuItem";
+            this.viewCourseToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.viewCourseToolStripMenuItem.Text = "View Course";
+            this.viewCourseToolStripMenuItem.Click += new System.EventHandler(this.viewCourseToolStripMenuItem_Click);
             // 
             // subjectToolStripMenuItem
             // 
@@ -213,7 +223,8 @@
             this.nonTechnicalSkillToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NonTechnicalSkill_Btn,
             this.Category_Btn,
-            this.subcate_btn});
+            this.subcate_btn,
+            this.Child_NonTech});
             this.nonTechnicalSkillToolStripMenuItem.Name = "nonTechnicalSkillToolStripMenuItem";
             this.nonTechnicalSkillToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
             this.nonTechnicalSkillToolStripMenuItem.Text = "Non Technical Skill";
@@ -238,6 +249,13 @@
             this.subcate_btn.Size = new System.Drawing.Size(312, 24);
             this.subcate_btn.Text = "Sub-Category Non Technical Skill";
             this.subcate_btn.Click += new System.EventHandler(this.subcate_btn_Click);
+            // 
+            // Child_NonTech
+            // 
+            this.Child_NonTech.Name = "Child_NonTech";
+            this.Child_NonTech.Size = new System.Drawing.Size(312, 24);
+            this.Child_NonTech.Text = "Child Non Technical Skill";
+            this.Child_NonTech.Click += new System.EventHandler(this.Child_NonTech_Click);
             // 
             // University_Btn
             // 
@@ -441,5 +459,7 @@
         private System.Windows.Forms.ToolStripLabel lblRule;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripMenuItem ChildSubTopic;
+        private System.Windows.Forms.ToolStripMenuItem Child_NonTech;
+        private System.Windows.Forms.ToolStripMenuItem viewCourseToolStripMenuItem;
     }
 }

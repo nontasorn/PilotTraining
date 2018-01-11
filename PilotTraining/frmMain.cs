@@ -175,6 +175,20 @@ namespace PilotTraining
             frm.Show();
         }
 
+        private void Child_NonTech_Click(object sender, EventArgs e)
+        {
+            Fundamental.List.NonTechnicalChild frm = new Fundamental.List.NonTechnicalChild();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void viewCourseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Fundamental.Course_View frm = new Fundamental.Course_View();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
 
         
     }
