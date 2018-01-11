@@ -150,56 +150,7 @@ namespace PilotTraining.From
                 strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
                 strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
 
-
                 // add combo box to datagridview
-                /*
-                // Grade
-                string selectQueryStringItem_Grade = "SELECT Grade_Rate,Grade_Name FROM Grade WHERE Grade_Type_ID = 'T1' ORDER BY Grade_Rate";
-                SqlDataAdapter sqlDataAdapterItem_Grade = new SqlDataAdapter(selectQueryStringItem_Grade, Conn);
-                SqlCommandBuilder sqlCommandBuilderItem_Grade = new SqlCommandBuilder(sqlDataAdapterItem_Grade);
-
-                DataTable dataTableItem_Grade = new DataTable();
-                sqlDataAdapterItem_Grade.Fill(dataTableItem_Grade);
-                BindingSource bindingSourceItem_Grade = new BindingSource();
-                bindingSourceItem_Grade.DataSource = dataTableItem_Grade;
-                //Adding  Item ComboBox
-
-                DataGridViewComboBoxColumn ColumnItem_Grade = new DataGridViewComboBoxColumn();
-                ColumnItem_Grade.DataPropertyName = "Grade_Rate";
-                ColumnItem_Grade.HeaderText = "PF";
-                ColumnItem_Grade.Width = 120;
-
-                ColumnItem_Grade.DataSource = bindingSourceItem_Grade;
-                ColumnItem_Grade.ValueMember = "Grade_Rate";
-                ColumnItem_Grade.DisplayMember = "Grade_Name";
-
-                dgvTopic.Columns.Add(ColumnItem_Grade);
-
-                
-                // Grade
-                string selectQueryStringItem_GradePM = "SELECT Grade_Rate,Grade_Name FROM Grade WHERE Grade_Type_ID = 'T1' ORDER BY Grade_Rate";
-                SqlDataAdapter sqlDataAdapterItem_GradePM = new SqlDataAdapter(selectQueryStringItem_GradePM, Conn);
-                SqlCommandBuilder sqlCommandBuilderItem_GradePM = new SqlCommandBuilder(sqlDataAdapterItem_GradePM);
-
-                DataTable dataTableItem_GradePM = new DataTable();
-                sqlDataAdapterItem_GradePM.Fill(dataTableItem_GradePM);
-                BindingSource bindingSourceItem_GradePM = new BindingSource();
-                bindingSourceItem_GradePM.DataSource = dataTableItem_GradePM;
-                //Adding  Item ComboBox
-
-                DataGridViewComboBoxColumn ColumnItem_GradePM = new DataGridViewComboBoxColumn();
-                ColumnItem_GradePM.DataPropertyName = "Grade_Rate";
-                ColumnItem_GradePM.HeaderText = "PM";
-                ColumnItem_GradePM.Width = 120;
-
-                ColumnItem_GradePM.DataSource = bindingSourceItem_GradePM;
-                ColumnItem_GradePM.ValueMember = "Grade_Rate";
-                ColumnItem_GradePM.DisplayMember = "Grade_Name";
-
-                dgvTopic.Columns.Add(ColumnItem_GradePM);
-              */
-                //--
-                
                 string selectQueryStringItem = "SELECT FhaseOfFlightId,FhaseOfFlightName FROM PhaseOfFlight";
 
                 SqlDataAdapter sqlDataAdapterItem = new SqlDataAdapter(selectQueryStringItem, Conn);
@@ -211,9 +162,6 @@ namespace PilotTraining.From
                 bindingSourceItem.DataSource = dataTableItem;
                 //Adding  Item ComboBox
         
-                
-
-
                 DataGridViewComboBoxColumn ColumnItem = new DataGridViewComboBoxColumn();
                 ColumnItem.DataPropertyName = "FhaseOfFlightId";
                 ColumnItem.HeaderText = "FhaseOfFlightName";
@@ -245,14 +193,14 @@ namespace PilotTraining.From
                 dgvTopic.Columns[0].HeaderText = "";
                 dgvTopic.Columns[1].HeaderText = "";
                 dgvTopic.Columns[2].HeaderText = "";
-                dgvTopic.Columns[3].HeaderText = "PF";
+                dgvTopic.Columns[3].HeaderText = "PF";                
                 dgvTopic.Columns[4].HeaderText = "PM";
                 dgvTopic.Columns[5].HeaderText = "Time";
                 dgvTopic.Columns[6].HeaderText = "Phase Of Flight";
                 FixColumnWidth_dgv_ViewScheduleHead_Format();        
                 dgvTopic.Columns[0].Visible = false;
                 dgvTopic.Columns[1].Visible = false;
-                dgvTopic.Columns[6].DefaultCellStyle.Format = "hh:mm";
+                //dgvTopic.Columns[6].DefaultCellStyle.Format = "hh:mm";
             }
         }
        
@@ -359,36 +307,35 @@ namespace PilotTraining.From
 
         private void LoadTechnicalSkill()
         {
-
             dt = Class.DBConnString.clsDB.QueryDataTable("ShowNonTechnicalSkill");
             
-
             if (dt.Rows.Count > 0)
             {
                 dgvNonTechnicalSkill.DataSource = dt;
                 //CheckResult = dt.Rows.Count;
                 //strTopic1 = dtTopicDefault.Rows[0]["TopicId"].ToString();
                 //strTopic2 = dtTopicDefault.Rows[0]["MappingId"].ToString();
-
                 //Adding  Item ComboBox
-                string selectQueryStringItem_SubTech = "SELECT NonTechSecSubList_Id,NonTechSecSubList_Name FROM NonTech_SubCategory_List S INNER JOIN NonTech_Category_List C ON C.NonTechCateList_Id = S.NonTechCateList_Id";
-                SqlDataAdapter sqlDataAdapterItem_SubTech = new SqlDataAdapter(selectQueryStringItem_SubTech, Conn);
-                SqlCommandBuilder sqlCommandBuilderItem_SubTech = new SqlCommandBuilder(sqlDataAdapterItem_SubTech);
-                DataTable dataTableItem_SubTech = new DataTable();
-                sqlDataAdapterItem_SubTech.Fill(dataTableItem_SubTech);
-                BindingSource bindingSourceItem_SubTech = new BindingSource();
-                bindingSourceItem_SubTech.DataSource = dataTableItem_SubTech;
-                DataGridViewComboBoxColumn ColumnItem_SubTech = new DataGridViewComboBoxColumn();
-                ColumnItem_SubTech.DataPropertyName = "SubTech";
-                ColumnItem_SubTech.HeaderText = "";
-                ColumnItem_SubTech.Width = 120;
+               string selectQueryStringItem = "SELECT NonTechSecSubList_Id,NonTechSecSubList_Name FROM NonTech_SubCategory_List S INNER JOIN NonTech_Category_List C ON C.NonTechCateList_Id = S.NonTechCateList_Id";
 
-                ColumnItem_SubTech.DataSource = bindingSourceItem_SubTech;
-                ColumnItem_SubTech.ValueMember = "NonTechSecSubList_Id";
-                ColumnItem_SubTech.DisplayMember = "NonTechSecSubList_Name";
+                SqlDataAdapter sqlDataAdapterItem = new SqlDataAdapter(selectQueryStringItem, Conn);
+                SqlCommandBuilder sqlCommandBuilderItem = new SqlCommandBuilder(sqlDataAdapterItem);
 
-                dgvNonTechnicalSkill.Columns.Add(ColumnItem_SubTech);
+                DataTable dataTableItem = new DataTable();
+                sqlDataAdapterItem.Fill(dataTableItem);
+                BindingSource bindingSourceItem = new BindingSource();
+                bindingSourceItem.DataSource = dataTableItem;
 
+                DataGridViewComboBoxColumn ColumnItem = new DataGridViewComboBoxColumn();
+                //ColumnItem.DataPropertyName = "NonTechSecSubList_Id";
+                //ColumnItem.HeaderText = "NonTechSecSubList_Name";
+                ColumnItem.Width = 120;
+
+                ColumnItem.DataSource = bindingSourceItem;
+                ColumnItem.ValueMember = "NonTechSecSubList_Id";
+                ColumnItem.DisplayMember = "NonTechSecSubList_Name";
+
+                dgvNonTechnicalSkill.Columns.Add(ColumnItem);
                 dgvTechnicalSkillHead_Format();
 
 
@@ -413,7 +360,7 @@ namespace PilotTraining.From
                 dgvNonTechnicalSkill.Columns[3].HeaderText = "PM";
                 dgvNonTechnicalSkill.Columns[4].HeaderText = "";
                 dgvNonTechnicalSkill.Columns[5].HeaderText = "";
-                dgvNonTechnicalSkill.Columns[6].HeaderText = "";
+                dgvNonTechnicalSkill.Columns[6].HeaderText = "NonTechSecSubList_Name";
                 
                 FixColumnWidth_dgvTechnicalSkill_Format();
                 dgvNonTechnicalSkill.Columns[0].Visible = false;
@@ -621,16 +568,6 @@ namespace PilotTraining.From
 
         private void dgvTopic_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvTopic.Rows[e.RowIndex];
-            if (e.ColumnIndex == 3)
-            {
-                setCellString(row, 3);
-            }
-            if (e.ColumnIndex == 4)
-            {
-                setCellString(row, 4);
-
-            }
             switch (dgvTopic.Columns[e.ColumnIndex].Name)
             {
 
@@ -644,6 +581,17 @@ namespace PilotTraining.From
 
 
             }
+            DataGridViewRow row = dgvTopic.Rows[e.RowIndex];
+            if (e.ColumnIndex == 3)
+            {
+                setCellString(row, 3);
+            }
+            if (e.ColumnIndex == 4)
+            {
+                setCellString(row, 4);
+
+            }
+            
             
         }
         private void setCellString(DataGridViewRow row, int i)
@@ -762,6 +710,7 @@ namespace PilotTraining.From
                 //r.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             }
+
             
         
         }
