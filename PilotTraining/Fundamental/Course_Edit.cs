@@ -7,16 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PilotTraining.Class;
 using System.Data.SqlClient;
+using PilotTraining.Class;
+
 
 namespace PilotTraining.Fundamental
 {
-    public partial class Course_Management : Form
+    public partial class Course_Edit : Form
     {
-        public Course_Management()
+        public Course_Edit()
         {
             InitializeComponent();
+        }
+
+        internal string strCourseId // this value for edit
+        {
+            set { txtCourseId.Text = value; }
         }
 
         SqlConnection Conn;
@@ -24,34 +30,13 @@ namespace PilotTraining.Fundamental
         StringBuilder Sbd;
         SqlDataReader Sdr;
         SqlTransaction Tr;
-        string userId;
         DataTable dt;
-        string ViewCourseID;
-
-        int Max_Course_Head_ID;
-        int CheckResult;
+        string userId;
         int amend;
 
-        internal string strCourseId // this value for edit
+        private void Course_Edit_Load(object sender, EventArgs e)
         {
-            set { txtCourseId.Text = value; }
-        }
-
-        private void btnExitMain_Click(object sender, EventArgs e)
-        {
-            DialogResult Dlr;
-            Dlr = MessageBox.Show("Are you sure to close this window", "ยกเลิกการทำงาน", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (Dlr == DialogResult.Yes)
-            {
-                
-                dgv_Modules.Columns.Clear();
-                pn_Modules.Visible = false;
-            }
-        }
-
-        private void Course_Management_Load(object sender, EventArgs e)
-        {
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             string strConn;
             strConn = DBConnString.strConn;
             Conn = new SqlConnection();
@@ -62,17 +47,15 @@ namespace PilotTraining.Fundamental
             Conn.ConnectionString = strConn;
             Conn.Open();
 
-           
-            userId = DBConnString.sUserIdLogin;
             pn_Modules.Visible = false;
-            Max_Course_ID();
-            Create_Course_Btn.Enabled = true;
-            Edit_Course_Btn.Enabled = false;
+            userId = DBConnString.sUserIdLogin;
+            ShowHeadEdit();
+            ShowDetailEdit();
         }
 
         private void btn_SelectModules_Click(object sender, EventArgs e)
         {
-            dgv_SelectModules.Columns.Clear();
+            
             pn_Modules.Visible = true;
             ModulesDetails();
             dgv_Modules.RowsDefaultCellStyle.BackColor = Color.White;
@@ -122,7 +105,6 @@ namespace PilotTraining.Fundamental
             }
             Sdr.Close();
         }
-
         private void dgv_Modules_Header()
         {
             if (dgv_Modules.RowCount >= 0)
@@ -130,14 +112,14 @@ namespace PilotTraining.Fundamental
                 dgv_Modules.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 14F, GraphicsUnit.Pixel);
                 dgv_Modules.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgv_Modules.DefaultCellStyle.Font = new Font("Tahoma", 15F, GraphicsUnit.Pixel);
-                
+
 
                 dgv_Modules.Columns[0].HeaderText = "Select";
                 dgv_Modules.Columns[1].HeaderText = "Subject";
                 dgv_Modules.Columns[2].HeaderText = "Part";
 
                 dgv_Modules.Columns[3].Visible = false;
-                
+
 
                 dgv_Modules.Columns[0].Width = 100;
                 dgv_Modules.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -147,24 +129,24 @@ namespace PilotTraining.Fundamental
                 dgv_Modules.Columns[2].Width = 230;
                 dgv_Modules.Columns[2].DefaultCellStyle.Format = "d MMMM yyyy";
 
-                
-
-
                 dgv_Modules.Columns[1].ReadOnly = true;
                 dgv_Modules.Columns[2].ReadOnly = true;
                 dgv_Modules.Columns[3].ReadOnly = true;
-                
+
             }
         }
-
-        private void btnCancelSelect_Click(object sender, EventArgs e)
+        private void ShowHeadEdit()
         {
-            dgv_Modules.RowsDefaultCellStyle.BackColor = Color.LightGray;
-            dgv_Modules.ClearSelection();
+            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("CourseDetails " + txtCourseId.Text.Trim());
+            
+            txt_CourseName.Text = dt.Rows[0]["Course_Name"].ToString();
+            txt_CourseDescription.Text = dt.Rows[0]["Course_Description"].ToString();
+            amend = Convert.ToInt32(dt.Rows[0]["Course_Amend"].ToString());
         }
 
         private void btnOKSelect_Click(object sender, EventArgs e)
         {
+            dgv_SelectModules.Columns.Clear();
             int countChk = 0;
             for (int i = 0; i <= dgv_Modules.Rows.Count - 1; i++)
             {
@@ -202,9 +184,8 @@ namespace PilotTraining.Fundamental
 
 
             pn_Modules.Visible = false;
-            
-        }
 
+        }
         private void FormatDgvDetailStatement()
         {
             if (dgv_SelectModules.RowCount >= 0)
@@ -216,8 +197,7 @@ namespace PilotTraining.Fundamental
 
                 dgv_SelectModules.Columns[0].Name = "Subject";
                 dgv_SelectModules.Columns[1].Name = "Part";
-                dgv_SelectModules.Columns[2].Visible = false;
-
+                dgv_SelectModules.Columns[2].Visible = false;    
 
                 FixColumnWidth_dgv_SelectModules_Format();
 
@@ -228,29 +208,47 @@ namespace PilotTraining.Fundamental
 
             }
         }
-
         private void FixColumnWidth_dgv_SelectModules_Format()
         {
             if (dgv_SelectModules.RowCount > 0)
             {
-
-            int w = dgv_SelectModules.Width;
-            dgv_SelectModules.Columns[0].Width = 500;
-            dgv_SelectModules.Columns[1].Width = w -500;
+                int w = dgv_SelectModules.Width;
+                dgv_SelectModules.Columns[0].Width = 500;
+                dgv_SelectModules.Columns[1].Width = w - 500;
             }
- 
-
-
         }
 
-        private void Course_Management_Resize(object sender, EventArgs e)
+        private void btnExitMain_Click(object sender, EventArgs e)
         {
-            //FixColumnWidth_dgv_ViewCourseDetail_Format();
-            FixColumnWidth_dgv_SelectModules_Format();
-            
-        }
+            DialogResult Dlr;
+            Dlr = MessageBox.Show("Are you sure to close this window", "ยกเลิกการทำงาน", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (Dlr == DialogResult.Yes)
+            {
 
-        private void Create_Course_Btn_Click(object sender, EventArgs e)
+                dgv_Modules.Columns.Clear();
+                pn_Modules.Visible = false;
+                //ShowDetailEdit();
+            }
+        }
+        private void ShowDetailEdit()
+        {
+
+            DataTable dt = Class.DBConnString.clsDB.QueryDataTable("CourseSubject " + txtCourseId.Text.Trim());
+            if (dt.Rows.Count > 0)
+            {
+                dgv_SelectModules.DataSource = dt;
+                dgv_Subject_Detail();
+
+            }
+            else
+            {
+                //CheckResult = 0;
+                dgv_SelectModules.DataSource = null;
+
+
+            }
+        }
+        private void Edit_Course_Btn_Click(object sender, EventArgs e)
         {
             /*
             if (clsCash.IsPermissionId("P01") == false)
@@ -284,15 +282,24 @@ namespace PilotTraining.Fundamental
                     string sql;
                     Sbd = new StringBuilder();
                     Sbd.Remove(0, Sbd.Length);
-                    Sbd.Append("INSERT INTO Course_Head ");
-                    Sbd.Append("(Course_Head_ID,Course_Name,Course_Description,Course_Create_By,Course_Create_Date,Course_Modified_By,Course_Modified_Date) ");
-                    Sbd.Append(" VALUES ");
-                    Sbd.Append(" (@Course_Head_ID,@Course_Name,@Course_Description,@Course_Create_By,@Course_Create_Date,@Course_Modified_By,@Course_Modified_Date)");                
-                    sql = Sbd.ToString();
+                    Sbd.Append("UPDATE Course_Head ");
+                    Sbd.Append("SET Course_Name = @Course_Name,");
+                    Sbd.Append("Course_Description = @Course_Description,");
+                    Sbd.Append("Course_Modified_By = @Course_Modified_By,");
+                    Sbd.Append("Course_Modified_Date = @Course_Modified_Date,");
+                    Sbd.Append("Course_Amend = @Course_Amend ");
+                    Sbd.Append("WHERE Course_Head_ID = @Course_Head_ID ");
 
-                    Cmd.Parameters.Clear();
+                    Sbd.Append("DELETE Course_Details WHERE Course_Head_ID = @Course_Head_ID");
+                    string sqlAdd;
+                    sqlAdd = Sbd.ToString();
+                    Cmd = new SqlCommand();
+                    //com.Parameters.Clear();
+                    Cmd.CommandText = sqlAdd;
+                    Cmd.CommandType = CommandType.Text;
+                    Cmd.Connection = Conn;
                     Cmd.Transaction = Tr;
-                    Cmd.CommandText = sql;
+
                     Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NChar).Value = txtCourseId.Text.Trim();
                     Cmd.Parameters.Add("@Course_Name", SqlDbType.NChar).Value = txt_CourseName.Text.Trim();
                     Cmd.Parameters.Add("@Course_Description", SqlDbType.NChar).Value = txt_CourseDescription.Text.Trim();
@@ -300,9 +307,8 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Add("@Course_Create_Date", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Course_Modified_By", SqlDbType.NChar).Value = userId;
                     Cmd.Parameters.Add("@Course_Modified_Date", SqlDbType.DateTime).Value = DateTime.Now;
-                    Cmd.Parameters.Add("@Course_Amend", SqlDbType.Int).Value = 0;
+                    Cmd.Parameters.Add("@Course_Amend", SqlDbType.Int).Value = amend + 1;
                     Cmd.ExecuteNonQuery();
-                    MessageBox.Show("Head");
 
                     for (int i = 0; i <= dgv_SelectModules.Rows.Count - 1; i++)
                     {
@@ -321,136 +327,13 @@ namespace PilotTraining.Fundamental
 
                         Cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Course generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    Tr.Commit();
-
-                    Max_Course_ID();
-                    ClearDetails();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Unable to create new course" + ex.Message, "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Tr.Rollback();
-                }
-            }
-        }
-        private void Max_Course_ID()
-        {
-            Sbd = new StringBuilder();
-            Sbd.Remove(0, Sbd.Length);
-            Sbd.Append("SELECT MAX(SUBSTRING(Course_Head_ID,7,5)) AS MAX_Course_ID FROM Course_Head");
-            String sqlMaxStatementIndex;
-            sqlMaxStatementIndex = Sbd.ToString();
-            Cmd = new SqlCommand();
-            Cmd.CommandText = sqlMaxStatementIndex;
-            Cmd.CommandType = CommandType.Text;
-            Cmd.Connection = Conn;
-            string id = Cmd.ExecuteScalar().ToString();
-
-            if (id == "")
-            {
-                Max_Course_Head_ID = 1;
-            }
-            else
-            {
-                Max_Course_Head_ID = Convert.ToInt32(id.ToString());
-                Max_Course_Head_ID++;
-            }
-            //txtHandId.Text = HeadId.ToString();
-
-            /*txtCourseId.Text = "C" + Max_Course_Head_ID;
-            Cmd.Parameters.Clear();
-            */
-            string strMax = "";
-            strMax = String.Format("{0:00000}", Convert.ToInt16(Max_Course_Head_ID.ToString()));
-            txtCourseId.Text = "COURSE" + strMax + DateTime.Now.ToString("yyyy");
-            Cmd.Parameters.Clear();
-        }
-        private void ClearDetails()
-        {
-            txt_CourseDescription.Clear();
-            txt_CourseName.Clear();
-            dgv_SelectModules.Columns.Clear();
-        }
-
-        
-
-        
-
-        private void dgv_Course_View_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            Edit_Course_Btn.Enabled = true;
-            Create_Course_Btn.Enabled = false;
-            if (e.RowIndex == -1)
-            {
-                return;
-            }
-
-        }
-        
-
-        private void Refresh_btn_Click(object sender, EventArgs e)
-        {
-            
-        }
-        
-        
-
-        private void dgv_SelectModules_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            Create_Course_Btn.Enabled = false;
-            Edit_Course_Btn.Enabled = true;
-        }
-
-        private void Edit_Course_Btn_Click(object sender, EventArgs e)
-        {
-            if (txt_CourseName.Text.Trim() == "")
-            {
-                MessageBox.Show("Please enter Course Name", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txt_CourseName.Focus();
-                return;
-            }
-
-
-            if (MessageBox.Show("Are you sure to update course  " + txt_CourseName.Text.Trim() + " yes/no?", "Pilot Training Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            {
-
-                Tr = Conn.BeginTransaction();
-                try
-                {
-                    string sqlSaveStHead;
-                    Sbd = new StringBuilder();
-                    Sbd.Remove(0, Sbd.Length);
-                    Sbd.Append("UPDATE Course_Head ");
-                    Sbd.Append("SET Course_Name = @Course_Name,");
-                    Sbd.Append("Course_Description = @Course_Description,");
-                    Sbd.Append("Course_Modified_By = @Course_Modified_By,");
-                    Sbd.Append("Course_Modified_Date = @Course_Modified_Date,");
-                    Sbd.Append("Course_Amend = @Course_Amend ");
-                    Sbd.Append("WHERE Course_Head_ID = @Course_Head_ID");
-
-                    sqlSaveStHead = Sbd.ToString();
-
-
-                    Cmd.Parameters.Clear();
-                    Cmd.Transaction = Tr;
-                    Cmd.CommandText = sqlSaveStHead;
-                    Cmd.Parameters.Add("@Course_Head_ID", SqlDbType.NVarChar).Value = txtCourseId.Text.Trim();
-                    Cmd.Parameters.Add("@Course_Name", SqlDbType.NVarChar).Value = txt_CourseName.Text.Trim();
-                    Cmd.Parameters.Add("@Course_Description", SqlDbType.NVarChar).Value = txt_CourseDescription.Text.Trim();
-                    Cmd.Parameters.Add("@Course_Modified_By", SqlDbType.NChar).Value = userId;
-                    Cmd.Parameters.Add("@Course_Modified_Date", SqlDbType.DateTime).Value = DateTime.Now;
-                    Cmd.Parameters.Add("@Course_Amend", SqlDbType.Int).Value = amend + 1;
-                    Cmd.ExecuteNonQuery();
                     MessageBox.Show("Course updated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
                     Tr.Commit();
-
-                    Max_Course_ID();
-                    txt_CourseDescription.Text = "";
-                    txt_CourseName.Text = "";
-                    Create_Course_Btn.Enabled = true;
-                    Edit_Course_Btn.Enabled = false;
+                    Fundamental.Course_View frm = new Course_View();
+                    Close();
+                    frm.MdiParent = this;
+                    frm.Show();
+                    //frm.ShowDialog();
 
                 }
                 catch (Exception ex)
@@ -459,6 +342,49 @@ namespace PilotTraining.Fundamental
                     Tr.Rollback();
                 }
             }
+        }
+
+        private void dgv_SelectModules_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_ViewFormat();
+        }
+        private void dgv_Subject_Detail()
+        {
+            if (dgv_SelectModules.RowCount >= 0)
+            {
+                dgv_SelectModules.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 14F, GraphicsUnit.Pixel);
+                dgv_SelectModules.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgv_SelectModules.DefaultCellStyle.Font = new Font("Tahoma", 15F, GraphicsUnit.Pixel);
+
+
+                dgv_SelectModules.Columns[0].HeaderText = "Subject";
+                dgv_SelectModules.Columns[1].HeaderText = "Part";
+                dgv_SelectModules.Columns[2].Visible = false;
+
+                dgv_SelectModules.Columns[1].ReadOnly = true;
+                dgv_SelectModules.Columns[2].ReadOnly = true;
+                
+
+                FixColumnWidth_dgv_ViewFormat();
+
+            }
+        }
+        private void FixColumnWidth_dgv_ViewFormat()
+        {
+            int w = dgv_SelectModules.Width;
+            dgv_SelectModules.Columns[0].Width = w-500;
+            dgv_SelectModules.Columns[1].Width = 500;
+            
+        }
+
+        private void Course_Edit_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_ViewFormat();
+        }
+
+        private void Refresh_btn_Click(object sender, EventArgs e)
+        {
+            ShowDetailEdit();
         }
     }
 }

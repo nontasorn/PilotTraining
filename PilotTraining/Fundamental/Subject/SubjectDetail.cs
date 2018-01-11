@@ -43,6 +43,7 @@ namespace PilotTraining.Fundamental
             Max_Subject_ID();
             cmb_status();
             DataHead_Subject();
+            Create_Subject.Enabled = true;
             Edit_Subject.Enabled = false;
             cmb_TrainingPart();
             
@@ -290,6 +291,7 @@ namespace PilotTraining.Fundamental
         private void dgv_ViewSubject_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             Create_Subject.Enabled = false;
+            Edit_Subject.Enabled = true;
             if (e.RowIndex == -1)
             {
                 return;
@@ -299,10 +301,7 @@ namespace PilotTraining.Fundamental
             txt_Subject_Name.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[1].Value.ToString();
             strSubjectName = dgv_ViewSubject.Rows[e.RowIndex].Cells[1].Value.ToString();
             comb_status.Text = dgv_ViewSubject.Rows[e.RowIndex].Cells[3].Value.ToString();
-
-            Edit_Subject.Enabled = true;
             amend = Convert.ToInt32(dgv_ViewSubject.Rows[e.RowIndex].Cells[8].Value.ToString());
-            Create_Subject.Enabled = false;
             
 
         }
