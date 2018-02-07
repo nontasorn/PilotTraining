@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comb_AircraftType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.comb_status = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblSubSubjectId = new System.Windows.Forms.Label();
@@ -70,6 +72,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.comb_AircraftType);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.comb_status);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblSubSubjectId);
@@ -84,20 +88,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sub-Subject Management";
             // 
+            // comb_AircraftType
+            // 
+            this.comb_AircraftType.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.comb_AircraftType.FormattingEnabled = true;
+            this.comb_AircraftType.Location = new System.Drawing.Point(269, 140);
+            this.comb_AircraftType.Name = "comb_AircraftType";
+            this.comb_AircraftType.Size = new System.Drawing.Size(125, 26);
+            this.comb_AircraftType.TabIndex = 131;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(149, 144);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 18);
+            this.label4.TabIndex = 130;
+            this.label4.Text = "Aircraft Type :";
+            // 
             // comb_status
             // 
             this.comb_status.Font = new System.Drawing.Font("Tahoma", 11.25F);
             this.comb_status.FormattingEnabled = true;
-            this.comb_status.Location = new System.Drawing.Point(269, 147);
+            this.comb_status.Location = new System.Drawing.Point(269, 181);
             this.comb_status.Name = "comb_status";
-            this.comb_status.Size = new System.Drawing.Size(96, 26);
+            this.comb_status.Size = new System.Drawing.Size(125, 26);
             this.comb_status.TabIndex = 129;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(188, 151);
+            this.label3.Location = new System.Drawing.Point(188, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 128;
@@ -148,7 +171,8 @@
             // 
             this.dgv_ViewSubSubject.AllowUserToAddRows = false;
             this.dgv_ViewSubSubject.AllowUserToDeleteRows = false;
-            this.dgv_ViewSubSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgv_ViewSubSubject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_ViewSubSubject.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.dgv_ViewSubSubject.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -158,17 +182,18 @@
             this.dgv_ViewSubSubject.MultiSelect = false;
             this.dgv_ViewSubSubject.Name = "dgv_ViewSubSubject";
             this.dgv_ViewSubSubject.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_ViewSubSubject.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_ViewSubSubject.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_ViewSubSubject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_ViewSubSubject.Size = new System.Drawing.Size(958, 182);
             this.dgv_ViewSubSubject.TabIndex = 0;
             this.dgv_ViewSubSubject.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_ViewSubSubject_CellMouseUp);
+            this.dgv_ViewSubSubject.Resize += new System.EventHandler(this.dgv_ViewSubSubject_Resize);
             // 
             // toolStrip2
             // 
@@ -250,5 +275,7 @@
         private System.Windows.Forms.ToolStripButton Create_SubSubject;
         private System.Windows.Forms.ToolStripButton Edit_SubSubject;
         private System.Windows.Forms.ToolStripButton Refresh_btn;
+        private System.Windows.Forms.ComboBox comb_AircraftType;
+        private System.Windows.Forms.Label label4;
     }
 }

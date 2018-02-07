@@ -246,14 +246,14 @@
             this.SubSubjectMappingbtn.Text = "Mapping Sub-Subject";
             this.SubSubjectMappingbtn.Click += new System.EventHandler(this.SubSubjectMappingbtn_Click);
             // 
-            // Subject
+            // SubjectDeatil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 506);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip2);
-            this.Name = "Subject";
+            this.Name = "SubjectDeatil";
             this.Text = "Subject";
             this.Load += new System.EventHandler(this.Subject_Load);
             this.Resize += new System.EventHandler(this.Subject_Resize);

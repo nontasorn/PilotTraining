@@ -235,7 +235,7 @@ namespace PilotTraining.Fundamental
                 DataTable dt = new DataTable();
                 dt.Load(Sdr);
                 dgv_ViewSubject.DataSource = dt;
-                FixColumnWidth_dgv_ViewFormat();
+                dgv_View_Format();
             }
             else
             {
@@ -389,6 +389,7 @@ namespace PilotTraining.Fundamental
             }
 
         }
+        
 
         
         }

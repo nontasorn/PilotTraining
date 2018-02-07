@@ -95,11 +95,35 @@
     <Compile Include="From\test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fundamental\Aircraft\AircraftType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Aircraft\AircraftType.Designer.cs">
+      <DependentUpon>AircraftType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\Course_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Course_Edit.Designer.cs">
+      <DependentUpon>Course_Edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fundamental\Course_Management.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fundamental\Course_Management.Designer.cs">
       <DependentUpon>Course_Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\Course_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\Course_View.Designer.cs">
+      <DependentUpon>Course_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fundamental\List\NonTechnicalChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fundamental\List\NonTechnicalChild.Designer.cs">
+      <DependentUpon>NonTechnicalChild.cs</DependentUpon>
     </Compile>
     <Compile Include="Fundamental\List\UniversityCategoryList.cs">
       <SubType>Form</SubType>
@@ -244,8 +268,20 @@
     <EmbeddedResource Include="From\test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Aircraft\AircraftType.resx">
+      <DependentUpon>AircraftType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Course_Edit.resx">
+      <DependentUpon>Course_Edit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\Course_Management.resx">
       <DependentUpon>Course_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\Course_View.resx">
+      <DependentUpon>Course_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fundamental\List\NonTechnicalChild.resx">
+      <DependentUpon>NonTechnicalChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fundamental\List\UniversityCategoryList.resx">
       <DependentUpon>UniversityCategoryList.cs</DependentUpon>

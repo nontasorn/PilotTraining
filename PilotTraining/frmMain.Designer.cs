@@ -33,7 +33,7 @@
             this.Menu_Grade1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Grade_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_From1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Form_Management2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu_AircraftType = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Course1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Course_Management2 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,17 +121,17 @@
             // Menu_From1
             // 
             this.Menu_From1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Menu_Form_Management2});
+            this.Menu_AircraftType});
             this.Menu_From1.Name = "Menu_From1";
             this.Menu_From1.Size = new System.Drawing.Size(266, 24);
-            this.Menu_From1.Text = "Form";
+            this.Menu_From1.Text = "Aircraft Type";
             // 
-            // Menu_Form_Management2
+            // Menu_AircraftType
             // 
-            this.Menu_Form_Management2.Name = "Menu_Form_Management2";
-            this.Menu_Form_Management2.Size = new System.Drawing.Size(213, 24);
-            this.Menu_Form_Management2.Text = "Form Management";
-            this.Menu_Form_Management2.Click += new System.EventHandler(this.Menu_Form_Management2_Click);
+            this.Menu_AircraftType.Name = "Menu_AircraftType";
+            this.Menu_AircraftType.Size = new System.Drawing.Size(265, 24);
+            this.Menu_AircraftType.Text = "Aircraft Type Management";
+            this.Menu_AircraftType.Click += new System.EventHandler(this.Menu_Form_Management2_Click);
             // 
             // Menu_Course1
             // 
@@ -426,7 +426,7 @@
         private System.Windows.Forms.ToolStripMenuItem Menu_Grade1;
         private System.Windows.Forms.ToolStripMenuItem Menu_Grade_Management2;
         private System.Windows.Forms.ToolStripMenuItem Menu_From1;
-        private System.Windows.Forms.ToolStripMenuItem Menu_Form_Management2;
+        private System.Windows.Forms.ToolStripMenuItem Menu_AircraftType;
         private System.Windows.Forms.ToolStripMenuItem Menu_Administration;
         private System.Windows.Forms.ToolStripMenuItem Menu_Employee1;
         private System.Windows.Forms.ToolStripMenuItem Menu_Employee_Management2;

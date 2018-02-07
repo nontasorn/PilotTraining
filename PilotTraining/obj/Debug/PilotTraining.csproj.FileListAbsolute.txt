@@ -212,3 +212,7 @@ D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotT
 D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.TrainingManagement.resources
 D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotTraining.TrainingManagement.ViewSchedule.resources
 D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotTraining.csproj.GenerateResource.Cache
+D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.List.NonTechnicalChild.resources
+D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Course_View.resources
+D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Course_Edit.resources
+D:\20161122\Pilot Training Project\Project9\trunk\PilotTraining\obj\Debug\PilotTraining.Fundamental.Aircraft.AircraftType.resources

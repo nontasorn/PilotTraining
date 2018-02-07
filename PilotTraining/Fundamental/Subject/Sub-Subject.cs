@@ -43,6 +43,7 @@ namespace PilotTraining.Fundamental
             Max_SubSubject_ID();
             cmb_status();
             DataHead_SubSubject();
+            cmb_AircraftType();
         }
         private void Max_SubSubject_ID()
         {
@@ -71,6 +72,36 @@ namespace PilotTraining.Fundamental
             lblSubSubjectId.Text = "SUBS" + strMax + '-' + DateTime.Now.ToString("yyyy");
             Cmd.Parameters.Clear();
 
+        }
+        private void cmb_AircraftType()
+        {
+            Sbd = new StringBuilder();
+            Sbd.Remove(0, Sbd.Length);
+
+            Sbd.Append("SELECT AircraftType,TypeName FROM AircraftType WHERE Status = 'A'");
+
+            string sqlIni = Sbd.ToString();
+            Cmd = new SqlCommand();
+
+            Cmd.CommandText = sqlIni;
+            Cmd.CommandType = CommandType.Text;
+            Cmd.Connection = Conn;
+            Sdr = Cmd.ExecuteReader();
+
+            if (Sdr.HasRows)
+            {
+                DataTable dtUser = new DataTable();
+                dtUser.Load(Sdr);
+
+                comb_AircraftType.BeginUpdate();
+                comb_AircraftType.DisplayMember = "TypeName";
+                comb_AircraftType.ValueMember = "AircraftType";
+                comb_AircraftType.DataSource = dtUser;
+                comb_AircraftType.EndUpdate();
+                comb_AircraftType.SelectedIndex = 0;
+
+            }
+            Sdr.Close();
         }
         private void cmb_status()
         {
@@ -124,9 +155,9 @@ namespace PilotTraining.Fundamental
                     Sbd = new StringBuilder();
                     Sbd.Remove(0, Sbd.Length);
                     Sbd.Append("INSERT INTO SubSubject ");
-                    Sbd.Append("(SubSubjectId,SubSubjectName,SubSubjectStatus,SubSubjectCreateBy,SubSubjectCreateDatetime,SubSubjectModifiedBy,SubSubjectModifiedDatetime,Amend ) ");
+                    Sbd.Append("(SubSubjectId,SubSubjectName,SubSubjectStatus,SubSubjectCreateBy,SubSubjectCreateDatetime,SubSubjectModifiedBy,SubSubjectModifiedDatetime,Amend,AircraftType ) ");
                     Sbd.Append(" VALUES ");
-                    Sbd.Append(" (@SubSubjectId,@SubSubjectName,@SubSubjectStatus,@SubSubjectCreateBy,@SubSubjectCreateDatetime,@SubSubjectModifiedBy,@SubSubjectModifiedDatetime,@Amend  )");
+                    Sbd.Append(" (@SubSubjectId,@SubSubjectName,@SubSubjectStatus,@SubSubjectCreateBy,@SubSubjectCreateDatetime,@SubSubjectModifiedBy,@SubSubjectModifiedDatetime,@Amend,@AircraftType  )");
 
                     sqlSaveStHead = Sbd.ToString();
 
@@ -143,6 +174,7 @@ namespace PilotTraining.Fundamental
                     Cmd.Parameters.Add("@SubSubjectModifiedBy", SqlDbType.NChar).Value = userId;
                     Cmd.Parameters.Add("@SubSubjectModifiedDatetime", SqlDbType.DateTime).Value = DateTime.Now;
                     Cmd.Parameters.Add("@Amend", SqlDbType.Int).Value = 0;
+                    Cmd.Parameters.Add("@AircraftType", SqlDbType.NChar).Value = comb_AircraftType.SelectedValue.ToString().Trim();
                     
                     Cmd.ExecuteNonQuery();
                     MessageBox.Show("Subject generated successfully", "Pilot Training Message", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -170,6 +202,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("S.SubSubjectId,");
             Sbd.Append("S.SubSubjectName,");
             Sbd.Append("P.Para_Desc AS SubjectStatus,");
+            Sbd.Append("A.TypeName,");
             Sbd.Append("(U.Employee_SureName+'  '+U.Employee_LastName) AS SubSubjectCreateBy,");
             Sbd.Append("S.SubSubjectCreateDatetime,");
             Sbd.Append("(U2.Employee_SureName+'  '+U2.Employee_LastName)  AS SubSubjectModifiedBy,");
@@ -184,6 +217,7 @@ namespace PilotTraining.Fundamental
             Sbd.Append("ON P.Para_BPC	= 'SubSubject' ");
             Sbd.Append("AND P.Para_Type	= 'status' ");
             Sbd.Append("AND P.Para_Code	= S.SubSubjectStatus ");
+            Sbd.Append("LEFT JOIN AircraftType A ON A.AircraftType = S.AircraftType");
 
 
             string sqlProduct = Sbd.ToString();
@@ -212,13 +246,14 @@ namespace PilotTraining.Fundamental
         {
             int w = dgv_ViewSubSubject.Width;
             dgv_ViewSubSubject.Columns[0].Width = 100;
-            dgv_ViewSubSubject.Columns[1].Width = w - 700;
+            dgv_ViewSubSubject.Columns[1].Width = w - 800;
             dgv_ViewSubSubject.Columns[2].Width = 100; 
             dgv_ViewSubSubject.Columns[3].Width = 100;
             dgv_ViewSubSubject.Columns[4].Width = 100;
             dgv_ViewSubSubject.Columns[5].Width = 100;
             dgv_ViewSubSubject.Columns[6].Width = 100;
             dgv_ViewSubSubject.Columns[7].Width = 100;
+            dgv_ViewSubSubject.Columns[8].Width = 100;
          
         }
 
@@ -230,16 +265,17 @@ namespace PilotTraining.Fundamental
                 dgv_ViewSubSubject.Columns[0].HeaderText = "Subject Id";
                 dgv_ViewSubSubject.Columns[1].HeaderText = "Subject Name";
                 dgv_ViewSubSubject.Columns[2].HeaderText = "Status";
-                dgv_ViewSubSubject.Columns[3].HeaderText = "Create By";
-                dgv_ViewSubSubject.Columns[4].HeaderText = "Create Date";
-                dgv_ViewSubSubject.Columns[5].HeaderText = "Modified By";
-                dgv_ViewSubSubject.Columns[6].HeaderText = "Modified Date";
-                dgv_ViewSubSubject.Columns[7].HeaderText = "Amend";
+                dgv_ViewSubSubject.Columns[3].HeaderText = "Aircraft Type";
+                dgv_ViewSubSubject.Columns[4].HeaderText = "Create By";
+                dgv_ViewSubSubject.Columns[5].HeaderText = "Create Date";
+                dgv_ViewSubSubject.Columns[6].HeaderText = "Modified By";
+                dgv_ViewSubSubject.Columns[7].HeaderText = "Modified Date";
+                dgv_ViewSubSubject.Columns[8].HeaderText = "Amend";
 
                 FixColumnWidth_dgv_ViewFormat();
 
-                dgv_ViewSubSubject.Columns[4].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
                 dgv_ViewSubSubject.Columns[5].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
+                dgv_ViewSubSubject.Columns[7].DefaultCellStyle.Format = ("dd/MM/yyyy HH:mm:ss");
 
             }
         }
@@ -268,7 +304,7 @@ namespace PilotTraining.Fundamental
             comb_status.Text = dgv_ViewSubSubject.Rows[e.RowIndex].Cells[2].Value.ToString();
 
             Edit_SubSubject.Enabled = true;
-            amend = Convert.ToInt32(dgv_ViewSubSubject.Rows[e.RowIndex].Cells[7].Value.ToString());
+            amend = Convert.ToInt32(dgv_ViewSubSubject.Rows[e.RowIndex].Cells[8].Value.ToString());
 
 
         }
@@ -331,6 +367,11 @@ namespace PilotTraining.Fundamental
                     Tr.Rollback();
                 }
             }
+        }
+
+        private void dgv_ViewSubSubject_Resize(object sender, EventArgs e)
+        {
+            FixColumnWidth_dgv_ViewFormat();
         }
     }
 }

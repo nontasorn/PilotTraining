@@ -70,7 +70,9 @@ namespace PilotTraining
 
         private void Menu_Form_Management2_Click(object sender, EventArgs e)
         {
-            
+            Fundamental.Aircraft.AircraftType frm = new Fundamental.Aircraft.AircraftType();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void MenuCreateTrainingDetails2_Click(object sender, EventArgs e)
